@@ -1,7 +1,9 @@
 ---
-title: "Manuscript title here"
-output: html_document
-author: "Your name here"
+title: "Association between trauma severity models and opportunities for improvement"
+author: "Victoria Witthoff"
+output:
+  pdf_document: default
+  html_document: default
 bibliography: bibliography.bib
 csl: vancouver.csl
 ---
@@ -206,7 +208,7 @@ and sensitivity analyses
 You can include code in this document like this:
 
 ```{r main, echo=FALSE}
-source("main.R") ## This "imports" the main script file of your project and run any code in it
+## source("main.R") ## This "imports" the main script file of your project and run any code in it
 ```
 
 You can also embed plots:

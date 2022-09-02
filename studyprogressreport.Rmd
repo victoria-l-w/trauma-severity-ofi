@@ -1,0 +1,227 @@
+---
+title: "Association between trauma severity models and opportunities for improvement: A cohort study"
+author: "Victoria Witthoff"
+output:
+  pdf_document: default
+  html_document: default
+bibliography: bibliography.bib
+csl: vancouver.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+Introduction
+============
+
+<!--
+Scientific background:
+
+* What is trauma?
+* Stats about mortality in Sweden & worldwide? Or maybe just worldwide tbh? 
+  + Sourced statistics about how it affects
+* What progress has been made in trauma care? Has it gotten better over the years or do statistics stay stagnant? 
+
+Rationale: 
+
+-> Therefore, improvement of trauma care is important for this patient group -> you can't improve care without having good methods to evaluate what you're currently doing -> it would be good if we could improve our methods for quality assurance
+
+There are multiple strategies for quality assurance. One is M&M that evaluates OFI. Another is using predictive models for benchmarking, such as xyz. Is there an association between OFI and trauma severity models? We don't know?
+
+Aim:
+
+The purpose of this study was to assess how TSM are associated with and to what extent they can predict OFI. 
+-->
+
+Severe trauma is one of the leading causes of death worldwide, constituting nearly 8% of global deaths annually [@WHOepi]. The global health burden of physical injury has led to trauma being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is the leading cause of death for people aged 5-29 years and 90% of trauma-related deaths occur in low- to middle-income countries [@WHOepi]. Nonfatal outcomes, such as permanent disability, also comprise a significant health burden and can drastically reduce quality of life and lifespan in survivors of severe trauma. Reduction of trauma morbidity and mortality is therefore both an imperative, considering the great number of people affected, and also a complex, multi-factorial challenge encompassing a broad range of organisations across continents. 
+
+
+
+Another characteristic of trauma care is that management and treatment of severe trauma is dependent on a broad chain of actors that span multiple professions, medical specialties, and sometimes multiple clinics. The management of a single trauma case can involve personnel from EMS, the ER, anaesthesia, radiology, and surgery. Improvement of trauma care therefore requires a multidisciplinary approach that examines all steps in the chain of treatment and identifies weak links. One method of doing this is by holding multidisciplinary morbidity and mortality reviews of selected cases in order to identify opportunities for improvement (OFI).
+
+
+<!--
+Thoughts/Notes/Things to potentially say
+
+* Trauma is _____. 
+  + Highly heterogenous
+* Trauma is one of the leading causes of death among (____) [cite]. 
+  + Age group? 
+  + Geographical locations? 
+* Treatment of severe trauma is time-dependent and is a multi-step process of prehospital management + diagnosis + surgery + perioperative care + post-operative care
+  + Affected by routines/protocols/resources at the treating hospital
+    + Trauma outcomes are affected by multiple factors
+  + Mention levels of trauma centers? 
+  + What protocols etc have been developed to manage trauma?
+* Because of the above, quality assurance is necessary to evaluate all steps of the chain, since outcomes of trauma treatment are not affected by one single treatment strategy, but by the efficiency and accuracy of each step in the chain
+
+Two methods of QA are M&M + TSM 
+
+-->
+
+## Quality assurance and benchmarking
+
+### Trauma severity models
+
+Increasing the quality of trauma care necessitates consideration of several key characteristics of trauma. One of these is that trauma is a highly heterogeneous entity due to the variety in its underlying causes, which affect both the type and severity of the injury. Vehicle collisions are the primary cause of mortality due to physical injury worldwide [@WHOepi], but the list of potential causes of severe physical injury is lengthy, including everything from workplace accidents to physical violence. This heterogeneity makes it poses challenges in comparing trauma outcomes and has spurred the development of multiple trauma severity models (TSM) that aim to overcome this difficulty. 
+
+One attempt to solve the problem of the heterogeneity of trauma is the development of multiple trauma severity models (TSM). These models differ in their methodology but all have the aim of establishing a standardised system to compare trauma outcomes and thus aid in quality assurance and benchmarking. The most commonly used algorithm is the Trauma and Injury Severity Score (TRISS)
+
+<!--
+What are the differences between the models?
+Are there stats on how good they are? Are any better/worse? Why use different ones?
+
+-->
+
+### Morbidity & mortality reviews
+
+<!--
+Introduce the concept of OFI here
+-->
+
+
+## Aims
+
+This study aims to evaluate how trauma severity models are associated with and to what extent they can predict opportunities for improvement.
+
+
+
+
+
+<!-- Explain the scientific background and rationale for the
+investigation being reported. End by stating the aim or specific
+objectives, including any prespecified hypotheses. The introduction
+should not be longer than 1-1.5 pages, typically 4-5 paragraphs, each
+6-8 lines long. Support every statement with a citation -->
+
+<!-- According to student instructions, 3-5 pages -->
+ 
+<!-- cite like [@exampleKey9999] --> 
+
+
+Methods 
+=======
+
+Study design
+------------
+
+<!-- Present key elements of study design -->
+This is a single-centre registry-based cohort study.
+
+
+Setting
+-------
+
+<!-- Describe the setting, locations, and relevant dates, including
+periods of recruitment, exposure, follow-up, and data collection -->
+
+The trauma registry database includes around 21,000 patients treated between 2012 and 2021. The trauma care quality database is a subset of the trauma registry database and includes around 2200 patients who were selected for review between 2014 and 2021. Both databases come from the Karolinska University Hospital in Solna, Sweden. Karolinska University Hospital is classified as a Level 1 trauma center according to American criteria.
+
+<!-- Last sentence prolly not particularly good rn but it's still probably(?) important to mention the context of trauma care at KS; maybe I should find out what trauma patients come to NKS vs other sthlm hospitals; presumably other sthlm hospitals take minor trauma?; https://www.karolinska.se/en/karolinska-university-hospital/news/2020/12/karolinska-university-hospital-becomes-swedens-first-trauma-centre/ -->
+
+
+Participants
+------------
+
+<!-- Cohort study: Give the eligibility criteria, and the sources and
+methods of selection of participants. Describe methods of
+follow-up. For matched studies, give matching criteria and number of
+exposed and unexposed -->
+
+
+* Eligibility 
+  + Does it include ALL patients in this time span?
+  + Criteria for inclusion in the database, is it simply everyone coming in coded as trauma? 
+  + Which patients were selected for review? Presumably cases where the people involved felt that they needed to be discussed? But is there more specific info? 
+* Do patients know they are recorded in the registry? Or is this a thing where permission isn't required since it doesn't affect patients directly? 
+
+Variables and data sources/measurements
+---------------------------------------
+
+<!-- Clearly define all outcomes, exposures, predictors, potential
+confounders, and effect modifiers. Give diagnostic criteria, if
+applicable. For each variable of interest, give sources of data and
+details of methods of assessment (measurement). Describe comparability
+of assessment methods if there is more than one group -->
+
+The studied outcome is "opportunities for improvement" (OFI), as identified by the  multidisciplinary review board after a mortality and morbidity review. OFI is coded as either "Yes - at least one opportunity for improvement" or "No - no opportunities for improvement"
+
+Bias 
+----
+
+<!-- Describe any efforts to address potential sources of bias -->
+* Geographical bias?
+* People in the multidisciplinary review committee - is it basically the same people all the time? 
+
+
+Study size 
+----------
+
+<!-- Explain how the study size was arrived at -->
+
+- The size of the register? (The big one or the subset?)
+
+Quantitative variables
+----------------------
+
+<!-- Explain how quantitative variables were handled in the
+analyses. If applicable, describe which groupings were chosen and why
+-->
+
+Statistical methods
+-------------------
+
+Should answer these questions, where applicable:
+
+* All statistical methods, incl. those used to control for confounding
+* Any methods to examine subgroups and interactions
+* How was missing data addressed?
+* Cohort study: If applicable, explain how loss to follow-up was addressed 
+* Any sensitivity analyses?
+
+Ethical considerations
+-------
+
+**Stockholm Research Ethics Review Board approval number 2021-02541 and 2021-03531.**
+
+Potential things to mention here:
+
+* The study doesn't affect treatment of patients in any way
+* The data is stored in a secure database (I assume)
+* I don't have access to patient journals; only the info in the register
+
+<!-- 
+THIS DOESN'T WORK FOR WHATEVER REASON AND MAKES KNITTING THROW AN ERROR
+So I'll fix it sometime later
+source("main.R")  "imports" the main script file of your project and run any code in it -->
+
+
+Development and time plan
+==========
+
+All data required for this project were collected and available prior to the project beginning. Therefore, the data only need to be analysed. 
+
+```{r, echo=FALSE, out.width = "400px"}
+knitr::include_graphics("images/timeplan.png")
+```
+
+Reserve plan
+------------
+
+Since all of the data has already been collected at the commencement of this project, there is no need for an elaborate back up plan. However, some details of the project may be subject to change during the analysis (?)
+
+
+
+References
+==========
+
+<!-- Do not edit by hand, references will be inserted and formatted automatically once you knit this document -->
+
+Vestibulum a velit ullamcorper, porttitor eros ut, tempor dolor. Fusce ac lacus at mauris consequat lobortis et ac sapien. In neque neque, rhoncus quis venenatis semper, iaculis malesuada nunc. Vestibulum nec orci porttitor, mattis nulla efficitur, hendrerit erat. Fusce blandit non neque eget semper. Curabitur at ullamcorper urna. Aliquam placerat pretium dui, et feugiat risus semper non. Donec ac erat et quam pellentesque posuere. Nullam elementum, tellus ac mollis pretium, lorem tellus elementum erat, nec tincidunt elit nibh eget nunc. Quisque ut nulla tellus.
+
+Pellentesque nisi enim, cursus at leo in, pulvinar tincidunt ante. Maecenas eget porta sem. Nunc pulvinar consectetur blandit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut pellentesque lectus in nunc mattis, nec bibendum ipsum vulputate. Integer laoreet purus vel erat mollis, vitae placerat dolor faucibus. Etiam convallis orci vel neque sodales, sed tincidunt enim facilisis. Curabitur et porta leo. Pellentesque consectetur posuere mauris, ut ullamcorper elit tempor vitae. Maecenas condimentum accumsan felis et tincidunt. Fusce hendrerit id libero a tincidunt.
+
+Suspendisse congue felis neque, ac gravida metus ullamcorper ut. Integer viverra et ex vel malesuada. Vivamus gravida volutpat libero, in accumsan felis tempor id. Integer non venenatis mauris, at sodales nibh. Aenean sit amet velit vitae augue interdum tincidunt vel sed neque. Mauris nec ligula neque. Ut vel posuere justo. Etiam nunc tortor, consequat quis lorem sed, iaculis pellentesque eros. Nulla ornare sapien est, sit amet convallis metus aliquet sit amet. Nulla facilisi.
