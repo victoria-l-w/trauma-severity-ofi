@@ -1,5 +1,5 @@
 ---
-title: "Association between trauma severity models and opportunities for improvement: A cohort study"
+title: "Association between trauma severity models and opportunities for improvement: A retrospective cohort study"
 author: "Victoria Witthoff"
 output:
   pdf_document: default
@@ -12,7 +12,11 @@ csl: vancouver.csl
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
+Abbreviations
+=============
+* KUH - Karolinska University Hospital
+* OFI - Opportunities for improvement
+* TSM - Trauma severity models
 
 Introduction
 ============
@@ -34,16 +38,8 @@ There are multiple strategies for quality assurance. One is M&M that evaluates O
 Aim:
 
 The purpose of this study was to assess how TSM are associated with and to what extent they can predict OFI. 
--->
-
-Severe trauma is one of the leading causes of death worldwide, constituting nearly 8% of global deaths annually [@WHOepi]. The global health burden of physical injury has led to trauma being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is the leading cause of death for people aged 5-29 years and 90% of trauma-related deaths occur in low- to middle-income countries [@WHOepi]. Nonfatal outcomes, such as permanent disability, also comprise a significant health burden and can drastically reduce quality of life and lifespan in survivors of severe trauma. Reduction of trauma morbidity and mortality is therefore both an imperative, considering the great number of people affected, and also a complex, multi-factorial challenge encompassing a broad range of organisations across continents. 
 
 
-
-Another characteristic of trauma care is that management and treatment of severe trauma is dependent on a broad chain of actors that span multiple professions, medical specialties, and sometimes multiple clinics. The management of a single trauma case can involve personnel from EMS, the ER, anaesthesia, radiology, and surgery. Improvement of trauma care therefore requires a multidisciplinary approach that examines all steps in the chain of treatment and identifies weak links. One method of doing this is by holding multidisciplinary morbidity and mortality reviews of selected cases in order to identify opportunities for improvement (OFI).
-
-
-<!--
 Thoughts/Notes/Things to potentially say
 
 * Trauma is _____. 
@@ -56,9 +52,24 @@ Thoughts/Notes/Things to potentially say
     + Trauma outcomes are affected by multiple factors
   + Mention levels of trauma centers? 
   + What protocols etc have been developed to manage trauma?
-* Because of the above, quality assurance is necessary to evaluate all steps of the chain, since outcomes of trauma treatment are not affected by one single treatment strategy, but by the efficiency and accuracy of each step in the chain
+* Because of the above, quality assurance is necessary to evaluate all steps of the chain, since outcomes of trauma treatment are not affected by one single treatment strategy, but by the efficiency and accuracy of each step in the chain + how they cooperate together
 
 Two methods of QA are M&M + TSM 
+-->
+
+Severe trauma is one of the leading causes of death worldwide, constituting nearly 8% of global deaths annually [@WHOepi]. The global health burden of physical injury has led to trauma being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is the leading cause of death for people aged 5-29 years and 90% of trauma-related deaths occur in low- to middle-income countries [@WHOepi]. Nonfatal outcomes, such as permanent disability, also comprise a significant health burden and can drastically reduce quality of life and lifespan in survivors of severe trauma. <!-- cite? --> Reduction of trauma morbidity and mortality is therefore both an imperative, considering the great number of people affected, and also a complex, multi-factorial challenge encompassing a broad range of organisations across continents. 
+
+Increasing the quality of trauma care necessitates consideration of several key characteristics of trauma. One of these is that trauma is a highly heterogeneous entity due to the variety in its underlying causes, which affect both the type and severity of the injury. Vehicle collisions are the primary cause of mortality due to physical injury worldwide [@WHOepi], but the list of potential causes of severe physical injury is lengthy, including everything from workplace accidents to physical violence. This heterogeneity makes it poses challenges in comparing trauma outcomes and has spurred the development of multiple trauma severity models (TSM) that aim to overcome this difficulty. These models 
+
+One attempt to solve the problem of the heterogeneity of trauma is the development of multiple trauma severity models (TSM). These models differ in their methodology but all have the aim of establishing a standardised system to compare trauma outcomes and thus aid in quality assurance and benchmarking. 
+
+One characteristic of trauma care is that management and treatment of severe trauma is dependent on a broad chain of actors that span multiple professions, medical specialties, and sometimes multiple clinics. For example, the management of a single trauma case could involve personnel from EMS, the ER, anaesthesia, radiology, and surgery. Improvement of trauma care therefore requires a multidisciplinary approach that examines all steps in the chain of treatment and identifies weak links. One method of doing this is by holding multidisciplinary morbidity and mortality reviews of selected cases in order to identify opportunities for improvement (OFI).
+
+
+<!--
+
+
+I NEED TO FIND RESEARCH IN THE AREA AND TALK ABOUT THEM AND CITE THEM
 
 -->
 
@@ -66,9 +77,6 @@ Two methods of QA are M&M + TSM
 
 ### Trauma severity models
 
-Increasing the quality of trauma care necessitates consideration of several key characteristics of trauma. One of these is that trauma is a highly heterogeneous entity due to the variety in its underlying causes, which affect both the type and severity of the injury. Vehicle collisions are the primary cause of mortality due to physical injury worldwide [@WHOepi], but the list of potential causes of severe physical injury is lengthy, including everything from workplace accidents to physical violence. This heterogeneity makes it poses challenges in comparing trauma outcomes and has spurred the development of multiple trauma severity models (TSM) that aim to overcome this difficulty. 
-
-One attempt to solve the problem of the heterogeneity of trauma is the development of multiple trauma severity models (TSM). These models differ in their methodology but all have the aim of establishing a standardised system to compare trauma outcomes and thus aid in quality assurance and benchmarking. The most commonly used algorithm is the Trauma and Injury Severity Score (TRISS)
 
 <!--
 What are the differences between the models?
@@ -80,26 +88,14 @@ Are there stats on how good they are? Are any better/worse? Why use different on
 
 <!--
 Introduce the concept of OFI here
+
+Actually I don't think this subheading is all that necessary 
 -->
 
 
 ## Aims
 
 This study aims to evaluate how trauma severity models are associated with and to what extent they can predict opportunities for improvement.
-
-
-
-
-
-<!-- Explain the scientific background and rationale for the
-investigation being reported. End by stating the aim or specific
-objectives, including any prespecified hypotheses. The introduction
-should not be longer than 1-1.5 pages, typically 4-5 paragraphs, each
-6-8 lines long. Support every statement with a citation -->
-
-<!-- According to student instructions, 3-5 pages -->
- 
-<!-- cite like [@exampleKey9999] --> 
 
 
 Methods 
@@ -109,8 +105,7 @@ Study design
 ------------
 
 <!-- Present key elements of study design -->
-This is a single-centre registry-based cohort study.
-
+This is a single-centre retrospective cohort study, using data from two registries at Karolinska University Hospital (KUH): the trauma registry database and the trauma care quality registry. The trauma care quality registry is a subset of the trauma registry and contains data on trauma patients who were selected for morbidity and mortality (M&M) reviews. These two databases will be linked and then analysis will be performed to estimate the association between the common trauma severity models (TSM) TRISS, NORMIT, and RISCII, and opportunities for improvement (OFI) using logistic regression. The predictive performance of these models will be evaluated using measures of discrimination and calibration. 
 
 Setting
 -------
@@ -118,28 +113,25 @@ Setting
 <!-- Describe the setting, locations, and relevant dates, including
 periods of recruitment, exposure, follow-up, and data collection -->
 
-The trauma registry database includes around 21,000 patients treated between 2012 and 2021. The trauma care quality database is a subset of the trauma registry database and includes around 2200 patients who were selected for review between 2014 and 2021. Both databases come from the Karolinska University Hospital in Solna, Sweden. Karolinska University Hospital is classified as a Level 1 trauma center according to American criteria.
+KUH is located in Stockholm, Sweden. KUH's trauma centre is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@NKStrauma]. KUH is the primary trauma centre for the region of Stockholm. In addition, KUH has agreements with several other regions to provide trauma care for patients with severe trauma. KUH is thereby the major trauma centre for a population of almost 3 million people [@NKStrauma]. 
 
-<!-- Last sentence prolly not particularly good rn but it's still probably(?) important to mention the context of trauma care at KS; maybe I should find out what trauma patients come to NKS vs other sthlm hospitals; presumably other sthlm hospitals take minor trauma?; https://www.karolinska.se/en/karolinska-university-hospital/news/2020/12/karolinska-university-hospital-becomes-swedens-first-trauma-centre/ -->
+The trauma registry at KUH contains data on 21,000 patients collected between 2012 and 2021. This registry is also submitted to SweTrau, Sweden's national trauma registry database, and therefore meets SweTrau guidelines. The registered data includes prehospital vital signs and management, vital signs and management on arrival at hospital, information about the type of injury, and the primary method of treatment. It also includes tracks follow-up. Follow-up variables include, but are not limited to, survival at 30 days, days in ventilator, GCS at discharge, highest level of care, and transfers to other units. 
+
+The trauma care quality register is an internal hospital register and registers the outcome of M&M conferences. M&M conferences are multidisciplinary and their purpose is to review selected patient cases and determine whether an opportunity for improvement existed in each individual case. Examples of opportunities for improvement could be insufficient resources or errors in patient management. 
 
 
 Participants
 ------------
 
-<!-- Cohort study: Give the eligibility criteria, and the sources and
-methods of selection of participants. Describe methods of
-follow-up. For matched studies, give matching criteria and number of
-exposed and unexposed -->
+Participants include all patients registered in both the trauma registry and the trauma care quality registry at KUH. The trauma registry includes all patients for whom the trauma team was activated after receiving a potentially traumatic injury, regardless of NISS score, and all patients with a NISS score >15, regardless of whether the trauma team was activated. Also included are patients who were transferred to the hospital within 7 days of injury and have a NISS score >15. Patients where the only traumatic injury is a chronic subdural hematoma and patients for whom the trauma team was activated without an underlying traumatic injury are excluded from the register. Since the outcome variable of this study is OF
+
+<!-- Eligiblity criteria for the trauma registry were taken from the SWETRAU manual, check if it is exactly the same at? -->
+
+The trauma care quality registry contains patients from the trauma registry that were selected for M&M review. At KUH, all fatalities are automatically selected for M&M review. In addition to this, the electronic medical records of all trauma patients are evaluated by research nursing staff to identify cases that potentially received sub-optimal care. Cases that two research nurses have evaluated and found to have potential for sub-optimal care are also selected for M&M review.
 
 
-* Eligibility 
-  + Does it include ALL patients in this time span?
-  + Criteria for inclusion in the database, is it simply everyone coming in coded as trauma? 
-  + Which patients were selected for review? Presumably cases where the people involved felt that they needed to be discussed? But is there more specific info? 
-* Do patients know they are recorded in the registry? Or is this a thing where permission isn't required since it doesn't affect patients directly? 
-
-Variables and data sources/measurements
----------------------------------------
+Variables
+---------
 
 <!-- Clearly define all outcomes, exposures, predictors, potential
 confounders, and effect modifiers. Give diagnostic criteria, if
@@ -147,22 +139,23 @@ applicable. For each variable of interest, give sources of data and
 details of methods of assessment (measurement). Describe comparability
 of assessment methods if there is more than one group -->
 
-The studied outcome is "opportunities for improvement" (OFI), as identified by the  multidisciplinary review board after a mortality and morbidity review. OFI is coded as either "Yes - at least one opportunity for improvement" or "No - no opportunities for improvement"
+The studied outcome is the binary variable "opportunities for improvement" (OFI), as identified by the  multidisciplinary review board after a mortality and morbidity review. OFI is coded as either "Yes - at least one opportunity for improvement" or "No - no opportunities for improvement". The primary exposures of interest are trauma severity scores according to the TRISS, NORMIT, and RISCII models. 
 
 Bias 
 ----
 
 <!-- Describe any efforts to address potential sources of bias -->
-* Geographical bias?
-* People in the multidisciplinary review committee - is it basically the same people all the time? 
 
+The method and data analysis model will be written using simulated data to reduce the risk of research bias. Real-world data will only be used once the data analysis model is completed and found to work correctly on simulated data. 
 
 Study size 
 ----------
 
 <!-- Explain how the study size was arrived at -->
 
-- The size of the register? (The big one or the subset?)
+Since all eligible participants must exist in both the trauma and the trauma care quality register, and the trauma care quality registry is a subset of the trauma registry, the number of participants is limited to the number of cases registered in the trauma care quality database. The trauma care quality database includes around 2200 patients who were selected for review between 2014 and 2021.
+
+<!-- Update these numbers later when I have actual numbers -->
 
 Quantitative variables
 ----------------------
@@ -171,8 +164,16 @@ Quantitative variables
 analyses. If applicable, describe which groupings were chosen and why
 -->
 
+<!-- Really not sure
+-->
+
 Statistical methods
 -------------------
+
+R, a programming language for statistical computing, will be used for compilation and analysis of data. Variables will be handled according to the SweTrau manual. 
+
+
+<!-- 
 
 Should answer these questions, where applicable:
 
@@ -180,7 +181,7 @@ Should answer these questions, where applicable:
 * Any methods to examine subgroups and interactions
 * How was missing data addressed?
 * Cohort study: If applicable, explain how loss to follow-up was addressed 
-* Any sensitivity analyses?
+* Any sensitivity analyses? -->
 
 Ethical considerations
 -------
@@ -219,9 +220,3 @@ References
 ==========
 
 <!-- Do not edit by hand, references will be inserted and formatted automatically once you knit this document -->
-
-Vestibulum a velit ullamcorper, porttitor eros ut, tempor dolor. Fusce ac lacus at mauris consequat lobortis et ac sapien. In neque neque, rhoncus quis venenatis semper, iaculis malesuada nunc. Vestibulum nec orci porttitor, mattis nulla efficitur, hendrerit erat. Fusce blandit non neque eget semper. Curabitur at ullamcorper urna. Aliquam placerat pretium dui, et feugiat risus semper non. Donec ac erat et quam pellentesque posuere. Nullam elementum, tellus ac mollis pretium, lorem tellus elementum erat, nec tincidunt elit nibh eget nunc. Quisque ut nulla tellus.
-
-Pellentesque nisi enim, cursus at leo in, pulvinar tincidunt ante. Maecenas eget porta sem. Nunc pulvinar consectetur blandit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut pellentesque lectus in nunc mattis, nec bibendum ipsum vulputate. Integer laoreet purus vel erat mollis, vitae placerat dolor faucibus. Etiam convallis orci vel neque sodales, sed tincidunt enim facilisis. Curabitur et porta leo. Pellentesque consectetur posuere mauris, ut ullamcorper elit tempor vitae. Maecenas condimentum accumsan felis et tincidunt. Fusce hendrerit id libero a tincidunt.
-
-Suspendisse congue felis neque, ac gravida metus ullamcorper ut. Integer viverra et ex vel malesuada. Vivamus gravida volutpat libero, in accumsan felis tempor id. Integer non venenatis mauris, at sodales nibh. Aenean sit amet velit vitae augue interdum tincidunt vel sed neque. Mauris nec ligula neque. Ut vel posuere justo. Etiam nunc tortor, consequat quis lorem sed, iaculis pellentesque eros. Nulla ornare sapien est, sit amet convallis metus aliquet sit amet. Nulla facilisi.
