@@ -123,7 +123,7 @@ The trauma care quality register is an internal hospital register and registers 
 Participants
 ------------
 
-Participants include all patients registered in both the trauma registry and the trauma care quality registry at KUH. The trauma registry includes all patients for whom the trauma team was activated after receiving a potentially traumatic injury, regardless of NISS score, and all patients with a NISS score >15, regardless of whether the trauma team was activated. Also included are patients who were transferred to the hospital within 7 days of injury and have a NISS score >15. Patients where the only traumatic injury is a chronic subdural hematoma and patients for whom the trauma team was activated without an underlying traumatic injury are excluded from the register. Since the outcome variable of this study is OF
+Participants include all patients registered in both the trauma registry and the trauma care quality registry at KUH. The trauma registry includes all patients for whom the trauma team was activated after receiving a potentially traumatic injury, regardless of NISS score, and all patients with a NISS score >15, regardless of whether the trauma team was activated. Also included are patients who were transferred to the hospital within 7 days of injury and have a NISS score >15. Patients where the only traumatic injury is a chronic subdural hematoma and patients for whom the trauma team was activated without an underlying traumatic injury are excluded from the register.
 
 <!-- Eligiblity criteria for the trauma registry were taken from the SWETRAU manual, check if it is exactly the same at? -->
 
@@ -208,12 +208,6 @@ All data required for this project were collected and available prior to the pro
 ```{r, echo=FALSE, out.width = "400px"}
 knitr::include_graphics("images/timeplan.png")
 ```
-
-Reserve plan
-------------
-
-Since all of the data has already been collected at the commencement of this project, there is no need for an elaborate back up plan. However, some details of the project may be subject to change during the analysis (?)
-
 
 
 References
