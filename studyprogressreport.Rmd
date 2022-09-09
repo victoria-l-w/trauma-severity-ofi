@@ -15,85 +15,34 @@ knitr::opts_chunk$set(echo = TRUE)
 Abbreviations
 =============
 * KUH - Karolinska University Hospital
+* KUH TCQD - Karolinska University Hospital Trauma Care Quality Database
+* KUH TR - Karolinska University Hospital Trauma Registry
 * OFI - Opportunities for improvement
-* TSM - Trauma severity models
 
 Introduction
 ============
 
+<!-- Why trauma is a big deal --> 
 
+Traumatic injury is one of the leading causes of death worldwide, constituting nearly 8% of global deaths annually [@whoepi]. The global health burden of physical injury has led to trauma being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is a leading cause of death for people aged 10-49 years [@globalburden] and 90% of trauma-related deaths occur in low- to middle-income countries [@whoepi]. Nonfatal outcomes also comprise a significant portion of the global health burden of disability [@globalburden], which can drastically reduce quality of life and lifespan in survivors of severe trauma. Outcomes in severe trauma are dependent on the quality of care received, and it has been shown in the US that trauma quality improvement programs improve outcomes [@ustqi].
 
-<!--
-Scientific background:
+<!-- Explain the what and why of TSM -->
 
-* What is trauma?
-* Stats about mortality in Sweden & worldwide? Or maybe just worldwide tbh? 
-  + Sourced statistics about how it affects
-* What progress has been made in trauma care? Has it gotten better over the years or do statistics stay stagnant? 
+Trauma severity scores (TSS) are used in trauma quality improvement programs and research for their usefulness in benchmarking and in comparing trauma severity between patients [@whoguidelines]. The existence of these models is necessitated by the heterogeneous nature of trauma, due to the variety in its underlying causes, which affect both the type and severity of the injury. This heterogeneity poses challenges in comparing and evaluating trauma outcomes and has spurred the development of multiple TSS. TSS were initially intended for use in prehospital triage, and therefore were simplistic by design for ease of use [@traumareview], but over the years newer and more advanced models have been developed for quality assurance and research purposes. These models differ in their methodology but all have the aim of translating injury severity into quantitative values. 
 
-Rationale: 
+The Trauma and Injury Severity Score (TRISS) is one of the most commonly used models. TRISS is a combination index that incorporates patient age, injury severity by anatomical site, and physiological parameters [@triss]. TRISS estimates the possibility of survival for the given parameters, and can be used by hospitals as a benchmark to compare outcomes against a standardised survival estimate. 
 
--> Therefore, improvement of trauma care is important for this patient group -> you can't improve care without having good methods to evaluate what you're currently doing -> it would be good if we could improve our methods for quality assurance
+<!-- Info on other scores here? -->
 
-There are multiple strategies for quality assurance. One is M&M that evaluates OFI. Another is using predictive models for benchmarking, such as xyz. Is there an association between OFI and trauma severity models? We don't know?
+<!-- Explain the what and why of M&M --> 
 
-Aim:
+Another cornerstone of trauma quality improvement programs worldwide are multidisciplinary morbidity and mortality conferences (MMC). Management of severe trauma is highly time-sensitive and is also dependent on the actions of a multidisciplinary chain of healthcare providers. Errors in management are a common cause of preventable deaths [@errors].  These conferences review selected patient cases and attempt to establish whether suboptimal care was given in each specific case, i.e. whether there was room for improvement, and to implement corrective actions. The WHO guidelines for trauma quality improvement programmes include specific recommendations on holding regularly scheduled M&M conferences, but also note that M&M conferences are not used to their fullest potential globally [@whoguidelines]. 
 
-The purpose of this study was to assess how TSM are associated with and to what extent they can predict OFI. 
+<!-- Explain why TSM ⇒ M&M -->
 
+One limitation of M&M conferences is that their value in long-term quality improvement is dependent on selection of appropriate cases for review. The process by which patient cases are selected for M&M review differs between clinics and one systematic review found that case selection is often non-standardised [@mmreview]. There is an inherent weakness in relying on healthcare providers to self-report on cases they were involved in. One study in South Africa found that using electronic medical records to automatically generate reports led to a dramatic increase in reporting of morbidity and mortality over a system of self-reporting for MMC [@southafrica]. In institutions that have implemented more standardised approaches to case selection, factors that indicate case review include deaths, adverse events, and complications [@whoguidelines]. 
 
-Thoughts/Notes/Things to potentially say
-
-* Trauma is _____. 
-  + Highly heterogenous
-* Trauma is one of the leading causes of death among (____) [cite]. 
-  + Age group? 
-  + Geographical locations? 
-* Treatment of severe trauma is time-dependent and is a multi-step process of prehospital management + diagnosis + surgery + perioperative care + post-operative care
-  + Affected by routines/protocols/resources at the treating hospital
-    + Trauma outcomes are affected by multiple factors
-  + Mention levels of trauma centers? 
-  + What protocols etc have been developed to manage trauma?
-* Because of the above, quality assurance is necessary to evaluate all steps of the chain, since outcomes of trauma treatment are not affected by one single treatment strategy, but by the efficiency and accuracy of each step in the chain + how they cooperate together
-
-Two methods of QA are M&M + TSM 
--->
-
-Severe trauma is one of the leading causes of death worldwide, constituting nearly 8% of global deaths annually [@WHOepi]. The global health burden of physical injury has led to trauma being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is the leading cause of death for people aged 5-29 years and 90% of trauma-related deaths occur in low- to middle-income countries [@WHOepi]. Nonfatal outcomes, such as permanent disability, also comprise a significant health burden and can drastically reduce quality of life and lifespan in survivors of severe trauma. <!-- cite? --> Reduction of trauma morbidity and mortality is therefore both an imperative, considering the great number of people affected, and also a complex, multi-factorial challenge encompassing a broad range of organisations across continents. 
-
-Increasing the quality of trauma care necessitates consideration of several key characteristics of trauma. One of these is that trauma is a highly heterogeneous entity due to the variety in its underlying causes, which affect both the type and severity of the injury. Vehicle collisions are the primary cause of mortality due to physical injury worldwide [@WHOepi], but the list of potential causes of severe physical injury is lengthy, including everything from workplace accidents to physical violence. This heterogeneity makes it poses challenges in comparing trauma outcomes and has spurred the development of multiple trauma severity models (TSM) that aim to overcome this difficulty. These models 
-
-One attempt to solve the problem of the heterogeneity of trauma is the development of multiple trauma severity models (TSM). These models differ in their methodology but all have the aim of establishing a standardised system to compare trauma outcomes and thus aid in quality assurance and benchmarking. 
-
-One characteristic of trauma care is that management and treatment of severe trauma is dependent on a broad chain of actors that span multiple professions, medical specialties, and sometimes multiple clinics. For example, the management of a single trauma case could involve personnel from EMS, the ER, anaesthesia, radiology, and surgery. Improvement of trauma care therefore requires a multidisciplinary approach that examines all steps in the chain of treatment and identifies weak links. One method of doing this is by holding multidisciplinary morbidity and mortality reviews of selected cases in order to identify opportunities for improvement (OFI).
-
-
-<!--
-
-
-I NEED TO FIND RESEARCH IN THE AREA AND TALK ABOUT THEM AND CITE THEM
-
--->
-
-## Quality assurance and benchmarking
-
-### Trauma severity models
-
-
-<!--
-What are the differences between the models?
-Are there stats on how good they are? Are any better/worse? Why use different ones?
-
--->
-
-### Morbidity & mortality reviews
-
-<!--
-Introduce the concept of OFI here
-
-Actually I don't think this subheading is all that necessary 
--->
-
+TSS are already used in some clinics to identify cases for peer review [@whoguidelines]. However, the extent to which TSS are associated with or can predict opportunities for improvement (OFI) as found in M&M conferences is poorly understood. If it is found that an existing TSS model is associated with OFI, it could allow for another avenue of automatically identifying potentially mismanaged cases in a standardised fashion. 
 
 ## Aims
 
