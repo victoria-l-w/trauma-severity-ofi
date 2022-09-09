@@ -36,7 +36,7 @@ The Trauma and Injury Severity Score (TRISS) is one of the most commonly used mo
 
 <!-- Explain the what and why of M&M --> 
 
-Another cornerstone of trauma quality improvement programs worldwide are multidisciplinary morbidity and mortality conferences (MMC). Management of severe trauma is highly time-sensitive and is also dependent on the actions of a multidisciplinary chain of healthcare providers. Errors in management are a common cause of preventable deaths [@errors].  These conferences review selected patient cases and attempt to establish whether suboptimal care was given in each specific case, i.e. whether there was room for improvement, and to implement corrective actions. The WHO guidelines for trauma quality improvement programmes include specific recommendations on holding regularly scheduled M&M conferences, but also note that M&M conferences are not used to their fullest potential globally [@whoguidelines]. 
+Another cornerstone of trauma quality improvement programs worldwide are multidisciplinary morbidity and mortality conferences (MMC). Management of severe trauma is highly time-sensitive and is also dependent on the actions of a multidisciplinary chain of healthcare providers. Errors in management are a common cause of preventable deaths [@errors].  These conferences review selected patient cases and attempt to establish whether there were opportunities for improvement (OFI) in each specific case and to implement corrective actions. OFI function in this manner as a proxy for suboptimal care. The WHO guidelines for trauma quality improvement programmes include specific recommendations on holding regularly scheduled M&M conferences, but also note that M&M conferences are not used to their fullest potential globally [@whoguidelines]. 
 
 <!-- Explain why TSM ⇒ M&M -->
 
@@ -135,19 +135,18 @@ Should answer these questions, where applicable:
 * Any sensitivity analyses? -->
 
 Ethical considerations
--------
+----------------------
+
+All patient information used in this study is anonymised and stored in a secure database. Patient medical records will not be accessed. Patients were not asked to give consent for inclusion in the KUH trauma registry. The ability and ethical approval to collect patient data for this registry without pre-emptively asking for patient consent is well-established, as collecting this data is deemed to be in the public interest according to article 6.1 e of GDPR regulations. Collecting data is in the public interest due to the fact that this patient register is used to improve management of trauma, which is a leading cause of death. Patients have the right to be removed from the register if they wish, and also have the right to a copy of data that is stored about them on request.
+
+This project is a retrospective cohort study and the project has thereby had no effect on patient treatment. There is no risk that patients are harmed by inclusion in the study. This study has the potential to improve patient care by analysing a potential factor that could predict suboptimal trauma care. It is true that the patient population for this study includes vulnerable populations, such as the deceased and the severely injured, but this is justified by the fact that this population stands to gain the most from improved trauma care.
 
 **Stockholm Research Ethics Review Board approval number 2021-02541 and 2021-03531.**
 
-Potential things to mention here:
 
-* The study doesn't affect treatment of patients in any way
-* The data is stored in a secure database (I assume)
-* I don't have access to patient journals; only the info in the register
 
 <!-- 
-THIS DOESN'T WORK FOR WHATEVER REASON AND MAKES KNITTING THROW AN ERROR
-So I'll fix it sometime later
+
 source("main.R")  "imports" the main script file of your project and run any code in it -->
 
 
