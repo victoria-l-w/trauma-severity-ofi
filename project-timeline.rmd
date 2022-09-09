@@ -1,0 +1,51 @@
+# Project timeline
+
+## Week 1 (29/9 - 2/9)
+- Setup Github ([done](https://github.com/victoria-l-w/trauma-severity-ofi))
+- Draft study progress report
+- Reading
+  
+## Week 2 (5/9 - 9/9) 
+- Continue drafting study progress report
+- Detailed project  timeline 
+
+## Week 3 (12/9 - 16/9)
+- Complete draft of study progress report so that there's a week+ for feedback
+- Start writing code that imports and begins to clean data
+- Start drafting a more publication-friendly version
+  
+## Week 4 (19/9 - 23/9)
+- Revise study progress report based on feedback, submit
+- Revise code based on feedback.
+- Add code that creates a first table of sample characteristics.
+- Continue improving publication-friendly version
+
+## Week 5-10 (26/9 - 4/11)
+- **Deadline**: Submit study progress report by 12:00 Monday 26/9 
+- **Presentations**: Present study progress report 4-5/10 
+- Write code that generate a first set of preliminary results and
+  revise weekly based on feedback.
+
+## Week 11-12 (7/11 - 18/11)
+- Draft the Results section and upload.
+- Revise code based on feedback.
+
+## Week 13-14 (21/11 - 2/12)
+- Draft Discussion section and upload.
+- Revise Results based on feedback.
+
+## Week 15 (5/12 - 9/12)
+- Draft and upload final project paper.
+
+## Week 16 (12/12 - 16/12) 
+- Revise final project paper and upload a second version.
+
+## Week 17 (19/12 - 23/12)
+- Revise second version of final project paper and submit.
+
+## Week 18-20 (26/12 - 13/1)
+- **Deadline**: Submit seminar version by 12:00 Tuesday 27/12
+- **Presentations**: Seminar presentations either 5/1 or 9/1
+- **Deadline**: Submit final version by 12:00 Friday 13/1
+- Revise project paper based on comments and feedback from peers,
+  course leaders, examiners, and supervisors
