@@ -1,5 +1,5 @@
 # Project timeline
-
+<!--Mycket mycket bra Victoria! -->
 ## Week 1 (29/9 - 2/9)
 - Setup Github ([done](https://github.com/victoria-l-w/trauma-severity-ofi))
 - Draft study progress report
