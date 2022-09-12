@@ -30,7 +30,7 @@ Traumatic injury is one of the leading causes of death worldwide, constituting n
 
 Management of severe trauma is highly time-sensitive and is also dependent on the actions of a multidisciplinary chain of healthcare providers. Errors in management are a common cause of preventable deaths [@prevdeathsghorbani; @prevdeathsmontmany; @prevdeathsteixeira]. Outcomes in severe trauma are dependent on the quality of care received, and it has been shown in the US that trauma quality improvement (QI) programs improve outcomes [@ustqi]. However, it has been shown that the implementation of QI programs differs widely between clinics [@tqipanglo] and there is still plenty of progress to be made in improving these programs.  
 
-## Morbidity and mortality review 
+## Morbidity and mortality conferences
 
 The gold standard of trauma quality improvement programs worldwide are multidisciplinary morbidity and mortality (M&M) conferences.  M&M conferences review selected patient cases and attempt to establish whether there were opportunities for improvement (OFI) in each specific case, and, where necessary, implement corrective actions. The incidence of OFI function in this manner as a proxy for incidence of suboptimal care. The WHO guidelines for trauma quality improvement programmes recommend regularly scheduled multidisciplinary conferences and give specific recommendations as to their structure and format [@whoguidelines]. Despite these  recommendations, there is a still a great degree of variation amongst clinics in how M&M conferences are carried out, with a significant number of clinics still using an informal and unstructured format [@tqpianglo]. The WHO note themselves in their guidelines that M&M conferences are not used to their fullest potential globally [@whoguidelines]. 
 
@@ -39,28 +39,16 @@ The value of M&M conferences in long-term quality improvement is dependent on se
 <!-- Explain the what and why of TSM -->
 
 ## Trauma severity scores
-Trauma severity scores (TSS) are used in trauma quality improvement programs and research for their usefulness in benchmarking and in comparing trauma severity between patients [@whoguidelines]. The existence of these models is necessitated by the heterogeneous nature of trauma, due to the variety in its underlying causes, which affect both the type and severity of the injury. This heterogeneity poses challenges in comparing and evaluating trauma outcomes and has spurred the development of multiple TSS. TSS were initially intended for use in prehospital triage, and therefore were simplistic by design for ease of use [@traumareview], but over the years newer and more advanced models have been developed for quality assurance and research purposes. Today there are hundreds of TSS models. These models differ in their methodology but all have the aim of translating injury severity into quantitative values. 
+Trauma severity scores (TSS) are used in trauma quality improvement programs and research for their usefulness in benchmarking and in comparing trauma severity between patients [@whoguidelines]. The existence of these models is necessitated by the heterogeneous nature of trauma, due to the variety in its underlying causes, which affect both the type and severity of the injury. This heterogeneity poses challenges in comparing and evaluating trauma outcomes and has spurred the development of multiple TSS. TSS were initially intended for use in prehospital triage, and therefore were simplistic by design for ease of use [@traumareview], but over the years newer and more advanced models have been developed for quality assurance and research purposes. Today there are hundreds of TSS models. These models differ in their methodology but all have the aim of translating injury severity into quantitative values. However, an inherent weakness of any TSS model is that estimates may be unreliable when applied to a population different from the one the model was developed from. Trauma type and severity will differ between locales and trauma patient populations can be difficult to compare between disparate geographical regions. This weakness is one reason why new models continue to be developed and improved around the globe.  
 
-One of the limitations of any TSS model is that their estimates may be unreliable when applied to a population different from the one the model was developed from. 
+The Trauma and Injury Severity Score (TRISS), first developed in the US in 1987 [@triss] and most recently updated in 2010 [@triss2010], is the most commonly used model worldwide. TRISS is a combination index that incorporates patient age, the Injury Severity Score (ISS), the Revised Trauma Score (RTS), and whether the injury was blunt or penetrating [@triss]. The resulting value is a percentage that estimates the probability of survival (Ps). The ISS gives a score based on the three anatomical regions with the most severe injury. A limitation of the ISS is that it cannot take into account situations where one anatomical region has multiple injuries. The RTS is based on the physiological parameters GCS, systolic blood pressure, and respiratory rate. The RTS is difficult to apply in situations where the patient has already been intubated, which gives TRISS limited value in estimating Ps in certain populations. 
 
-The Trauma and Injury Severity Score (TRISS), first developed in 1987 [@triss] and most recently updated in 2010 <!-- Cite 2009 revision ref -->, is one of the most commonly used models worldwide.TRISS is a combination index that incorporates patient age, injury severity by anatomical site, and physiological parameters [@triss]. The resulting value is a percentage that estimates the probability of survival (Ps). 
+In 2014 researchers in Norway released a new model, Norwegian Survival Prediction Model in Trauma (NORMIT), that attempts to address the weaknesses of TRISS and simultaneously provide a model based on Norwegian patient populations. NORMIT is based on the patient's age, New Injury Severity Score (NISS), comorbities prior to traumatic injury based on the ASA physical status classification system (ASA-PS), and their RTS. NISS differs from ISS in that NISS allows for scoring of multiple injuries within the same anatomical region. NORMIT also provides a method to apply a GCS score for intubated patients when calculating RTS. 
 
+## Trauma severity scores as indicators for peer review
 
-
-<!-- Triss Limitations -->
-
-<!-- NORMIT -->
-
-
-
-<!-- Explain why TSM ⇒ M&M -->
-
- <!--Kolla exv Strömmers och Ghorbanis pek,https://pubmed-ncbi-nlm-nih-gov.sll.idm.oclc.org/29797712/ .
-De försöker använda bl.aa normit och triss för att se korrelans till OFI och preventable deaths. Skillnaden mot det du gör är att de bara tittar på patienter som dör och inte hela cohorten. Du tittar också på ett betydligt större dataunderlag. Så ditt bygger vidare på deras arbete-->
-
- However, the extent to which TSS are associated with or can predict OFI as found in M&M conferences is poorly understood. If it is found that an existing TSS model is associated with OFI, it could allow for another avenue of automatically identifying potentially mismanaged cases in a standardised fashion. This study aims to evaluate how trauma severity models are associated with and to what extent they can predict opportunities for improvement.
-<!--Introduktionen är mycket bra! Egentligen bara fortsätta som du gör, läs på och lägg till meningar/källor när du hittar info. För att nå KI:s sidkrav kan du skriva en hel del om de olika Scorsen -->
-
+Some clinics already use TSS as audit filters when selecting cases for M&M review [@whoguidelines]. However, the extent to which TSS are associated with or can predict OFI as found in M&M conferences is not well understood. A study at this institution found that neither NORMIT nor TRISS were able to reliably discriminate between preventable and non-preventable deaths [@prevdeathsghorbani]. However, that study included only deaths and not other morbidities and thereby had a low sample size. It is not known whether predictive models have better performance when taking into account the entire population of trauma patients. If it could be found that an existing TSS model is associated with OFI, it could allow for another avenue of automatically identifying potentially mismanaged cases in a standardised fashion. The aim of this study is to evaluate how trauma severity models are associated with and to what extent they can predict opportunities for improvement.
+ 
 Methods 
 =======
 
