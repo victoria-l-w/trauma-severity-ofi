@@ -1,0 +1,17 @@
+
+
+## 12/9
+**Attending**: Me, George, Jonatan
+
+**Discussed**: 
+
+* Using RISCII is probably not possible because the database lacks necessary parameters. Just use TRISS and NORMIT, or find a new third (or more?) score to use? Something for me to look into and think about. 
+* Meeting KI requirements and deadlines more important than aims to publish, KI is prio 1.
+
+**Plan**
+
+* Access database
+* Review what's available in the database + look into scoring systems, decide if there are any suitable scoring systems that would be interesting to add -> this would mean I'd have to calculate any extra scores myself b/c they aren't ready-made in the database
+* Complete draft of projektredogörelse by end of week
+
+**Next meeting**: Tuesday 20/12 over lunch, either Zoom or irl. 
