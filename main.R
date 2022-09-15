@@ -1,28 +1,37 @@
-## Welcome!
-
-## This is your project's main script file and together with
-## manuscript.Rmd it provides and entry point for you and other people
-## coming to the project. The code in this file should give an outline
-## of the different steps conducted in your study, from importing data
-## to producing results.
-
-## This file should be relatively short, and most of the heavy
-## lifting should be done by specialised functions. These functions
-## live in the folder functions/ and you create a new function using
-## create_function().
-
-## Feel free to remove this introductory text as you get started.
-
-## Source all functions (if you tick the box "Source on save" in
-## RStudio functions will be automatically sourced when you save
-## them). They all need to be sourced however when you compile your
-## manuscript file or run this file as a job, as that happens in a
-## clean R session.
+## Load 
+library("rofi")
+library("dplyr")
+library("labelled")
+library("tableone")
+source("functions/clean_data.r")
 noacsr::source_all_functions()
 
-## Import data
+
+## Step 1: Import data
 datasets <- import_data(test = TRUE)
 
 
 
-## Whatever you do next, maybe clean data?
+## Step 2: Merge data? 
+## I did this ugly workaround to make the merge_data function in the rofi package work, but perhaps I'm not supposed to use this function
+## It works tho! Testing it for now, I can do something else later if necessary
+
+## Make dataset names that match merge_data() requirements (lol)
+datasets[['swetrau']] <- datasets$swetrau_scrambled
+datasets[['fmp']] <- datasets$fmp_scrambled
+datasets[['atgarder']] <- datasets$atgarder_scrambled
+datasets[['problem']] <- datasets$problem_scrambled
+datasets[['kvalgranskning2014.2017']] <- datasets$kvalgranskning2014.2017_scrambled
+
+merged_data <- merge_data(datasets)
+
+
+## Step 3: Clean data, see functions/clean_data.r
+
+cleaned_data <- clean_data(merged_data)
+
+
+## Step 4: Table 1. Patient demographics.
+## Age, sex, ISS, NISS, ASA, penetrating/blunt, what more?? 
+
+
