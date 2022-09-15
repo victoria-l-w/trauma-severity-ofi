@@ -1,5 +1,5 @@
 ---
-title: "Association between trauma severity models and opportunities for improvement"
+title: "Association between trauma severity models and opportunities for improvement: A retrospective cohort study"
 author: "Victoria Witthoff"
 output:
   pdf_document: default
@@ -11,26 +11,6 @@ csl: vancouver.csl
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-<!-- This is an R Markdown document. Markdown is a simple formatting
-syntax for authoring HTML, PDF, and MS Word documents. For more
-details on using R Markdown see http://rmarkdown.rstudio.com -->
-
-<!-- This is a comment and will not be present in the compiled
-document. Try "knitting" this document by clicking the knit button up
-to the left, or by running `rmarkdown::render("manuscript.Rmd")` in
-the console and you should only see headings -->
-
-<!-- Structure and most comments are from the Strengthening the
-reporting of observational studies in epidemiology (STROBE) statement,
-see https://www.strobe-statement.org/. For more explanations see the
-paper Strengthening the Reporting of Observational Studies in
-Epidemiology (STROBE):explanation and elaboration.  -->
-
-<!-- Indicate the study’s design with a commonly used term in the
-title, for example: "Associations between resuscitation interventions
-and opportunities for improvement in adult trauma patients: A cohort
-study" -->
 
 Abstract
 ========
@@ -58,9 +38,6 @@ investigation being reported. End by stating the aim or specific
 objectives, including any prespecified hypotheses. The introduction
 should not be longer than 1-1.5 pages, typically 4-5 paragraphs, each
 6-8 lines long. Support every statement with a citation -->
-
-You can cite document here like this [@exampleKey9999]. Open the file
-bibliography.bib to learn more.
 
 Methods 
 =======
@@ -205,19 +182,10 @@ Report other analyses done—eg analyses of subgroups and interactions,
 and sensitivity analyses 
 -->
 
-You can include code in this document like this:
-
-```{r main, echo=FALSE}
-## source("main.R") ## This "imports" the main script file of your project and run any code in it
+```{r main, echo=FALSE, message = FALSE}
+  source("main.R") ## This "imports" the main script file of your project and run any code in it
+  as.data.frame(t1)
 ```
-
-You can also embed plots:
-
-```{r plot, echo=FALSE}
-plot(pressure)
-```
-
-You can also mix text and code, so called inline code, like this: `r 2+5`.
 
 Discussion
 ==========
@@ -257,4 +225,3 @@ Conclusion
 References
 ==========
 
-<!-- Do not edit by hand, references will be inserted and formatted automatically once you knit this document -->
