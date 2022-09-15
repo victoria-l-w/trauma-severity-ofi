@@ -21,6 +21,8 @@
 noacsr::source_all_functions()
 
 ## Import data
-data <- import_data(test = TRUE)
+datasets <- import_data(test = TRUE)
+
+
 
 ## Whatever you do next, maybe clean data?
