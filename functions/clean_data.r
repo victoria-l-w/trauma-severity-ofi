@@ -8,12 +8,15 @@
 ##  tra_Dodsfallanalysgenomford -- Maybe?? Difference between this and VK_avslutad?
 
 clean_data <- function(dirty_data) {
-
-  ## Remove rows with NA in required fields
-  cleaned_data <- dirty_data %>% filter_at(vars(ISS, NISS, pt_age_yrs, inj_dominant, ed_gcs_sum, ed_sbp_value, ed_rr_value, pt_asa_preinjury, VK_avslutad, Problemomrade_.FMP),all_vars(!is.na(.)))
   
-  ## Remove cases with no quality review (?, unclear if it's only VK_avslutad or also tra_Dodsfallsanalysgenomford, ask about this)
-  cleaned_data <- cleaned_data %>% filter(VK_avslutad == 'Ja' | VK_avslutad == 'ja')
+  ## Remove rows with NA in required fields
+  cleaned_data <- dirty_data %>% filter_at(vars(ISS, NISS, pt_age_yrs, inj_dominant, ed_gcs_sum, ed_sbp_value, ed_rr_value, pt_asa_preinjury, Problemomrade_.FMP),all_vars(!is.na(.)))
+  
+  ## Create OFI variable
+  cleaned_data$ofi <- create_ofi(cleaned_data)
+  
+  ## Remove cases where OFI is NA
+  cleaned_data <- cleaned_data %>% filter (ofi != "NA")
   
   ## Remove rows where required values are unknown & filter away age groups. Systolic blood pressure should prolly be >0, unless the patient is DOA? Same for RR.
   cleaned_data <- cleaned_data %>% filter(inj_dominant != 999 & ed_gcs_sum != 999 & ed_sbp_value > 0 & ed_rr_value > 0 & pt_asa_preinjury != 999 & pt_age_yrs >= 15)

@@ -1,60 +1,77 @@
 ---
-title: "Association between trauma severity models and opportunities for improvement: A retrospective cohort study"
+title: 'Association between trauma severity models and opportunities for improvement:
+  A retrospective cohort study'
 author: "Victoria Witthoff"
 output:
   pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
+    number_sections: true
 bibliography: bibliography.bib
 csl: vancouver.csl
+fontsize: 11pt
+linestretch: 1
+always_allow_html: yes
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r main, echo=FALSE, message = FALSE}
+  source("main.R") ## This "imports" the main script file of your project and run any code in it
+```
+
 Abbreviations
 =============
 * ASA-PS - American Society of Anesthesiology Physical Status
+* ISS - Injury Severity Score
 * KUH - Karolinska University Hospital
+* M&M - Morbidity and mortality
+* NISS - New Injury Severity Score
 * NORMIT - Norwegian Survival Prediction Model in Trauma
 * OFI - Opportunities for improvement
 * Ps - Probability of survival
-* TCQD - Karolinska University Hospital Trauma Care Quality Database
+* RTS - Revised Trauma Score
 * TRISS - Trauma and Injury Severity Score
 
 Introduction
 ============
-Traumatic injury is one of the leading causes of death worldwide, constituting nearly 8% of global deaths annually [@whoepi]. The global health burden of physical injury has led to trauma being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is a leading cause of death for people aged 10-49 years [@globalburden] and 90% of trauma-related deaths occur in low- to middle-income countries [@whoepi]. Non-fatal outcomes also comprise a significant portion of the global health burden of disability [@globalburden], which can drastically reduce quality of life and health status in survivors of severe trauma [@globalburden; @longtermtrauma]. 
+Traumatic injury is one of the leading causes of death worldwide, constituting nearly 8% of global deaths annually [@whoepi]. The global health burden of physical injury has led to trauma being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is a leading cause of death for people aged 10-49 years [@globalburden] and 90% of trauma-related deaths occur in low- to middle-income countries [@whoepi]. Non-fatal outcomes also comprise a significant portion of the global health burden of disability [@globalburden], which can drastically reduce quality of life and health status in survivors of severe trauma [@globalburden; @longtermtrauma]. Improvements in trauma outcomes stand therefore to benefit a broader population by reducing the societal and healthcare costs of disability, not least in low- and middle-income countries. 
 
-Management of severe trauma is highly time-sensitive and is also dependent on the actions of a multidisciplinary chain of healthcare providers. Errors in management are a common cause of preventable deaths [@prevdeathsghorbani; @prevdeathsmontmany; @prevdeathsteixeira]. Outcomes in severe trauma are dependent on the quality of care received, and it has been shown in the US that trauma quality improvement (QI) programs improve outcomes [@ustqi]. Multiple tools and interventions have been developed for use in trauma QI programs, including morbidity and mortality conferences, audit filters, and statistical analysis [@hakkenbrakprevdeath]. However, the implementation of QI programs differs widely between clinics [@tqipanglo] and there is still progress to be made. A large population worldwide stands to gain from the improvement of trauma outcomes. These gains benefit not only the individual but also a broader population by reducing the societal and healthcare burden of disability. Reducing the economic burden of trauma is particularly relevant in light of the fact that low- to middle-income countries make up the majority of poor trauma outcomes.
-
-## Morbidity and mortality conferences
-
-The gold standard of trauma QI programs worldwide are multidisciplinary morbidity and mortality (M&M) conferences. M&M conferences review selected patient cases, attempt to establish whether there were opportunities for improvement (OFI) in each specific case, and, where necessary, implement corrective actions. The occurrence of OFI function in this manner as a proxy for incidence of suboptimal care and preventable deaths. The WHO guidelines for trauma quality improvement programmes recommend regularly scheduled multidisciplinary conferences and give specific recommendations as to their structure and format [@whoguidelines]. Despite these  recommendations, there is a still a great degree of variation amongst clinics in how M&M conferences are carried out, with a significant number of clinics still using an informal and unstructured format [@tqipanglo]. The WHO note themselves in their guidelines that M&M conferences are not used to their fullest potential globally [@whoguidelines]. 
-
-The value of M&M conferences in long-term quality improvement is largely dependent on selection of appropriate cases for review. In an ideal world, only cases that were actually mismanaged would be selected for review; this is, of course, an impossible ideal considering that it cannot be known whether a case was mismanaged prior to it being reviewed. This reliance on case selection is a weakness of M&M review and has led to considerable efforts to develop strategies to standardise case selection [@tqipanglo]. Despite this, the process by which patient cases are selected for M&M review differs between clinics and case selection is often non-standardised [@mmreview; @tqipanglo]. The benefit of standardising case selection is twofold; it could increase identification of the cases that are most likely to have been mismanaged, and it could also save resources in the form of work hours. The latter benefit is not insignificant considering the large caseload found in most urban trauma centres. The WHO recommends that all "deaths, complications, adverse events and errors" should be reviewed [@whoguidelines]. Some clinics have already made efforts to standardise case election; for example by using quality indicators, or audit filters, to flag cases for inclusion in M&M conferences [@tqipanglo; @developqi]. Examples of quality indicators include time to first medical contact, adverse event rate, and mortality rate [@developqi]. Another potential audit filter, that is already used at some clinics [@whoguidelines], is trauma severity scoring.
+Management of severe trauma is highly time-sensitive and is also dependent on the actions of a multidisciplinary chain of healthcare providers. Errors in management are a common cause of preventable deaths [@prevdeathsghorbani; @prevdeathsmontmany; @prevdeathsteixeira]. Outcomes in severe trauma are dependent on the quality of care received, and it has been shown in the US that trauma quality improvement (QI) programs improve outcomes [@ustqi]. Multiple tools and interventions have been developed for use in trauma QI programs, including morbidity and mortality conferences, audit filters, and statistical analysis [@hakkenbrakprevdeath]. However, the implementation of QI programs differs widely between clinics [@tqipanglo], with smaller, non-specialised hospitals tending to have less organised programs [@whoguidelines]. 
 
 ## Trauma severity scores
 Trauma as a clinical entity is highly heterogeneous due to the variety in its underlying causes, which affect both the type and severity of the injury. An important question for trauma QI programs to solve is how to evaluate and compare outcomes given the difficulties posed by the heterogeneity of trauma. This question has spurred the development of multiple trauma severity scores (TSS). TSS attempt to translate the severity of physical injury into a quantitative value by using physiological and anatomical parameters as predictors of mortality. TSS were initially intended for use in prehospital triage, and therefore were simplistic by design for ease of use [@traumareview], but over the years newer and more advanced algorithms have been developed to fulfil the needs of research, quality assurance, and clinical triage [@traumareview]. Today there are hundreds of TSS models with differing methodology and the common aim of expressing trauma severity as a numerical value that either directly or indirectly represents the probability of survival (Ps). 
 
 Trauma scoring has become a cornerstone of modern trauma QI programs [@historytss]. One example of their use is highlighting unexpectedly high mortality rates amongst patients with a high Ps [@whoguidelines]. TSS also allow clinics to compare their outcomes against an established benchmark [@whoguidelines]. However, an inherent weakness of any TSS model is that estimates may be unreliable when applied to a population different from the one the model was developed from. Trauma type and severity will differ between locales and trauma patient populations can be difficult to compare between disparate geographical regions [@assessingquality]. This weakness is one reason why models continue to be developed and improved on. Another reason is that efforts to establish which risk factors best predict mortality are still ongoing; different models use different physiological and anatomical parameters.  
 
+<!-- I know that a lot of the following details about TRISS/NORMIT are probably not really relevant to my aim, it's mainly here to fill out on length -->
+
 The Trauma and Injury Severity Score (TRISS), first developed in the US in 1987 [@triss] and most recently updated in 2010 [@triss2010], is the most commonly used model worldwide [@trissbetter]. TRISS is a combination index that incorporates patient age, the Injury Severity Score (ISS), the Revised Trauma Score (RTS), and whether the injury was blunt or penetrating [@triss]. The resulting value is a percentage that estimates the probability of survival (Ps). The ISS gives a score based on the three anatomical regions with the most severe injury. A limitation of the ISS is that it cannot take into account situations where one anatomical region has multiple injuries [@trissbetter]. The RTS is based on the physiological parameters GCS, systolic blood pressure, and respiratory rate. The GCS cannot be estimated in situations where the patient has already been intubated, since a valid verbal score cannot be ascertained, which gives TRISS limited value in estimating Ps in certain populations [@trissbetter]. 
 
-<!-- Potentially talk about other limitations of TRISS here? Feels somewhat unnecessary because the project isn't really about investigating every weakness of TRISS -->
+In 2014 researchers in Norway released a new model, the Norwegian Survival Prediction Model in Trauma (NORMIT), that attempts to address the weaknesses of TRISS and simultaneously provide a model based on Norwegian patient populations [@normit]. NORMIT is based on the patient's age, New Injury Severity Score (NISS), comorbidities prior to traumatic injury based on the ASA physical status classification system (ASA-PS), and their RTS. NISS differs from ISS in that NISS allows for scoring of multiple injuries within the same anatomical region. Validation of NISS has shown that NISS is better at predicting mortality in trauma patients compared to ISS, especially in patients with multiple severe injuries within one anatomical region [@nissbetter]. NORMIT also provides a method to incorporate the GCS for intubated patients when calculating RTS. For patients who arrive at hospital and under general anaesthesia, the RTS is calculated based on the prehospital value prior to intubation [@normit]. NORMIT was updated in 2018 [@skagaValidatingPerformanceTRISS2018] and a validation study at this institution found that the updated NORMIT reliably predicted survival at a Swedish trauma centre but both the old and new versions of NORMIT performed worse when applied to the entire national population [@validationnormit]. 
 
-In 2014 researchers in Norway released a new model, the Norwegian Survival Prediction Model in Trauma (NORMIT), that attempts to address the weaknesses of TRISS and simultaneously provide a model based on Norwegian patient populations [@normit]. NORMIT is based on the patient's age, New Injury Severity Score (NISS), comorbidities prior to traumatic injury based on the ASA physical status classification system (ASA-PS), and their RTS. NISS differs from ISS in that NISS allows for scoring of multiple injuries within the same anatomical region. Validation of NISS has shown that NISS is better at predicting mortality in trauma patients compared to the ISS, especially in patients with multiple severe injuries within one anatomical region [@nissbetter]. NORMIT also provides a method to incorporate the GCS for intubated patients when calculating RTS. For patients who arrive at hospital and under general anaesthesia, the RTS is calculated based on the prehospital value prior to intubation [@normit]. NORMIT was updated in 2018 [@skagaValidatingPerformanceTRISS2018] and a validation study at this institution found that the updated NORMIT reliably predicted survival at a Swedish trauma centre but both the old and new versions of NORMIT performed worse when applied to the entire national population [@validationnormit]. 
+## Morbidity and mortality conferences
+
+The gold standard of trauma QI programs worldwide are multidisciplinary morbidity and mortality (M&M) conferences. M&M conferences review selected patient cases, attempt to establish whether there were opportunities for improvement (OFI) in each specific case, and, where necessary, implement corrective actions. The occurrence of OFI function in this manner as a proxy for incidence of suboptimal care and preventable deaths. The WHO guidelines for trauma quality improvement programmes recommend regularly scheduled multidisciplinary conferences and give specific recommendations as to their structure and format [@whoguidelines]. Despite these  recommendations, there is a still a great degree of variation amongst clinics in how M&M conferences are carried out, with a significant number of clinics still using an informal and unstructured format [@tqipanglo]. The WHO themselves note in their guidelines that M&M conferences are not used to their fullest potential globally [@whoguidelines]. 
+
+The value of M&M conferences in long-term quality improvement is largely dependent on selection of appropriate cases for review. In an ideal world, only cases that were actually mismanaged would be selected for review; this is, of course, an impossible ideal as it cannot be known whether a case was mismanaged prior to it being reviewed. This reliance on case selection is a weakness of M&M review and has led to considerable efforts to develop strategies to standardise case selection [@tqipanglo]. The benefit of standardising case selection is twofold; it could increase identification of the cases that are most likely to have been mismanaged, and it could also save resources in the form of work hours. The latter benefit is not insignificant considering the large caseload found in many urban trauma centres. Despite this, the process by which patient cases are selected for M&M review differs between clinics and case selection is often non-standardised [@mmreview; @tqipanglo]. 
+
+The WHO recommends that all "deaths, complications, adverse events and errors" should be reviewed [@whoguidelines]. Some clinics have already made efforts to standardise case election; for example by using quality indicators, or audit filters, to flag cases for inclusion in M&M conferences [@tqipanglo; @developqi]. Examples of quality indicators include time to first medical contact, adverse event rate, and mortality rate [@developqi].
 
 ## Trauma severity scores as quality indicators
 
-As already mentioned, some clinics use TSS as audit filters to aid in identifying cases for M&M review. However, the extent to which TSS are associated with or can predict OFI as found in M&M conferences is not well understood. A study at this institution found that neither NORMIT nor TRISS were able to reliably discriminate between preventable and non-preventable deaths [@prevdeathsghorbani]. However, that study included only deaths and not other morbidities and thereby had a low sample size. It is not known whether predictive models have better performance when taking into account the entire population of trauma patients. 
+Another potential audit filter for M&M review, that is already used at some clinics [@whoguidelines], is trauma severity scoring. However, the extent to which TSS are associated with or can predict OFI as found in M&M conferences is not well understood. A study at this institution found that neither NORMIT nor TRISS were able to reliably discriminate between preventable and non-preventable deaths [@prevdeathsghorbani]. However, that study included only deaths and not other morbidities and thereby had a low sample size. It is not known whether predictive models have better performance when taking into account the entire population of trauma patients. 
 
 If it could be found that an existing TSS model is associated with OFI, it could allow for another avenue of automatically identifying potentially mismanaged cases in a standardised fashion. Conversely, if TSS models are not associated with OFI, using TSS as audit filters may result in cases being unnecessarily flagged for review and in doing so waste conference resources. 
 
-There are far more TSS models than the two described above. These two models are of interest for specific reasons: TRISS is the most widely used model and NORMIT is based on a Scandinavian population, which is the location of this institution. It seems reasonable to begin by investigating these two models. The aim of this study is to evaluate how the trauma severity models TRISS and NORMIT are associated with and to what extent they can predict opportunities for improvement.
+There are far more TSS models than the two described above. These two models are of interest for specific reasons: TRISS is the most widely used model and NORMIT is based on a Scandinavian population, which is where this institution is located. It seems reasonable to begin by investigating these two models. The aim of this study is to evaluate how the trauma severity models TRISS and NORMIT are associated with and to what extent they can predict opportunities for improvement.
 
 <!-- It is possible that I will add other scores later, but in the interest of having this document done in time to submit to school, I'm going with TRISS & NORMIT for now. I mention under the "development and time plan" heading that I may add scores later --> 
 
-<!-- Also feels like I maybe have too many different sources cited for the intro, ~22 feels like overkill? --> 
+<!-- Also feels like I maybe have too many different sources cited for the intro? Is ~22 sources overkill? Or maybe that's normal? --> 
 
  
 Methods 
@@ -63,8 +80,7 @@ Methods
 Study design
 ------------
 
-<!-- Present key elements of study design -->
-This is a single-centre retrospective cohort study, using data from two registries at Karolinska University Hospital (KUH): the trauma registry and the trauma care quality database (TCQD). The TCQD is a subset of the trauma registry and contains data on trauma patients who were selected for M&M reviews. These two databases will be linked and then analysed to estimate the association between the common TSS models TRISS and NORMIT and OFI using logistic regression. The predictive performance of these models will be evaluated using measures of discrimination and calibration. 
+This is a single-centre retrospective cohort study, using data from two registries at Karolinska University Hospital (KUH): the trauma registry and the trauma care quality database. The trauma care quality database is a subset of the trauma registry and contains data on trauma patients who were selected for M&M reviews. These two databases will be linked and then analysed to estimate the association between the common TSS models TRISS and NORMIT and OFI using logistic regression. The predictive performance of these models will be evaluated using measures of discrimination and calibration. 
 
 Setting
 -------
@@ -78,20 +94,27 @@ The trauma registry at KUH is also submitted to SweTrau, Sweden's national traum
 
 SweTrau follows the Utstein Trauma Template for reporting of data following major trauma. The registered data includes prehospital vital signs and management, vital signs and management on arrival at hospital, information about the type of injury, and the primary method of treatment. Follow-up variables include, but are not limited to, survival at 30 days, days in ventilator, GCS at discharge, highest level of care, and transfers to other units.
 
-The TCQD is an internal hospital register and registers the outcome of M&M conferences. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. The database contains data on patients from 2014 to 2021. 
+The trauma care quality database is an internal hospital register and registers the outcome of M&M conferences. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. The database contains data on patients from 2014 to 2021. 
 
 Participants
 ------------
 
-Participants include all patients registered in both the trauma registry and the TCQD at KUH that were not excluded by study-specific exclusion criteria. <!--När du kommit igång med analysen så ska faktiskt nummer in här (yes ska göra det) -->
+Participants include all patients registered in both the trauma registry and the trauma care quality database at KUH that were not excluded by study-specific exclusion criteria. <!--När du kommit igång med analysen så ska faktiskt nummer in här (yes ska göra det) -->
 
 ### Inclusion criteria for the trauma registry
 
 The trauma registry includes all patients for whom the trauma team was activated after receiving a potentially traumatic injury, regardless of NISS score, and all patients with a NISS score >15, regardless of whether the trauma team was activated. Also included are patients who were transferred to the hospital within 7 days of injury and have a NISS score >15. Patients where the only traumatic injury is a chronic subdural hematoma and patients for whom the trauma team was activated without an underlying traumatic injury are excluded from the register.
 
-### Inclusion criteria for the TCQD
+### Inclusion criteria for the trauma care quality database
 
-The TCQD contains patients from the trauma registry that were selected for M&M review. At KUH, all fatalities are automatically selected for M&M review. In addition to this, the electronic medical records of all trauma patients are screened by research nursing staff to identify cases that potentially received sub-optimal care. These nurses also use audit filters that automatically highlight cases with abnormal parameters. Cases that two research nurses have evaluated and found to have potential for sub-optimal care are also selected for M&M review.
+<!-- 
+``` {r, echo = FALSE,} 
+  ofi_diagram() ## Flowchart of the process of arriving at OFI 
+```
+Removed this b/c it only works in html, diagrammersvg doesn't seem to be possible to install
+--> 
+
+The trauma care quality database contains patients from the trauma registry that were selected for M&M review. At KUH, all fatalities are automatically selected for M&M review. In addition to this, the electronic medical records of all trauma patients are screened by research nursing staff to identify cases that potentially received sub-optimal care. These nurses also use audit filters that automatically highlight cases with abnormal parameters. Cases that two research nurses have evaluated and found to have potential for sub-optimal care are also selected for M&M review.
 
 ### Study-specific exclusion criteria
 Patients <15 years of age will be excluded as paediatric trauma is a separate clinical entity. In addition, this is a complete case study and all patients will be excluded where there is not enough data recorded in order to carry out the analysis. 
@@ -116,7 +139,7 @@ The TRISS model incorporates patient age, Injury Severity Score (ISS), Revised T
 
 The ISS is given by estimating the severity of physical injuries by anatomical region. Severity is assessed on a seven-point scale from "No injury" to "Unsurvivable injury". The values from the three anatomical regions with the most severe injury are combined into a score that is given is points on a scale from 0 to 75. The RTS is based on physiological parameters GCS, systolic blood pressure, and respiratory rate. Values are taken from arrival at hospital. These parameters are weighted and expressed in a score from 0 to 8, where a lower score indicates more severe injury. 
 
-<!-- I already described all this in the intro so not sure if I really need to repeat it here, or in how much detail. Same for NORMIT below. --> 
+<!-- I already described all this in the intro so not sure if I really need to repeat it here, or in how much detail. Same for NORMIT below. Do I need to have the formulas? -->
 
 #### NORMIT
 
@@ -136,12 +159,14 @@ Study size
 
 <!-- Explain how the study size was arrived at -->
 
-Since all eligible participants must exist in both the trauma registry and the TCQD, and the TCQD is a subset of the trauma registry, the maximum number of participants is limited to the number of cases registered in the TCQD. The TCQD includes around 2200 patients who were selected for review between 2014 and 2021. In order to establish the exact study size, the study-specific exclusion criteria need to first be applied. The exact study size has not yet been established at the time of writing this report. 
+Since all eligible participants must exist in both the trauma registry and the trauma care quality database, and the trauma care quality database is a subset of the trauma registry, the maximum number of participants is limited to the number of cases registered in the trauma care quality database. The trauma care quality database includes around 2200 patients who were selected for review between 2014 and 2021. In order to establish the exact study size, the study-specific exclusion criteria need to first be applied. The exact study size has not yet been established at the time of writing this report. 
 
 Quantitative variables
 ----------------------
 
 The NORMIT and TRISS scores will be calculated using the following variables from the trauma registry database: ISS, NISS, RTS, GCS, systolic blood pressure, respiratory rate, ASA, and age. The scores will be calculated according to the formulas given by the respective developers of each score. 
+
+<!-- BTW this is here because, according to me and what I see in the database, it seems like I'll have to calculate NORMIT/TRISS for everyone based on parameters in the database -->
 
 
 Statistical methods
@@ -152,16 +177,11 @@ R, a programming language for statistical computing, will be used for compilatio
 Ethical considerations
 ======================
 
-All patient information used in this study is anonymised and stored in a secure database. Patient medical records will not be accessed. Patients were not asked to give consent for inclusion in the KUH trauma registry. The ability and ethical approval to collect patient data for this registry without pre-emptively asking for patient consent is well-established, as collecting this data is deemed to be in the public interest according to article 6.1 e of GDPR regulations. Collecting data is in the public interest due to the fact that this patient register is used to improve management of trauma, which is a leading cause of death. Patients have the right to be removed from the register on request. They also have the right to a copy of data that is stored about them on request.
+All patient information used in this study is anonymised and stored in a secure database. Patient medical records will not be accessed. Patients were not asked to give consent for inclusion in the KUH trauma registry. The ability and ethical approval to collect patient data for this registry without pre-emptively asking for patient consent is well-established, as collecting this data is deemed to be in the public interest according to article 6.1 e of GDPR regulations. Collecting data is in the public interest due to the fact that this patient register is used to improve management of trauma, which is a leading cause of death. Patients have the right to be removed from the register on request. They also have the right to a copy of data that is stored about them on request. <!-- https://meetings.lg.se/pdfFile/pdfFile.aspx?objectID=%2F7Iqgtt89nW2zhRjMSNZ%2Fw%3D%3D --> 
 
 This project is a retrospective cohort study and the project has thereby had no effect on patient treatment. There is no risk that patients are harmed by inclusion in the study. This study has the potential to improve patient care by analysing a potential factor that could predict suboptimal trauma care. It is true that the patient population for this study includes vulnerable populations, such as the deceased and the severely injured, but this is justified by the fact that this population stands to gain the most from improved trauma care.
 
 **Stockholm Research Ethics Review Board approval number 2021-02541 and 2021-03531.**
-
-<!-- 
-
-source("main.R")  "imports" the main script file of your project and run any code in it -->
-
 
 Development and time plan
 ==========
@@ -183,8 +203,6 @@ It is possible that scores other than NORMIT and TRISS will be analysed if there
 ```{r, echo=FALSE, out.width = "400px"}
 knitr::include_graphics("images/timeplan.png")
 ```
-
-
 
 References
 ==========
