@@ -38,12 +38,12 @@ Abbreviations
 
 Introduction
 ============
-Traumatic injury is one of the leading causes of death worldwide, constituting nearly 8% of global deaths annually [@whoepi]. The global health burden of physical injury has led to trauma being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is a leading cause of death for people aged 10-49 years [@globalburden] and 90% of trauma-related deaths occur in low- to middle-income countries [@whoepi]. Non-fatal outcomes also comprise a significant portion of the global health burden of disability [@globalburden], which can drastically reduce quality of life and health status in survivors of severe trauma [@globalburden; @longtermtrauma]. Improvements in trauma outcomes stand therefore to benefit a broader population by reducing the societal and healthcare costs of disability, not least in low- and middle-income countries. 
+Traumatic injury is one of the leading causes of death worldwide, constituting nearly 8% of global deaths annually [@whoepi]. The global health burden of physical injury has led to trauma being described as a worldwide pandemic<!-- I typically define trauma as the clinical entity composed of physical injury and the body's associated response. I would suggest that you stick to trauma and don't use physical injury and trauma interchangeably -->. One of the characteristics of this particular pandemic is its demographic spread; trauma is a leading cause of death for people aged 10-49 years [@globalburden] and 90% of trauma-related deaths occur in low- to middle-income countries [@whoepi]. Non-fatal outcomes also comprise a significant portion of the global health burden of disability [@globalburden], which can drastically reduce quality of life and health status in survivors of severe trauma [@globalburden; @longtermtrauma]. Improvements in trauma outcomes stand therefore to benefit a broader population by reducing the societal and healthcare costs of disability, not least in low- and middle-income countries. 
 
 Management of severe trauma is highly time-sensitive and is also dependent on the actions of a multidisciplinary chain of healthcare providers. Errors in management are a common cause of preventable deaths [@prevdeathsghorbani; @prevdeathsmontmany; @prevdeathsteixeira]. Outcomes in severe trauma are dependent on the quality of care received, and it has been shown in the US that trauma quality improvement (QI) programs improve outcomes [@ustqi]. Multiple tools and interventions have been developed for use in trauma QI programs, including morbidity and mortality conferences, audit filters, and statistical analysis [@hakkenbrakprevdeath]. However, the implementation of QI programs differs widely between clinics [@tqipanglo], with smaller, non-specialised hospitals tending to have less organised programs [@whoguidelines]. 
 
 ## Trauma severity scores
-Trauma as a clinical entity is highly heterogeneous due to the variety in its underlying causes, which affect both the type and severity of the injury. An important question for trauma QI programs to solve is how to evaluate and compare outcomes given the difficulties posed by the heterogeneity of trauma. This question has spurred the development of multiple trauma severity scores (TSS). TSS attempt to translate the severity of physical injury into a quantitative value by using physiological and anatomical parameters as predictors of mortality. TSS were initially intended for use in prehospital triage, and therefore were simplistic by design for ease of use [@traumareview], but over the years newer and more advanced algorithms have been developed to fulfil the needs of research, quality assurance, and clinical triage [@traumareview]. Today there are hundreds of TSS models with differing methodology and the common aim of expressing trauma severity as a numerical value that either directly or indirectly represents the probability of survival (Ps). 
+Trauma as a clinical entity is highly heterogeneous due to the variety in its underlying causes, which affect both the type and severity of the injury. An important question for trauma QI programs to solve is how to evaluate and compare outcomes given the difficulties posed by the heterogeneity of trauma. This question has spurred the development of multiple trauma severity scores (TSS)<!-- Avoid non-standard abbreviations, as it makes your text harder to read. For example, I don't think spelling out trauma severity scores is such a big deal, especially considering that you'll be dealing with so many score names that are abbreviations themselves -->. TSS attempt to translate the severity of physical injury into a quantitative value by using physiological and anatomical parameters as predictors of mortality. TSS were initially intended for use in prehospital triage, and therefore were simplistic by design for ease of use [@traumareview], but over the years newer and more advanced algorithms have been developed to fulfil the needs of research, quality assurance, and clinical triage [@traumareview]. Today there are hundreds of TSS models with differing methodology and the common aim of expressing trauma severity as a numerical value that either directly or indirectly represents the probability of survival (Ps). 
 
 Trauma scoring has become a cornerstone of modern trauma QI programs [@historytss]. One example of their use is highlighting unexpectedly high mortality rates amongst patients with a high Ps [@whoguidelines]. TSS also allow clinics to compare their outcomes against an established benchmark [@whoguidelines]. However, an inherent weakness of any TSS model is that estimates may be unreliable when applied to a population different from the one the model was developed from. Trauma type and severity will differ between locales and trauma patient populations can be difficult to compare between disparate geographical regions [@assessingquality]. This weakness is one reason why models continue to be developed and improved on. Another reason is that efforts to establish which risk factors best predict mortality are still ongoing; different models use different physiological and anatomical parameters.  
 
@@ -69,11 +69,12 @@ If it could be found that an existing TSS model is associated with OFI, it could
 
 There are far more TSS models than the two described above. These two models are of interest for specific reasons: TRISS is the most widely used model and NORMIT is based on a Scandinavian population, which is where this institution is located. It seems reasonable to begin by investigating these two models. The aim of this study is to evaluate how the trauma severity models TRISS and NORMIT are associated with and to what extent they can predict opportunities for improvement.
 
+<!-- Note that you mix trauma severity scores, trauma severity models, prediction models, etc. Stick to one of these concepts -->
+
 <!-- It is possible that I will add other scores later, but in the interest of having this document done in time to submit to school, I'm going with TRISS & NORMIT for now. I mention under the "development and time plan" heading that I may add scores later --> 
 
-<!-- Also feels like I maybe have too many different sources cited for the intro? Is ~22 sources overkill? Or maybe that's normal? --> 
+<!-- Also feels like I maybe have too many different sources cited for the intro? Is ~22 sources overkill? Or maybe that's normal? --> <!-- That's fine -->
 
- 
 Methods 
 =======
 
@@ -99,7 +100,7 @@ The trauma care quality database is an internal hospital register and registers 
 Participants
 ------------
 
-Participants include all patients registered in both the trauma registry and the trauma care quality database at KUH that were not excluded by study-specific exclusion criteria. <!--När du kommit igång med analysen så ska faktiskt nummer in här (yes ska göra det) -->
+Participants include all patients registered in both the trauma registry and the trauma care quality database at KUH that were not excluded by study-specific exclusion criteria. <!--När du kommit igång med analysen så ska faktiskt nummer in här (yes ska göra det) --> <!-- Don't include numbers here, those belongs in Reults -->
 
 ### Inclusion criteria for the trauma registry
 
@@ -128,7 +129,7 @@ applicable. For each variable of interest, give sources of data and
 details of methods of assessment (measurement). Describe comparability
 of assessment methods if there is more than one group -->
 ### Outcome
-The studied outcome is the binary variable "opportunities for improvement" (OFI), as identified by the multidisciplinary M&M conference at KUH. OFI is coded as either "Yes - at least one opportunity for improvement" or "No - no opportunities for improvement". 
+The studied outcome is the binary variable "opportunities for improvement" (OFI), as identified by the multidisciplinary M&M conference at KUH. OFI is coded as either "Yes - at least one opportunity for improvement identified" or "No - no opportunities for improvement identified". 
 
 ### Exposures
 The primary exposures of interest are trauma severity scores according to the TRISS and NORMIT models. Both of these models estimate the Ps. This is expressed a probability and is a continuous variable. The variables integrated into these models are taken from arrival at hospital. 
@@ -139,7 +140,7 @@ The TRISS model incorporates patient age, Injury Severity Score (ISS), Revised T
 
 The ISS is given by estimating the severity of physical injuries by anatomical region. Severity is assessed on a seven-point scale from "No injury" to "Unsurvivable injury". The values from the three anatomical regions with the most severe injury are combined into a score that is given is points on a scale from 0 to 75. The RTS is based on physiological parameters GCS, systolic blood pressure, and respiratory rate. Values are taken from arrival at hospital. These parameters are weighted and expressed in a score from 0 to 8, where a lower score indicates more severe injury. 
 
-<!-- I already described all this in the intro so not sure if I really need to repeat it here, or in how much detail. Same for NORMIT below. Do I need to have the formulas? -->
+<!-- I already described all this in the intro so not sure if I really need to repeat it here, or in how much detail. Same for NORMIT below. Do I need to have the formulas? --> <!-- Yes, you need the formulas, but not for this report -->
 
 #### NORMIT
 
@@ -173,6 +174,9 @@ Statistical methods
 -------------------
 
 R, a programming language for statistical computing, will be used for compilation and analysis of data. Conversion and handling of variables will be carried out according to the SweTrau manual. In cases where data necessary for analysis is missing, i.e. the variables referred to above, the participant will be excluded from the study. Logistic regression will be used to estimate the predictive value of each TSS in regards to OFI. Results will be presented with a confidence interval of 95%. A p-value of <0.05 will be considered significant. 
+
+<!-- The aim includes both to determine association between the severity estimates and OFI as well as how well they predict OFI. These two components require different methods. To determine the strength of the association you could use logistic regression, then the resulting OR would be your effect size. Because all these models returns a probability you don't need to standardise the scores to be able to compare the ORs across models to determine which score that is most strongly associated with OFI. To assess how well they predict OFI you need to calculate the discrimination (often expressed as the area under the receiver operating characteristics curve, or just AUC) and calibration (using for example the integrated calibration index. Note that this is slightly contrived, as that would equate the probability of death with the probability of OFI--> 
+
 
 Ethical considerations
 ======================
