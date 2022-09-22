@@ -35,12 +35,13 @@ clean_data <- function(dirty.data, numbers = FALSE) {
   cleaned.data <- cleaned.data %>% filter(inj_dominant != 999 & ed_sbp_value > 0 & ed_rr_value > 0 & pt_asa_preinjury != 999 & ed_gcs_sum != 999)
   
   ## Need either an ED GCS or a prehosp GCS, already removed all where ed_gcs_sum = 999 or NA
-  v <- c(3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
-  cleaned.data <- cleaned.data %>% filter(pre_gcs_sum %in% v | ed_gcs_sum %in% v)
+  ## v <- c(3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
+  ## cleaned.data <- cleaned.data %>% filter(pre_gcs_sum %in% v | ed_gcs_sum %in% v)
+  
   included.numbers["parameters"] <- nrow(cleaned.data)
   
   ## make a new gcs variable that takes into account ed_gcs_sum = 99 
-  cleaned.data$gcs <- with (cleaned.data, ifelse (cleaned.data$ed_gcs_sum==99, pre_gcs_sum, ed_gcs_sum))
+  ## cleaned.data$gcs <- with (cleaned.data, ifelse (cleaned.data$ed_gcs_sum==99, pre_gcs_sum, ed_gcs_sum))
   
   ## make numbers of patients excluded at every step in a in a very roundabout fashion
   excluded.numbers <- c(ofi = included.numbers["original"] - included.numbers["ofi"])

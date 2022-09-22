@@ -27,9 +27,7 @@ make_triss <- function(input.data) {
     
     b <- triss.b0 + (triss.b1 * input.data$RTS[i]) + (triss.b2 * input.data$ISS[i]) + (triss.b3 * age.value)
     
-    triss.ps <- 1 / (1 + exp(b * -1))
-    
-    input.data$triss[i] <- triss.ps
+    input.data$triss[i] <- 1 / (1 + exp(b * -1))
   }
   
   return(input.data)

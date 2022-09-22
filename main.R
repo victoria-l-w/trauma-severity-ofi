@@ -27,13 +27,17 @@ merged.data <- merge_data(datasets)
 merged.data$ofi <- create_ofi(merged.data)
 
 cleaned.data <- clean_data(merged.data)
+## exclusion.numbers contains the # of rows excluded at each step, this is very probably broken
 exclusion.numbers <- clean_data(merged.data, numbers = TRUE)
 
-## add rts scores
+## add scores
 cleaned.data <- make_rts(cleaned.data)
-
-## add triss
 cleaned.data <- make_triss(cleaned.data)
+cleaned.data <- make_normit(cleaned.data)
+
+
+
+
 
 ## Step : Table 1. Patient demographics.
 
