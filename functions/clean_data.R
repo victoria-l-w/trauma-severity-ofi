@@ -39,6 +39,9 @@ clean_data <- function(dirty.data, numbers = FALSE) {
   cleaned.data <- cleaned.data %>% filter(pre_gcs_sum %in% v | ed_gcs_sum %in% v)
   included.numbers["parameters"] <- nrow(cleaned.data)
   
+  ## make a new gcs variable that takes into account ed_gcs_sum = 99 
+  cleaned.data$gcs <- with (cleaned.data, ifelse (cleaned.data$ed_gcs_sum==99, pre_gcs_sum, ed_gcs_sum))
+  
   ## make numbers of patients excluded at every step in a in a very roundabout fashion
   excluded.numbers <- c(ofi = included.numbers["original"] - included.numbers["ofi"])
   excluded.numbers["age"] <- included.numbers["ofi"] - included.numbers["age"]
