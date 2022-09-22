@@ -2,7 +2,6 @@
 ## GCS: 3 = 0, 4-5 = 1, 6-8 = 2, 9-12 = 3, 13-15 = 4
 ## SBP: 0 = 0, 1-49 = 1, 50-75 = 2, 76-89 = 3, >89 = 4
 ## RR: 0 = 0, 1-5 = 1, 6-9 = 2, >29 = 3, 10-29 = 4
-## THIS IS A VERY UGLY WAY TO DO THIS, george dont copy this lmao
 
 make_rts <- function (input.data) {
   lookup.table.RTS <- data.frame(
