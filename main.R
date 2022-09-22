@@ -32,9 +32,8 @@ exclusion.numbers <- clean_data(merged.data, numbers = TRUE)
 ## add rts scores
 cleaned.data <- make_rts(cleaned.data)
 
-## Step 5: Make a little table
-
-
+## add triss
+cleaned.data <- make_triss(cleaned.data)
 
 ## Step : Table 1. Patient demographics.
 
