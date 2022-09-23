@@ -5,7 +5,6 @@ library(labelled)
 library(table1)
 library(printr, quietly=TRUE)
 library(DiagrammeR)
-library(purrr)
 
 ## list of libraries i tried to install but failed, mb try again later
 ## rsvg/diagrammersvg, kableextra
@@ -26,8 +25,14 @@ merged.data <- merge_data(datasets)
 
 merged.data$ofi <- create_ofi(merged.data)
 
+## This excludes NAs, 999s, etc that I want to keep
+## Where ed_gcs_sum is 99 it takes pre_gcs_sum
+## The pt's GCS (either their ED value or their prehosp value where ED = 99 ) is stored in $gcs
+## This also makes a "small" table that only keeps variables I'm interested in keeping
+
 cleaned.data <- clean_data(merged.data)
-## exclusion.numbers contains the # of rows excluded at each step, this is very probably broken
+
+## This (in a very ugly way) returns data on how many patients are kept and excluded at each step 
 exclusion.numbers <- clean_data(merged.data, numbers = TRUE)
 
 ## add scores
@@ -35,3 +40,4 @@ cleaned.data <- make_rts(cleaned.data)
 cleaned.data <- make_triss(cleaned.data)
 cleaned.data <- make_normit(cleaned.data)
 
+## exclusion_flowchart(exclusion.numbers)
