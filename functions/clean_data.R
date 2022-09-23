@@ -17,7 +17,7 @@ clean_data <- function(dirty.data, numbers = FALSE) {
   inclusion.counts <- data.frame (step  = c("original"),
                     included = c(original.count),
                     excluded = c(0)
-  )
+                                  )
   
   ## OFI exclusion
   cleaned.data <- cleaned.data %>% filter (ofi != "NA")

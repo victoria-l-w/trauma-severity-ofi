@@ -1,9 +1,11 @@
 ---
-title: "Association between trauma severity models and opportunities for improvement: A retrospective cohort study"
+title: 'Association between trauma severity models and opportunities for improvement:
+  A retrospective cohort study'
 author: "Victoria Witthoff"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 bibliography: bibliography.bib
 csl: vancouver.csl
 ---
@@ -32,6 +34,11 @@ Conclusion
 
 Introduction
 ============
+
+```{r main, echo=FALSE, message = FALSE}
+  source("main.R") 
+  exclusion_flowchart(inclusion.counts)
+```
 
 <!-- Explain the scientific background and rationale for the
 investigation being reported. End by stating the aim or specific
@@ -181,11 +188,6 @@ Other analyses
 Report other analyses done—eg analyses of subgroups and interactions,
 and sensitivity analyses 
 -->
-
-```{r main, echo=FALSE, message = FALSE}
-  source("main.R") ## This "imports" the main script file of your project and run any code in it
-  as.data.frame(t1)
-```
 
 Discussion
 ==========

@@ -33,11 +33,13 @@ merged.data$ofi <- create_ofi(merged.data)
 cleaned.data <- clean_data(merged.data)
 
 ## This (in a very ugly way) returns data on how many patients are kept and excluded at each step 
-exclusion.numbers <- clean_data(merged.data, numbers = TRUE)
+inclusion.counts <- clean_data(merged.data, numbers = TRUE)
 
 ## add scores
 cleaned.data <- make_rts(cleaned.data)
 cleaned.data <- make_triss(cleaned.data)
 cleaned.data <- make_normit(cleaned.data)
 
-## exclusion_flowchart(exclusion.numbers)
+
+
+
