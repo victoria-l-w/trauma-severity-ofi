@@ -5,6 +5,7 @@ library(labelled)
 library(table1)
 library(printr, quietly=TRUE)
 library(DiagrammeR)
+library(caret)
 
 ## list of libraries i tried to install but failed, mb try again later
 ## rsvg/diagrammersvg, kableextra
@@ -32,14 +33,12 @@ merged.data$ofi <- create_ofi(merged.data)
 
 cleaned.data <- clean_data(merged.data)
 
-## This (in a very ugly way) returns data on how many patients are kept and excluded at each step 
+## This returns data on how many patients are kept and excluded at each step 
 inclusion.counts <- clean_data(merged.data, numbers = TRUE)
 
-## add scores
-cleaned.data <- make_rts(cleaned.data)
-cleaned.data <- make_triss(cleaned.data)
-cleaned.data <- make_normit(cleaned.data)
+## add scores [all the as.numeric()s just made things work better]
+cleaned.data$rts <- apply(cleaned.data, 1, make_rts)
+cleaned.data$triss <- apply(cleaned.data, 1, make_triss)
+cleaned.data$normit <- apply(cleaned.data, 1, make_normit)
 
-
-
-
+## TESTING

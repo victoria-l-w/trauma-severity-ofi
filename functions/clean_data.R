@@ -27,6 +27,11 @@ clean_data <- function(dirty.data, numbers = FALSE) {
   ofi.excluded <- original.count - ofi.kept
   inclusion.counts[nrow(inclusion.counts) + 1,] = c("ofi", ofi.kept, ofi.excluded)
   
+  ## Make OFI 0/1 
+
+  cleaned.data$ofi[cleaned.data$ofi == "Yes"] <- 1
+  cleaned.data$ofi[cleaned.data$ofi == "No"] <- 0
+  
   ## Age exclusion
   cleaned.data <- cleaned.data %>% filter (pt_age_yrs >= 15)
   

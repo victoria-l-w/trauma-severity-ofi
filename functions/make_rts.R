@@ -4,7 +4,8 @@
 ## RR: 0 = 0, 1-5 = 1, 6-9 = 2, >29 = 3, 10-29 = 4
 
 make_rts <- function (input.data) {
-  lookup.table.RTS <- data.frame(
+  
+  lookup.rts <- data.frame(
     score.value = 0:4,
     GCSmin  = c(3, 4, 6, 9, 13),
     GCSmax = c(3, 5, 8, 12, 15),
@@ -12,18 +13,20 @@ make_rts <- function (input.data) {
     SBPmax = c(0, 49, 75, 89, 10000),
     RRmin  = c(0, 1, 6, 30, 10),
     RRmax = c(0, 5, 9, 10000, 29)
-    )
-
-  ## Assign RTS score values  
-  for (i in 1:nrow(input.data)) {
-    gcs.rts.val <- lookup.table.RTS$score.value[input.data$gcs[i] >= lookup.table.RTS$GCSmin & input.data$gcs[i] <= lookup.table.RTS$GCSmax]
-    sbp.rts.val <- lookup.table.RTS$score.value[input.data$ed_sbp_value[i] >= lookup.table.RTS$SBPmin & input.data$ed_sbp_value[i] <= lookup.table.RTS$SBPmax]
-    rr.rts.val <- lookup.table.RTS$score.value[input.data$ed_rr_value[i] >= lookup.table.RTS$RRmin & input.data$ed_rr_value[i] <= lookup.table.RTS$RRmax]
-    
-    rtsvalue <- (rr.rts.val * 0.2908) + (sbp.rts.val * 0.7326) + (gcs.rts.val * 0.9368)
-    input.data$RTS[i] <- rtsvalue
-    }
-
-return(input.data)
-
+  )
+  
+  gcs <- as.numeric(input.data["gcs"])
+  rr <- as.numeric(input.data["ed_rr_value"])
+  sbp <- as.numeric(input.data["ed_sbp_value"])
+  
+  ## assign score values to each parameter
+  gcs.rts <-  lookup.rts$score.value[gcs >= lookup.rts$GCSmin & gcs <= lookup.rts$GCSmax]
+  sbp.rts <-  lookup.rts$score.value[sbp >= lookup.rts$SBPmin & sbp <= lookup.rts$SBPmax]
+  rr.rts <-   lookup.rts$score.value[rr >= lookup.rts$RRmin & rr <= lookup.rts$RRmax]
+  
+  ## calculate the total rts score
+  rts.val <- (rr.rts * 0.2908) + (sbp.rts * 0.7326) + (gcs.rts * 0.9368)
+  
+  return(rts.val)
+  
 }
