@@ -1,4 +1,4 @@
-## Load libaries
+## Libraries I tried to install but failed: rsvg/diagrammersvg, kableextra
 library(rofi)
 library(dplyr)
 library(labelled)
@@ -7,10 +7,6 @@ library(printr, quietly=TRUE)
 library(DiagrammeR)
 library(caret)
 
-## list of libraries i tried to install but failed, mb try again later
-## rsvg/diagrammersvg, kableextra
-
-## reminder: needs to be .R i.e. capital R 
 noacsr::source_all_functions()
 
 datasets <- import_data(test = TRUE)
@@ -26,11 +22,6 @@ merged.data <- merge_data(datasets)
 
 merged.data$ofi <- create_ofi(merged.data)
 
-## This excludes NAs, 999s, etc that I want to keep
-## Where ed_gcs_sum is 99 it takes pre_gcs_sum
-## The pt's GCS (either their ED value or their prehosp value where ED = 99 ) is stored in $gcs
-## This also makes a "small" table that only keeps variables I'm interested in keeping
-
 cleaned.data <- clean_data(merged.data)
 
 ## This returns data on how many patients are kept and excluded at each step 
@@ -41,4 +32,3 @@ cleaned.data$rts <- apply(cleaned.data, 1, make_rts)
 cleaned.data$triss <- apply(cleaned.data, 1, make_triss)
 cleaned.data$normit <- apply(cleaned.data, 1, make_normit)
 
-## TESTING

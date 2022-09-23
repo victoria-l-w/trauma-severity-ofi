@@ -5,6 +5,7 @@
 
 make_rts <- function (input.data) {
   
+  ## Saving the parameter scores for later
   lookup.rts <- data.frame(
     score.value = 0:4,
     GCSmin  = c(3, 4, 6, 9, 13),
@@ -14,17 +15,18 @@ make_rts <- function (input.data) {
     RRmin  = c(0, 1, 6, 30, 10),
     RRmax = c(0, 5, 9, 10000, 29)
   )
-  
+
+  ## Cast variables to numeric to ensure they can be used for calculations
   gcs <- as.numeric(input.data["gcs"])
   rr <- as.numeric(input.data["ed_rr_value"])
   sbp <- as.numeric(input.data["ed_sbp_value"])
-  
-  ## assign score values to each parameter
+
+  ## Select the appropriate score value for each parameter
   gcs.rts <-  lookup.rts$score.value[gcs >= lookup.rts$GCSmin & gcs <= lookup.rts$GCSmax]
   sbp.rts <-  lookup.rts$score.value[sbp >= lookup.rts$SBPmin & sbp <= lookup.rts$SBPmax]
   rr.rts <-   lookup.rts$score.value[rr >= lookup.rts$RRmin & rr <= lookup.rts$RRmax]
   
-  ## calculate the total rts score
+  ## Calculate RTS!
   rts.val <- (rr.rts * 0.2908) + (sbp.rts * 0.7326) + (gcs.rts * 0.9368)
   
   return(rts.val)
