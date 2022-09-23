@@ -26,6 +26,7 @@ make_normit <- function(input.data) {
   b <- (0.5562 * n.rts) - (4.3234 * ((n.age + 1)/100)^3) + niss.val
   n.score <- 1 / (1 + exp(b * -1))
   
+  assertthat::assert_that(length(n.score) == 1)
   return(n.score)
   
  }

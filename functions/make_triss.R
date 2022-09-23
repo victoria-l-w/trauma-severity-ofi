@@ -30,5 +30,8 @@ make_triss <- function(input.data) {
   b <- t.coeff$b0 + (t.coeff$b1 * t.rts) + (t.coeff$b2 * t.iss) + (t.coeff$b3 * age.val)
   t.score <- 1 / (1 + exp(b * -1))
 
+  ## Ensure a score was actually calculated
+  ## Because, for example, if inj_dominant is a number other than 1 or 2, it silently returns an empty vector
+  assertthat::assert_that(length(t.score) == 1)
   return(t.score)
 }
