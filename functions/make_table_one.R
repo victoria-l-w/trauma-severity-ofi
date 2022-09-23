@@ -54,34 +54,12 @@ make_table_one <- function(cd) {
     ed_rr_value = "Respiratory Rate",
     ed_sbp_value = "Systolic blood pressure (mmHg)",
     pt_asa_preinjury = "ASA score",
-    ofi = "Opportunity for improvement"
+    ofi = "Opportunity for improvement",
+    RTS = "Revised Trauma Score"
   )
-  
-  
-  ## Not being used
-  ## rndr <- function(x, name, ...) {
-  ##  if (!is.numeric(x)) return(render.categorical.default(x))
-  ##  what <- switch(name,
-  ##                 pt_age_years = "Mean (SD)",
-  ##                 ISS  = "Mean (SD)")
-  ##  parse.abbrev.render.code(c("", what))(x)
-  ## }
-  
-  
-  ## Fixing weird rounding issues + removing mean from table
-  ## my.render.cont <- function(x) {
-  ##  with(stats.default(x), 
-  ##       c("",
-  ##         "Median (Min, Max)" = sprintf("%s (%s, %s)",
-  ##                                       round_pad(MEDIAN, 0), 
-  ##                                       round_pad(MIN, 0), 
-  ##                                       round_pad(MAX, 0)))
-  ## )
-  ## }
-  ## render.continuous = my.render.cont
   
   ## Making table one
   ## vars2 <- c("pt_age_yrs", "pt_Gender", "res_survival", "host_care_level", "ISS", "NISS", "inj_dominant", "ed_gcs_sum", "ed_rr_value", "ed_sbp_value", "pt_asa_preinjury", "ofi")
-  table1(~ pt_age_yrs + pt_Gender + res_survival + host_care_level + ISS + NISS + inj_dominant + ed_gcs_sum + ed_rr_value + ed_sbp_value + pt_asa_preinjury | ofi, 
+  table1(~ pt_age_yrs + pt_Gender + res_survival + host_care_level + ISS + NISS + inj_dominant + ed_gcs_sum + ed_rr_value + ed_sbp_value + pt_asa_preinjury + RTS | ofi, 
          data=cd, overall = FALSE, render.categorical="FREQ (PCTnoNA%)", footnote="Patient demographics", output = "html", droplevels=TRUE)
 }

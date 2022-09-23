@@ -14,13 +14,14 @@ make_rts <- function (input.data) {
     RRmax = c(0, 5, 9, 10000, 29)
     )
 
-  ## Assign RTS score values
+  ## Assign RTS score values  
   for (i in 1:nrow(input.data)) {
     gcs.rts.val <- lookup.table.RTS$score.value[input.data$gcs[i] >= lookup.table.RTS$GCSmin & input.data$gcs[i] <= lookup.table.RTS$GCSmax]
     sbp.rts.val <- lookup.table.RTS$score.value[input.data$ed_sbp_value[i] >= lookup.table.RTS$SBPmin & input.data$ed_sbp_value[i] <= lookup.table.RTS$SBPmax]
     rr.rts.val <- lookup.table.RTS$score.value[input.data$ed_rr_value[i] >= lookup.table.RTS$RRmin & input.data$ed_rr_value[i] <= lookup.table.RTS$RRmax]
     
-    input.data$RTS[i] <- (rr.rts.val * 0.2908) + (sbp.rts.val * 0.7326) + (gcs.rts.val * 0.9368)
+    rtsvalue <- (rr.rts.val * 0.2908) + (sbp.rts.val * 0.7326) + (gcs.rts.val * 0.9368)
+    input.data$RTS[i] <- rtsvalue
     }
 
 return(input.data)

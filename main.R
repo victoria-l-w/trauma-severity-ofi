@@ -35,10 +35,3 @@ cleaned.data <- make_rts(cleaned.data)
 cleaned.data <- make_triss(cleaned.data)
 cleaned.data <- make_normit(cleaned.data)
 
-
-
-
-
-## Step : Table 1. Patient demographics.
-
-## t1 <- make_table_one(cleaned.data)
