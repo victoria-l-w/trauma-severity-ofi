@@ -37,7 +37,6 @@ Introduction
 
 ```{r main, echo=FALSE, message = FALSE}
   source("main.R") 
-  exclusion_flowchart(inclusion.counts)
 ```
 
 <!-- Explain the scientific background and rationale for the
@@ -48,6 +47,10 @@ should not be longer than 1-1.5 pages, typically 4-5 paragraphs, each
 
 Methods 
 =======
+
+```{r, echo = FALSE}
+  ofi_diagram()
+```
 
 Study design
 ------------
@@ -130,7 +133,9 @@ taking account of sampling strategy
 
 Results
 =======
-
+```{r, echo = FALSE}
+  exclusion_flowchart(inclusion.counts)
+```
 <!-- 
 
 Participants

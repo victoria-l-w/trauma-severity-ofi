@@ -1,8 +1,14 @@
 exclusion_flowchart <- function(inclusion.counts) {
   
   exclusion.flowchart <- grViz("digraph flowchart {
+  
+    label='Fig. x. Flow diagram for application of exclusion criteria';
+    labelloc=bottom;
+    labeljust=left;
+    labelfontsize=16;
+  
     ## the real nodes
-    node [shape = rectangle, width = 8, fontsize = 18] 
+    node [shape = rectangle, width = 8, fontsize = 16] 
       1 [label = '@@1']
       2 [label = '@@2']
       3 [label = '@@3']
