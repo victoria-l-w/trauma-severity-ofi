@@ -30,6 +30,7 @@ make_rts <- function (input.data) {
   rts.val <- (rr.rts * 0.2908) + (sbp.rts * 0.7326) + (gcs.rts * 0.9368)
   
   assertthat::assert_that(length(rts.val) == 1)
+  
   return(rts.val)
   
 }

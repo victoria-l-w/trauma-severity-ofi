@@ -16,24 +16,26 @@ clean_data <- function(dirty.data, numbers = FALSE) {
                     excluded = c(0)
                                   )
   
-  ## OFI exclusion
+  ## Exclusion where OFI is NA
   cleaned.data <- cleaned.data %>% filter (ofi != "NA")
+
+
+  ## Convert OFI values to 0 & 1 to make it easier later
+  cleaned.data$ofi[cleaned.data$ofi == "Yes"] <- 1
+  cleaned.data$ofi[cleaned.data$ofi == "No"] <- 0
   
+  ## Add ofi inclusion/exclusion counts
   ofi.kept <- nrow(cleaned.data)
   ofi.excluded <- original.count - ofi.kept
   inclusion.counts[nrow(inclusion.counts) + 1,] = c("ofi", ofi.kept, ofi.excluded)
   
-  cleaned.data$ofi[cleaned.data$ofi == "Yes"] <- 1
-  cleaned.data$ofi[cleaned.data$ofi == "No"] <- 0
-  
-  
-  ## Age exclusion
+  ## Exclude all rows where age <15 
   cleaned.data <- cleaned.data %>% filter (pt_age_yrs >= 15)
   
+  ## Add age inclusion/exclusion counts
   age.kept <- nrow(cleaned.data)
   age.excluded <- ofi.kept - age.kept
   inclusion.counts[nrow(inclusion.counts) + 1,] = c("age", age.kept, age.excluded)
-  
   
   ## DOA exclusion
   ## Using [] and not filter() to remove DOA = true, because filter() removes NA, and I'm not sure how NA/999 should be handled
@@ -63,7 +65,12 @@ clean_data <- function(dirty.data, numbers = FALSE) {
   
   ## Total exclusion counts
   total.excluded <- original.count - param.kept
-  inclusion.counts[nrow(inclusion.counts) + 1,] = c("total", param.kept, total.excluded)  
+  inclusion.counts[nrow(inclusion.counts) + 1,] = c("total", param.kept, total.excluded)
+  
+  ## Testing OFI worked out right
+  assert_that(noNA(cleaned.data$ofi))
+  ofi.test <- c("1", "0")
+  assert_that(are_equal(ofi.test, unique(cleaned.data$ofi)))
 
   if (numbers == TRUE) {
     return (inclusion.counts)
