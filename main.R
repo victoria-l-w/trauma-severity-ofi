@@ -1,5 +1,5 @@
 ## Libraries I tried to install but failed: rsvg/diagrammersvg, kableextra
-## Gmisc integrated calibration index ici
+## Gmish integrated calibration index ici
 ## ROCR
 library(rofi)
 library(dplyr)
@@ -13,6 +13,7 @@ library(tidyverse)
 library(ROCR)
 library(caret)
 library(caTools)
+library(gmish)
 
 noacsr::source_all_functions()
 
@@ -41,21 +42,22 @@ cd$normit <- apply(cd, 1, make_normit)
 ## no clue wat im doing
 ## shamelessly copied from the internet
 
-cd$ofi <- as.factor(cd$ofi)
+cd$ofi <- as.numeric(cd$ofi)
 cd$triss <- as.numeric(cd$triss)
 cd$normit <- as.numeric(cd$normit)
 
-## triss+normit or do seperately?
-model <- glm(ofi ~ triss, family="binomial", data = cd)
+## triss+normit in one model or do seperately?
+## model <- glm(ofi ~ triss, family="binomial", data = cd)
+triss.model <- make_model(cd, score = "triss")
+normit.model <- make_model(cd, score = "normit")
 
-## plots the auc maybe? 
-pred_model<- predict(model, type="response")
-pred <- prediction(pred_model, cd$ofi)
-perf <- performance(pred, "tpr", "fpr")
-plot(perf, colorize=TRUE)
+triss.perf <- make_roc(model = triss.model, cd)
+plot(triss.perf, colorize = TRUE)
+triss.auc <- make_roc(model = triss.model, cd, auc = TRUE)
+triss.ici <- make_ici(model = triss.model, cd)
 
-auc <- unlist(slot(performance(pred, "auc"), "y.values"))
+normit.perf <- make_roc(model = normit.model, cd)
+plot(normit.perf, colorize = TRUE)
+normit.auc <- make_roc(model = normit.model, cd, auc = TRUE)
+normit.ici <- make_ici(model = normit.model, cd)
 
-## prediction <- prediction()
-
-## auc(roc)
