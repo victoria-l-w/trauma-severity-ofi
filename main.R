@@ -39,15 +39,11 @@ cd$rts <- apply(cd, 1, make_rts)
 cd$triss <- apply(cd, 1, make_triss)
 cd$normit <- apply(cd, 1, make_normit)
 
-## no clue wat im doing
-## shamelessly copied from the internet
-
 cd$ofi <- as.numeric(cd$ofi)
 cd$triss <- as.numeric(cd$triss)
 cd$normit <- as.numeric(cd$normit)
 
 ## triss+normit in one model or do seperately?
-## model <- glm(ofi ~ triss, family="binomial", data = cd)
 triss.model <- make_model(cd, score = "triss")
 normit.model <- make_model(cd, score = "normit")
 
