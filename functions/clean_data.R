@@ -7,7 +7,7 @@ clean_data <- function(dirty.data, numbers = FALSE) {
   ## Only select relevant variables for the data frame
   ## Kept some possibly unnecessary variables in case they're interesting to have in table one
   ## Also didn't interact with any of the ofi-adjacent variables like VK_avslutad because it seems as though create_ofi handles all of that
-  cleaned.data <- dirty.data[,c("pt_Gender", "res_survival", "host_care_level", "inj_dominant", "ofi", "Fr1.12", "pt_asa_preinjury", "ISS", "NISS", "ed_gcs_sum", "ed_rr_value", "ed_sbp_value", "pre_gcs_sum", "pt_age_yrs")]
+  cleaned.data <- dirty.data[,c("pt_Gender", "res_survival", "host_care_level", "inj_dominant", "ofi", "pt_asa_preinjury", "ISS", "NISS", "ed_gcs_sum", "ed_rr_value", "ed_sbp_value", "pre_gcs_sum", "pt_age_yrs")]
   
   ## Storing the inclusion/exclusion counts at each step so I can use those later
   original.count <- nrow(cleaned.data)

@@ -33,8 +33,9 @@ md$ofi <- create_ofi(md)
 cd <- clean_data(md)
 
 ## This returns data on how many patients are kept and excluded at each step 
-## inclusion.counts <- clean_data(md, numbers = TRUE)
-## add scores [all the as.numeric()s just made things work better]
+inclusion.counts <- clean_data(md, numbers = TRUE)
+
+## add scores
 cd$rts <- apply(cd, 1, make_rts)
 cd$triss <- apply(cd, 1, make_triss)
 cd$normit <- apply(cd, 1, make_normit)
