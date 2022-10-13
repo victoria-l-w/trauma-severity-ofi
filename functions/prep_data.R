@@ -1,6 +1,8 @@
 ## All values that are necessary: iss, niss, age, dom.inj, gcs, sbp, rr, asa, pre.gcs if ed.gcs == 99
 
-clean_data <- function(df, numbers = FALSE) {
+prep_data <- function(df, numbers = FALSE) {
+  
+  df$ofi <- create_ofi(df)
   
   ## Kept some possibly unnecessary variables in case they're interesting to have in table one
   ## Didn't interact with any of the ofi-adjacent variables like VK_avslutad because it seems as though create_ofi handles all of that
@@ -109,9 +111,7 @@ clean_data <- function(df, numbers = FALSE) {
   ofi.test <- c("1", "0")
   assert_that(are_equal(ofi.test, unique(df$ofi)))
 
-  if (numbers == TRUE) {
-    return (inclusion.counts)
-  } else {
-  return (df)
-  }
+  ret <- list(df = df, counts = inclusion.counts)
+
+  return(ret)
 }

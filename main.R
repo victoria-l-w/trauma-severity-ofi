@@ -1,8 +1,5 @@
 ## Libraries I tried to install but failed: rsvg/diagrammersvg, kableextra, phantomjs
-## todo
-## rocr accuracy ici auc
-## ci = bootstrap?
-## id = abbrev of input data
+## Todo: CI for AUC
 library(rofi)
 library(dplyr)
 library(labelled)
@@ -16,6 +13,7 @@ library(ROCR)
 library(caret)
 library(caTools)
 library(gmish)
+library(pROC)
 
 noacsr::source_all_functions()
 
@@ -28,50 +26,49 @@ datasets[['atgarder']] <- datasets$atgarder_scrambled
 datasets[['problem']] <- datasets$problem_scrambled
 datasets[['kvalgranskning2014.2017']] <- datasets$kvalgranskning2014.2017_scrambled
 
-md <- merge_data(datasets)
-
-md$ofi <- create_ofi(md)
-
-cd <- clean_data(md)
-
-## This returns data on how many patients are kept and excluded at each step 
-inclusion.counts <- clean_data(md, numbers = TRUE)
+## setup data + store how many included/excluded
+df <- merge_data(datasets)
+pd <- prep_data(df)
+df <- pd[['df']]
+counts <- pd[['counts']]
 
 ## add scores
-cd$rts <- apply(cd, 1, make_rts)
-cd$triss <- apply(cd, 1, make_triss)
-cd$normit <- apply(cd, 1, make_normit)
+df$rts <- apply(df, 1, make_rts)
+df$triss <- apply(df, 1, make_triss)
+df$normit <- apply(df, 1, make_normit)
 
 ## cast to numeric to avoid Problems
-cd$ofi <- as.numeric(cd$ofi)
-cd$triss <- as.numeric(cd$triss)
-cd$normit <- as.numeric(cd$normit)
+df$ofi <- as.numeric(df$ofi)
+df$triss <- as.numeric(df$triss)
+df$normit <- as.numeric(df$normit)
 
-## some subsetted data
-df.triss <- cd[, c("ofi", "triss")]
+## some subsetted data to make be friendly to stats functions
+df.triss <- df[, c("ofi", "triss")]
 df.triss <- df.triss %>% rename(score = triss)
-df.normit <- cd[, c("ofi", "normit")]
+df.normit <- df[, c("ofi", "normit")]
 df.normit <- df.normit %>% rename(score = normit)
 
 ## make_stats returns a named list with all the things i want; then assign all list members to individual variables for ease of use later
 ## triss
 t.stats <- make_stats(df.triss)
 t.model <- t.stats[['model']]
-t.perf <- t.stats[['perf']]
-t.auc <- t.stats[['auc']]
+t.model.vals <- c(coeff = coef(summary(t.model))[2,1], pval = coef(summary(t.model))[2,4])
+t.roc <- t.stats[['perf']]
+t.roc.vals <- c(auc = t.stats[['auc']], auc.ci = t.stats[['auc.ci']], ici = t.stats[['ici']])
 t.acc <- t.stats[['acc']]
-t.ici <- t.stats[['ici']]
+plot(t.roc)
 
 ## normit
 n.stats <- make_stats(df.normit)
 n.model <- n.stats[['model']]
-n.perf <- n.stats[['perf']]
-n.auc <- n.stats[['auc']]
+n.model.vals <- c(coeff = coef(summary(n.model))[2,1], pval = coef(summary(n.model))[2,4])
+n.roc <- n.stats[['perf']]
+n.roc.vals <- c(auc = n.stats[['auc']], auc.ci = n.stats[['auc.ci']], ici = n.stats[['ici']])
 n.acc <- n.stats[['acc']]
-n.ici <- n.stats[['ici']]
 
 ## things that can be plotted
 ## models: plot(t.model)
+## roc: plot(t.roc)
 ## accuracy: plot(t.acc)
 
 ## table.one <- make_table_one(cd)

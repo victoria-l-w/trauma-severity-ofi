@@ -1,7 +1,4 @@
-## TRiss formula: Ps = 1 / (1 + e^/b)
-## Where b = b0 + b1(RTS) + b2(iss) + b3(A)
-## A = age, A <= 54 -> 0, A > 54 -> 1
-## Coefficients taken from: https://www.mdcalc.com/calc/10404/trauma-score-injury-severity-score-triss#evidence
+## I used this: https://www.mdcalc.com/calc/10404/trauma-score-injury-severity-score-triss#evidence
 
 make_triss <- function(input.data) {
   
