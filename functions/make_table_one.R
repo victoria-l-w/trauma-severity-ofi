@@ -1,50 +1,50 @@
 ## Age
-## iss, Niss, pt_age_yrs, dom.inj, ed_gcs_sum, ed_sbp_value, ed_rr_value, pt_asa_preinjury, ofi, pt_asa_preinjury
+## iss, Niss, pt_age_yrs, dom.inj, ed_gcs_sum, ed.sbp_value, ed.rr_value, pt_asa_preinjury, ofi, pt_asa_preinjury
 
 make_table_one <- function(cd) {
   
   ## Renaming data labels
   
-  cd$gender <- factor(
-    cd$gender,
+  df$gender <- factor(
+    df$gender,
     levels = c(1, 2),
     labels = c("Male", "Female")
   )
   
-  cd$survival <- factor(
-    cd$survival,
+  df$survival <- factor(
+    df$survival,
     levels = c(1, 2),
     labels = c("Yes", "No")
   )
   
-  cd$care.level <- factor(
-    cd$care.level,
+  df$care.level <- factor(
+    df$care.level,
     levels = c(1,2,3,4,5), 
     labels = c("Emergency Department", "General Ward", "Operating Theatre", "High Dependency Unit", "Intensive Care Unit")
   )
   
-  cd$dom.inj <- factor(
-    cd$dom.inj,
+  df$dom.inj <- factor(
+    df$dom.inj,
     levels = c(1, 2),
     labels = c("Blunt", "Penetrating"),
   )
   
-  cd$ofi <- factor(
-    cd$ofi,
-    levels = c("Yes", "No"),
+  df$ofi <- factor(
+    df$ofi,
+    levels = c("1", "0"),
     labels = c("Opportunity for improvement", "No opportunities for improvement"),
   )
   
-  cd$asa <- factor(
-    cd$asa,
+  df$asa <- factor(
+    df$asa,
     levels = c(1,2,3,4),
     labels = c(1,2,3,4)
   )
   
   ## Renaming column labels
-  var_label(cd) <- list (
-    age = "Age (years)",
-    gender = "Gender",
+  var_label(df) <- list (
+    age = "Age — yrs",
+    gender = "Sex",
     survival = "30 day survival",
     care.level = "Highest level of care",
     iss = "ISS",
@@ -55,11 +55,20 @@ make_table_one <- function(cd) {
     ed.sbp = "Systolic blood pressure (mmHg)",
     asa = "ASA score",
     ofi = "Opportunity for improvement",
-    rts = "Revised Trauma Score"
+    rts = "Revised Trauma Score",
+    triss = "TRISS",
+    normit = "NORMIT"
   )
   
+  
   ## Making table one
-  ## vars2 <- c("pt_age_yrs", "gender", "survival", "care.level", "ISS", "NISS", "dom.inj", "ed_gcs_sum", "ed_rr_value", "ed_sbp_value", "pt_asa_preinjury", "ofi")
-  table1(~ age + gender + survival + care.level + iss + niss + dom.inj + gcs + ed_rr + ed_sbp + asa + rts | ofi, 
-         data=cd, overall = FALSE, render.categorical="FREQ (PCTnoNA%)", footnote="Patient demographics", output = "html", droplevels=TRUE)
+  ## Removed care.level and survival bc of missing data, not sure if to include that
+  vars2 <- c("age", "gender", "iss", "niss", "dom.inj", "gcs", "ed.rr", "ed.sbp", "asa", "ofi", "rts", "triss", "normit")
+  table.1 <- table1(~ age + gender + iss + niss + dom.inj + gcs + ed.rr + ed.sbp + asa + rts + triss + normit | ofi, 
+                    data = df[,vars2], 
+                    overall = "Total", 
+                    render.categorical = "FREQ (PCTnoNA%)", 
+                    caption = "Table 1. Characteristics of participants."
+                    )
+  
 }

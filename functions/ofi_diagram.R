@@ -4,10 +4,10 @@ ofi_diagram <- function() {
   
   ofi_diagram <- DiagrammeR::grViz("digraph flowchart {
   
-    label='Fig. x. OFI decision-making workflow';
+    label='Fig. 1. OFI decision-making workflow';
     labelloc=bottom;
     labeljust=left;
-    labelfontsize=16;
+    labelfontsize=18;
 
     # node definitions with substituted label text
     node [shape = rectangle, width = 8, fontsize = 16] 

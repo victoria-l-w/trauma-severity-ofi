@@ -47,10 +47,6 @@ prep_data <- function(df, numbers = FALSE) {
   ## Exclusion: ofi
   ##
   df <- df %>% filter (ofi != "NA")
-
-  ## Convert ofu values to 0 & 1 to make it easier later
-  df$ofi[df$ofi == "Yes"] <- 1
-  df$ofi[df$ofi == "No"] <- 0
   
   ## Add ofi inclusion/exclusion counts
   ofi.kept <- nrow(df)
@@ -103,6 +99,13 @@ prep_data <- function(df, numbers = FALSE) {
   total.excluded <- original.count - param.kept
   inclusion.counts[nrow(inclusion.counts) + 1,] = c("total", param.kept, total.excluded)
   
+  ##
+  ## Cleaning
+  ## 
+  
+  df$ofi[df$ofi == "Yes"] <- 1
+  df$ofi[df$ofi == "No"] <- 0
+
   ## 
   ## Testing
   ## 

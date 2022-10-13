@@ -25,6 +25,5 @@ make_stats <-function(df) {
   
   ## return all the stats that we've created as a single list; this seemed more efficient than having multiple different functions that do similar things
   stats.ret <- list(model = model, perf = perf, auc = auc, acc = acc, ici = ici, auc.ci = auc.ci)
-  
   return(stats.ret)
 }

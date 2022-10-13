@@ -1,5 +1,7 @@
-## Libraries I tried to install but failed: rsvg/diagrammersvg, kableextra, phantomjs
-## Todo: CI for AUC
+## Libraries I tried to install but failed: rsvg/diagrammersvg, kableextra
+## Todo:
+## table1
+## finish unit tests
 library(rofi)
 library(dplyr)
 library(labelled)
@@ -14,6 +16,8 @@ library(caret)
 library(caTools)
 library(gmish)
 library(pROC)
+library(gt)
+library(webshot)
 
 noacsr::source_all_functions()
 
@@ -26,11 +30,11 @@ datasets[['atgarder']] <- datasets$atgarder_scrambled
 datasets[['problem']] <- datasets$problem_scrambled
 datasets[['kvalgranskning2014.2017']] <- datasets$kvalgranskning2014.2017_scrambled
 
-## setup data + store how many included/excluded
+## setup data
 df <- merge_data(datasets)
 pd <- prep_data(df)
 df <- pd[['df']]
-counts <- pd[['counts']]
+counts <- pd[['counts']] ## stores inclusion counts
 
 ## add scores
 df$rts <- apply(df, 1, make_rts)
@@ -52,18 +56,22 @@ df.normit <- df.normit %>% rename(score = normit)
 ## triss
 t.stats <- make_stats(df.triss)
 t.model <- t.stats[['model']]
-t.model.vals <- c(coeff = coef(summary(t.model))[2,1], pval = coef(summary(t.model))[2,4])
-t.roc <- t.stats[['perf']]
-t.roc.vals <- c(auc = t.stats[['auc']], auc.ci = t.stats[['auc.ci']], ici = t.stats[['ici']])
+t.auc <- round(t.stats[['auc']], digits = 2)
+t.auc.ci <- round(t.stats[['auc.ci']], digits = 2)
+## very confusing because level = 0.95 gives "97.5" and "2.5" in the output? at least i can easily change this later
+t.or <- exp(cbind("or" = coef(t.model), confint.default(t.model, level = 0.90)))
+t.or <- round(t.or[2,], digits = 2)
+t.perf <- t.stats[['perf']]
 t.acc <- t.stats[['acc']]
-plot(t.roc)
 
 ## normit
 n.stats <- make_stats(df.normit)
 n.model <- n.stats[['model']]
-n.model.vals <- c(coeff = coef(summary(n.model))[2,1], pval = coef(summary(n.model))[2,4])
-n.roc <- n.stats[['perf']]
-n.roc.vals <- c(auc = n.stats[['auc']], auc.ci = n.stats[['auc.ci']], ici = n.stats[['ici']])
+n.auc <- round(n.stats[['auc']], digits = 2)
+n.auc.ci <- round(n.stats[['auc.ci']], digits = 2)
+n.or <- exp(cbind("or" = coef(n.model), confint.default(n.model, level = 0.90)))
+n.or <- round(n.or[2,])
+n.perf <- n.stats[['perf']]
 n.acc <- n.stats[['acc']]
 
 ## things that can be plotted
@@ -71,4 +79,7 @@ n.acc <- n.stats[['acc']]
 ## roc: plot(t.roc)
 ## accuracy: plot(t.acc)
 
-## table.one <- make_table_one(cd)
+table.one <- make_table_one(df)
+
+## make some numbers to quote in results bc i dont see a way to extract them from table1
+numbers <- table_one_stats(df)

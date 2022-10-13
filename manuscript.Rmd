@@ -8,10 +8,14 @@ output:
   word_document: default
 bibliography: bibliography.bib
 csl: vancouver.csl
+always_allow_html: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+```{r main, echo=FALSE, message = FALSE}
+  source("main.R") 
 ```
 
 Abstract
@@ -35,9 +39,7 @@ Conclusion
 Introduction
 ============
 
-```{r main, echo=FALSE, message = FALSE}
-  source("main.R") 
-```
+
 
 <!-- Explain the scientific background and rationale for the
 investigation being reported. End by stating the aim or specific
@@ -47,10 +49,6 @@ should not be longer than 1-1.5 pages, typically 4-5 paragraphs, each
 
 Methods 
 =======
-
-```{r, echo = FALSE}
-  ofi_diagram()
-```
 
 Study design
 ------------
@@ -65,20 +63,24 @@ periods of recruitment, exposure, follow-up, and data collection -->
 
 Participants
 ------------
-
 <!-- Cohort study: Give the eligibility criteria, and the sources and
-methods of selection of participants. Describe methods of
-follow-up. For matched studies, give matching criteria and number of
-exposed and unexposed -->
+methods of selection of participants. -->
+Participants were patients registered in both the trauma registry and the trauma care quality database at KUH. The eligibility criteria for this study were the criteria for the two databases used in addition to some study-specific inclusion criteria. 
 
-<!-- Case-control study: Give the eligibility criteria, and the
-sources and + methods of case ascertainment and control
-selection. Give the rationale for the choice of cases and
-controls. For matched studies, give matching criteria and the number
-of controls per case -->
+### Inclusion criteria for the trauma registry
 
-<!-- Cross-sectional study: Give the eligibility criteria, and the
-sources and methods of selection of participants -->
+The trauma registry includes all patients for whom the trauma team was activated after receiving a potentially traumatic injury, regardless of NISS score, and all patients with a NISS score >15, regardless of whether the trauma team was activated. Also included are patients who were transferred to the hospital within 7 days of injury and have a NISS score >15. Patients where the only traumatic injury is a chronic subdural hematoma and patients for whom the trauma team was activated without an underlying traumatic injury are excluded from the register.
+
+### Inclusion criteria for the trauma care quality database
+
+The trauma care quality database contains patients from the trauma registry that were selected for M&M review. At KUH, all fatalities are automatically selected for M&M review. In addition to this, the electronic medical records of all trauma patients are screened by research nursing staff to identify cases that potentially received sub-optimal care. These nurses also use audit filters that automatically highlight cases with abnormal parameters. Cases that two research nurses have evaluated and found to have potential for sub-optimal care are also selected for M&M review. Figure 1 gives an overview of the workflow that leads to determination of OFI. 
+
+``` {r, echo = FALSE,} 
+  ofi_diagram() ## Only works in HTML
+```
+
+### Study-specific exclusion criteria
+Patients <15 years of age were excluded as paediatric trauma is a separate clinical entity. Patients that were dead on arrival were also excluded. In addition, this is a complete case study and all patients that lacked parameters necessary to carry out the analysis were excluded. 
 
 Variables and data sources/measurements
 ---------------------------------------
@@ -133,14 +135,10 @@ taking account of sampling strategy
 
 Results
 =======
-```{r, echo = FALSE}
-  exclusion_flowchart(inclusion.counts)
-```
-<!-- 
 
 Participants
 ------------
-
+<!-- 
 (a) Report numbers of individuals at each stage of study—eg numbers
 potentially eligible, examined for eligibility, confirmed eligible,
 included in the study, completing follow-up, and analysed
@@ -149,9 +147,17 @@ included in the study, completing follow-up, and analysed
 
 (c) Consider use of a flow diagram
 
+-->
+A total of `r counts[6,3]` patients were excluded during processing of data. `r counts[2,3]` patients were excluded due to not having a recorded outcome from an M&M conference. `r counts[3,3]` patients were excluded for being under 15 years of age. `r counts[4,3]` patients were excluded due to being dead on arrival at hospital. `r counts[5,3]` patients were excluded due to missing required data. Figure 2 shows the selection process for eligible participants. 
+
+```{r, echo = FALSE}
+  exclusion_flowchart(counts) ## Only works in HTML
+```
+
 Descriptive data
 ----------------
 
+<!--
 (a) Give characteristics of study participants (eg demographic,
 clinical, social) and information on exposures and potential
 confounders
@@ -160,39 +166,32 @@ confounders
 variable of interest
 
 (c) Cohort study — Summarise follow-up time (eg, average and total
-amount)
+amount) -->
+
+A total of `r counts[5,2]` participants were identified as eligible for inclusion. Their demographical and clinical characteristics are described in Table 1. `r numbers['ofi.true']` cases had at least one OFI and `r numbers['ofi.false']` cases had no OFI. The mean age for all patients was `r numbers['mean.age']` and `r numbers['pc.male']`% were male. 
+
+For patients with at least one OFI, the mean TRISS score was `r numbers['t.ofi.t']` and the mean NORMIT score was `r numbers['n.ofi.t']`. For patients with no OFI, the mean TRISS score was `r numbers['t.ofi.f']` and the mean NORMIT score was `r numbers['n.ofi.f']`.  
+
+```{r, echo = FALSE} 
+  table.one ## will be improved later
+```
 
 Outcome data
 ------------
 
-Cohort study — Report numbers of outcome events or summary measures
-over time
-
-Case-control study — Report numbers in each exposure category, or
-summary measures of exposure
-
-Cross-sectional study — Report numbers of outcome events or summary
-measures
+<!-- Cohort study — Report numbers of outcome events or summary measures
+over time --> 
 
 Main results
 ------------
 
-(a) Give unadjusted estimates and, if applicable, confounder-adjusted
-estimates and their precision (eg, 95% confidence interval). Make
-clear which confounders were adjusted for and why they were included
-
-(b) Report category boundaries when continuous variables were
-categorized
-
-(c) If relevant, consider translating estimates of relative risk into
-absolute risk for a meaningful time period
+The odds ratio for TRISS was `r t.or["or"]` (95% CI: `r t.or["5 %"]`-`r t.or["95 %"]`). When plotting the ROC, the AUC was `r t.auc` (95% CI: `r t.auc.ci[1]`-`r t.auc.ci[3]`).
 
 Other analyses 
 --------------
 
-Report other analyses done—eg analyses of subgroups and interactions,
-and sensitivity analyses 
--->
+<!-- Report other analyses done—eg analyses of subgroups and interactions,
+and sensitivity analyses -->
 
 Discussion
 ==========

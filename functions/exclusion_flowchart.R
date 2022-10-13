@@ -1,14 +1,14 @@
-exclusion_flowchart <- function(inclusion.counts) {
+exclusion_flowchart <- function(counts) {
   
   exclusion.flowchart <- grViz("digraph flowchart {
   
-    label='Fig. x. Flow diagram for application of exclusion criteria';
+    label='Fig. 2. Flow diagram for application of exclusion criteria';
     labelloc=bottom;
     labeljust=left;
     labelfontsize=16;
   
     ## the real nodes
-    node [shape = rectangle, width = 8, fontsize = 16] 
+    node [shape = rectangle, width = 8, fontsize = 18] 
       1 [label = '@@1']
       2 [label = '@@2']
       3 [label = '@@3']
@@ -31,15 +31,15 @@ exclusion_flowchart <- function(inclusion.counts) {
     1 -> p1; 2 -> p2; 3 -> p3; 4 -> p4;
   }
 
-  [1]: paste0(inclusion.counts[1,2], ' patients in trauma registry')
-  [2]: paste0(inclusion.counts[2,2], ' patients')
-  [3]: paste0(inclusion.counts[3,2], ' patients')
-  [4]: paste0(inclusion.counts[4,2], ' patients')
-  [5]: paste0(inclusion.counts[5,2], ' patients included')
-  [6]: paste0('Excluded due to no outcome from M&M review \\n(n =  ', inclusion.counts[2,3], ')')
-  [7]: paste0('Excluded due to <15 years of age \\n(n = ', inclusion.counts[3,3], ')')
-  [8]: paste0('Excluded due to DOA \\n(n = ', inclusion.counts[4,3], ')')
-  [9]: paste0('Excluded due to lacking necessary parameters for analysis \\n(n = ', inclusion.counts[5,3], ')')
+  [1]: paste0(counts[1,2], ' patients in trauma registry')
+  [2]: paste0(counts[2,2], ' patients')
+  [3]: paste0(counts[3,2], ' patients')
+  [4]: paste0(counts[4,2], ' patients')
+  [5]: paste0(counts[5,2], ' patients included')
+  [6]: paste0('Excluded due to no outcome from M&M review \\n(n =  ', counts[2,3], ')')
+  [7]: paste0('Excluded due to <15 years of age \\n(n = ', counts[3,3], ')')
+  [8]: paste0('Excluded due to DOA \\n(n = ', counts[4,3], ')')
+  [9]: paste0('Excluded due to lacking necessary parameters for analysis \\n(n = ', counts[5,3], ')')
                                
                                ")
   return(exclusion.flowchart)
