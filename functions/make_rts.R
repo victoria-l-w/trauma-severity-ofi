@@ -18,19 +18,19 @@ make_rts <- function (input.data) {
 
   ## Cast variables to numeric to ensure they can be used for calculations
   gcs <- as.numeric(input.data["gcs"])
-  rr <- as.numeric(input.data["ed_rr_value"])
-  sbp <- as.numeric(input.data["ed_sbp_value"])
+  rr <- as.numeric(input.data["ed.rr"])
+  sbp <- as.numeric(input.data["ed.sbp"])
 
   ## Select the appropriate score value for each parameter
-  gcs.rts <-  lookup.rts$score.value[gcs >= lookup.rts$GCSmin & gcs <= lookup.rts$GCSmax]
-  sbp.rts <-  lookup.rts$score.value[sbp >= lookup.rts$SBPmin & sbp <= lookup.rts$SBPmax]
-  rr.rts <-   lookup.rts$score.value[rr >= lookup.rts$RRmin & rr <= lookup.rts$RRmax]
+  r.gcs <-  lookup.rts$score.value[gcs >= lookup.rts$GCSmin & gcs <= lookup.rts$GCSmax]
+  r.sbp <-  lookup.rts$score.value[sbp >= lookup.rts$SBPmin & sbp <= lookup.rts$SBPmax]
+  r.rr <-   lookup.rts$score.value[rr >= lookup.rts$RRmin & rr <= lookup.rts$RRmax]
   
   ## Calculate RTS!
-  rts.val <- (rr.rts * 0.2908) + (sbp.rts * 0.7326) + (gcs.rts * 0.9368)
+  r.val <- (r.rr * 0.2908) + (r.sbp * 0.7326) + (r.gcs * 0.9368)
   
-  assertthat::assert_that(length(rts.val) == 1)
+  assertthat::assert_that(length(r.val) == 1)
   
-  return(rts.val)
+  return(r.val)
   
 }

@@ -1,30 +1,30 @@
 ## Age
-## ISS, NISS, pt_age_yrs, inj_dominant, ed_gcs_sum, ed_sbp_value, ed_rr_value, pt_asa_preinjury, ofi, pt_asa_preinjury
+## iss, Niss, pt_age_yrs, dom.inj, ed_gcs_sum, ed_sbp_value, ed_rr_value, pt_asa_preinjury, ofi, pt_asa_preinjury
 
 make_table_one <- function(cd) {
   
   ## Renaming data labels
   
-  cd$pt_Gender <- factor(
-    cd$pt_Gender,
+  cd$gender <- factor(
+    cd$gender,
     levels = c(1, 2),
     labels = c("Male", "Female")
   )
   
-  cd$res_survival <- factor(
-    cd$res_survival,
+  cd$survival <- factor(
+    cd$survival,
     levels = c(1, 2),
     labels = c("Yes", "No")
   )
   
-  cd$host_care_level <- factor(
-    cd$host_care_level,
+  cd$care.level <- factor(
+    cd$care.level,
     levels = c(1,2,3,4,5), 
     labels = c("Emergency Department", "General Ward", "Operating Theatre", "High Dependency Unit", "Intensive Care Unit")
   )
   
-  cd$inj_dominant <- factor(
-    cd$inj_dominant,
+  cd$dom.inj <- factor(
+    cd$dom.inj,
     levels = c(1, 2),
     labels = c("Blunt", "Penetrating"),
   )
@@ -35,31 +35,31 @@ make_table_one <- function(cd) {
     labels = c("Opportunity for improvement", "No opportunities for improvement"),
   )
   
-  cd$pt_asa_preinjury <- factor(
-    cd$pt_asa_preinjury,
+  cd$asa <- factor(
+    cd$asa,
     levels = c(1,2,3,4),
     labels = c(1,2,3,4)
   )
   
   ## Renaming column labels
   var_label(cd) <- list (
-    pt_age_yrs = "Age (years)",
-    pt_Gender = "Gender",
-    res_survival = "30 day survival",
-    host_care_level = "Highest level of care",
-    ISS = "ISS",
-    NISS = "NISS",
-    inj_dominant = "Dominating Type of Injury",
-    ed_gcs_sum = "GCS",
-    ed_rr_value = "Respiratory Rate",
-    ed_sbp_value = "Systolic blood pressure (mmHg)",
-    pt_asa_preinjury = "ASA score",
+    age = "Age (years)",
+    gender = "Gender",
+    survival = "30 day survival",
+    care.level = "Highest level of care",
+    iss = "ISS",
+    niss = "NISS",
+    dom.inj = "Dominating Type of Injury",
+    gcs = "GCS",
+    ed.rr = "Respiratory Rate",
+    ed.sbp = "Systolic blood pressure (mmHg)",
+    asa = "ASA score",
     ofi = "Opportunity for improvement",
-    RTS = "Revised Trauma Score"
+    rts = "Revised Trauma Score"
   )
   
   ## Making table one
-  ## vars2 <- c("pt_age_yrs", "pt_Gender", "res_survival", "host_care_level", "ISS", "NISS", "inj_dominant", "ed_gcs_sum", "ed_rr_value", "ed_sbp_value", "pt_asa_preinjury", "ofi")
-  table1(~ pt_age_yrs + pt_Gender + res_survival + host_care_level + ISS + NISS + inj_dominant + ed_gcs_sum + ed_rr_value + ed_sbp_value + pt_asa_preinjury + RTS | ofi, 
+  ## vars2 <- c("pt_age_yrs", "gender", "survival", "care.level", "ISS", "NISS", "dom.inj", "ed_gcs_sum", "ed_rr_value", "ed_sbp_value", "pt_asa_preinjury", "ofi")
+  table1(~ age + gender + survival + care.level + iss + niss + dom.inj + gcs + ed_rr + ed_sbp + asa + rts | ofi, 
          data=cd, overall = FALSE, render.categorical="FREQ (PCTnoNA%)", footnote="Patient demographics", output = "html", droplevels=TRUE)
 }
