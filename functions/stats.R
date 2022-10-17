@@ -17,13 +17,20 @@ make_stats <-function(df) {
   perf <- performance(pred, "tpr", "fpr")
   
   auc <- unlist(slot(performance(pred, "auc"), "y.values"))
+  auc <- round(auc, digits = 2)
   acc <- performance(pred, measure = "acc")
   ici <- ici(pred.model, df$ofi)
   
   proc <- roc(ofi ~ score, data = df)
-  auc.ci <- ci.auc(proc)
+  auc.ci <- round(ci.auc(proc), digits = 2)
+  
+  ## very confusing because level = 0.95 gives "97.5" and "2.5" in the output? at least i can easily change this later
+  or <- round(exp(cbind("or" = coef(model), confint.default(model, level = 0.90))), digits = 2)
+  or.ci <- paste(or[2,2], "-", or[2,3])
+  or <- or[2,1]
+  or.p <- summary(model)$coefficients[2,4]
   
   ## return all the stats that we've created as a single list; this seemed more efficient than having multiple different functions that do similar things
-  stats.ret <- list(model = model, perf = perf, auc = auc, acc = acc, ici = ici, auc.ci = auc.ci)
+  stats.ret <- list(model = model, perf = perf, auc = auc, acc = acc, ici = ici, auc.ci = auc.ci, or = or, or.p = or.p, or.ci = or.ci)
   return(stats.ret)
 }
