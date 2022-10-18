@@ -1,37 +1,47 @@
 make_stats <-function(df) {
 
-  ## https://stat.ethz.ch/pipermail/r-help/2010-January/225327.html
-  ## Even though ROC curves don't shed much light on the problem, the area 
-  ## under the ROC is useful because it is the Wilcoxon-type concordance 
-  ## probability.  Denoting it by C, 2*(C-.5) is Somers' Dxy rank correlation 
-  ## between predictions and binary Y.  You can get the standard error of Dxy 
-  ## from the Hmisc package rcorr.cens function, and backsolve for s.e. of C 
-  ## hence get a confidence interval for C.  This uses U-statistics and is 
-  ## fairly assumption-free.
-  
-  ## make a bunch of numbers and models
   model <- glm(ofi ~ score, family="binomial", data = df)
+  
+  ## Sets up prediction and performance objects
   pred.model<- predict(model, type="response")
   pred <- prediction(pred.model, df$ofi)
 
-  perf <- performance(pred, "tpr", "fpr")
-  
-  auc <- unlist(slot(performance(pred, "auc"), "y.values"))
+  perf <- performance(pred, "tpr", "fpr") ## ROC
+  auc <- unlist(slot(performance(pred, "auc"), "y.values")) ## AUC
   auc <- round(auc, digits = 2)
-  acc <- performance(pred, measure = "acc")
-  ici <- ici(pred.model, df$ofi)
-  ici <- round(ici, digits = 2)
-  
-  proc <- roc(ofi ~ score, data = df)
+  proc <- roc(ofi ~ score, data = df) ## This is so I can use the pROC package to calculate AUC CI
   auc.ci <- round(ci.auc(proc), digits = 2)
   
-  ## very confusing because level = 0.95 gives "97.5" and "2.5" in the output? at least i can easily change this later
+  ## The console output of this says that it uses "mgcv::gam instead of loess to calculate ICI"
+  ici <- ici(pred.model, df$ofi)
+  ici <- round(ici, digits = 2)
+
+  ## Accuracy things
+  acc <- performance(pred, measure = "acc") ## This is plottable
+  ind <- which.max( slot(acc, "y.values")[[1]] ) ## Find the index of the highest accuracy
+  acc.max <- slot(acc, "y.values")[[1]][ind] ## Stores the highest accuracy
+  cutoff = slot(acc, "x.values")[[1]][ind] ## Stores the cutoff at the highest accuracy
+  acc.nrs <- c(acc.max = acc.max, co = cutoff) ## Make a vector to return
+  
+  ## This makes a vector with the OR and the upper/lower bounds of the CI
+  ## confint.default is confusing because when I do level=0.95, the output says "97.5%" and "2.5%"
+  ## So I changed it to 0.90 because then it gives 95%/5%
+  ## Really not sure if this is the correct function to use or if I'm using it correctly
   or <- round(exp(cbind("or" = coef(model), confint.default(model, level = 0.90))), digits = 2)
-  or.ci <- paste(or[2,2], "-", or[2,3])
-  or <- or[2,1]
-  or.p <- round(summary(model)$coefficients[2,4], digits = 2)
+  or.p <- round(summary(model)$coefficients[2,4], digits = 2) ## Taking the p-value from glm()
+  
+  ## Summary of the things I should now have:
+  ## model = the logistic regression model
+  ## perf = the ROC
+  ## auc = the AUC for the ROC
+  ## auc.ci = the CI for the AUC
+  ## acc = a plottable accuracy/cutoff
+  ## ici = a number for ICI
+  ## or = a vector containing the OR and the CI 
+  ## or.p = the p-value for the OR 
+  ## acc.nrs = the accuracy and cutoff at the highest accuracy
   
   ## return all the stats that we've created as a single list; this seemed more efficient than having multiple different functions that do similar things
-  stats.ret <- list(model = model, perf = perf, auc = auc, acc = acc, ici = ici, auc.ci = auc.ci, or = or, or.p = or.p, or.ci = or.ci)
+  stats.ret <- list(model = model, perf = perf, auc = auc, acc = acc, ici = ici, auc.ci = auc.ci, or = or, or.p = or.p, acc.nrs = acc.nrs)
   return(stats.ret)
 }

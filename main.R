@@ -1,7 +1,4 @@
 ## Libraries I tried to install but failed: rsvg/diagrammersvg, kableextra
-## Todo:
-## table1
-## finish unit tests
 library(rofi)
 library(dplyr)
 library(labelled)
@@ -17,7 +14,6 @@ library(caTools)
 library(gmish)
 library(pROC)
 library(gt)
-library(webshot)
 
 noacsr::source_all_functions()
 
@@ -32,9 +28,10 @@ datasets[['kvalgranskning2014.2017']] <- datasets$kvalgranskning2014.2017_scramb
 
 ## setup data
 df <- merge_data(datasets)
-pd <- prep_data(df)
+pd <- prep_data(df) ## returns a list with the prepped dataset, inclusion counts, and missing parameters
 df <- pd[['df']]
-counts <- pd[['counts']] ## stores inclusion counts
+counts <- pd[['counts']] ## inclusion/exclusion counts
+missing <- pd[['missing']] ## nr of rows with missing data for each parameter
 
 ## add scores
 df$rts <- apply(df, 1, make_rts)
@@ -47,33 +44,20 @@ df$triss <- as.numeric(df$triss)
 df$normit <- as.numeric(df$normit)
 
 ## some subsetted data to make be friendly to stats functions
+## this means my stats functions can be generic in case i add scores later
 t.df <- df[, c("ofi", "triss")] %>% rename(score = triss)
 n.df <- df[, c("ofi", "normit")] %>% rename(score = normit)
 
-## make_stats returns a named list with all the things i want; then assign all list members to individual variables for ease of use later
-## triss
+## make_stats returns a named list with all the things i want; see stats.R
 t.stats <- make_stats(t.df)
-t.model <- t.stats[['model']]
-t.perf <- t.stats[['perf']]
-t.acc <- t.stats[['acc']]
-
-## normit
 n.stats <- make_stats(n.df)
-n.model <- n.stats[['model']]
-n.perf <- n.stats[['perf']]
-n.acc <- n.stats[['acc']]
 
-## things that can be plotted
-## models: plot(t.model)
-## roc: plot(t.perf)
-## accuracy: plot(t.acc)
-
+## descriptive data
 table.one <- make_table_one(df)
+numbers <- table_one_stats(df) ## some manually generated descriptive statistics
 
-## make some numbers to quote in results bc i dont see a way to extract them from table1
-numbers <- table_one_stats(df)
-
-t.plot.roc <- plot(t.perf, main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE)
-t.plot.acc <- plot(t.acc, main="TRISS Accuracy")
-n.plot.roc <- plot(n.perf, main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE)
-n.plot.acc <- plot(n.acc, main="TRISS Accuracy")
+## plots to be used in manuscript
+t.plot.roc <- plot(t.stats[['perf']], main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE)
+t.plot.acc <- plot(t.stats[['acc']], main="TRISS Accuracy")
+n.plot.roc <- plot(n.stats[['perf']], main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE)
+n.plot.acc <- plot(n.stats[['acc']], main="TRISS Accuracy")

@@ -43,19 +43,17 @@ prep_data <- function(df, numbers = FALSE) {
                     included = c(original.count),
                     excluded = c(0)
                                   )
-  ##
   ## Exclusion: ofi
-  ##
+
   df <- df %>% filter (ofi != "NA")
   
-  ## Add ofi inclusion/exclusion counts
+  ## So what I'm doing is:
+  ## After every exclusion counting the new number of rows, then comparing it with the previous number of rows to see how many were excluded
   ofi.kept <- nrow(df)
   ofi.excluded <- original.count - ofi.kept
   inclusion.counts[nrow(inclusion.counts) + 1,] = c("ofi", ofi.kept, ofi.excluded)
   
-  ##
   ## Exclusion: age
-  ##
   
   df <- df %>% filter (age >= 15)
   
@@ -63,9 +61,7 @@ prep_data <- function(df, numbers = FALSE) {
   age.excluded <- ofi.kept - age.kept
   inclusion.counts[nrow(inclusion.counts) + 1,] = c("age", age.kept, age.excluded)
   
-  ##
   ## Exclusion: doa
-  ##
   
   df <- df %>% filter(is.na(doa)|doa != 1)
   
@@ -73,15 +69,25 @@ prep_data <- function(df, numbers = FALSE) {
   doa.excluded <- age.kept - doa.kept
   inclusion.counts[nrow(inclusion.counts) + 1,] = c("doa", doa.kept, doa.excluded)
 
-  ##
   ## Exclusion: parameters
-  ## 
+  
+  ## Jonatan wanted me to make a table of exactly how many were missing for each parameter
+  m.gcs <- sum(is.na(df$ed.gcs)) + nrow(df[df$ed.gcs == 999,]) ## This does not take into account patients removed where GCS == 99 & there's no prehospital GCS, fix later
+  m.asa <- sum(is.na(df$asa)) + nrow(df[df$asa == 999,])
+  m.rr <- sum(is.na(df$ed.rr)) + nrow(df[df$ed.rr == 0,])
+  m.sbp <- sum(is.na(df$ed.sbp)) + nrow(df[df$ed.sbp == 0,])
+  m.dominj <- sum(is.na(df$dom.inj)) + nrow(df[df$dom.inj == 999,])
+  m.age <- sum(is.na(df$age))
+  m.iss <- sum(is.na(df$iss))
+  m.niss <- sum(is.na(df$niss))
+  missing <- c(gcs = m.gcs, asa = m.asa, rr = m.rr, sbp = m.sbp, dom.inj = m.dominj, age = m.age, iss = m.iss, niss = m.niss)
   
   ## Not 100% sure if really need to remove sbp/rr == 0
+  ## sbp/rr == 0 should perhaps be under "DOA" instead?
   df <- df %>% filter_at(vars(iss, niss, age, ed.gcs, dom.inj, ed.sbp, ed.rr, asa),all_vars(!is.na(.)))
   df <- df %>% filter(dom.inj != 999 & ed.sbp > 0 & ed.rr > 0 & asa != 999 & ed.gcs != 999)
   
-  ## Either ed.gcs or pre.gcs should have a usable GCS. ed.gcs == 99 and NA was removed earlier 
+  ## Either ed.gcs or pre.gcs should have a usable GCS. ed.gcs == 999 and NA was removed earlier 
   v <- c(3:15)
   df <- df %>% filter(pre.gcs %in% v | ed.gcs %in% v)
   
@@ -114,7 +120,7 @@ prep_data <- function(df, numbers = FALSE) {
   ofi.test <- c("1", "0")
   assert_that(are_equal(ofi.test, unique(df$ofi)))
 
-  ret <- list(df = df, counts = inclusion.counts)
+  ret <- list(df = df, counts = inclusion.counts, missing = missing)
 
   return(ret)
 }
