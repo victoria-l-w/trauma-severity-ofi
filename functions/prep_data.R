@@ -72,16 +72,19 @@ prep_data <- function(df, numbers = FALSE) {
   ## Exclusion: parameters
   
   ## Jonatan wanted me to make a table of exactly how many were missing for each parameter
-  m.gcs <- sum(is.na(df$ed.gcs)) + nrow(df[df$ed.gcs == 999,]) ## This does not take into account patients removed where GCS == 99 & there's no prehospital GCS, fix later
-  m.asa <- sum(is.na(df$asa)) + nrow(df[df$asa == 999,])
-  m.rr <- sum(is.na(df$ed.rr)) + nrow(df[df$ed.rr == 0,])
-  m.sbp <- sum(is.na(df$ed.sbp)) + nrow(df[df$ed.sbp == 0,])
-  m.dominj <- sum(is.na(df$dom.inj)) + nrow(df[df$dom.inj == 999,])
+  ## Age is higher up, above the <15 exclusion
+  m.gcs <- sum(is.na(df$ed.gcs)) + nrow(df[df$ed.gcs == 999 & !is.na(df$ed.gcs),]) ## This does not take into account patients removed where GCS == 99 & there's no prehospital GCS, fix later
+  m.asa <- sum(is.na(df$asa)) + nrow(df[df$asa == 999 & !is.na(df$asa),])
+  m.rr <- sum(is.na(df$ed.rr)) + nrow(df[df$ed.rr == 0 & !is.na(df$ed.rr),])
+  m.sbp <- sum(is.na(df$ed.sbp)) + nrow(df[df$ed.sbp == 0 & !is.na(df$ed.sbp),])
+  m.dominj <- sum(is.na(df$dom.inj)) + nrow(df[df$dom.inj == 999 & !is.na(df$dom.inj),])
   m.age <- sum(is.na(df$age))
   m.iss <- sum(is.na(df$iss))
   m.niss <- sum(is.na(df$niss))
-  missing <- c(gcs = m.gcs, asa = m.asa, rr = m.rr, sbp = m.sbp, dom.inj = m.dominj, age = m.age, iss = m.iss, niss = m.niss)
-  
+  m.names <- c("GCS", "ASA", "RR", "SBP", "Dominant injury type", "Age", "ISS", "NISS")
+  m.numbers <- c(m.gcs, m.asa, m.rr, m.sbp, m.dominj, m.age, m.iss, m.niss)
+  missing <- tibble("Required parameter" = m.names, "Total no. cases without required parameter" = m.numbers)
+
   ## Not 100% sure if really need to remove sbp/rr == 0
   ## sbp/rr == 0 should perhaps be under "DOA" instead?
   df <- df %>% filter_at(vars(iss, niss, age, ed.gcs, dom.inj, ed.sbp, ed.rr, asa),all_vars(!is.na(.)))

@@ -14,6 +14,7 @@ library(caTools)
 library(gmish)
 library(pROC)
 library(gt)
+library(gtsummary)
 
 noacsr::source_all_functions()
 
@@ -30,6 +31,8 @@ datasets[['kvalgranskning2014.2017']] <- datasets$kvalgranskning2014.2017_scramb
 df <- merge_data(datasets)
 pd <- prep_data(df) ## returns a list with the prepped dataset, inclusion counts, and missing parameters
 df <- pd[['df']]
+
+## exclusion data
 counts <- pd[['counts']] ## inclusion/exclusion counts
 missing <- pd[['missing']] ## nr of rows with missing data for each parameter
 
@@ -50,7 +53,11 @@ n.df <- df[, c("ofi", "normit")] %>% rename(score = normit)
 
 ## make_stats returns a named list with all the things i want; see stats.R
 t.stats <- make_stats(t.df)
+t.or <- t.stats[['or']]
+t.or <- t.or[2,]
 n.stats <- make_stats(n.df)
+n.or <- n.stats[['or']]
+n.or <- n.or[2,]
 
 ## descriptive data
 table.one <- make_table_one(df)

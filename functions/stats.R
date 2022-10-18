@@ -20,7 +20,9 @@ make_stats <-function(df) {
   acc <- performance(pred, measure = "acc") ## This is plottable
   ind <- which.max( slot(acc, "y.values")[[1]] ) ## Find the index of the highest accuracy
   acc.max <- slot(acc, "y.values")[[1]][ind] ## Stores the highest accuracy
-  cutoff = slot(acc, "x.values")[[1]][ind] ## Stores the cutoff at the highest accuracy
+  acc.max <- round(acc.max, digits = 2)
+  cutoff <- slot(acc, "x.values")[[1]][ind] ## Stores the cutoff at the highest accuracy
+  cutoff <- round(cutoff, digits = 2)
   acc.nrs <- c(acc.max = acc.max, co = cutoff) ## Make a vector to return
   
   ## This makes a vector with the OR and the upper/lower bounds of the CI

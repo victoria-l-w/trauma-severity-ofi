@@ -178,26 +178,37 @@ For patients with at least one OFI, the mean TRISS score was `r numbers['t.ofi.t
 ```{r, echo = FALSE} 
   table.one ## will be improved later
 ```
+  
 
-Outcome data
-------------
+Detailed totals for missing data for each required parameter are given in table 2. The total number of missing parameters is greater than the number of participants excluded for missing parameters. This is because some patients lacked multiple required parameters. 
 
-<!-- Cohort study — Report numbers of outcome events or summary measures
-over time --> 
+
+```{r gt table, echo = FALSE}
+missing
+```
 
 Main results
 ------------
 
-The odds ratio for TRISS was `r t.stats[['or']]` (95% CI: `r t.stats[['or.ci']]`, p-value: `r t.stats[['or.p']]`). When plotting the ROC, the AUC was `r t.stats[['auc']]` (95% CI: `r t.stats[['auc.ci']][1]`-`r t.stats[['auc.ci']][3]`). The integrated calibration index for TRISS was `r t.stats[['ici']]`.
+The odds ratio for TRISS was `r t.or['or']` (95% CI: `r t.or[2]`-`r t.or[3]`, p-value: `r t.stats[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r t.stats[['auc']]` (95% CI: `r t.stats[['auc.ci']][1]`-`r t.stats[['auc.ci']][3]`). The integrated calibration index for TRISS was `r t.stats[['ici']]`. The accuracy curve is shown in Figure 4. The best accuracy was `r t.stats[['acc.nrs']][1]` and was found at the cutoff `r t.stats[['acc.nrs']][2]`. 
 
-The odds ratio for NORMIT was `r n.stats[['or']]` (95% CI: `r n.stats[['or.ci']]`, p-value: `r n.stats[['or.p']]`). When plotting the ROC, the AUC was `r n.stats[['auc']]` (95% CI: `r n.stats[['auc.ci']][1]`-`r n.stats[['auc.ci']][3]`). The integrated calibration index for NORMIT was `r n.stats[['ici']]`.
+```{r, echo = FALSE}
+plot(t.stats[['perf']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
+```
 
-`r t.plot.roc`
-`r t.plot.acc`
+```{r, echo = FALSE}
+t.plot.acc <- plot(t.stats[['acc']], main="Fig 4. TRISS Accuracy Curve.")
+```
 
-`r n.plot.roc`
-`r n.plot.acc`
+The odds ratio for NORMIT was `r n.or['or']` (95% CI: `r n.or[2]`-`r n.or[3]`, p-value: `r n.stats[['or.p']]`). The ROC is plotted in Figure 5. The AUC for the ROC was `r n.stats[['auc']]` (95% CI: `r n.stats[['auc.ci']][1]`-`r n.stats[['auc.ci']][3]`). The integrated calibration index for NORMIT was `r n.stats[['ici']]`. The accuracy curve for NORMIT is shown in Figure 5. The best accuracy was `r n.stats[['acc.nrs']][1]` and was found at the cutoff `r n.stats[['acc.nrs']][2]`. 
 
+```{r, echo = FALSE}
+plot(n.stats[['perf']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
+```
+
+```{r, echo = FALSE}
+n.plot.acc <- plot(n.stats[['acc']], main="Fig 6. NORMIT Accuracy Curve.")
+```
 
 
 Discussion
