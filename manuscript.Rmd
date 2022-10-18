@@ -186,8 +186,15 @@ over time -->
 Main results
 ------------
 
-The odds ratio for TRISS was `r t.stats[['or']]` (95% CI: `r t.stats[['or.ci']]`, p-value: `r t.stats[['or.p']]`). When plotting the ROC, the AUC was `r t.stats[['auc']]` (95% CI: `r t.stats[['auc.ci']][1]`-`r t.stats[['auc.ci']][3]`). The odds ratio for NORMIT was `r n.stats[['or']]` (95% CI: `r n.stats[['or.ci']]`, p-value: `r n.stats[['or.p']]`). When plotting the ROC, the AUC was `r n.stats[['auc']]` (95% CI: `r n.stats[['auc.ci']][1]`-`r n.stats[['auc.ci']][3]`).
+The odds ratio for TRISS was `r t.stats[['or']]` (95% CI: `r t.stats[['or.ci']]`, p-value: `r t.stats[['or.p']]`). When plotting the ROC, the AUC was `r t.stats[['auc']]` (95% CI: `r t.stats[['auc.ci']][1]`-`r t.stats[['auc.ci']][3]`). The integrated calibration index for TRISS was `r t.stats[['ici']]`.
 
+The odds ratio for NORMIT was `r n.stats[['or']]` (95% CI: `r n.stats[['or.ci']]`, p-value: `r n.stats[['or.p']]`). When plotting the ROC, the AUC was `r n.stats[['auc']]` (95% CI: `r n.stats[['auc.ci']][1]`-`r n.stats[['auc.ci']][3]`). The integrated calibration index for NORMIT was `r n.stats[['ici']]`.
+
+`r plot(t.perf, main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE) `
+`r plot(n.perf, main="NORMIT Receiver Operating Characteristic Curve", colorize = TRUE) `
+
+`r plot(t.acc, main="TRISS Accuracy", colorize = TRUE) `
+`r plot(n.acc, main="NORMIT Accuracy", colorize = TRUE) `
 
 Discussion
 ==========
