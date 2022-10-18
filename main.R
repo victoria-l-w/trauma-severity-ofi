@@ -72,3 +72,8 @@ table.one <- make_table_one(df)
 
 ## make some numbers to quote in results bc i dont see a way to extract them from table1
 numbers <- table_one_stats(df)
+
+t.plot.roc <- plot(t.perf, main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE)
+t.plot.acc <- plot(t.acc, main="TRISS Accuracy")
+n.plot.roc <- plot(n.perf, main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE)
+n.plot.acc <- plot(n.acc, main="TRISS Accuracy")

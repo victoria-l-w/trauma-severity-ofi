@@ -9,6 +9,8 @@ output:
 bibliography: bibliography.bib
 csl: vancouver.csl
 always_allow_html: true
+editor_options: 
+   chunk_output_type: inline
 ---
 
 ```{r setup, include=FALSE}
@@ -190,11 +192,13 @@ The odds ratio for TRISS was `r t.stats[['or']]` (95% CI: `r t.stats[['or.ci']]`
 
 The odds ratio for NORMIT was `r n.stats[['or']]` (95% CI: `r n.stats[['or.ci']]`, p-value: `r n.stats[['or.p']]`). When plotting the ROC, the AUC was `r n.stats[['auc']]` (95% CI: `r n.stats[['auc.ci']][1]`-`r n.stats[['auc.ci']][3]`). The integrated calibration index for NORMIT was `r n.stats[['ici']]`.
 
-`r plot(t.perf, main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE) `
-`r plot(n.perf, main="NORMIT Receiver Operating Characteristic Curve", colorize = TRUE) `
+`r t.plot.roc`
+`r t.plot.acc`
 
-`r plot(t.acc, main="TRISS Accuracy") `
-`r plot(n.acc, main="NORMIT Accuracy")`
+`r n.plot.roc`
+`r n.plot.acc`
+
+
 
 Discussion
 ==========
