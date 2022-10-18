@@ -20,6 +20,7 @@ make_stats <-function(df) {
   auc <- round(auc, digits = 2)
   acc <- performance(pred, measure = "acc")
   ici <- ici(pred.model, df$ofi)
+  ici <- round(ici, digits = 2)
   
   proc <- roc(ofi ~ score, data = df)
   auc.ci <- round(ci.auc(proc), digits = 2)
@@ -28,7 +29,7 @@ make_stats <-function(df) {
   or <- round(exp(cbind("or" = coef(model), confint.default(model, level = 0.90))), digits = 2)
   or.ci <- paste(or[2,2], "-", or[2,3])
   or <- or[2,1]
-  or.p <- summary(model)$coefficients[2,4]
+  or.p <- round(summary(model)$coefficients[2,4], digits = 2)
   
   ## return all the stats that we've created as a single list; this seemed more efficient than having multiple different functions that do similar things
   stats.ret <- list(model = model, perf = perf, auc = auc, acc = acc, ici = ici, auc.ci = auc.ci, or = or, or.p = or.p, or.ci = or.ci)

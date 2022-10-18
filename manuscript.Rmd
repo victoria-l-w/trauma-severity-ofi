@@ -193,8 +193,8 @@ The odds ratio for NORMIT was `r n.stats[['or']]` (95% CI: `r n.stats[['or.ci']]
 `r plot(t.perf, main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE) `
 `r plot(n.perf, main="NORMIT Receiver Operating Characteristic Curve", colorize = TRUE) `
 
-`r plot(t.acc, main="TRISS Accuracy", colorize = TRUE) `
-`r plot(n.acc, main="NORMIT Accuracy", colorize = TRUE) `
+`r plot(t.acc, main="TRISS Accuracy") `
+`r plot(n.acc, main="NORMIT Accuracy")`
 
 Discussion
 ==========
