@@ -40,16 +40,19 @@ missing <- pd[['missing']] ## nr of rows with missing data for each parameter
 df$rts <- apply(df, 1, make_rts)
 df$triss <- apply(df, 1, make_triss)
 df$normit <- apply(df, 1, make_normit)
+df$ps12 <- apply(df, 1, make_ps12)
 
 ## cast to numeric to avoid Problems
 df$ofi <- as.numeric(df$ofi)
 df$triss <- as.numeric(df$triss)
 df$normit <- as.numeric(df$normit)
+df$ps12 <- as.numeric(df$ps12)
 
 ## some subsetted data to make be friendly to stats functions
 ## this means my stats functions can be generic in case i add scores later
 t.df <- df[, c("ofi", "triss")] %>% rename(score = triss)
 n.df <- df[, c("ofi", "normit")] %>% rename(score = normit)
+p.df <- df[, c("ofi", "ps12")] %>% rename(score = ps12)
 
 ## make_stats returns a named list with all the things i want; see stats.R
 t.stats <- make_stats(t.df)
@@ -58,6 +61,9 @@ t.or <- t.or[2,]
 n.stats <- make_stats(n.df)
 n.or <- n.stats[['or']]
 n.or <- n.or[2,]
+p.stats <- make_stats(p.df)
+p.or <- p.stats[['or']]
+p.or <- p.or[2,]
 
 ## descriptive data
 table.one <- make_table_one(df)

@@ -87,8 +87,8 @@ prep_data <- function(df, numbers = FALSE) {
 
   ## Not 100% sure if really need to remove sbp/rr == 0
   ## sbp/rr == 0 should perhaps be under "DOA" instead?
-  df <- df %>% filter_at(vars(iss, niss, age, ed.gcs, dom.inj, ed.sbp, ed.rr, asa),all_vars(!is.na(.)))
-  df <- df %>% filter(dom.inj != 999 & ed.sbp > 0 & ed.rr > 0 & asa != 999 & ed.gcs != 999)
+  df <- df %>% filter_at(vars(iss, niss, age, ed.gcs, dom.inj, ed.sbp, ed.rr, asa, gender),all_vars(!is.na(.)))
+  df <- df %>% filter(dom.inj != 999 & ed.sbp > 0 & ed.rr > 0 & asa != 999 & ed.gcs != 999 & gender != 999)
   
   ## Either ed.gcs or pre.gcs should have a usable GCS. ed.gcs == 999 and NA was removed earlier 
   v <- c(3:15)
