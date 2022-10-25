@@ -72,7 +72,6 @@ prep_data <- function(df, numbers = FALSE) {
   ## Exclusion: parameters
   
   ## Jonatan wanted me to make a table of exactly how many were missing for each parameter
-  ## Age is higher up, above the <15 exclusion
   m.gcs <- sum(is.na(df$ed.gcs)) + nrow(df[df$ed.gcs == 999 & !is.na(df$ed.gcs),]) ## This does not take into account patients removed where GCS == 99 & there's no prehospital GCS, fix later
   m.asa <- sum(is.na(df$asa)) + nrow(df[df$asa == 999 & !is.na(df$asa),])
   m.rr <- sum(is.na(df$ed.rr)) + nrow(df[df$ed.rr == 0 & !is.na(df$ed.rr),])
@@ -81,8 +80,9 @@ prep_data <- function(df, numbers = FALSE) {
   m.age <- sum(is.na(df$age))
   m.iss <- sum(is.na(df$iss))
   m.niss <- sum(is.na(df$niss))
-  m.names <- c("GCS", "ASA", "RR", "SBP", "Dominant injury type", "Age", "ISS", "NISS")
-  m.numbers <- c(m.gcs, m.asa, m.rr, m.sbp, m.dominj, m.age, m.iss, m.niss)
+  m.gender <- sum(is.na(df$gender)) + nrow(df[df$gender == 999 & !is.na(df$gender),])
+  m.names <- c("GCS", "ASA", "RR", "SBP", "Dominant injury type", "Age", "ISS", "NISS", "Gender")
+  m.numbers <- c(m.gcs, m.asa, m.rr, m.sbp, m.dominj, m.age, m.iss, m.niss, m.gender)
   missing <- tibble("Required parameter" = m.names, "Total no. cases without required parameter" = m.numbers)
 
   ## Not 100% sure if really need to remove sbp/rr == 0

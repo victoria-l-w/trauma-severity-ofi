@@ -65,6 +65,9 @@ p.stats <- make_stats(p.df)
 p.or <- p.stats[['or']]
 p.or <- p.or[2,]
 
+
+test.ps$ps12 <- apply(test.ps, 1, make_ps12)
+
 ## descriptive data
 table.one <- make_table_one(df)
 numbers <- table_one_stats(df) ## some manually generated descriptive statistics
