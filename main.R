@@ -65,15 +65,19 @@ p.stats <- make_stats(p.df)
 p.or <- p.stats[['or']]
 p.or <- p.or[2,]
 
-
-test.ps$ps12 <- apply(test.ps, 1, make_ps12)
+## differences between AUC
+tn.aucdiff <- auc_diff(t.stats[['roc']], n.stats[['roc']]) ## TRISS AUC - NORMIT AUC
+tp.aucdiff <- auc_diff(t.stats[['roc']], p.stats[['roc']]) ## TRISS AUC - PS12 AUC
+np.aucdiff <- auc_diff(n.stats[['roc']], p.stats[['roc']]) ## NORMIT AUC - PS12 AUC
 
 ## descriptive data
 table.one <- make_table_one(df)
 numbers <- table_one_stats(df) ## some manually generated descriptive statistics
 
 ## plots to be used in manuscript
-t.plot.roc <- plot(t.stats[['perf']], main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE)
+t.plot.roc <- plot(t.stats[['roc']], main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE)
 t.plot.acc <- plot(t.stats[['acc']], main="TRISS Accuracy")
-n.plot.roc <- plot(n.stats[['perf']], main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE)
-n.plot.acc <- plot(n.stats[['acc']], main="TRISS Accuracy")
+n.plot.roc <- plot(n.stats[['roc']], main="NORMIT Receiver Operating Characteristic Curve", colorize = TRUE)
+n.plot.acc <- plot(n.stats[['acc']], main="NORMIT Accuracy")
+p.plot.roc <- plot(n.stats[['roc']], main="TARN Ps12 Receiver Operating Characteristic Curve", colorize = TRUE)
+p.plot.acc <- plot(n.stats[['acc']], main="TARN Ps12 Accuracy")
