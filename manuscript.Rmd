@@ -46,9 +46,7 @@ Abbreviations
 
 Introduction
 ============
-Trauma, defined as the clinical entity composed of physical injury and the body's associated response [@Gerdin2015], is one of the leading causes of death worldwide, constituting nearly 8% of global deaths annually [@globalburden]. The global health burden of trauma has led to it being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is a leading cause of death for people aged 10-49 years [@globalburden] and 90% of trauma-related deaths occur in low- to middle-income countries [@whoepi]. Non-fatal outcomes also comprise a significant portion of the global health burden of disability [@globalburden], which can drastically reduce quality of life and health status in survivors of severe trauma [@globalburden; @longtermtrauma]. Improvements in trauma outcomes stand therefore to benefit a broader population by reducing the societal and healthcare costs of disability, not least in low- and middle-income countries. 
-
-<!-- S wants me to write about the UN 2030 goals here --> 
+Trauma, defined as the clinical entity composed of physical injury and the body's associated response [@Gerdin2015], is one of the leading causes of death worldwide, constituting around 9% of global deaths annually [@globalburden]. The global health burden of trauma has led to it being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is a leading cause of death for people aged 10-49 years [@globalburden] and 90% of trauma-related deaths occur in low- to middle-income countries [@whoepi]. Non-fatal outcomes also comprise a significant portion of the global health burden of disability [@globalburden], which can drastically reduce quality of life and health status in survivors of severe trauma [@globalburden; @longtermtrauma]. The UN's Sustainable Development Goals, published in 2015, included the aim of reducing the number of global deaths and injuries from road traffic accidents by half by 2020 <!-- [@spg] -->. This goal was not met, as global mortality from road traffic accidents was only reduced by 8.3% from 2010 to 2019 <!-- [@spg2020] -->. Improvements in trauma outcomes stand therefore to benefit a broader population by reducing the societal and healthcare costs of disability, not least in low- and middle-income countries. 
 
 Management of severe trauma is highly time-sensitive and is also dependent on the actions of a multidisciplinary chain of healthcare providers. Errors in management are a common cause of preventable deaths [@prevdeathsghorbani; @prevdeathsmontmany; @prevdeathsteixeira]. Outcomes in severe trauma are dependent on the quality of care received, and it has been shown in the US that trauma quality improvement (QI) programs improve outcomes [@ustqi]. Multiple tools and interventions have been developed for use in trauma QI programs, including morbidity and mortality conferences, audit filters, and statistical analysis [@hakkenbrakprevdeath]. However, the implementation of QI programs differs widely between clinics [@tqipanglo], with smaller, non-specialised hospitals tending to have less organised programs [@whoguidelines]. 
 
@@ -223,7 +221,7 @@ Main results
 The odds ratio for TRISS was `r t.or['or']` (95% CI: `r t.or[2]`-`r t.or[3]`, p-value: `r t.stats[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r t.stats[['auc']]` (95% CI: `r t.stats[['auc.ci']][1]`-`r t.stats[['auc.ci']][3]`). The integrated calibration index for TRISS was `r t.stats[['ici']]`. The accuracy curve is shown in Figure 4. The best accuracy was `r t.stats[['acc.nrs']][1]` and was found at the cutoff `r t.stats[['acc.nrs']][2]`. 
 
 ```{r, echo = FALSE}
-plot(t.stats[['perf']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
+plot(t.stats[['roc']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
 ```{r, echo = FALSE}
@@ -233,7 +231,7 @@ t.plot.acc <- plot(t.stats[['acc']], main="Fig 4. TRISS Accuracy Curve.")
 The odds ratio for NORMIT was `r n.or['or']` (95% CI: `r n.or[2]`-`r n.or[3]`, p-value: `r n.stats[['or.p']]`). The ROC is plotted in Figure 5. The AUC for the ROC was `r n.stats[['auc']]` (95% CI: `r n.stats[['auc.ci']][1]`-`r n.stats[['auc.ci']][3]`). The integrated calibration index for NORMIT was `r n.stats[['ici']]`. The accuracy curve for NORMIT is shown in Figure 5. The best accuracy was `r n.stats[['acc.nrs']][1]` and was found at the cutoff `r n.stats[['acc.nrs']][2]`. 
 
 ```{r, echo = FALSE}
-plot(n.stats[['perf']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
+plot(n.stats[['roc']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
 ```{r, echo = FALSE}
@@ -244,19 +242,24 @@ n.plot.acc <- plot(n.stats[['acc']], main="Fig 6. NORMIT Accuracy Curve.")
 Discussion
 ==========
 
-<!--
-
+<!-- 
 Key results
 -----------
 Summarise key results with reference to study objectives
 
+--> 
+
 Limitations
 -----------
 
+<!-- 
 Discuss limitations of the study, taking into account sources of
 potential bias or imprecision.  Discuss both direction and magnitude
-of any potential bias
+of any potential bias -->
 
+
+
+<!-- 
 Interpretation
 --------------
 
