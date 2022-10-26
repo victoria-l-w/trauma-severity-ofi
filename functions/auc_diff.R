@@ -7,7 +7,8 @@ auc_diff <- function(roc1, roc2) {
   diff <- roctest[['estimate']][[1]] - roctest[['estimate']][[2]]
   ci.low <- roctest[['conf.int']][[1]]
   ci.hi <- roctest[['conf.int']][[2]]
+  p <- roctest[['p.value']]
   
-  ci.diff <- c(diff, ci.low, ci.hi)
+  ci.diff <- c(diff = diff, ci.low = ci.low, ci.hi = ci.hi, p = p)
   return(ci.diff)
 }
