@@ -1,14 +1,12 @@
-## I used this: https://www.mdcalc.com/calc/10404/trauma-score-injury-severity-score-triss#evidence
-
 make_triss <- function(input.data) {
   
   ## Saving the coefficients for later
   lookup <- data.frame(
-    inj.type = c(1, 2),
-    b0 = c(-1.2470, -0.6029),
-    b1 = c(0.9544, 1.1430),
-    b2 = c(-0.0768, -0.1516),
-    b3 = c(-1.9052, -2.6676)
+    inj.type = c(1, 2), ## 1 = blunt, 2 = penetrating
+    b0 = c(-0.4499, -2.5355),
+    b1 = c(0.8085, 0.9934),
+    b2 = c(-0.0835, -0.651),
+    b3 = c(-1.743, -1.136)
   )
   
   ## Cast variables to numeric to ensure they can be used for calculations
