@@ -1,8 +1,6 @@
-
-
-auc_diff <- function(roc1, roc2) {
+auc_delta <- function(roc1, roc2) {
   
-  roctest <- roc.test(roc1, roc2, method="delong")
+  roctest <- roc.test(roc1, roc2, method="delong") ## has to be forced or it will try to bootstrap; bootstrap doesnt give a CI
   
   diff <- roctest[['estimate']][[1]] - roctest[['estimate']][[2]]
   ci.low <- roctest[['conf.int']][[1]]

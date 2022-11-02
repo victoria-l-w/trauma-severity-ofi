@@ -193,28 +193,26 @@ Results
 
 Participants
 ------------
-A total of `r counts[6,3]` patients were excluded during processing of data. `r counts[2,3]` patients were excluded due to not having a recorded outcome from an M&M conference. `r counts[3,3]` patients were excluded for being under 15 years of age. `r counts[4,3]` patients were excluded due to being dead on arrival at hospital. `r counts[5,3]` patients were excluded due to missing required data. Figure 2 shows the selection process for eligible participants. 
+A total of `r eligibility[6,3]` patients were excluded during processing of data. `r eligibility[2,3]` patients were excluded due to not having a recorded outcome from an M&M conference. `r eligibility[3,3]` patients were excluded for being under 15 years of age. `r eligibility[4,3]` patients were excluded due to being dead on arrival at hospital. `r eligibility[5,3]` patients were excluded due to incomplete data. Figure 2 shows the selection process for eligible participants. 
 
 ```{r}
-  exclusion_flowchart(counts) ## Only works in HTML
+  exclusion_flowchart(eligibility) ## Only works in HTML
+```
+
+Detailed totals of missing data for each required parameter in cases that were excluded for incomplete data are given in table 1. Some patients had missing data in several parameters and therefore the total number of missing parameters is greater than the total number of patients excluded due to incomplete data.
+
+```{r}
+  as_raw_html(incomplete.data.tbl)
 ```
 
 Descriptive data
 ----------------
-A total of `r counts[5,2]` participants were identified as eligible for inclusion. Their demographical and clinical characteristics are described in Table 1. `r numbers['ofi.true']` cases had at least one OFI and `r numbers['ofi.false']` cases had no OFI. The mean age for all patients was `r numbers['mean.age']` and `r numbers['pc.male']`% were male. 
+A total of `r eligibility[5,2]` participants were identified as eligible for inclusion. Their demographical and clinical characteristics are described in Table 1. `r numbers['ofi.true']` cases had at least one OFI and `r numbers['ofi.false']` cases had no OFI. The mean age for all patients was `r numbers['mean.age']` and `r numbers['pc.male']`% were male. 
 
 For patients with at least one OFI, the mean TRISS score was `r numbers['t.ofi.t']` and the mean NORMIT score was `r numbers['n.ofi.t']`. For patients with no OFI, the mean TRISS score was `r numbers['t.ofi.f']` and the mean NORMIT score was `r numbers['n.ofi.f']`.  
 
 ```{r} 
   table.one ## will be improved later
-```
-  
-
-Detailed totals for missing data for each required parameter are given in table 2. The total number of missing parameters is greater than the number of participants excluded for missing parameters. This is because some patients lacked multiple required parameters. 
-
-
-```{r gt table, echo = FALSE}
-missing
 ```
 
 Main results

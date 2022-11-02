@@ -32,9 +32,13 @@ df <- merge_data(datasets)
 pd <- prep_data(df) ## returns a list with the prepped dataset, inclusion counts, and missing parameters
 df <- pd[['df']]
 
-## exclusion data
-counts <- pd[['counts']] ## inclusion/exclusion counts
-missing <- pd[['missing']] ## nr of rows with missing data for each parameter
+## eligibility counts
+eligibility <- pd[['eligibility']] ## inclusion/exclusion counts
+
+## missing data
+incomplete.data.tbl <- gt(pd[['incomplete.data']]) ## table nr of rows with missing data for each parameter
+incomplete.data.tbl <- incomplete.data.tbl %>%
+  tab_header(title = "Table 1. Total no. missing data for each variable in cases excluded for incomplete data")
 
 ## add scores
 df$rts <- apply(df, 1, make_rts)
@@ -73,3 +77,5 @@ aucdiff.np <- auc_delta(stats.n[['roc']], stats.p[['roc']]) ## NORMIT AUC - PS12
 ## descriptive data
 table.one <- make_table_one(df)
 numbers <- table_one_stats(df) ## some manually generated descriptive statistics
+
+
