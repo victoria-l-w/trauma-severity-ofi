@@ -34,6 +34,7 @@ df <- pd[['df']]
 
 ## eligibility counts
 eligibility <- pd[['eligibility']] ## inclusion/exclusion counts
+post.ofi.exclusion <- as.numeric(eligibility[3,3]) + as.numeric(eligibility[4,3]) + as.numeric(eligibility[5,3])
 
 ## missing data
 incomplete.data.tbl <- gt(pd[['incomplete.data']]) ## table nr of rows with missing data for each parameter

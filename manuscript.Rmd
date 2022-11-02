@@ -193,7 +193,7 @@ Results
 
 Participants
 ------------
-A total of `r eligibility[6,3]` patients were excluded during processing of data. `r eligibility[2,3]` patients were excluded due to not having a recorded outcome from an M&M conference. `r eligibility[3,3]` patients were excluded for being under 15 years of age. `r eligibility[4,3]` patients were excluded due to being dead on arrival at hospital. `r eligibility[5,3]` patients were excluded due to incomplete data. Figure 2 shows the selection process for eligible participants. 
+A total of `r eligibility[1,2]` patients were recorded in the trauma registry during the study period. Of these, `r eligibility[2,2]` were reviewed at an M&M conference and therefore became eligible for study inclusion. `r post.ofi.exclusion` patients were excluded, due to either being of paediatric age (`r eligibility[3,3]`), being dead on arrival at hospital (`r eligibility[4,3]`), or due to incomplete data (`r eligibility[5,3]`). Figure 2 shows the inclusion process for eligible participants. 
 
 ```{r}
   exclusion_flowchart(eligibility) ## Only works in HTML
