@@ -138,12 +138,6 @@ Patients <15 years of age were excluded as paediatric trauma is a separate clini
 Variables
 ---------
 
-<!-- Clearly define all outcomes, exposures, predictors, potential
-confounders, and effect modifiers. Give diagnostic criteria, if
-applicable. For each variable of interest, give sources of data and
-details of methods of assessment (measurement). Describe comparability
-of assessment methods if there is more than one group -->
-
 ### Outcome
 The studied outcome is the binary variable "opportunities for improvement" (OFI), as identified by the multidisciplinary M&M conference at Karolinska University Hospital. OFI is coded as either "Yes - at least one opportunity for improvement identified" or "No - no opportunities for improvement identified". 
 
@@ -166,28 +160,19 @@ The RTS was computed using GCS, systolic blood pressure, and respiratory rate. F
 
 ### PS
 
-The PS model incorporates patient age, gender, GCS and ISS. 
-
-Bias 
-----
-
-<!-- Describe any efforts to address potential sources of bias -->
-
-The method and data analysis model will be written using simulated data to reduce the risk of research bias. Real-world data will only be used once the data analysis model is completed and found to work correctly on simulated data. 
-
-Study size 
-----------
-
-<!-- Explain how the study size was arrived at -->
-
-Since all eligible participants must exist in both the trauma registry and the trauma care quality database, and the trauma care quality database is a subset of the trauma registry, the maximum number of participants is limited to the number of cases registered in the trauma care quality database. The trauma care quality database includes around 2200 patients who were selected for review between 2014 and 2021. In order to establish the exact study size, the study-specific exclusion criteria need to first be applied. The exact study size has not yet been established at the time of writing this report. 
+The algorithm for PS includes the patient's age, gender, GCS and ISS. 
 
 Quantitative variables
 ----------------------
 
-RTS, NORMIT and PS12 were calculated according to the published algorithms from their developers [@rtsalgorithm, @normit, @psalgorithm]. TRISS was calculated using to the revised 2009 coefficients [@triss2010].
+RTS, NORMIT and PS12 were calculated according to the original published algorithms [@rtsalgorithm, @normit, @psalgorithm]. TRISS was calculated using the revised 2009 coefficients [@triss2010].
 
 For all parameters other than GCS, the values used to compute scores were solely taken from arrival at hospital. For GCS, values were used based on arrival at hospital except in cases where the patient was intubated pre-hospitally. PS and NORMIT have methods of handling this scenario, as described above. TRISS does not have a published method to handle patients intubated pre-hospitally. In order to avoid excluding patients who were intubated pre-hospitally, the GCS parameter for TRISS was handled in the same manner as NORMIT, i.e. the pre-hospital GCS value was used.
+
+Bias 
+----
+
+The code for data analysis was written using simulated data to reduce the risk of research bias. Real-world data was only used once the data analysis model was completed and found to work correctly on simulated data. 
 
 Statistical methods
 -------------------
