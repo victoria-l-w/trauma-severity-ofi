@@ -139,10 +139,10 @@ Variables
 ---------
 
 ### Outcome
-The studied outcome is the binary variable "opportunities for improvement" (OFI), as identified by the multidisciplinary M&M conference at Karolinska University Hospital. OFI is coded as either "Yes - at least one opportunity for improvement identified" or "No - no opportunities for improvement identified". 
+The studied outcome is the binary variable "opportunities for improvement" (OFI), as identified by the multidisciplinary M&M conference at Karolinska University Hospital. OFI is registered in the trauma care quality database and is coded as either "Yes - at least one opportunity for improvement identified" or "No - no opportunities for improvement identified". 
 
 ### Exposures
-The primary exposures of interest are the trauma severity models TRISS, TARN PS12, and NORMIT. All three of these models estimate the probability of death. This is expressed a percentage and is a continuous variable. The scores given by each of these models were calculated using recorded physiological and anatomical variables. Conversion and handling of these variables was carried out according to the SweTrau manual.
+The exposures of interest are the trauma severity models TRISS, NORMIT, and PS. All three of these models estimate the probability of death, expressed as a probability. The scores given by each of these models were calculated using physiological and anatomical parameters recorded in the trauma registry. Conversion and handling of these variables was carried out according to the SweTrau manual. 
 
 #### TRISS
 
