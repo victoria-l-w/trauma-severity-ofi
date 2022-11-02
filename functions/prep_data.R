@@ -34,7 +34,7 @@ prep_data <- function(df, numbers = FALSE) {
                       ed.rr = ed_rr_value,
                       ed.sbp = ed_sbp_value,
                       pre.gcs = pre_gcs_sum,
-                      age = pt_age_yrsg
+                      age = pt_age_yrs
                       )
   
   ## Storing the inclusion/exclusion counts at each step so I can use those later
@@ -45,7 +45,7 @@ prep_data <- function(df, numbers = FALSE) {
                                   )
   ## Exclusion: ofi
 
-  df <- df %>% filter (ofi != "NA")
+  df <- df %>% filter (!is.na(ofi))
   
   ## So what I'm doing is:
   ## After every exclusion counting the new number of rows, then comparing it with the previous number of rows to see how many were excluded
@@ -55,7 +55,7 @@ prep_data <- function(df, numbers = FALSE) {
   
   ## Exclusion: age
   
-  ## df <- df %>% filter (age >= 15)
+  df <- df %>% filter (age >= 15 | is.na(df$asa))
   
   age.kept <- nrow(df)
   age.excluded <- ofi.kept - age.kept
@@ -83,15 +83,17 @@ prep_data <- function(df, numbers = FALSE) {
   m.niss <- sum(is.na(df$niss))
   m.gender <- sum(is.na(df$gender)) + nrow(df[df$gender == 999 & !is.na(df$gender),])
   m.names <- c("GCS", "ASA", "RR", "SBP", "Dominant injury type", "Age", "ISS", "NISS", "Gender")
-  m.numbers <- c(m.gcs, m.asa, m.rr, m.sbp, m.dominj, m.age, m.iss, m.niss, m.gender)
-  missing <- tibble("Required parameter" = m.names, "Total no. cases without required parameter" = m.numbers)
 
   df <- df %>% filter_at(vars(iss, niss, age, ed.gcs, dom.inj, ed.sbp, ed.rr, asa, gender),all_vars(!is.na(.)))
   df <- df %>% filter(dom.inj != 999 & asa != 999 & ed.gcs != 999 & gender != 999)
   
   ## Either ed.gcs or pre.gcs should have a usable GCS. ed.gcs == 999 and NA was removed earlier 
+  nrow1 <- nrow(df)
   v <- c(3:15)
   df <- df %>% filter(pre.gcs %in% v | ed.gcs %in% v)
+  nrow2 <- nrow(df)
+  m.pregcs <- nrow1 - nrow2
+  m.gcs <- m.gcs + m.pregcs
   
   ## Make a new gcs variable that takes into account ed.gcs = 99 
   df$gcs <- with(df, ifelse (df$ed.gcs==99, pre.gcs, ed.gcs))
@@ -106,6 +108,13 @@ prep_data <- function(df, numbers = FALSE) {
   
   total.excluded <- original.count - param.kept
   inclusion.counts[nrow(inclusion.counts) + 1,] = c("total", param.kept, total.excluded)
+  
+  ##
+  ## Make missing parameters table
+  ##
+  m.numbers <- c(m.gcs, m.asa, m.rr, m.sbp, m.dominj, m.age, m.iss, m.niss, m.gender)
+  missing <- tibble("Required parameter" = m.names, "Total no. cases without required parameter" = m.numbers)
+  
   
   ##
   ## Cleaning

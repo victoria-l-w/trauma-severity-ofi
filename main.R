@@ -73,6 +73,3 @@ np.aucdiff <- auc_diff(n.stats[['roc']], p.stats[['roc']]) ## NORMIT AUC - PS12 
 ## descriptive data
 table.one <- make_table_one(df)
 numbers <- table_one_stats(df) ## some manually generated descriptive statistics
-
-test <- merge_data(datasets)
-test <- test %>% filter (age >= 15)
