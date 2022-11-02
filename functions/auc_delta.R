@@ -5,8 +5,9 @@ auc_delta <- function(roc1, roc2) {
   diff <- roctest[['estimate']][[1]] - roctest[['estimate']][[2]]
   ci.low <- roctest[['conf.int']][[1]]
   ci.hi <- roctest[['conf.int']][[2]]
+  ci <- paste0(ci.low, '-', ci.hi)
   p <- roctest[['p.value']]
   
-  ci.diff <- c(diff = diff, ci.low = ci.low, ci.hi = ci.hi, p = p)
+  ci.diff <- c(diff = diff, ci = ci, p = p)
   return(ci.diff)
 }
