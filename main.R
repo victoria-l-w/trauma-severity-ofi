@@ -50,25 +50,25 @@ df$ps12 <- as.numeric(df$ps12)
 
 ## some subsetted data to make be friendly to stats functions
 ## this means my stats functions can be generic in case i add scores later
-t.df <- df[, c("ofi", "triss")] %>% rename(score = triss)
-n.df <- df[, c("ofi", "normit")] %>% rename(score = normit)
-p.df <- df[, c("ofi", "ps12")] %>% rename(score = ps12)
+df.t <- df[, c("ofi", "triss")] %>% rename(score = triss)
+df.n <- df[, c("ofi", "normit")] %>% rename(score = normit)
+df.p <- df[, c("ofi", "ps12")] %>% rename(score = ps12)
 
 ## make_stats returns a named list with all the things i want; see stats.R
-t.stats <- make_stats(t.df)
-t.or <- t.stats[['or']]
-t.or <- t.or[2,]
-n.stats <- make_stats(n.df)
-n.or <- n.stats[['or']]
-n.or <- n.or[2,]
-p.stats <- make_stats(p.df)
-p.or <- p.stats[['or']]
-p.or <- p.or[2,]
+stats.t <- make_stats(df.t)
+or.t <- stats.t[['or']]
+or.t <- or.t[2,]
+stats.n <- make_stats(df.n)
+or.n <- stats.n[['or']]
+or.n <- or.n[2,]
+stats.p <- make_stats(df.p)
+or.p <- stats.p[['or']]
+or.p <- or.p[2,]
 
 ## differences between AUC
-tn.aucdiff <- auc_diff(t.stats[['roc']], n.stats[['roc']]) ## TRISS AUC - NORMIT AUC
-tp.aucdiff <- auc_diff(t.stats[['roc']], p.stats[['roc']]) ## TRISS AUC - PS12 AUC
-np.aucdiff <- auc_diff(n.stats[['roc']], p.stats[['roc']]) ## NORMIT AUC - PS12 AUC
+aucdiff.tn <- auc_delta(stats.t[['roc']], stats.n[['roc']]) ## TRISS AUC - NORMIT AUC
+aucdiff.tp <- auc_delta(stats.t[['roc']], stats.p[['roc']]) ## TRISS AUC - PS12 AUC
+aucdiff.np <- auc_delta(stats.n[['roc']], stats.p[['roc']]) ## NORMIT AUC - PS12 AUC
 
 ## descriptive data
 table.one <- make_table_one(df)
