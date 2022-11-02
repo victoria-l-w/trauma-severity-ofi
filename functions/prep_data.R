@@ -73,7 +73,7 @@ prep_data <- function(df, numbers = FALSE) {
   ## Exclusion: parameters
   
   ## Jonatan wanted me to make a table of exactly how many were missing for each parameter
-  m.gcs <- sum(is.na(df$ed.gcs)) + nrow(df[df$ed.gcs == 999 & !is.na(df$ed.gcs),]) ## This does not take into account patients removed where GCS == 99 & there's no prehospital GCS, fix later
+  m.gcs <- sum(is.na(df$ed.gcs)) + nrow(df[df$ed.gcs == 999 & !is.na(df$ed.gcs),])
   m.asa <- sum(is.na(df$asa)) + nrow(df[df$asa == 999 & !is.na(df$asa),])
   m.rr <- sum(is.na(df$ed.rr)) + nrow(df[df$ed.rr == 0 & !is.na(df$ed.rr),])
   m.sbp <- sum(is.na(df$ed.sbp)) + nrow(df[df$ed.sbp == 0 & !is.na(df$ed.sbp),])
@@ -92,7 +92,7 @@ prep_data <- function(df, numbers = FALSE) {
   v <- c(3:15)
   df <- df %>% filter(pre.gcs %in% v | ed.gcs %in% v)
   nrow2 <- nrow(df)
-  m.pregcs <- nrow1 - nrow2
+  m.pregcs <- nrow1 - nrow2 ## adding missing pregcs when edgcs == 99 to missing parameter count
   m.gcs <- m.gcs + m.pregcs
   
   ## Make a new gcs variable that takes into account ed.gcs = 99 
