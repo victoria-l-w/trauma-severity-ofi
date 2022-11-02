@@ -45,19 +45,19 @@ incomplete.data.tbl <- incomplete.data.tbl %>%
 df$rts <- apply(df, 1, make_rts)
 df$triss <- apply(df, 1, make_triss)
 df$normit <- apply(df, 1, make_normit)
-df$ps12 <- apply(df, 1, make_ps12)
+df$ps <- apply(df, 1, make_ps12)
 
 ## cast to numeric to avoid Problems
 df$ofi <- as.numeric(df$ofi)
 df$triss <- as.numeric(df$triss)
 df$normit <- as.numeric(df$normit)
-df$ps12 <- as.numeric(df$ps12)
+df$ps <- as.numeric(df$ps)
 
 ## some subsetted data to make be friendly to stats functions
 ## this means my stats functions can be generic in case i add scores later
 df.t <- df[, c("ofi", "triss")] %>% rename(score = triss)
 df.n <- df[, c("ofi", "normit")] %>% rename(score = normit)
-df.p <- df[, c("ofi", "ps12")] %>% rename(score = ps12)
+df.p <- df[, c("ofi", "ps")] %>% rename(score = ps)
 
 ## make_stats returns a named list with all the things i want; see stats.R
 stats.t <- make_stats(df.t)
@@ -75,8 +75,15 @@ aucdiff.tn <- auc_delta(stats.t[['roc']], stats.n[['roc']]) ## TRISS AUC - NORMI
 aucdiff.tp <- auc_delta(stats.t[['roc']], stats.p[['roc']]) ## TRISS AUC - PS12 AUC
 aucdiff.np <- auc_delta(stats.n[['roc']], stats.p[['roc']]) ## NORMIT AUC - PS12 AUC
 
+## clean the dataset
+df$triss <- round(df$triss, digits = 2)
+df$normit <- round(df$normit , digits = 2)
+df$ps <- round(df$ps , digits = 2)
+
 ## descriptive data
 table.one <- make_table_one(df)
-numbers <- table_one_stats(df) ## some manually generated descriptive statistics
-
+descr.stats <- table_one_stats(df) ## some manually generated descriptive statistics
+demo <- descr.stats[['demo']]
+ofi.descr <- descr.stats[['ofi.descr']]
+scores.descr <- descr.stats[['scores.descr']]
 

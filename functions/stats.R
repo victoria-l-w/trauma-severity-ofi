@@ -10,7 +10,7 @@ make_stats <-function(df) {
   auc <- auc(roc)
   auc.ci <- round(ci.auc(roc), digits = 2)
 
-  ## The console output of this says that it uses "mgcv::gam instead of loess to calculate ICI"
+  ## Console output: >With at least 1000 observations, using mgcv::gam instead of loess to calculate ICI.
   ici <- ici(pred.model, df$ofi)
   ici <- round(ici, digits = 2)
 

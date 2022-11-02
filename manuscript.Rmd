@@ -207,10 +207,13 @@ Detailed totals of missing data for each required parameter in cases that were e
 
 Descriptive data
 ----------------
-A total of `r eligibility[5,2]` participants were identified as eligible for inclusion. Their demographical and clinical characteristics are described in Table 1. `r numbers['ofi.true']` cases had at least one OFI and `r numbers['ofi.false']` cases had no OFI. The mean age for all patients was `r numbers['mean.age']` and `r numbers['pc.male']`% were male. 
+A total of `r eligibility[5,2]` participants were identified as eligible for inclusion. Their demographical and clinical characteristics are described in Table 2. 
 
-For patients with at least one OFI, the mean TRISS score was `r numbers['t.ofi.t']` and the mean NORMIT score was `r numbers['n.ofi.t']`. For patients with no OFI, the mean TRISS score was `r numbers['t.ofi.f']` and the mean NORMIT score was `r numbers['n.ofi.f']`.  
+The median age was `r demo['age.med']` (IQR: `r demo['age.iqr']`). `r demo['pc.male']`% of participants were male. `r demo['pc.blunt']`% of cases were due to blunt force trauma. Of cases where 30-day survival was available, there was a  `r demo['mort']`% 30-day mortality rate (`r demo['mort.missing']` cases with missing survival data). Of cases where registered data on the highest level of care was available, `r demo['icu']`% had the ICU as their highest level of care (`r demo['icu.missing']` cases with missing care level data). The median ISS score was `r demo['iss']` (IQR: `r demo['iss.iqr']`).
 
+At least one OFI was found in `r ofi.descr['ofi.true']` of cases (`r ofi.descr['pc.ofi.true']`%). In cases where death occurred within 30 days, at least one OFI was found in `r ofi.descr['ofi.mort']`% of cases. The median scores for TRISS, NORMIT, and PS were `r scores.descr['t.med']` (IQR: `r scores.descr['t.iqr']`), `r scores.descr['n.med']` (IQR: `r scores.descr['n.iqr']`), and `r scores.descr['n.med']` (IQR: `r scores.descr['n.iqr']`) respectively. 
+
+  
 ```{r} 
   table.one ## will be improved later
 ```
@@ -220,7 +223,7 @@ Main results
 
 ### TRISS
 
-The odds ratio for TRISS was `r or.t['or']` (95% CI: `r or.t[2]`-`r or.t[3]`, p-value: `r stats.t[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r stats.t[['auc']]` (95% CI: `r stats.t[['auc.ci']][1]`-`r stats.t[['auc.ci']][3]`). The integrated calibration index for TRISS was `r stats.t[['ici']]`. The accuracy curve is shown in Figure 4. The best accuracy was `r stats.t[['acc.nrs']][1]` and was found at the cutoff `r stats.t[['acc.nrs']][2]`. 
+The odds ratio for TRISS was `r or.t['or']` (95% CI: `r or.t[2]`-`r or.t[3]`, p-value: `r or.t`). The ROC is plotted in Figure 3. The AUC for the ROC was `r stats.t[['auc']]` (95% CI: `r stats.t[['auc.ci']][1]`-`r stats.t[['auc.ci']][3]`). The integrated calibration index for TRISS was `r stats.t[['ici']]`. The accuracy curve is shown in Figure 4. The best accuracy was `r stats.t[['acc.nrs']][1]` and was found at the cutoff `r stats.t[['acc.nrs']][2]`. 
 
 ```{r}
 plot(stats.t[['roc']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
@@ -231,7 +234,7 @@ t.plot.acc <- plot(stats.t[['acc']], main="Fig 4. TRISS Accuracy Curve.")
 ```
 
 ### NORMIT 
-The odds ratio for NORMIT was `r or.n['or']` (95% CI: `r or.n[2]`-`r or.n[3]`, p-value: `r stats.n[['or.p']]`). The ROC is plotted in Figure 5. The AUC for the ROC was `r stats.n[['auc']]` (95% CI: `r stats.n[['auc.ci']][1]`-`r stats.n[['auc.ci']][3]`). The integrated calibration index for NORMIT was `r stats.n[['ici']]`. The accuracy curve for NORMIT is shown in Figure 5. The best accuracy was `r stats.n[['acc.nrs']][1]` and was found at the cutoff `r stats.n[['acc.nrs']][2]`. 
+The odds ratio for NORMIT was `r or.n['or']` (95% CI: `r or.n[2]`-`r or.n[3]`, p-value: `r or.n`). The ROC is plotted in Figure 5. The AUC for the ROC was `r stats.n[['auc']]` (95% CI: `r stats.n[['auc.ci']][1]`-`r stats.n[['auc.ci']][3]`). The integrated calibration index for NORMIT was `r stats.n[['ici']]`. The accuracy curve for NORMIT is shown in Figure 5. The best accuracy was `r stats.n[['acc.nrs']][1]` and was found at the cutoff `r stats.n[['acc.nrs']][2]`. 
 
 ```{r, echo = FALSE}
 plot(stats.n[['roc']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
@@ -242,9 +245,18 @@ n.plot.acc <- plot(stats.n[['acc']], main="Fig 6. NORMIT Accuracy Curve.")
 ```
 
 ### PS
+The odds ratio for PS was `r or.p['or']` (95% CI: `r or.p[2]`-`r or.p[3]`, p-value: `r or.p`). The ROC is plotted in Figure 3. The AUC for the ROC was `r stats.p[['auc']]` (95% CI: `r stats.p[['auc.ci']][1]`-`r stats.p[['auc.ci']][3]`). The integrated calibration index for PS was `r stats.p[['ici']]`. The accuracy curve is shown in Figure 4. The best accuracy was `r stats.p[['acc.nrs']][1]` and was found at the cutoff `r stats.p[['acc.nrs']][2]`. 
 
+```{r}
+plot(stats.p[['roc']], main="Fig 6. PS Receiver Operating Characteristic Curve.", colorize = TRUE)
+```
+
+```{r}
+p.plot.acc <- plot(stats.p[['acc']], main="Fig 7. PS Accuracy Curve.")
 
 ### Comparison of scores
+
+
 
 Discussion
 ==========
