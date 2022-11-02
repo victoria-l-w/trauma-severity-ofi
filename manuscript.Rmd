@@ -55,9 +55,9 @@ Management of severe trauma is highly time-sensitive and is also dependent on th
 ## Trauma severity models
 Trauma as a clinical entity is highly heterogeneous due to the variety in its underlying causes, which affect both the type and severity of the injury. An important question for trauma QI programs to solve is how to evaluate and compare outcomes given the difficulties posed by the heterogeneity of trauma. This question has spurred the development of multiple trauma severity models. Trauma severity models attempt to translate the severity of physical injury into a quantitative value by using physiological and anatomical parameters as predictors of mortality. Trauma severity models were initially intended for use in prehospital triage, and therefore were simplistic by design for ease of use [@traumareview], but over the years newer and more advanced algorithms have been developed to fulfil the needs of research, quality assurance, and clinical triage [@traumareview]. Today there are hundreds of trauma severity models with differing methodology and the common aim of expressing trauma severity as a numerical value that either directly or indirectly represents the probability of survival. 
 
-Trauma severity models have become a cornerstone of modern trauma QI programs [@historytss]. One example of their use is highlighting unexpectedly high mortality rates amongst patients with a high Ps [@whoguidelines]. Trauma severity models also allow clinics to compare their outcomes against an established benchmark [@whoguidelines]. However, an inherent weakness of any trauma severity model is that estimates may be unreliable when applied to a population different from the one the model was developed from. Trauma type and severity will differ between locales and trauma patient populations can be difficult to compare between disparate geographical regions [@assessingquality]. This weakness is one reason why models continue to be developed and improved on. Another reason is that efforts to establish which risk factors best predict mortality are still ongoing; different models use different physiological and anatomical parameters.  
+Trauma severity models have become a cornerstone of modern trauma QI programs [@historytss]. One example of their use is highlighting unexpectedly high mortality rates amongst patients with a high predicted probability of survival. [@whoguidelines]. Trauma severity models also allow clinics to compare their outcomes against an established benchmark [@whoguidelines]. However, an inherent weakness of any trauma severity model is that estimates may be unreliable when applied to a population different from the one the model was developed from. Trauma type and severity will differ between locales and trauma patient populations can be difficult to compare between disparate geographical regions [@assessingquality]. This weakness is one reason why models continue to be developed and improved on. Another reason is that efforts to establish which risk factors best predict mortality are still ongoing; different models use different physiological and anatomical parameters.  
 
-The Trauma and Injury Severity Score (TRISS), first developed in the US in 1987 [@triss] and most recently updated in 2010 [@triss2010], is the most used model worldwide [@trissbetter]. TRISS is a combination index that incorporates patient age, the Injury Severity Score (ISS), the Revised Trauma Score (RTS), and whether the injury was blunt or penetrating [@triss]. The resulting value is a percentage that estimates the probability of survival (Ps). The ISS gives a score based on the three anatomical regions with the most severe injury. A limitation of the ISS is that it does not account for situations where one anatomical region has multiple injuries [@trissbetter]. The RTS is based on the physiological parameters GCS, systolic blood pressure, and respiratory rate. The GCS cannot be estimated in situations where the patient has already been intubated, since a valid verbal score cannot be ascertained, which gives TRISS limited value in estimating probability of survival in certain populations [@trissbetter]. 
+The Trauma and Injury Severity Score (TRISS), first developed in the US in 1987 [@triss] and most recently updated in 2010 [@triss2010], is the most used model worldwide [@trissbetter]. TRISS is a combination index that incorporates patient age, the Injury Severity Score (ISS), the Revised Trauma Score (RTS), and whether the injury was blunt or penetrating [@triss]. The resulting value the probability of survival given as a percentage. The ISS gives a score based on the three anatomical regions with the most severe injury. A limitation of the ISS is that it does not account for situations where one anatomical region has multiple injuries [@trissbetter]. The RTS is based on the physiological parameters GCS, systolic blood pressure, and respiratory rate. The GCS cannot be estimated in situations where the patient has already been intubated, since a valid verbal score cannot be ascertained, which gives TRISS limited value in estimating probability of survival in certain populations [@trissbetter]. 
 
 In 2014 researchers in Norway released a new model, the Norwegian Survival Prediction Model in Trauma (NORMIT), that attempts to address the weaknesses of TRISS and simultaneously provide a model based on Norwegian patient populations [@normit]. NORMIT is based on the patient's age, New Injury Severity Score (NISS), comorbidities prior to traumatic injury based on the ASA physical status classification system (ASA-PS), and their RTS. NISS differs from ISS in that NISS allows for scoring of multiple injuries within the same anatomical region. Validation of NISS has shown that NISS is better at predicting mortality in trauma patients compared to ISS, especially in patients with multiple severe injuries within one anatomical region [@nissbetter]. NORMIT also provides a method to incorporate the GCS for intubated patients when calculating RTS. For patients who arrive at hospital and under general anaesthesia, the RTS is calculated based on the prehospital value prior to intubation [@normit]. NORMIT was updated in 2018 [@skagaValidatingPerformanceTRISS2018] and a validation study at this institution found that the updated NORMIT reliably predicted survival at a Swedish trauma centre but both the old and new versions of NORMIT performed worse when applied to the entire national population [@validationnormit]. 
 
@@ -88,7 +88,7 @@ Methods
 Study design
 ------------
 
-This is a single-centre retrospective cohort study, using data from two registries at Karolinska University Hospital: the trauma registry and the trauma care quality database. The trauma care quality database is a subset of the trauma registry and contains data on trauma patients who were selected for M&M reviews. These two databases will be linked and then analysed to estimate the association between the common trauma severity models TRISS and NORMIT and OFI using logistic regression. The predictive performance of these models will be evaluated using measures of discrimination and calibration. 
+This is a single-centre retrospective cohort study, using data from two registries at Karolinska University Hospital: the trauma registry and the trauma care quality database. The trauma care quality database is a subset of the trauma registry and contains data on trauma patients who were selected for M&M reviews. These two databases were linked and then analysed to estimate the association between the common trauma severity models TRISS and NORMIT and OFI using logistic regression. The predictive performance of these models was evaluated using measures of discrimination and calibration. 
 
 Setting
 -------
@@ -96,13 +96,23 @@ Setting
 <!-- Describe the setting, locations, and relevant dates, including
 periods of recruitment, exposure, follow-up, and data collection -->
 
-Karolinska University Hospital is located in Solna, Sweden. Karolinska University Hospital's trauma centre is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@nksstats]. Karolinska University Hospital is the primary trauma centre for the region of Stockholm and also has agreements with several other regions to provide trauma care for patients with severe trauma. Karolinska University Hospital is thereby the major trauma centre for a population of almost 3 million people [@nksstats]. 
+Karolinska University Hospital is located in Solna, Sweden. The trauma centre at Karolinska University Hospital is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@nksstats] and it is the primary trauma centre for the region of Stockholm. Karolinska University Hospital also has agreements with several other regions to provide trauma care for patients with severe trauma and the trauma centre has thereby a catchment population of almost 3 million residents [@nksstats]. 
+<!-- Potential things to add about NKS:
+1. How many trauma patients per year?
+2. How often do conferences happen, or alternatively, roughly how many per year?
+3. Which specialties/professions participate in conferences? 
+4. Any other info about conferences at NKS that might be relevant like if there's a particular format or it follows particular guidelines etc 
+5. Also if there's any stats about trauma patients at NKS in general, like the avg ISS or similar
+... although I guess I have the data to calculate this myself-->
 
-The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and thereby follows SweTrau guidelines. The inclusion criteria are given below. All trauma patients meeting the inclusion criteria are registered in the trauma registry by nurses at the trauma centre. Data is collected from the patient's electronic medical records. The trauma registry contains data on patients from 2012 to 2021. 
+The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and thereby follows SweTrau guidelines. All trauma patients meeting the SweTrau inclusion criteria are registered in the trauma registry by research nurses at the trauma centre. Data is collected from the patient's electronic medical records. The trauma registry contains data on patients from 2012 to 2021. <!-- Double check these dates, maybe give exact dates of registration in the study --> 
+<!-- Also is there a time limit for when patients are registered in the registry? Like x days/weeks following admission -->
 
-SweTrau follows the Utstein Trauma Template for reporting of data following major trauma. The registered data includes prehospital vital signs and management, vital signs and management on arrival at hospital, information about the type of injury, and the primary method of treatment. Follow-up variables include, but are not limited to, survival at 30 days, days in ventilator, GCS<!-- Do you mean GOS?--> at discharge, highest level of care, and transfers to other units.
+SweTrau follows the Utstein Trauma Template for reporting of data following major trauma. The registered data includes prehospital vital signs and management, vital signs and management on arrival at hospital, information about the type of injury, and the primary method of treatment. Follow-up variables include, but are not limited to, survival at 30 days, days in ventilator, Glasgow Outcome Scale score at discharge, highest level of care, and transfers to other units.
 
-The trauma care quality database is an internal hospital register and registers the outcome of M&M conferences. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. The database contains data on patients from 2014 to 2021. 
+The trauma care quality database is an internal hospital registry and registers the outcome of M&M conferences. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. The database contains data on patients from 2014 to 2021. <!-- Double check these dates -->
+
+<!-- How exactly is OFI identified, is it according to specific criteria? -->
 
 Participants
 ------------
@@ -112,7 +122,7 @@ Participants were patients registered in both the trauma registry and the trauma
 
 ### Inclusion criteria for the trauma registry
 
-The trauma registry includes all patients for whom the trauma team was activated after receiving a potentially traumatic injury, regardless of NISS score, and all patients with a NISS score >15, regardless of whether the trauma team was activated. Also included are patients who were transferred to the hospital within 7 days of injury and have a NISS score >15. Patients where the only traumatic injury is a chronic subdural hematoma and patients for whom the trauma team was activated without an underlying traumatic injury are excluded from the register.
+The trauma registry includes all patients for whom the trauma team was activated after receiving a potentially traumatic injury, regardless of NISS score, and all patients with a NISS score >15, regardless of whether the trauma team was activated. Also included are patients who were transferred to the hospital within 7 days of injury and have a NISS score >15. Patients where the only traumatic injury is a chronic subdural haematoma and patients for whom the trauma team was activated without an underlying traumatic injury are excluded from the register.
 
 ### Inclusion criteria for the trauma care quality database
 
@@ -122,8 +132,8 @@ The trauma care quality database contains patients from the trauma registry that
   ofi_diagram() ## Only works in HTML
 ```
 
-### Study-specific exclusion criteria
-Patients <15 years of age were excluded as paediatric trauma is a separate clinical entity and is not part of the same review process. Patients that were dead on arrival were also excluded. In addition, this is a complete case study and all patients that lacked parameters necessary to carry out the analysis were excluded. 
+### Study-specific eligibility criteria
+Patients <15 years of age were excluded as paediatric trauma is a separate clinical entity and is not part of the same review process. Patients that were dead on arrival were also excluded. This is a complete case study and all patients with missing data were excluded. 
 
 Variables
 ---------
@@ -138,19 +148,25 @@ of assessment methods if there is more than one group -->
 The studied outcome is the binary variable "opportunities for improvement" (OFI), as identified by the multidisciplinary M&M conference at Karolinska University Hospital. OFI is coded as either "Yes - at least one opportunity for improvement identified" or "No - no opportunities for improvement identified". 
 
 ### Exposures
-The primary exposures of interest are the trauma severity models TRISS and NORMIT. Both of these models estimate the Ps. This is expressed a probability and is a continuous variable. The variables integrated into these models are taken from arrival at hospital. 
+The primary exposures of interest are the trauma severity models TRISS, TARN PS12, and NORMIT. All three of these models estimate the probability of death. This is expressed a percentage and is a continuous variable. The scores given by each of these models were calculated using recorded physiological and anatomical variables. Conversion and handling of these variables was carried out according to the SweTrau manual.
 
 #### TRISS
 
-The TRISS model incorporates patient age, Injury Severity Score (ISS), Revised Trauma Score (RTS), and whether the trauma was blunt or penetrating. 
+The TRISS model incorporates patient age, Injury Severity Score (ISS), GCS, systolic blood pressure, and respiratory rate. There are two sets of coefficients for these variables according to whether the trauma was blunt or penetrating. 
 
-The ISS is given by estimating the severity of physical injuries by anatomical region. Severity is assessed on a seven-point scale from "No injury" to "Unsurvivable injury". The values from the three anatomical regions with the most severe injury are combined into a score that is given is points on a scale from 0 to 75. The RTS is based on physiological parameters GCS, systolic blood pressure, and respiratory rate. Values are taken from arrival at hospital. These parameters are weighted and expressed in a score from 0 to 8, where a lower score indicates more severe injury. 
+The ISS is recorded in the trauma registry as part of original data collection. It is given by estimating the severity of physical injuries by anatomical region. Severity is assessed on a seven-point scale from "No injury" to "Unsurvivable injury". The values from the three anatomical regions with the most severe injury are combined into a score that is given is points on a scale from 0 to 75. 
 
 #### NORMIT
 
 The NORMIT model incorporates the patient's age, New Injury Severity Score (NISS), comorbidities prior to traumatic injury based on the ASA physical status classification system (ASA-PS), and their RTS. 
 
-NISS is based on the same variables as ISS. It differs from ISS in that it takes into account multiple injuries within one anatomical region and calculates a score based on the three most severe injuries regardless of anatomical region. 
+The NISS is recorded in the trauma registry as part of original data collection. NISS is based on the same variables as ISS. It differs from ISS in that it takes into account multiple injuries within one anatomical region and calculates a score based on the three most severe injuries regardless of anatomical region. 
+
+The RTS was computed using GCS, systolic blood pressure, and respiratory rate. For the systolic blood pressure and respiratory rate, values are taken from arrival at hospital. The GCS is also taken from arrival at hospital except in cases where the patient is intubated pre-hospitally; in these cases, the pre-hospital GCS is used. These parameters are weighted and expressed in a score from 0 to 8, where a lower score indicates more severe injury. 
+
+### PS
+
+The PS model incorporates patient age, gender, GCS and ISS. 
 
 Bias 
 ----
@@ -169,15 +185,14 @@ Since all eligible participants must exist in both the trauma registry and the t
 Quantitative variables
 ----------------------
 
-NORMIT and TRISS will be calculated using the following variables from the trauma registry database: ISS, NISS, RTS, GCS, systolic blood pressure, respiratory rate, ASA, and age. The scores will be calculated according to the formulas given by the respective developers of each model. 
+RTS, NORMIT and PS12 were calculated according to the published algorithms from their developers [@rtsalgorithm, @normit, @psalgorithm]. TRISS was calculated using to the revised 2009 coefficients [@triss2010].
+
+For all parameters other than GCS, the values used to compute scores were solely taken from arrival at hospital. For GCS, values were used based on arrival at hospital except in cases where the patient was intubated pre-hospitally. PS and NORMIT have methods of handling this scenario, as described above. TRISS does not have a published method to handle patients intubated pre-hospitally. In order to avoid excluding patients who were intubated pre-hospitally, the GCS parameter for TRISS was handled in the same manner as NORMIT, i.e. the pre-hospital GCS value was used.
 
 Statistical methods
 -------------------
 
-R, a programming language for statistical computing, will be used for compilation and analysis of data. Conversion and handling of variables will be carried out according to the SweTrau manual. In cases where data necessary for analysis is missing, i.e. the variables referred to above, the participant will be excluded from the study. Logistic regression will be used to determine association between the estimates of the trauma severity models and OFI. To assess how well the models predict OFI measures of discrimination and calibration will be used. Results will be presented with a confidence interval of 95%. A p-value of <0.05 will be considered significant. 
-
-
-<!-- computed CIs for OR using wald estimator. -->
+R, a programming language for statistical computing, was used for data collection and analysis. Logistic regression was used to estimate association between the estimates of the trauma severity models and OFI and the effect size was given as the OR. The CI for the OR was computed using the Wald estimator. Receiver operator characteristic (ROC) curves were used to assess diagnostic performance. The area under the curve (AUC) was calculated to compare the models with one another. The Integrated Calibration Index (ICI) was used to measure calibration. Accuracy was plotted and is reported as the highest value for accuracy in the plot together with the associated cutoff. Results werepresented with a confidence interval of 95%. A p-value of <0.05 was considered significant. 
 
 Ethical considerations
 ==========
@@ -220,26 +235,33 @@ missing
 Main results
 ------------
 
-The odds ratio for TRISS was `r t.or['or']` (95% CI: `r t.or[2]`-`r t.or[3]`, p-value: `r t.stats[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r t.stats[['auc']]` (95% CI: `r t.stats[['auc.ci']][1]`-`r t.stats[['auc.ci']][3]`). The integrated calibration index for TRISS was `r t.stats[['ici']]`. The accuracy curve is shown in Figure 4. The best accuracy was `r t.stats[['acc.nrs']][1]` and was found at the cutoff `r t.stats[['acc.nrs']][2]`. 
+### TRISS
+
+The odds ratio for TRISS was `r or.t['or']` (95% CI: `r or.t[2]`-`r or.t[3]`, p-value: `r stats.t[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r stats.t[['auc']]` (95% CI: `r stats.t[['auc.ci']][1]`-`r stats.t[['auc.ci']][3]`). The integrated calibration index for TRISS was `r stats.t[['ici']]`. The accuracy curve is shown in Figure 4. The best accuracy was `r stats.t[['acc.nrs']][1]` and was found at the cutoff `r stats.t[['acc.nrs']][2]`. 
 
 ```{r}
-plot(t.stats[['roc']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
+plot(stats.t[['roc']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
 ```{r}
-t.plot.acc <- plot(t.stats[['acc']], main="Fig 4. TRISS Accuracy Curve.")
+t.plot.acc <- plot(stats.t[['acc']], main="Fig 4. TRISS Accuracy Curve.")
 ```
 
-The odds ratio for NORMIT was `r n.or['or']` (95% CI: `r n.or[2]`-`r n.or[3]`, p-value: `r n.stats[['or.p']]`). The ROC is plotted in Figure 5. The AUC for the ROC was `r n.stats[['auc']]` (95% CI: `r n.stats[['auc.ci']][1]`-`r n.stats[['auc.ci']][3]`). The integrated calibration index for NORMIT was `r n.stats[['ici']]`. The accuracy curve for NORMIT is shown in Figure 5. The best accuracy was `r n.stats[['acc.nrs']][1]` and was found at the cutoff `r n.stats[['acc.nrs']][2]`. 
+### NORMIT 
+The odds ratio for NORMIT was `r or.n['or']` (95% CI: `r or.n[2]`-`r or.n[3]`, p-value: `r stats.n[['or.p']]`). The ROC is plotted in Figure 5. The AUC for the ROC was `r stats.n[['auc']]` (95% CI: `r stats.n[['auc.ci']][1]`-`r stats.n[['auc.ci']][3]`). The integrated calibration index for NORMIT was `r stats.n[['ici']]`. The accuracy curve for NORMIT is shown in Figure 5. The best accuracy was `r stats.n[['acc.nrs']][1]` and was found at the cutoff `r stats.n[['acc.nrs']][2]`. 
 
 ```{r, echo = FALSE}
-plot(n.stats[['roc']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
+plot(stats.n[['roc']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
 ```{r, echo = FALSE}
-n.plot.acc <- plot(n.stats[['acc']], main="Fig 6. NORMIT Accuracy Curve.")
+n.plot.acc <- plot(stats.n[['acc']], main="Fig 6. NORMIT Accuracy Curve.")
 ```
 
+### PS
+
+
+### Comparison of scores
 
 Discussion
 ==========
