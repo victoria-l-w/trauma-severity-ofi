@@ -18,8 +18,9 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
+
 ```{r main, echo=FALSE, message = FALSE}
   source("main.R") 
 ```
@@ -39,6 +40,7 @@ Abbreviations
 * NISS - New Injury Severity Score
 * NORMIT - Norwegian Survival Prediction Model in Trauma
 * OFI - Opportunities for improvement
+* PS - Probability of Survival score
 * QI - Quality Improvement
 * RTS - Revised Trauma Score
 * TRISS - Trauma and Injury Severity Score
@@ -46,7 +48,7 @@ Abbreviations
 
 Introduction
 ============
-Trauma, defined as the clinical entity composed of physical injury and the body's associated response [@Gerdin2015], is one of the leading causes of death worldwide, constituting around 9% of global deaths annually [@globalburden]. The global health burden of trauma has led to it being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is a leading cause of death for people aged 10-49 years [@globalburden] and 90% of trauma-related deaths occur in low- to middle-income countries [@whoepi]. Non-fatal outcomes also comprise a significant portion of the global health burden of disability [@globalburden], which can drastically reduce quality of life and health status in survivors of severe trauma [@globalburden; @longtermtrauma]. The UN's Sustainable Development Goals, published in 2015, included the aim of reducing the number of global deaths and injuries from road traffic accidents by half by 2020 <!-- [@spg] -->. This goal was not met, as global mortality from road traffic accidents was only reduced by 8.3% from 2010 to 2019 <!-- [@spg2020] -->. Improvements in trauma outcomes stand therefore to benefit a broader population by reducing the societal and healthcare costs of disability, not least in low- and middle-income countries. 
+Trauma, defined as the clinical entity composed of physical injury and the body's associated response [@Gerdin2015], is one of the leading causes of death worldwide, constituting around 9% of global deaths annually [@globalburden]. The global health burden of trauma has led to it being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is a leading cause of death for people aged 10-49 years [@globalburden] and 90% of trauma-related deaths occur in low- to middle-income countries [@whoepi]. Non-fatal outcomes also comprise a significant portion of the global health burden of disability [@globalburden], which can drastically reduce quality of life and health status in survivors of severe trauma [@globalburden; @longtermtrauma]. The UN's Sustainable Development Goals, published in 2015, included the aim of reducing the number of global deaths and injuries from road traffic accidents by half by 2020 [@sdg]. This goal was not met, as global mortality from road traffic accidents was only reduced by 8.3% from 2010 to 2019 [@sdg20]. Improvements in trauma outcomes stand therefore to benefit a broader population by reducing the societal and healthcare costs of disability, not least in low- and middle-income countries. 
 
 Management of severe trauma is highly time-sensitive and is also dependent on the actions of a multidisciplinary chain of healthcare providers. Errors in management are a common cause of preventable deaths [@prevdeathsghorbani; @prevdeathsmontmany; @prevdeathsteixeira]. Outcomes in severe trauma are dependent on the quality of care received, and it has been shown in the US that trauma quality improvement (QI) programs improve outcomes [@ustqi]. Multiple tools and interventions have been developed for use in trauma QI programs, including morbidity and mortality conferences, audit filters, and statistical analysis [@hakkenbrakprevdeath]. However, the implementation of QI programs differs widely between clinics [@tqipanglo], with smaller, non-specialised hospitals tending to have less organised programs [@whoguidelines]. 
 
@@ -55,7 +57,7 @@ Trauma as a clinical entity is highly heterogeneous due to the variety in its un
 
 Trauma severity models have become a cornerstone of modern trauma QI programs [@historytss]. One example of their use is highlighting unexpectedly high mortality rates amongst patients with a high Ps [@whoguidelines]. Trauma severity models also allow clinics to compare their outcomes against an established benchmark [@whoguidelines]. However, an inherent weakness of any trauma severity model is that estimates may be unreliable when applied to a population different from the one the model was developed from. Trauma type and severity will differ between locales and trauma patient populations can be difficult to compare between disparate geographical regions [@assessingquality]. This weakness is one reason why models continue to be developed and improved on. Another reason is that efforts to establish which risk factors best predict mortality are still ongoing; different models use different physiological and anatomical parameters.  
 
-The Trauma and Injury Severity Score (TRISS), first developed in the US in 1987 [@triss] and most recently updated in 2010 [@triss2010], is the most used model worldwide [@trissbetter]. TRISS is a combination index that incorporates patient age, the Injury Severity Score (ISS), the Revised Trauma Score (RTS), and whether the injury was blunt or penetrating [@triss]. The resulting value is a percentage that estimates the probability of survival (Ps). The ISS gives a score based on the three anatomical regions with the most severe injury. A limitation of the ISS is that it does not account for situations where one anatomical region has multiple injuries [@trissbetter]. The RTS is based on the physiological parameters GCS, systolic blood pressure, and respiratory rate. The GCS cannot be estimated in situations where the patient has already been intubated, since a valid verbal score cannot be ascertained, which gives TRISS limited value in estimating Ps in certain populations [@trissbetter]. 
+The Trauma and Injury Severity Score (TRISS), first developed in the US in 1987 [@triss] and most recently updated in 2010 [@triss2010], is the most used model worldwide [@trissbetter]. TRISS is a combination index that incorporates patient age, the Injury Severity Score (ISS), the Revised Trauma Score (RTS), and whether the injury was blunt or penetrating [@triss]. The resulting value is a percentage that estimates the probability of survival (Ps). The ISS gives a score based on the three anatomical regions with the most severe injury. A limitation of the ISS is that it does not account for situations where one anatomical region has multiple injuries [@trissbetter]. The RTS is based on the physiological parameters GCS, systolic blood pressure, and respiratory rate. The GCS cannot be estimated in situations where the patient has already been intubated, since a valid verbal score cannot be ascertained, which gives TRISS limited value in estimating probability of survival in certain populations [@trissbetter]. 
 
 In 2014 researchers in Norway released a new model, the Norwegian Survival Prediction Model in Trauma (NORMIT), that attempts to address the weaknesses of TRISS and simultaneously provide a model based on Norwegian patient populations [@normit]. NORMIT is based on the patient's age, New Injury Severity Score (NISS), comorbidities prior to traumatic injury based on the ASA physical status classification system (ASA-PS), and their RTS. NISS differs from ISS in that NISS allows for scoring of multiple injuries within the same anatomical region. Validation of NISS has shown that NISS is better at predicting mortality in trauma patients compared to ISS, especially in patients with multiple severe injuries within one anatomical region [@nissbetter]. NORMIT also provides a method to incorporate the GCS for intubated patients when calculating RTS. For patients who arrive at hospital and under general anaesthesia, the RTS is calculated based on the prehospital value prior to intubation [@normit]. NORMIT was updated in 2018 [@skagaValidatingPerformanceTRISS2018] and a validation study at this institution found that the updated NORMIT reliably predicted survival at a Swedish trauma centre but both the old and new versions of NORMIT performed worse when applied to the entire national population [@validationnormit]. 
 
@@ -71,7 +73,7 @@ The WHO recommends that all "deaths, complications, adverse events and errors" s
 
 Another potential audit filter for M&M review, that is already used at some clinics [@whoguidelines], is trauma severity scoring. However, the extent to which trauma severity models are associated with or can predict OFI as found in M&M conferences is not well understood. A study at Karolinska University Hospital found that neither NORMIT nor TRISS were able to reliably discriminate between preventable and non-preventable deaths [@prevdeathsghorbani]. However, that study included only deaths and not other morbidities and thereby had a low sample size. It is not known whether trauma severity models have better performance when applied to the entire population of trauma patients. 
 
-If it could be found that an existing trauma severity model is associated with OFI, it could allow for another avenue of automatically identifying potentially mismanaged cases in a standardised fashion. Conversely, if trauma severity models are not associated with OFI, using trauma severity models as audit filters may result in cases being unnecessarily flagged for review and in doing so waste conference resources. 
+If it could be found that an existing trauma severity model is associated with OFI, it could allow for another avenue of automatically identifying potentially mismanaged cases in a standardised fashion. Conversely, if trauma severity models are not associated with OFI, using trauma severity models as audit filters may result in cases being unnecessarily flagged for review and in doing so waste conference resources.    
 
 There are far more trauma severity models than the two described above. These two models are of interest for specific reasons: TRISS is the most widely used model and NORMIT is based on a Scandinavian population, which is where this institution is located. It seems reasonable to begin by investigating these two models. 
 
@@ -94,7 +96,7 @@ Setting
 <!-- Describe the setting, locations, and relevant dates, including
 periods of recruitment, exposure, follow-up, and data collection -->
 
-KUH is located in Solna, Sweden. Karolinska University Hospital's trauma centre is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@nksstats]. Karolinska University Hospital is the primary trauma centre for the region of Stockholm and also has agreements with several other regions to provide trauma care for patients with severe trauma. Karolinska University Hospital is thereby the major trauma centre for a population of almost 3 million people [@nksstats]. 
+Karolinska University Hospital is located in Solna, Sweden. Karolinska University Hospital's trauma centre is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@nksstats]. Karolinska University Hospital is the primary trauma centre for the region of Stockholm and also has agreements with several other regions to provide trauma care for patients with severe trauma. Karolinska University Hospital is thereby the major trauma centre for a population of almost 3 million people [@nksstats]. 
 
 The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and thereby follows SweTrau guidelines. The inclusion criteria are given below. All trauma patients meeting the inclusion criteria are registered in the trauma registry by nurses at the trauma centre. Data is collected from the patient's electronic medical records. The trauma registry contains data on patients from 2012 to 2021. 
 
@@ -116,7 +118,7 @@ The trauma registry includes all patients for whom the trauma team was activated
 
 The trauma care quality database contains patients from the trauma registry that were selected for M&M review. At Karolinska University Hospital, all fatalities are automatically selected for M&M review. In addition to this, the electronic medical records of all trauma patients are screened by research nursing staff to identify cases that potentially received sub-optimal care. These nurses also use audit filters that automatically highlight cases with abnormal parameters. Cases that two research nurses have evaluated and found to have potential for sub-optimal care are also selected for M&M review. Figure 1 gives an overview of the workflow that leads to determination of OFI. 
 
-``` {r, echo = FALSE,} 
+``` {r} 
   ofi_diagram() ## Only works in HTML
 ```
 
@@ -193,7 +195,7 @@ Participants
 ------------
 A total of `r counts[6,3]` patients were excluded during processing of data. `r counts[2,3]` patients were excluded due to not having a recorded outcome from an M&M conference. `r counts[3,3]` patients were excluded for being under 15 years of age. `r counts[4,3]` patients were excluded due to being dead on arrival at hospital. `r counts[5,3]` patients were excluded due to missing required data. Figure 2 shows the selection process for eligible participants. 
 
-```{r, echo = FALSE}
+```{r}
   exclusion_flowchart(counts) ## Only works in HTML
 ```
 
@@ -203,7 +205,7 @@ A total of `r counts[5,2]` participants were identified as eligible for inclusio
 
 For patients with at least one OFI, the mean TRISS score was `r numbers['t.ofi.t']` and the mean NORMIT score was `r numbers['n.ofi.t']`. For patients with no OFI, the mean TRISS score was `r numbers['t.ofi.f']` and the mean NORMIT score was `r numbers['n.ofi.f']`.  
 
-```{r, echo = FALSE} 
+```{r} 
   table.one ## will be improved later
 ```
   
@@ -220,11 +222,11 @@ Main results
 
 The odds ratio for TRISS was `r t.or['or']` (95% CI: `r t.or[2]`-`r t.or[3]`, p-value: `r t.stats[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r t.stats[['auc']]` (95% CI: `r t.stats[['auc.ci']][1]`-`r t.stats[['auc.ci']][3]`). The integrated calibration index for TRISS was `r t.stats[['ici']]`. The accuracy curve is shown in Figure 4. The best accuracy was `r t.stats[['acc.nrs']][1]` and was found at the cutoff `r t.stats[['acc.nrs']][2]`. 
 
-```{r, echo = FALSE}
+```{r}
 plot(t.stats[['roc']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
-```{r, echo = FALSE}
+```{r}
 t.plot.acc <- plot(t.stats[['acc']], main="Fig 4. TRISS Accuracy Curve.")
 ```
 
