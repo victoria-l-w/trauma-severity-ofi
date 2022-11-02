@@ -24,9 +24,6 @@ make_stats <-function(df) {
   acc.nrs <- c(acc.max = acc.max, co = cutoff) ## Make a vector to return
   
   ## This makes a vector with the OR and the upper/lower bounds of the CI
-  ## confint.default is confusing because when I do level=0.95, the output says "97.5%" and "2.5%"
-  ## So I changed it to 0.90 because then it gives 95%/5%
-  ## Really not sure if this is the correct function to use or if I'm using it correctly
   or <- round(exp(cbind("or" = coef(model), confint.default(model, level = 0.90))), digits = 2)
   or.p <- round(summary(model)$coefficients[2,4], digits = 2) ## Taking the p-value from glm()
   

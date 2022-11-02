@@ -13,13 +13,12 @@ make_ps12 <- function (input.data) {
   ## ed.gcs == 99 -> intubated
   if (ed.gcs == 99) {gcs.val <- -2.31186} ## b6
     else { 
-    if (gcs >= 13) {gcs.val <- 0} ## b1
-    else if (gcs >= 9) {gcs.val <- -1.27734} ## b2
-    else if (gcs >= 5) {gcs.val <- -1.68936} ## b3
-    else if (gcs >= 4) {gcs.val <- -2.52661} # b4
+    if (ed.gcs >= 13) {gcs.val <- 0} ## b1
+    else if (ed.gcs >= 9) {gcs.val <- -1.27734} ## b2
+    else if (ed.gcs >= 5) {gcs.val <- -1.68936} ## b3
+    else if (ed.gcs >= 4) {gcs.val <- -2.52661} # b4
     else {gcs.val <- -3.62339} #b5
     }
-  
   
   ## coefficient for gender
   if (gender == 1) {gender.val <- 0} # b9
