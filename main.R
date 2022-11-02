@@ -74,10 +74,5 @@ np.aucdiff <- auc_diff(n.stats[['roc']], p.stats[['roc']]) ## NORMIT AUC - PS12 
 table.one <- make_table_one(df)
 numbers <- table_one_stats(df) ## some manually generated descriptive statistics
 
-## plots to be used in manuscript
-t.plot.roc <- plot(t.stats[['roc']], main="TRISS Receiver Operating Characteristic Curve", colorize = TRUE)
-t.plot.acc <- plot(t.stats[['acc']], main="TRISS Accuracy")
-n.plot.roc <- plot(n.stats[['roc']], main="NORMIT Receiver Operating Characteristic Curve", colorize = TRUE)
-n.plot.acc <- plot(n.stats[['acc']], main="NORMIT Accuracy")
-p.plot.roc <- plot(n.stats[['roc']], main="TARN Ps12 Receiver Operating Characteristic Curve", colorize = TRUE)
-p.plot.acc <- plot(n.stats[['acc']], main="TARN Ps12 Accuracy")
+test <- merge_data(datasets)
+test <- test %>% filter (age >= 15)

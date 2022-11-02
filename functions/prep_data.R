@@ -34,7 +34,7 @@ prep_data <- function(df, numbers = FALSE) {
                       ed.rr = ed_rr_value,
                       ed.sbp = ed_sbp_value,
                       pre.gcs = pre_gcs_sum,
-                      age = pt_age_yrs,
+                      age = pt_age_yrsg
                       )
   
   ## Storing the inclusion/exclusion counts at each step so I can use those later
@@ -55,7 +55,7 @@ prep_data <- function(df, numbers = FALSE) {
   
   ## Exclusion: age
   
-  df <- df %>% filter (age >= 15)
+  ## df <- df %>% filter (age >= 15)
   
   age.kept <- nrow(df)
   age.excluded <- ofi.kept - age.kept
@@ -64,6 +64,7 @@ prep_data <- function(df, numbers = FALSE) {
   ## Exclusion: doa
   
   df <- df %>% filter(is.na(doa)|doa != 1)
+  df <- df %>% filter (ed.sbp != 0 & ed.rr != 0 & ed.gcs != 3)
   
   doa.kept <- nrow(df)
   doa.excluded <- age.kept - doa.kept
@@ -85,10 +86,8 @@ prep_data <- function(df, numbers = FALSE) {
   m.numbers <- c(m.gcs, m.asa, m.rr, m.sbp, m.dominj, m.age, m.iss, m.niss, m.gender)
   missing <- tibble("Required parameter" = m.names, "Total no. cases without required parameter" = m.numbers)
 
-  ## Not 100% sure if really need to remove sbp/rr == 0
-  ## sbp/rr == 0 should perhaps be under "DOA" instead?
   df <- df %>% filter_at(vars(iss, niss, age, ed.gcs, dom.inj, ed.sbp, ed.rr, asa, gender),all_vars(!is.na(.)))
-  df <- df %>% filter(dom.inj != 999 & ed.sbp > 0 & ed.rr > 0 & asa != 999 & ed.gcs != 999 & gender != 999)
+  df <- df %>% filter(dom.inj != 999 & asa != 999 & ed.gcs != 999 & gender != 999)
   
   ## Either ed.gcs or pre.gcs should have a usable GCS. ed.gcs == 999 and NA was removed earlier 
   v <- c(3:15)
