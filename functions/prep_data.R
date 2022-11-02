@@ -39,7 +39,7 @@ prep_data <- function(df, numbers = FALSE) {
   
   ## Storing the inclusion/exclusion counts at each step so I can use those later
   original.count <- nrow(df)
-  inclusion.counts <- data.frame (step  = c("original"),
+  eligibility <- data.frame (step  = c("original"),
                     included = c(original.count),
                     excluded = c(0)
                                   )
@@ -51,7 +51,7 @@ prep_data <- function(df, numbers = FALSE) {
   ## After every exclusion counting the new number of rows, then comparing it with the previous number of rows to see how many were excluded
   ofi.kept <- nrow(df)
   ofi.excluded <- original.count - ofi.kept
-  inclusion.counts[nrow(inclusion.counts) + 1,] = c("ofi", ofi.kept, ofi.excluded)
+  eligibility[nrow(eligibility) + 1,] = c("ofi", ofi.kept, ofi.excluded)
   
   ## Exclusion: age
   
@@ -59,16 +59,16 @@ prep_data <- function(df, numbers = FALSE) {
   
   age.kept <- nrow(df)
   age.excluded <- ofi.kept - age.kept
-  inclusion.counts[nrow(inclusion.counts) + 1,] = c("age", age.kept, age.excluded)
+  eligibility[nrow(eligibility) + 1,] = c("age", age.kept, age.excluded)
   
   ## Exclusion: doa
   
   df <- df %>% filter(is.na(doa)|doa != 1)
-  df <- df %>% filter (ed.sbp != 0 & ed.rr != 0 & ed.gcs != 3)
+  df <- df %>% filter (ed.sbp != 0 | ed.rr != 0 | ed.gcs != 3 | is.na(ed.sbp) | is.na(ed.rr) | is.na(ed.gcs))
   
   doa.kept <- nrow(df)
   doa.excluded <- age.kept - doa.kept
-  inclusion.counts[nrow(inclusion.counts) + 1,] = c("doa", doa.kept, doa.excluded)
+  eligibility[nrow(eligibility) + 1,] = c("doa", doa.kept, doa.excluded)
 
   ## Exclusion: parameters
   
@@ -88,11 +88,13 @@ prep_data <- function(df, numbers = FALSE) {
   df <- df %>% filter(dom.inj != 999 & asa != 999 & ed.gcs != 999 & gender != 999)
   
   ## Either ed.gcs or pre.gcs should have a usable GCS. ed.gcs == 999 and NA was removed earlier 
-  nrow1 <- nrow(df)
+  nrow1 <- nrow(df) 
+  
   v <- c(3:15)
   df <- df %>% filter(pre.gcs %in% v | ed.gcs %in% v)
+  
   nrow2 <- nrow(df)
-  m.pregcs <- nrow1 - nrow2 ## adding missing pregcs when edgcs == 99 to missing parameter count
+  m.pregcs <- nrow1 - nrow2 ## adding missing pre.gcs when edgcs == 99 to missing parameter count
   m.gcs <- m.gcs + m.pregcs
   
   ## Make a new gcs variable that takes into account ed.gcs = 99 
@@ -100,20 +102,21 @@ prep_data <- function(df, numbers = FALSE) {
   
   param.kept <- nrow(df)
   param.excluded <- doa.kept - param.kept
-  inclusion.counts[nrow(inclusion.counts) + 1,] = c("parameters", param.kept, param.excluded)
+  eligibility[nrow(eligibility) + 1,] = c("parameters", param.kept, param.excluded)
   
   ##
   ## Exclusion: totals
   ##
   
   total.excluded <- original.count - param.kept
-  inclusion.counts[nrow(inclusion.counts) + 1,] = c("total", param.kept, total.excluded)
+  eligibility[nrow(eligibility) + 1,] = c("total", param.kept, total.excluded)
   
   ##
   ## Make missing parameters table
   ##
+  
   m.numbers <- c(m.gcs, m.asa, m.rr, m.sbp, m.dominj, m.age, m.iss, m.niss, m.gender)
-  missing <- tibble("Required parameter" = m.names, "Total no. cases without required parameter" = m.numbers)
+  incomplete.data <- tibble("Parameter" = m.names, "Total no. cases missing parameter" = m.numbers)
   
   
   ##
@@ -131,7 +134,7 @@ prep_data <- function(df, numbers = FALSE) {
   ofi.test <- c("1", "0")
   assert_that(are_equal(ofi.test, unique(df$ofi)))
 
-  ret <- list(df = df, counts = inclusion.counts, missing = missing)
+  ret <- list(df = df, eligibility = eligibility, incomplete.data = incomplete.data)
 
   return(ret)
 }
