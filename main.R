@@ -15,6 +15,7 @@ library(gmish)
 library(pROC)
 library(gt)
 library(gtsummary)
+library(boot)
 
 noacsr::source_all_functions()
 
@@ -72,13 +73,21 @@ or.p <- or.p[2,]
 
 ## differences between AUC
 aucdiff.tn <- auc_delta(stats.t[['roc']], stats.n[['roc']]) ## TRISS AUC - NORMIT AUC
-aucdiff.tp <- auc_delta(stats.t[['roc']], stats.p[['roc']]) ## TRISS AUC - PS12 AUC
-aucdiff.np <- auc_delta(stats.n[['roc']], stats.p[['roc']]) ## NORMIT AUC - PS12 AUC
+aucdiff.tp <- auc_delta(stats.t[['roc']], stats.p[['roc']]) ## TRISS AUC - PS AUC
+aucdiff.np <- auc_delta(stats.n[['roc']], stats.p[['roc']]) ## NORMIT AUC - PS AUC
+
+## comparison of AUC
+auc.tbl.names <- c("TRISS - NORMIT", "TRISS - PS", "NORMIT - PS")
+auc.tbl.diff <- c(aucdiff.tn['diff'], aucdiff.tp['diff'], aucdiff.np['diff'])
+auc.tbl.ci <- c(aucdiff.tn['ci'], aucdiff.tp['ci'], aucdiff.np['ci'])
+auc.tbl.p <- c(aucdiff.tn['p'], aucdiff.tp['p'], aucdiff.np['p'])
+auc.tbl <- tibble("Comparison" = auc.tbl.names, "Difference in AUC" = auc.tbl.diff, "95% CI" = auc.tbl.ci, "p-value", "auc.tbl.p")
 
 ## clean the dataset
 df$triss <- round(df$triss, digits = 2)
 df$normit <- round(df$normit , digits = 2)
 df$ps <- round(df$ps , digits = 2)
+
 
 ## descriptive data
 table.one <- make_table_one(df)
@@ -86,4 +95,5 @@ descr.stats <- table_one_stats(df) ## some manually generated descriptive statis
 demo <- descr.stats[['demo']]
 ofi.descr <- descr.stats[['ofi.descr']]
 scores.descr <- descr.stats[['scores.descr']]
+
 
