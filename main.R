@@ -54,7 +54,11 @@ table.one <- table_one(df) ## table_one.R
 dd <- descriptive_data(df) ## descriptive_data.R
 
 ## get results
-results <- results(df, bootstrap = FALSE) ## results.R
+results <- results(df, bootstrap = TRUE) ## results.R
+t <- results[['t']]
+n <- results[['n']]
+p <- results[['p']]
+d <- results[['delta']]
 
 ## done
 end.time <- Sys.time()

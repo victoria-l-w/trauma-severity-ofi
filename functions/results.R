@@ -16,11 +16,10 @@ results <-function(df, bootstrap = FALSE) {
   t <- base_stats(df.t)
   n <- base_stats(df.n)
   p <- base_stats(df.p)
-  message("Base stats computed")
   
   if (bootstrap == TRUE) {
     message("Bootstrapping enabled")
-    boot.no <- 1500
+    boot.no <- 50
     message(paste0("# of bootstrap samples: ", boot.no))
     
     ## acc_ci.R
@@ -42,17 +41,17 @@ results <-function(df, bootstrap = FALSE) {
     message("AUC deltas + CIs computed")
     d.auc <- list(tn = auc.tn, tp = auc.tp, np = auc.np)
     
-    acc.tn <- t[['acc.nrs']][['acc.max']] - n[['acc.nrs']][['acc.max']]
-    acc.tp <- t[['acc.nrs']][['acc.max']] - p[['acc.nrs']][['acc.max']]
-    acc.np <- n[['acc.nrs']][['acc.max']] - p[['acc.nrs']][['acc.max']]
+    acc.tn <- t[['acc.max']] - n[['acc.max']]
+    acc.tp <- t[['acc.max']] - p[['acc.max']]
+    acc.np <- n[['acc.max']] - p[['acc.max']]
     message("Accuracy deltas computed")
     
-    ## acc_delta.R
+    ## acc_delta_ci.R
     acc.tn.ci <- acc_delta_ci(df.tn, boot.no)
     acc.tp.ci <- acc_delta_ci(df.tp, boot.no)
     acc.np.ci <- acc_delta_ci(df.np, boot.no)
     message("Accuracy delta CIs computed")
-    delta.acc <- list(tn = acc.tn, tn.ci = acc.tn.ci, tp = acc.tp, tp.ci = acc.tp.ci, np = acc.np, np.ci = acc.np.ci)
+    d.acc <- list(tn = acc.tn, tn.ci = acc.tn.ci, tp = acc.tp, tp.ci = acc.tp.ci, np = acc.np, np.ci = acc.np.ci)
     
     ici.tn <- t[['ici']] - n[['ici']]
     ici.tp <- t[['ici']] - p[['ici']]
@@ -66,7 +65,7 @@ results <-function(df, bootstrap = FALSE) {
     message("ICI delta CIs computed")
     d.ici <- list(tn = ici.tn, tn.ci = ici.tn.ci, tp = ici.tp, tp.ci = ici.tp.ci, np = ici.np, np.ci = ici.np.ci)
     
-    deltas <- list(
+    delta <- list(
       auc = d.auc,
       acc = d.acc, 
       ici = d.ici

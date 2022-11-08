@@ -39,12 +39,12 @@ descriptive_data <- function(df) {
 
   
   dd['survival.na'] <- sum(is.na(df$survival)) + nrow(df[df$survival == 999 & !is.na(df$survival),]) ## # cases missing survival data
-  survival.not.na <- total - as.numeric(dd['mort.missing']) ## # cases that have survival data
+  survival.not.na <- total - as.numeric(dd['survival.na']) ## # cases that have survival data
   deceased <- nrow(df[df$survival == 1 & !is.na(df$survival),]) ## # cases deceased in 30 days
   dd['mort'] <- round(deceased / survival.not.na * 100, digits = 1) ## 30-day mortality as % in cases where data is not missing
 
-  dd['care.missing'] <- sum(is.na(df$care.level)) + nrow(df[df$care.level == 999 & !is.na(df$care.level),]) ## # cases missing care level data
-  care.not.na <- total - as.numeric(dd['icu.missing']) ## # cases that have care level data
+  dd['care.na'] <- sum(is.na(df$care.level)) + nrow(df[df$care.level == 999 & !is.na(df$care.level),]) ## # cases missing care level data
+  care.not.na <- total - as.numeric(dd['care.na']) ## # cases that have care level data
   total.icu <- nrow(df[df$care.level == 5 & !is.na(df$care.level),]) ## # cases that were in the ICU
   dd['icu'] <- round(total.icu / care.not.na * 100, digits = 1) ## % cases with ICU as highest level of care in cases where data is not missing
 

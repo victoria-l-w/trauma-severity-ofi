@@ -12,9 +12,9 @@ ici_bs <- function(df, index) {
 
 ici_ci <- function(df, boot.no) {
   results <- boot(data = df, statistic = ici_bs, R = boot.no)
-  ci <- boot.ci(boot.out = results, conf = 0.95, type="all")
+  ci <- boot.ci(boot.out = results, conf = 0.95, type=c("norm"))
   
-  out <- c(ci[['normal']][[2]], ci[['normal']][[3]]) ## choosing "normal" for CI type
+  out <- round(c(ci[['normal']][2], ci[['normal']][3]), digits = 2)
   
   return(out)
 }
