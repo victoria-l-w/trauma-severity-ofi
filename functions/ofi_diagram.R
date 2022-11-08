@@ -2,7 +2,7 @@
 
 ofi_diagram <- function() {
   
-  ofi_diagram <- DiagrammeR::grViz("digraph flowchart {
+  out <- DiagrammeR::grViz("digraph flowchart {
   
     label='Fig. 1. OFI decision-making workflow';
     labelloc=bottom;
@@ -36,7 +36,7 @@ ofi_diagram <- function() {
 
   ## %>% DiagrammeRsvg::export_svg() %>% charToRaw() %>% rsvg::rsvg_pdf("swetrau_flowchart.pdf")
   ## Cannot to install DiagrammeRsvg b/c can't install v8 b/c "fatal error: v8.h: no such file or directory"
-  return(ofi_diagram)
+  return(out)
 
 }
   

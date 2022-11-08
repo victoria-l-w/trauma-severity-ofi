@@ -55,13 +55,10 @@ make_triss <- function(input.data) {
   
   ## Calculating TRISS
   b <- b0 + (r.rr * 0.2908 * b1) + (r.sbp * 0.7326 * b2) + (r.gcs * 0.9368 * b3) + (iss * b4) + (age.val * b5)
-  t.val <- 1 / (1 + exp(b * -1))
+  out <- 1 / (1 + exp(b * -1))
   
-  t.val <- as.numeric(t.val)
-
-  ## Ensure a score was actually calculated
-  ## Because, for example, if dom.inj is a number other than 1 or 2, R will silently return an empty vector
-  assertthat::assert_that(length(t.val) == 1)
+  out <- as.numeric(out)
+  assertthat::assert_that(length(out) == 1)
   
-  return(t.val)
+  return(out)
 }

@@ -1,7 +1,8 @@
 ## https://www.tarn.ac.uk/Content.aspx?c=1895
 
-make_ps12 <- function (input.data) {
+make_ps <- function (input.data) {
   
+  ## Cast variables to numeric to ensure they can be used for calculations  
   ed.gcs <- as.numeric(input.data["ed.gcs"])
   gcs <- as.numeric(input.data["gcs"] )
   age <- as.numeric(input.data["age"])
@@ -65,13 +66,14 @@ make_ps12 <- function (input.data) {
   iss.val <- iss1 + iss2
   iss.val <- as.numeric(iss.val)
   
-  ## Calculate ps12!
+  ## Calculate ps
   b <- b0 + gcs.val + gender.val + age.val + gen.age.val + iss.val
   b <- as.numeric(b)
-  ps12 <- exp(b) / (1 + exp(b))
-
-  assertthat::assert_that(length(ps12) == 1)
+  out <- exp(b) / (1 + exp(b))
   
-  return(ps12)
+  out <- as.numeric(out)
+  assertthat::assert_that(length(out) == 1)
+  
+  return(out)
   
 }

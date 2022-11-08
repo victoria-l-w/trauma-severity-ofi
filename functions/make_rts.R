@@ -27,10 +27,11 @@ make_rts <- function (input.data) {
   r.rr <-   lookup.rts$score.value[rr >= lookup.rts$RRmin & rr <= lookup.rts$RRmax]
   
   ## Calculate RTS!
-  r.val <- (r.rr * 0.2908) + (r.sbp * 0.7326) + (r.gcs * 0.9368)
+  out <- (r.rr * 0.2908) + (r.sbp * 0.7326) + (r.gcs * 0.9368)
   
-  assertthat::assert_that(length(r.val) == 1)
+  out <- as.numeric(out)
+  assertthat::assert_that(length(out) == 1)
   
-  return(r.val)
+  return(out)
   
 }

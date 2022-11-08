@@ -5,15 +5,16 @@ acc_ci_bs <- function(df, index) {
   pred.model <- predict(model, type="response")
   pred <- prediction(pred.model, sample$ofi)
   acc <- performance(pred, measure = "acc")
-  ind <- which.max( slot(acc, "y.values")[[1]] ) ## find the index of the highest accuracy
-  acc.max <- slot(acc, "y.values")[[1]][ind] ## stores the highest accuracy
+  acc.max <- max(acc@y.values[[1]])
   
   return(acc.max)
 }
 
 acc_ci <- function(df, boot.no) {
   results <- boot(data = df, statistic = acc_ci_bs, R = boot.no)
-  plot(results)
-  acc.ci <- boot.ci(boot.out = results, conf = 0.95, type="all")
-  return(acc.ci)
+  ci <- boot.ci(boot.out = results, conf = 0.95, type="all")
+  
+  out <- round(c(ci[['normal']][[2]], ci[['normal']][[3]]), digits = 2) ## choosing "normal" for CI type
+  
+  return(out)
 }
