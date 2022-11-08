@@ -19,50 +19,50 @@ results <-function(df, bootstrap = FALSE) {
   
   if (bootstrap == TRUE) {
     message("Bootstrapping enabled")
-    boot.no <- 50
+    boot.no <- 25
     message(paste0("# of bootstrap samples: ", boot.no))
     
     ## acc_ci.R
     t <- list.append(t, "acc.ci" = acc_ci(df.t, boot.no))
     n <- list.append(n, "acc.ci" = acc_ci(df.n, boot.no))
     p <- list.append(p, "acc.ci" = acc_ci(df.p, boot.no))
-    message("Accuracy CIs computed")
+    message("Accuracy CIs done")
     
     ## ici_ci.R
     t <- list.append(t, "ici.ci" = ici_ci(df.t, boot.no))
     n <- list.append(n, "ici.ci" = ici_ci(df.n, boot.no))
     p <- list.append(p, "ici.ci" = ici_ci(df.p, boot.no))
-    message("ICI CIs computed")
+    message("ICI CIs done")
     
     ## auc_delta.R
     auc.tn <- auc_delta(t[['roc']], n[['roc']]) ## TRISS AUC - NORMIT AUC
     auc.tp <- auc_delta(t[['roc']], p[['roc']]) ## TRISS AUC - PS AUC
     auc.np <- auc_delta(n[['roc']], p[['roc']]) ## NORMIT AUC - PS AUC
-    message("AUC deltas + CIs computed")
+    message("AUC deltas + CIs done")
     d.auc <- list(tn = auc.tn, tp = auc.tp, np = auc.np)
     
     acc.tn <- t[['acc.max']] - n[['acc.max']]
     acc.tp <- t[['acc.max']] - p[['acc.max']]
     acc.np <- n[['acc.max']] - p[['acc.max']]
-    message("Accuracy deltas computed")
+    message("Accuracy deltas done")
     
     ## acc_delta_ci.R
     acc.tn.ci <- acc_delta_ci(df.tn, boot.no)
     acc.tp.ci <- acc_delta_ci(df.tp, boot.no)
     acc.np.ci <- acc_delta_ci(df.np, boot.no)
-    message("Accuracy delta CIs computed")
+    message("Accuracy delta CIs done")
     d.acc <- list(tn = acc.tn, tn.ci = acc.tn.ci, tp = acc.tp, tp.ci = acc.tp.ci, np = acc.np, np.ci = acc.np.ci)
     
     ici.tn <- t[['ici']] - n[['ici']]
     ici.tp <- t[['ici']] - p[['ici']]
     ici.np <- n[['ici']] - p[['ici']]
-    message("ICI deltas computed")
+    message("ICI deltas done")
     
     ## ici_delta_ci.R
     ici.tn.ci <- ici_delta_ci(df.tn, boot.no)
     ici.tp.ci <- ici_delta_ci(df.tp, boot.no)
     ici.np.ci <- ici_delta_ci(df.np, boot.no)
-    message("ICI delta CIs computed")
+    message("ICI delta CIs done")
     d.ici <- list(tn = ici.tn, tn.ci = ici.tn.ci, tp = ici.tp, tp.ci = ici.tp.ci, np = ici.np, np.ci = ici.np.ci)
     
     delta <- list(

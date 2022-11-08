@@ -25,23 +25,23 @@ base_stats <-function(df) {
   
   ## accuracy max + cutoff
   acc <- performance(pred, measure = "acc") ## plottable
-  ind <- which.max(slot(acc, "y.values")[[1]] ) ## find the index of the highest accuracy
+  ind <- which.max(slot(acc, "y.values")[[1]]) ## find the index of the highest accuracy
   acc.max <- slot(acc, "y.values")[[1]][ind] ## stores the highest accuracy
-  acc.max <- acc.max
+  acc.max <- acc.max[[1]]
   acc.co <- slot(acc, "x.values")[[1]][ind] ## stores the cutoff at the highest accuracy
-  acc.co <- acc.co
+  acc.co <- acc.co[[1]]
   
   numerics <- c(
     auc = auc, 
-    acc.max = acc.max,
-    acc.co = acc.co,
     ici = ici, 
     auc.ci.lo = auc.ci.lo,
     auc.ci.hi = auc.ci.hi,
     or = or, 
     or.ci.lo = or.ci.lo,
     or.ci.hi = or.ci.hi,
-    or.p = or.p
+    or.p = or.p,
+    acc.max = acc.max,
+    acc.co = acc.co
   )
   
   numerics <- lapply(numerics, round, digits = 2)

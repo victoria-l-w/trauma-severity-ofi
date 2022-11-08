@@ -97,22 +97,11 @@ Setting
 periods of recruitment, exposure, follow-up, and data collection -->
 
 Karolinska University Hospital is located in Solna, Sweden. The trauma centre at Karolinska University Hospital is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@nksstats] and it is the primary trauma centre for the region of Stockholm. Karolinska University Hospital also has agreements with several other regions to provide trauma care for patients with severe trauma and the trauma centre has thereby a catchment population of almost 3 million residents [@nksstats]. 
-<!-- Potential things to add about NKS:
-1. How many trauma patients per year?
-2. How often do conferences happen, or alternatively, roughly how many per year?
-3. Which specialties/professions participate in conferences? 
-4. Any other info about conferences at NKS that might be relevant like if there's a particular format or it follows particular guidelines etc 
-5. Also if there's any stats about trauma patients at NKS in general, like the avg ISS or similar
-... although I guess I have the data to calculate this myself-->
-
 The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and thereby follows SweTrau guidelines. All trauma patients meeting the SweTrau inclusion criteria are registered in the trauma registry by research nurses at the trauma centre. Data is collected from the patient's electronic medical records. The trauma registry contains data on patients from 2012 to 2021. <!-- Double check these dates, maybe give exact dates of registration in the study --> 
-<!-- Also is there a time limit for when patients are registered in the registry? Like x days/weeks following admission -->
 
 SweTrau follows the Utstein Trauma Template for reporting of data following major trauma. The registered data includes prehospital vital signs and management, vital signs and management on arrival at hospital, information about the type of injury, and the primary method of treatment. Follow-up variables include, but are not limited to, survival at 30 days, days in ventilator, Glasgow Outcome Scale score at discharge, highest level of care, and transfers to other units.
 
-The trauma care quality database is an internal hospital registry and registers the outcome of M&M conferences. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. The database contains data on patients from 2014 to 2021. <!-- Double check these dates -->
-
-<!-- How exactly is OFI identified, is it according to specific criteria? -->
+The trauma care quality database is an internal hospital registry and registers the outcome of M&M conferences. M&M conferences are held at Karolinska University Hospital ten times per year and are attended by all involved specialties and professions. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. The database contains data on patients from 2014 to 2021. <!-- Double check these dates -->
 
 Participants
 ------------
@@ -158,14 +147,14 @@ The NISS is recorded in the trauma registry as part of original data collection.
 
 The RTS was computed using GCS, systolic blood pressure, and respiratory rate. For the systolic blood pressure and respiratory rate, values are taken from arrival at hospital. The GCS is also taken from arrival at hospital except in cases where the patient is intubated pre-hospitally; in these cases, the pre-hospital GCS is used. These parameters are weighted and expressed in a score from 0 to 8, where a lower score indicates more severe injury. 
 
-### PS
+#### PS
 
 The algorithm for PS includes the patient's age, gender, GCS and ISS. 
 
 Quantitative variables
 ----------------------
 
-RTS, NORMIT and PS12 were calculated according to the original published algorithms [@rtsalgorithm, @normit, @psalgorithm]. TRISS was calculated using the revised 2009 coefficients [@triss2010].
+RTS, NORMIT and PS12 were computed according to the original published algorithms [@rtsalgorithm; @normit; @psalgorithm]. TRISS was calculated using the revised 2009 coefficients [@triss2010].
 
 For all parameters other than GCS, the values used to compute scores were solely taken from arrival at hospital. For GCS, values were used based on arrival at hospital except in cases where the patient was intubated pre-hospitally. PS and NORMIT have methods of handling this scenario, as described above. TRISS does not have a published method to handle patients intubated pre-hospitally. In order to avoid excluding patients who were intubated pre-hospitally, the GCS parameter for TRISS was handled in the same manner as NORMIT, i.e. the pre-hospital GCS value was used.
 
@@ -193,25 +182,25 @@ Results
 
 Participants
 ------------
-A total of `r eligibility[1,2]` patients were recorded in the trauma registry during the study period. Of these, `r eligibility[2,2]` were reviewed at an M&M conference and therefore became eligible for study inclusion. `r post.ofi.exclusion` patients were excluded, due to either being of paediatric age (`r eligibility[3,3]`), being dead on arrival at hospital (`r eligibility[4,3]`), or due to incomplete data (`r eligibility[5,3]`). Figure 2 shows the inclusion process for eligible participants. 
+A total of `r exclusion[1,2]` patients were recorded in the trauma registry during the study period. Of these, `r exclusion[2,2]` were reviewed at an M&M conference and therefore became eligible for study inclusion. `r exclusion[7,3]` patients were excluded, due to either being of paediatric age (`r exclusion[3,3]`), being dead on arrival at hospital (`r exclusion[4,3]`), or due to incomplete data (`r exclusion[5,3]`). Figure 2 shows the inclusion process for eligible participants. 
 
 ```{r}
-  exclusion_flowchart(eligibility) ## Only works in HTML
+  exclusion_flowchart(exclusion) ## Only works in HTML
 ```
 
 Detailed totals of missing data for each required parameter in cases that were excluded for incomplete data are given in table 1. Some patients had missing data in several parameters and therefore the total number of missing parameters is greater than the total number of patients excluded due to incomplete data.
 
 ```{r}
-  as_raw_html(incomplete.data.tbl)
+ as_raw_html(table(na.data, type = "incomplete"))
 ```
 
 Descriptive data
 ----------------
-A total of `r eligibility[5,2]` participants were identified as eligible for inclusion. Their demographical and clinical characteristics are described in Table 2. 
+A total of `r exclusion[6,2]` participants were identified as eligible for inclusion. Their demographical and clinical characteristics are described in table 2. 
 
-The median age was `r demo['age.med']` (IQR: `r demo['age.iqr']`). `r demo['pc.male']`% of participants were male. `r demo['pc.blunt']`% of cases were due to blunt force trauma. Of cases where 30-day survival was available, there was a  `r demo['mort']`% 30-day mortality rate (`r demo['mort.missing']` cases with missing survival data). Of cases where registered data on the highest level of care was available, `r demo['icu']`% had the ICU as their highest level of care (`r demo['icu.missing']` cases with missing care level data). The median ISS score was `r demo['iss']` (IQR: `r demo['iss.iqr']`).
+The median age was `r dd['age']` (IQR: `r dd['age.lo']`-`r dd['age.hi']`). `r dd['male']`% of participants were male. `r dd['blunt']`% of cases were due to blunt force trauma. Of cases where 30-day survival was available, there was a `r dd['mort']`% 30-day mortality rate (`r dd['survival.na']` cases with missing survival data). Of cases where registered data on the highest level of care was available, `r dd['icu']`% had the ICU as their highest level of care (`r dd['care.na']` cases with missing care level data). The median ISS score was `r dd['iss']` (IQR: `r dd['iss.lo']`-`r dd['iss.hi']`).
 
-At least one OFI was found in `r ofi.descr['ofi.true']` of cases (`r ofi.descr['pc.ofi.true']`%). In cases where death occurred within 30 days, at least one OFI was found in `r ofi.descr['ofi.mort']`% of cases. The median scores for TRISS, NORMIT, and PS were `r scores.descr['t.med']` (IQR: `r scores.descr['t.iqr']`), `r scores.descr['n.med']` (IQR: `r scores.descr['n.iqr']`), and `r scores.descr['n.med']` (IQR: `r scores.descr['n.iqr']`) respectively. 
+At least one OFI was found in `r dd['ofi.true']` of cases (`r dd['ofi.pc']`%). In cases where death occurred within 30 days, at least one OFI was found in `r dd['ofi.mort']`% of cases. The median scores for TRISS, NORMIT, and PS were `r dd['t.med']` (IQR: `r dd['t.lo']`-`r dd['t.lo']`), `r dd['n.med']` (IQR: `r dd['n.lo']`-`r dd['n.hi']`), and `r dd['p.med']` (IQR: `r dd['p.lo']`-`r dd['p.hi']`) respectively. 
 
   
 ```{r} 
@@ -223,39 +212,47 @@ Main results
 
 ### TRISS
 
-The odds ratio for TRISS was `r or.t['or']` (95% CI: `r or.t[2]`-`r or.t[3]`, p-value: `r or.t`). The ROC is plotted in Figure 3. The AUC for the ROC was `r stats.t[['auc']]` (95% CI: `r stats.t[['auc.ci']][1]`-`r stats.t[['auc.ci']][3]`). The integrated calibration index for TRISS was `r stats.t[['ici']]`. The accuracy curve is shown in Figure 4. The best accuracy was `r stats.t[['acc.nrs']][1]` and was found at the cutoff `r stats.t[['acc.nrs']][2]`. 
+The odds ratio for TRISS was `r t[['or']]` (95% CI: `r t[['or.ci.lo']]`-`r t[['or.ci.hi']]`, p-value: `r t[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r t[['auc']]` (95% CI: `r t[['auc.ci.lo']]`-`r t[['auc.ci.hi']]`). The integrated calibration index for TRISS was `r t[['ici']]` (95% CI: `r t[['ici.ci']][1]`-`r t[['ici.ci']][2]`. The accuracy curve is shown in Figure 4. The best accuracy was `r t[['acc.max']]` (95% CI: `r t[['acc.ci']][1]`-`r t[['acc.ci']][2]`) and was found at the cutoff `r t[['acc.co']]`. 
 
 ```{r}
-plot(stats.t[['roc']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
+plot(t[['roc']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
 ```{r}
-t.plot.acc <- plot(stats.t[['acc']], main="Fig 4. TRISS Accuracy Curve.")
+plot(t[['acc']], main="Fig 4. TRISS Accuracy Curve.")
 ```
 
 ### NORMIT 
-The odds ratio for NORMIT was `r or.n['or']` (95% CI: `r or.n[2]`-`r or.n[3]`, p-value: `r or.n`). The ROC is plotted in Figure 5. The AUC for the ROC was `r stats.n[['auc']]` (95% CI: `r stats.n[['auc.ci']][1]`-`r stats.n[['auc.ci']][3]`). The integrated calibration index for NORMIT was `r stats.n[['ici']]`. The accuracy curve for NORMIT is shown in Figure 5. The best accuracy was `r stats.n[['acc.nrs']][1]` and was found at the cutoff `r stats.n[['acc.nrs']][2]`. 
+The odds ratio for NORMIT was `r n[['or']]` (95% CI: `r n[['or.ci.lo']]`-`r n[['or.ci.hi']]`, p-value: `r n[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r n[['auc']]` (95% CI: `r n[['auc.ci.lo']]`-`r n[['auc.ci.hi']]`). The integrated calibration index for NORMIT was `r n[['ici']]` (95% CI: `r n[['ici.ci']][1]`-`r n[['ici.ci']][2]`. The accuracy curve is shown in Figure 4. The best accuracy was `r n[['acc.max']]` (95% CI: `r n[['acc.ci']][1]`-`r n[['acc.ci']][2]`) and was found at the cutoff `r n[['acc.co']]`. 
 
 ```{r, echo = FALSE}
-plot(stats.n[['roc']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
+plot(n[['roc']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
 ```{r, echo = FALSE}
-n.plot.acc <- plot(stats.n[['acc']], main="Fig 6. NORMIT Accuracy Curve.")
+plot(n[['acc']], main="Fig 6. NORMIT Accuracy Curve.")
 ```
 
 ### PS
-The odds ratio for PS was `r or.p['or']` (95% CI: `r or.p[2]`-`r or.p[3]`, p-value: `r or.p`). The ROC is plotted in Figure 3. The AUC for the ROC was `r stats.p[['auc']]` (95% CI: `r stats.p[['auc.ci']][1]`-`r stats.p[['auc.ci']][3]`). The integrated calibration index for PS was `r stats.p[['ici']]`. The accuracy curve is shown in Figure 4. The best accuracy was `r stats.p[['acc.nrs']][1]` and was found at the cutoff `r stats.p[['acc.nrs']][2]`. 
+The odds ratio for PS was `r p[['or']]` (95% CI: `r p[['or.ci.lo']]`-`r p[['or.ci.hi']]`, p-value: `r p[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r p[['auc']]` (95% CI: `r p[['auc.ci.lo']]`-`r p[['auc.ci.hi']]`). The integrated calibration index for PS was `r p[['ici']]` (95% CI: `r p[['ici.ci']][1]`-`r p[['ici.ci']][2]`. The accuracy curve is shown in Figure 4. The best accuracy was `r p[['acc.max']]` (95% CI: `r p[['acc.ci']][1]`-`r p[['acc.ci']][2]`) and was found at the cutoff `r p[['acc.co']]`.  
 
 ```{r}
-plot(stats.p[['roc']], main="Fig 6. PS Receiver Operating Characteristic Curve.", colorize = TRUE)
+plot(p[['roc']], main="Fig 6. PS Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
 ```{r}
-p.plot.acc <- plot(stats.p[['acc']], main="Fig 7. PS Accuracy Curve.")
+plot(p[['acc']], main="Fig 7. PS Accuracy Curve.")
+```
 
 ### Comparison of scores
 
+Table 3 shows a comparison of ?? for the three models analysed.
+
+<!-- Make a table here? after I've run the full script -->
+
+```{r}
+  table(results, type = "or.plot")
+```
 
 
 Discussion
@@ -267,6 +264,7 @@ Key results
 Summarise key results with reference to study objectives
 
 --> 
+
 
 Limitations
 -----------

@@ -59,16 +59,16 @@ prep_data <- function(df, numbers = FALSE) {
   
   ## Recording data on each missing parameter
   na.data <- c(
-    "na.gcs" = sum(is.na(df$ed.gcs)) + nrow(df[df$ed.gcs == 999 & !is.na(df$ed.gcs),]),
-    "na.asa" = sum(is.na(df$asa)) + nrow(df[df$asa == 999 & !is.na(df$asa),]),
-    "na.rr" = sum(is.na(df$ed.rr)) + nrow(df[df$ed.rr == 0 & !is.na(df$ed.rr),]),
-    "na.sbp" = sum(is.na(df$ed.sbp)) + nrow(df[df$ed.sbp == 0 & !is.na(df$ed.sbp),]),
-    "na.dominj" = sum(is.na(df$dom.inj)) + nrow(df[df$dom.inj == 999 & !is.na(df$dom.inj),]),
-    "na.age" = sum(is.na(df$age)),
-    "na.iss" = sum(is.na(df$iss)),
-    "na.niss" = sum(is.na(df$niss)),
-    "na.gender" = sum(is.na(df$gender)) + nrow(df[df$gender == 999 & !is.na(df$gender),])
-    )
+    gcs = sum(is.na(df$ed.gcs)) + nrow(df[df$ed.gcs == 999 & !is.na(df$ed.gcs),]),
+    asa = sum(is.na(df$asa)) + nrow(df[df$asa == 999 & !is.na(df$asa),]),
+    rr = sum(is.na(df$ed.rr)) + nrow(df[df$ed.rr == 0 & !is.na(df$ed.rr),]),
+    sbp = sum(is.na(df$ed.sbp)) + nrow(df[df$ed.sbp == 0 & !is.na(df$ed.sbp),]),
+    dominj = sum(is.na(df$dom.inj)) + nrow(df[df$dom.inj == 999 & !is.na(df$dom.inj),]),
+    age = sum(is.na(df$age)),
+    iss = sum(is.na(df$iss)),
+    niss = sum(is.na(df$niss)),
+    gender = sum(is.na(df$gender)) + nrow(df[df$gender == 999 & !is.na(df$gender),])
+  )
                                             
   ## Parameter exclusion
   df <- df %>% filter_at(vars(iss, niss, age, ed.gcs, dom.inj, ed.sbp, ed.rr, asa, gender),all_vars(!is.na(.)))
@@ -80,7 +80,7 @@ prep_data <- function(df, numbers = FALSE) {
   v <- c(3:15)
   df <- df %>% filter(pre.gcs %in% v | ed.gcs %in% v)
   
-  na.data["na.gcs"] <- na.data["na.gcs"] + n - nrow(df) ## adding missing pre.gcs when edgcs == 99 to missing parameter count
+  na.data["gcs"] <- na.data["gcs"] + n - nrow(df) ## adding missing pre.gcs when edgcs == 99 to missing parameter count
   exclusion[nrow(exclusion) + 1,] <- c("parameters", nrow(df), as.numeric(exclusion[4,2]) - nrow(df))
   
   ##

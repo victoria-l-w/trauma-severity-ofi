@@ -6,32 +6,32 @@ descriptive_data <- function(df) {
 
   ## some medians 
   dd <- c(
-    "age" = median(df$age), 
-    "age.lo" = quantile(df$age)[[2]], 
-    "age.hi" = quantile(df$age)[[4]], 
-    "iss" = median(df$iss),
-    "iss.lo" = quantile(df$iss)[[2]], 
-    "iss.hi" = quantile(df$iss)[[4]], 
-    "ofi.true" = nrow(df[df$ofi == 1,]),
-    "ofi.false" = nrow(df[df$ofi == 0,]),
-    "t.med" = median(df$triss),
-    "t.lo" = quantile(df$triss)[[2]], 
-    "t.hi" = quantile(df$triss)[[4]], 
-    "n.med" = median(df$normit),
-    "n.lo" = quantile(df$normit)[[2]], 
-    "n.hi" = quantile(df$normit)[[4]], 
-    "p.med" = median(df$ps),
-    "p.lo" = quantile(df$ps)[[2]], 
-    "p.hi" = quantile(df$ps)[[4]]
+    age = median(df$age), 
+    age.lo = quantile(df$age)[[2]], 
+    age.hi = quantile(df$age)[[4]], 
+    iss = median(df$iss),
+    iss.lo = quantile(df$iss)[[2]], 
+    iss.hi = quantile(df$iss)[[4]], 
+    ofi.true = nrow(df[df$ofi == 1,]),
+    ofi.false = nrow(df[df$ofi == 0,]),
+    t.med = median(df$triss),
+    t.lo = quantile(df$triss)[[2]], 
+    t.hi = quantile(df$triss)[[4]], 
+    n.med = median(df$normit),
+    n.lo = quantile(df$normit)[[2]], 
+    n.hi = quantile(df$normit)[[4]], 
+    p.med = median(df$ps),
+    p.lo = quantile(df$ps)[[2]], 
+    p.hi = quantile(df$ps)[[4]]
   )   
   
   dd <- sapply(dd, round, digits = 2)
   
   ## some percentages
   pc <- c(
-    "ofi.pc" = as.numeric(nrow(df[df$ofi == 1,])) / total * 100, ## ofi as % true
-    "male" = nrow(df[df$gender == 1,]) / total * 100, ## gender as % male
-    "blunt" = nrow(df[df$dom.inj == 1,]) / total * 100 ## injury type as % blunt
+    ofi.pc = as.numeric(nrow(df[df$ofi == 1,])) / total * 100, ## ofi as % true
+    male = nrow(df[df$gender == 1,]) / total * 100, ## gender as % male
+    blunt = nrow(df[df$dom.inj == 1,]) / total * 100 ## injury type as % blunt
   )
   
   pc <- sapply(pc, round, digits = 1)

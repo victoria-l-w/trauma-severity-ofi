@@ -18,10 +18,14 @@ library(pROC)
 library(gt)
 library(gtsummary)
 library(boot)
-library('rlist')
+library(rlist)
+library(ggplot2)
 
 ## TODO
 ## something else for boot.ci so I can run multiple stats in one bootstrap?
+## ci.boot level 0.90 or 0.95
+## ask if ok normit 2
+## how to present delta statistics?
 
 noacsr::source_all_functions()
 

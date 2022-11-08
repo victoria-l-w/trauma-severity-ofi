@@ -54,7 +54,7 @@ exclusion
 - **doa**
   - included: `exclusion[4,2]`
   - excluded: `exclusion[4,3]`
-- **paramters**
+- **parameters**
   - included: `exclusion[5,2]`
   - excluded: `exclusion[5,3]`
 - **total**
@@ -64,15 +64,15 @@ exclusion
 
 missing data
 ------------
-- **age**: na.data[['na.age']]
-- **gcs**: na.data[['na.gcs']]
-- **asa**: na.data[['na.asa']]
-- **rr**: na.data[['na.rr']]
-- **sbp**: na.data[['na.sbp']]
-- **iss**: na.data[['na.iss']]
-- **niss**: : na.data[['na.niss']]
-- **dominant injury**: na.data[['na.dominj']]
-- **gender**: na.data[['na.gender']]
+- **age**: na.data[['age']]
+- **gcs**: na.data[['gcs']]
+- **asa**: na.data[['asa']]
+- **rr**: na.data[['rr']]
+- **sbp**: na.data[['sbp']]
+- **iss**: na.data[['iss']]
+- **niss**: : na.data[['niss']]
+- **dominant injury**: na.data[['dominj']]
+- **gender**: na.data[['gender']]
 
 descriptive data
 ---------------
@@ -97,15 +97,15 @@ descriptive data
   - iqr lower bound: `dd['p.lo']`
   - iqr upper bound: `dd['p.hi']`
 - **ofi**
-  - # true: `dd['ofi.true']`
-  - # false: `dd['ofi.false']`
+  - no. true: `dd['ofi.true']`
+  - no. false: `dd['ofi.false']`
   - % true: `dd['ofi.pc']`
   - % ofi in deceased: `dd['ofi.mort']`
 - **% male**: `dd['male']`
 - **% blunt**: `dd['blunt']`
 - **survival**
-  - # missing data: `dd['survival.na']`
+  - no. missing data: `dd['survival.na']`
   - % 30-day mortality: `dd['mort']`
 - **icu**
-  - # missing data: `dd['care.na']`
+  - no. missing data: `dd['care.na']`
   - % icu stay: `dd['icu']`
