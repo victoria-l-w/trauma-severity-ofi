@@ -7,8 +7,8 @@ make_normit <- function(input.data) {
     asa = c(1, 2, 3, 4),
     b1 = c(-0.0713, -0.0565, -0.0487, -0.0081),
     b2 = c(0.6266, -0.2142, -0.8971, -3.8746)
-    )
-
+  )
+  
   ## Cast variables to numeric to ensure they can be used for calculations  
   n.niss <- as.numeric(input.data["niss"])
   n.rts <- as.numeric(input.data["rts"])
@@ -28,4 +28,4 @@ make_normit <- function(input.data) {
   
   return(out)
   
- }
+}

@@ -3,10 +3,10 @@ title: 'Association between trauma severity models and opportunities for improve
   A retrospective cohort study'
 author: "Victoria Witthoff"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
     number_sections: true
-  pdf_document: default
   word_document: default
 bibliography: bibliography.bib
 csl: vancouver.csl
@@ -43,6 +43,7 @@ Abbreviations
 * PS - Probability of Survival score
 * QI - Quality Improvement
 * RTS - Revised Trauma Score
+* TARN - Trauma Audit & Research Network
 * TRISS - Trauma and Injury Severity Score
 * WHO - World Health Organisation
 
@@ -57,9 +58,9 @@ Trauma as a clinical entity is highly heterogeneous due to the variety in its un
 
 Trauma severity models have become a cornerstone of modern trauma QI programs [@historytss]. One example of their use is highlighting unexpectedly high mortality rates amongst patients with a high predicted probability of survival. [@whoguidelines]. Trauma severity models also allow clinics to compare their outcomes against an established benchmark [@whoguidelines]. However, an inherent weakness of any trauma severity model is that estimates may be unreliable when applied to a population different from the one the model was developed from. Trauma type and severity will differ between locales and trauma patient populations can be difficult to compare between disparate geographical regions [@assessingquality]. This weakness is one reason why models continue to be developed and improved on. Another reason is that efforts to establish which risk factors best predict mortality are still ongoing; different models use different physiological and anatomical parameters.  
 
-The Trauma and Injury Severity Score (TRISS), first developed in the US in 1987 [@triss] and most recently updated in 2010 [@triss2010], is the most used model worldwide [@trissbetter]. TRISS is a combination index that incorporates patient age, the Injury Severity Score (ISS), the Revised Trauma Score (RTS), and whether the injury was blunt or penetrating [@triss]. The resulting value the probability of survival given as a percentage. The ISS gives a score based on the three anatomical regions with the most severe injury. A limitation of the ISS is that it does not account for situations where one anatomical region has multiple injuries [@trissbetter]. The RTS is based on the physiological parameters GCS, systolic blood pressure, and respiratory rate. The GCS cannot be estimated in situations where the patient has already been intubated, since a valid verbal score cannot be ascertained, which gives TRISS limited value in estimating probability of survival in certain populations [@trissbetter]. 
+The Trauma and Injury Severity Score (TRISS), first developed in the US in 1987 [@triss] and most recently updated in 2010 [@triss2010], is the most used model worldwide [@trissbetter]. TRISS is a combination index that incorporates patient age, the Injury Severity Score (ISS), the Revised Trauma Score (RTS), and whether the injury was blunt or penetrating [@triss]. The RTS requires GCS on arrival at hospital, which cannot be estimated in situations where the patient has already been intubated, since a valid verbal score cannot be ascertained. This gives TRISS limited value in estimating probability of survival in certain populations [@trissbetter]. Another commonly used model is the Probability of Survival (PS) score, originally developed by the Trauma Audit & Research Network (TARN) in the UK in 2007 [@tarn07]. In some ways the PS model is more complex than TRISS; it has coefficients for sex associated with age, and provides a formula that takes into account the non-linearity of ISS [@tarn07]. 
 
-In 2014 researchers in Norway released a new model, the Norwegian Survival Prediction Model in Trauma (NORMIT), that attempts to address the weaknesses of TRISS and simultaneously provide a model based on Norwegian patient populations [@normit]. NORMIT is based on the patient's age, New Injury Severity Score (NISS), comorbidities prior to traumatic injury based on the ASA physical status classification system (ASA-PS), and their RTS. NISS differs from ISS in that NISS allows for scoring of multiple injuries within the same anatomical region. Validation of NISS has shown that NISS is better at predicting mortality in trauma patients compared to ISS, especially in patients with multiple severe injuries within one anatomical region [@nissbetter]. NORMIT also provides a method to incorporate the GCS for intubated patients when calculating RTS. For patients who arrive at hospital and under general anaesthesia, the RTS is calculated based on the prehospital value prior to intubation [@normit]. NORMIT was updated in 2018 [@skagaValidatingPerformanceTRISS2018] and a validation study at this institution found that the updated NORMIT reliably predicted survival at a Swedish trauma centre but both the old and new versions of NORMIT performed worse when applied to the entire national population [@validationnormit]. 
+In 2014 researchers in Norway released a new model, the Norwegian Survival Prediction Model in Trauma (NORMIT), that attempts to address the weaknesses of TRISS and simultaneously provide a model based on Norwegian patient populations [@normit]. NORMIT is based on the patient's age, New Injury Severity Score (NISS), comorbidities prior to traumatic injury based on the ASA physical status classification system (ASA-PS), and their RTS. NISS differs from ISS in that NISS allows for scoring of multiple injuries within the same anatomical region. Validation of NISS has shown that NISS is better at predicting mortality in trauma patients compared to ISS, especially in patients with multiple severe injuries within one anatomical region [@nissbetter]. NORMIT also provides a method to incorporate the GCS for intubated patients when calculating RTS. For patients who arrive at hospital and under general anaesthesia, the RTS is calculated based on the prehospital value prior to intubation [@normit]. NORMIT was updated in 2018 [@skagaValidatingPerformanceTRISS2018] and a validation study found that the updated NORMIT reliably predicted survival at a Swedish trauma centre but both the old and new versions of NORMIT performed worse when used at the national level [@validationnormit]. 
 
 ## Morbidity and mortality conferences
 
@@ -71,16 +72,12 @@ The WHO recommends that all "deaths, complications, adverse events and errors" s
 
 ## Trauma severity models as quality indicators
 
-Another potential audit filter for M&M review, that is already used at some clinics [@whoguidelines], is trauma severity scoring. However, the extent to which trauma severity models are associated with or can predict OFI as found in M&M conferences is not well understood. A study at Karolinska University Hospital found that neither NORMIT nor TRISS were able to reliably discriminate between preventable and non-preventable deaths [@prevdeathsghorbani]. However, that study included only deaths and not other morbidities and thereby had a low sample size. It is not known whether trauma severity models have better performance when applied to the entire population of trauma patients. 
+Another potential audit filter for M&M review, that is already used at some clinics [@whoguidelines], is trauma severity scoring. Some hospitals use trauma severity models as audit filters is to only review deaths in cases that had a high predicted probability of survival, the idea being that deaths in cases with high predicted survival are more likely to have been preventable deaths. Research to date does not support this use case. Two major studies have looked at trauma severity models and preventable deaths. One study in Sweden investigated TRISS and NORMIT [@prevdeathsghorbani] and a study in the UK investigated TRISS and PS [@brohi16]. Both of these studies showed that the studied models were unable to reliably discriminate between preventable and non-preventable deaths [@prevdeathsghorbani; @brohi16].
 
-If it could be found that an existing trauma severity model is associated with OFI, it could allow for another avenue of automatically identifying potentially mismanaged cases in a standardised fashion. Conversely, if trauma severity models are not associated with OFI, using trauma severity models as audit filters may result in cases being unnecessarily flagged for review and in doing so waste conference resources.    
-
-There are far more trauma severity models than the two described above. These two models are of interest for specific reasons: TRISS is the most widely used model and NORMIT is based on a Scandinavian population, which is where this institution is located. It seems reasonable to begin by investigating these two models. 
-
-<!-- S says to clarify the knowledge gap & motive --> 
+However, the extent to which trauma severity models are associated with or can predict OFI as found in M&M conferences is not well understood. The two studies mentioned included only deaths and not other morbidities and thereby had low sample sizes. To date there is no published research on the ability of trauma severity models to predict OFI across the board and not just in mortalities. If it could be found that an existing trauma severity model has value in predicting OFI, it would confirm the practice of using models as audit filters and would improve case selection and reduce resource burden. Conversely, if trauma severity models cannot reliably predict OFI, it is possible that using these models as audit filters causes cases to be unnecessarily flagged for review, which in turn wastes hospital resources. Either way, the answer to this question has the potential to benefit trauma QI programmes.  
 
 ## Aim
-The aim of this study is to evaluate how the trauma severity models TRISS and NORMIT are associated with and to what extent they can predict opportunities for improvement.
+The aim of this study is to evaluate how the trauma severity models TRISS, NORMIT and PS are associated with and to what extent they can predict opportunities for improvement.
 
 Methods 
 =======
@@ -97,7 +94,7 @@ Setting
 periods of recruitment, exposure, follow-up, and data collection -->
 
 Karolinska University Hospital is located in Solna, Sweden. The trauma centre at Karolinska University Hospital is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@nksstats] and it is the primary trauma centre for the region of Stockholm. Karolinska University Hospital also has agreements with several other regions to provide trauma care for patients with severe trauma and the trauma centre has thereby a catchment population of almost 3 million residents [@nksstats]. 
-The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and thereby follows SweTrau guidelines. All trauma patients meeting the SweTrau inclusion criteria are registered in the trauma registry by research nurses at the trauma centre. Data is collected from the patient's electronic medical records. The trauma registry contains data on patients from 2012 to 2021. <!-- Double check these dates, maybe give exact dates of registration in the study --> 
+The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and thereby follows SweTrau guidelines. All trauma patients meeting the SweTrau inclusion criteria are registered in the trauma registry by research nurses at the trauma centre. Data is collected from the patient's electronic medical records. The trauma registry contains data on patients from 2013 to 2021. <!-- Based on the dates I see in the Swetrau dataset --> 
 
 SweTrau follows the Utstein Trauma Template for reporting of data following major trauma. The registered data includes prehospital vital signs and management, vital signs and management on arrival at hospital, information about the type of injury, and the primary method of treatment. Follow-up variables include, but are not limited to, survival at 30 days, days in ventilator, Glasgow Outcome Scale score at discharge, highest level of care, and transfers to other units.
 
@@ -117,8 +114,8 @@ The trauma registry includes all patients for whom the trauma team was activated
 
 The trauma care quality database contains patients from the trauma registry that were selected for M&M review. At Karolinska University Hospital, all fatalities are automatically selected for M&M review. In addition to this, the electronic medical records of all trauma patients are screened by research nursing staff to identify cases that potentially received sub-optimal care. These nurses also use audit filters that automatically highlight cases with abnormal parameters. Cases that two research nurses have evaluated and found to have potential for sub-optimal care are also selected for M&M review. Figure 1 gives an overview of the workflow that leads to determination of OFI. 
 
-``` {r} 
-  ofi_diagram() ## Only works in HTML
+```{r, echo=FALSE, out.width = "400px"}
+## knitr::include_graphics("images/ofi.png") ## ofi_diagram.R; save_png(ofi_diagram(), "ofi") to update
 ```
 
 ### Study-specific eligibility criteria
@@ -184,14 +181,14 @@ Participants
 ------------
 A total of `r exclusion[1,2]` patients were recorded in the trauma registry during the study period. Of these, `r exclusion[2,2]` were reviewed at an M&M conference and therefore became eligible for study inclusion. `r exclusion[7,3]` patients were excluded, due to either being of paediatric age (`r exclusion[3,3]`), being dead on arrival at hospital (`r exclusion[4,3]`), or due to incomplete data (`r exclusion[5,3]`). Figure 2 shows the inclusion process for eligible participants. 
 
-```{r}
-  exclusion_flowchart(exclusion) ## Only works in HTML
+```{r, echo=FALSE, out.width = "400px"}
+## knitr::include_graphics("images/exclusion.png") ## exclusion_flowchart.R; save_png(exclusion_flowchart(exclusion), "exclusion") to update
 ```
 
 Detailed totals of missing data for each required parameter in cases that were excluded for incomplete data are given in table 1. Some patients had missing data in several parameters and therefore the total number of missing parameters is greater than the total number of patients excluded due to incomplete data.
 
 ```{r}
- as_raw_html(table(na.data, type = "incomplete"))
+ as_latex(table(na.data, type = "incomplete"))
 ```
 
 Descriptive data
@@ -215,64 +212,69 @@ Main results
 The odds ratio for TRISS was `r t[['or']]` (95% CI: `r t[['or.ci.lo']]`-`r t[['or.ci.hi']]`, p-value: `r t[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r t[['auc']]` (95% CI: `r t[['auc.ci.lo']]`-`r t[['auc.ci.hi']]`). The integrated calibration index for TRISS was `r t[['ici']]` (95% CI: `r t[['ici.ci']][1]`-`r t[['ici.ci']][2]`. The accuracy curve is shown in Figure 4. The best accuracy was `r t[['acc.max']]` (95% CI: `r t[['acc.ci']][1]`-`r t[['acc.ci']][2]`) and was found at the cutoff `r t[['acc.co']]`. 
 
 ```{r}
-plot(t[['roc']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
+## plot(t[['roc']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
 ```{r}
-plot(t[['acc']], main="Fig 4. TRISS Accuracy Curve.")
+## plot(t[['acc']], main="Fig 4. TRISS Accuracy Curve.")
 ```
 
 ### NORMIT 
 The odds ratio for NORMIT was `r n[['or']]` (95% CI: `r n[['or.ci.lo']]`-`r n[['or.ci.hi']]`, p-value: `r n[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r n[['auc']]` (95% CI: `r n[['auc.ci.lo']]`-`r n[['auc.ci.hi']]`). The integrated calibration index for NORMIT was `r n[['ici']]` (95% CI: `r n[['ici.ci']][1]`-`r n[['ici.ci']][2]`. The accuracy curve is shown in Figure 4. The best accuracy was `r n[['acc.max']]` (95% CI: `r n[['acc.ci']][1]`-`r n[['acc.ci']][2]`) and was found at the cutoff `r n[['acc.co']]`. 
 
 ```{r, echo = FALSE}
-plot(n[['roc']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
+## plot(n[['roc']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
 ```{r, echo = FALSE}
-plot(n[['acc']], main="Fig 6. NORMIT Accuracy Curve.")
+## plot(n[['acc']], main="Fig 6. NORMIT Accuracy Curve.")
 ```
 
 ### PS
 The odds ratio for PS was `r p[['or']]` (95% CI: `r p[['or.ci.lo']]`-`r p[['or.ci.hi']]`, p-value: `r p[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r p[['auc']]` (95% CI: `r p[['auc.ci.lo']]`-`r p[['auc.ci.hi']]`). The integrated calibration index for PS was `r p[['ici']]` (95% CI: `r p[['ici.ci']][1]`-`r p[['ici.ci']][2]`. The accuracy curve is shown in Figure 4. The best accuracy was `r p[['acc.max']]` (95% CI: `r p[['acc.ci']][1]`-`r p[['acc.ci']][2]`) and was found at the cutoff `r p[['acc.co']]`.  
 
 ```{r}
-plot(p[['roc']], main="Fig 6. PS Receiver Operating Characteristic Curve.", colorize = TRUE)
+## plot(p[['roc']], main="Fig 6. PS Receiver Operating Characteristic Curve.", colorize = TRUE)
 ```
 
 ```{r}
-plot(p[['acc']], main="Fig 7. PS Accuracy Curve.")
+## plot(p[['acc']], main="Fig 7. PS Accuracy Curve.")
 ```
 
 ### Comparison of scores
 
 Table 3 shows a comparison of ?? for the three models analysed.
 
-<!-- Make a table here? after I've run the full script -->
 
 ```{r}
-  table(results, type = "or.plot")
+  ### table(results, type = "or.plot")
+  ### table(d, type = "deltas")
+ ## as_latex(table(d, type = "deltas"))
 ```
 
 
 Discussion
 ==========
-
-<!-- 
+ 
 Key results
 -----------
-Summarise key results with reference to study objectives
+<!-- Summarise key results with reference to study objectives --> 
 
---> 
+This aim of this study was to evaluate whether several commonly used trauma severity models (TRISS, NORMIT, and PS) are associated with, and to what extent they can predict, OFI. These three models did not differ significantly in their results. The main findings indicate that increased probability of survival was associated with lower odds for OFI. <!-- OR --> All three models showed poor diagnostic ability in discriminating between OFI and no OFI (AUCs ranged from `r p[['auc']]` to `r t[['auc']]`. <!-- AUC -->
 
-
-Limitations
+Strengths and limitations
 -----------
-
 <!-- 
 Discuss limitations of the study, taking into account sources of
 potential bias or imprecision.  Discuss both direction and magnitude
 of any potential bias -->
+
+
+One of the strengths of this study is the duration of enrollment which made it possible to have a large study population. Karolinska University Hospital is the primary trauma centre for a catchment population of 3 million, which means that this hospital-based study was in effect a population-based study, which reduces the risk of selection bias. All patients that met inclusion criteria were included in the study. The code for data analysis was written by a single student researcher whilst blinded to the real-world data to minimise the risk of researcher bias.
+
+<!-- something about how staff at confs may have differed over the years -->
+
+
 
 
 

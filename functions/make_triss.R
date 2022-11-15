@@ -11,7 +11,7 @@ make_triss <- function(input.data) {
   gcs <- as.numeric(input.data["gcs"])
   sbp <- as.numeric(input.data["ed.sbp"])
   rr <- as.numeric(input.data["ed.rr"])
-
+  
   if (dom.inj == 1) { ## 1 = blunt
     b0 <- 1.6494 ## intercept
     b1 <- 0.0095 ## RR

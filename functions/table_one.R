@@ -61,10 +61,10 @@ table_one <- function(cd) {
   ## Removed care.level and survival bc of missing data, not sure if to include that
   vars2 <- c("age", "gender", "iss", "niss", "dom.inj", "gcs", "ed.rr", "ed.sbp", "asa", "ofi", "rts", "triss", "normit", "ps")
   out <- table1(~ age + gender + iss + niss + dom.inj + gcs + ed.rr + ed.sbp + asa + rts + triss + normit + ps | ofi, 
-                    data = df[,vars2], 
-                    overall = "Total", 
-                    render.categorical = "FREQ (PCTnoNA%)", 
-                    caption = "Table 2. Characteristics of participants."
-                    )
+                data = df[,vars2], 
+                overall = "Total", 
+                render.categorical = "FREQ (PCTnoNA%)", 
+                caption = "Table 2. Characteristics of participants."
+  )
   return(out)
 }

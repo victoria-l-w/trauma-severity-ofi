@@ -21,7 +21,7 @@ ici_delta_ci <- function(df, boot.no) {
   results <- boot(data = df, statistic = ici_delta_bs, R = boot.no)
   ci <- boot.ci(boot.out = results, conf = 0.95, type=c("norm"))
   
-  out <- round(c(ci[['normal']][2], ci[['normal']][3]), digits = 2)
+  out <- signif(c(ci[['normal']][2], ci[['normal']][3]), 2)
   
   return(out)
 }

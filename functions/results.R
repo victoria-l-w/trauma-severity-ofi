@@ -2,7 +2,7 @@
 ## see results.md for a list of all the variables created in this function
 ## bootstrap TRUE/FALSE to turn off long loading times when testing things
 
-results <-function(df, bootstrap = FALSE) {
+results <-function(df, bootstrap = FALSE, boot.no = boot.no) {
   
   ## some subsetted data to be friendly to stats functions
   df.t <- df[, c("ofi", "triss")] %>% rename(score = triss)
@@ -12,14 +12,13 @@ results <-function(df, bootstrap = FALSE) {
   df.tp <- df[, c("ofi", "triss", "ps")] %>% rename(score1 = triss, score2 = ps)
   df.np <- df[, c("ofi", "normit", "ps")] %>% rename(score1 = normit, score2 = ps)
   
-  ## make "base" stats i.e. non-bootstrapped functions; see base_results.R
+  ## make "base" stats i.e. non-bootstrapped functions; base_results.R
   t <- base_stats(df.t)
   n <- base_stats(df.n)
   p <- base_stats(df.p)
   
   if (bootstrap == TRUE) {
     message("Bootstrapping enabled")
-    boot.no <- 25
     message(paste0("# of bootstrap samples: ", boot.no))
     
     ## acc_ci.R
@@ -41,9 +40,9 @@ results <-function(df, bootstrap = FALSE) {
     message("AUC deltas + CIs done")
     d.auc <- list(tn = auc.tn, tp = auc.tp, np = auc.np)
     
-    acc.tn <- t[['acc.max']] - n[['acc.max']]
-    acc.tp <- t[['acc.max']] - p[['acc.max']]
-    acc.np <- n[['acc.max']] - p[['acc.max']]
+    acc.tn <- signif(t[['acc.max']] - n[['acc.max']], 2)
+    acc.tp <- signif(t[['acc.max']] - p[['acc.max']], 2)
+    acc.np <- signif(n[['acc.max']] - p[['acc.max']], 2)
     message("Accuracy deltas done")
     
     ## acc_delta_ci.R
@@ -53,9 +52,9 @@ results <-function(df, bootstrap = FALSE) {
     message("Accuracy delta CIs done")
     d.acc <- list(tn = acc.tn, tn.ci = acc.tn.ci, tp = acc.tp, tp.ci = acc.tp.ci, np = acc.np, np.ci = acc.np.ci)
     
-    ici.tn <- t[['ici']] - n[['ici']]
-    ici.tp <- t[['ici']] - p[['ici']]
-    ici.np <- n[['ici']] - p[['ici']]
+    ici.tn <- signif(t[['ici']] - n[['ici']], 2)
+    ici.tp <- signif(t[['ici']] - p[['ici']], 2)
+    ici.np <- signif(n[['ici']] - p[['ici']], 2)
     message("ICI deltas done")
     
     ## ici_delta_ci.R
@@ -65,19 +64,19 @@ results <-function(df, bootstrap = FALSE) {
     message("ICI delta CIs done")
     d.ici <- list(tn = ici.tn, tn.ci = ici.tn.ci, tp = ici.tp, tp.ci = ici.tp.ci, np = ici.np, np.ci = ici.np.ci)
     
-    delta <- list(
+    d <- list(
       auc = d.auc,
       acc = d.acc, 
       ici = d.ici
     )
-      
+    
     out <- list(
       "t" = t, 
       "n" = n, 
       "p" = p,
-      "delta" = delta
+      "d" = d
     )
-      
+    
   } else {
     message("Bootstrapping disabled; no CIs or deltas")
     out <- list(
@@ -85,8 +84,8 @@ results <-function(df, bootstrap = FALSE) {
       "n" = n, 
       "p" = p
     )
-    }
-
+  }
+  
   message("Results completed")
   return(out)
 }

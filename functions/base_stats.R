@@ -10,7 +10,7 @@ base_stats <-function(df) {
   or.ci <- exp(confint.default(model, level = 0.90))
   or.ci.lo <- or.ci[2,1]
   or.ci.hi <- or.ci[2,2]
-  or.p <- sum$coefficients[2,4]
+  or.p <- format(signif(sum$coefficients[2,4], 1), scientific = FALSE)
   
   ## ROC/AUC with pROC
   roc <- suppressMessages(roc(ofi ~ score, data = df))
@@ -39,19 +39,20 @@ base_stats <-function(df) {
     or = or, 
     or.ci.lo = or.ci.lo,
     or.ci.hi = or.ci.hi,
-    or.p = or.p,
     acc.max = acc.max,
     acc.co = acc.co
   )
   
-  numerics <- lapply(numerics, round, digits = 2)
+  numerics <- lapply(numerics, as.numeric)
+  numerics <- lapply(numerics, signif, digits = 2)
   
   out <- list(
     model = model, 
     roc = roc, 
-    acc = acc
+    acc = acc,
+    or.p = or.p
   )
-
+  
   out <- append(out, numerics)
   
   return(out)

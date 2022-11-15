@@ -42,7 +42,7 @@ exclusion_flowchart <- function(exclusion) {
   [7]: paste0('Excluded due to <15 years of age \\n(n = ', exclusion[3,3], ')')
   [8]: paste0('Excluded due to DOA \\n(n = ', exclusion[4,3], ')')
   [9]: paste0('Excluded due to lacking necessary parameters for analysis \\n(n = ', exclusion[5,3], ')')
-                               
                                ")
   return(out)
 }
+

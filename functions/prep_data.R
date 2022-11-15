@@ -1,7 +1,8 @@
 ## All values that are necessary: iss, niss, age, dom.inj, gcs, sbp, rr, asa, pre.gcs if ed.gcs == 99
 
-prep_data <- function(df, numbers = FALSE) {
+prep_data <- function(datasets) {
   
+  df <- merge_data(datasets)
   df$ofi <- create_ofi(df)
   
   ## Kept some possibly unnecessary variables in case they're interesting to have in table one
@@ -19,7 +20,7 @@ prep_data <- function(df, numbers = FALSE) {
               "ed_sbp_value",
               "pre_gcs_sum",
               "pt_age_yrs"
-              )]
+  )]
   
   df <- df %>% rename(gender = pt_Gender,
                       survival = res_survival,
@@ -34,15 +35,15 @@ prep_data <- function(df, numbers = FALSE) {
                       ed.sbp = ed_sbp_value,
                       pre.gcs = pre_gcs_sum,
                       age = pt_age_yrs
-                      )
+  )
   
   ## Storing the inclusion/exclusion counts at each step
   exclusion <- data.frame (step  = c("original"),
-                    included = c(nrow(df)),
-                    excluded = c(0))
+                           included = c(nrow(df)),
+                           excluded = c(0))
   
   ## OFI exclusion
-
+  
   df <- df %>% filter (!is.na(ofi))
   exclusion[nrow(exclusion) + 1,] <- c("ofi", nrow(df), exclusion[1,2] - nrow(df))
   
@@ -69,7 +70,7 @@ prep_data <- function(df, numbers = FALSE) {
     niss = sum(is.na(df$niss)),
     gender = sum(is.na(df$gender)) + nrow(df[df$gender == 999 & !is.na(df$gender),])
   )
-                                            
+  
   ## Parameter exclusion
   df <- df %>% filter_at(vars(iss, niss, age, ed.gcs, dom.inj, ed.sbp, ed.rr, asa, gender),all_vars(!is.na(.)))
   df <- df %>% filter(dom.inj != 999 & asa != 999 & ed.gcs != 999 & gender != 999)
@@ -99,15 +100,25 @@ prep_data <- function(df, numbers = FALSE) {
   df$ofi <- as.numeric(df$ofi)
   
   df$gcs <- with(df, ifelse (df$ed.gcs==99, pre.gcs, ed.gcs)) ## Make a new gcs variable that takes into account ed.gcs = 99 
-
+  
   ## 
   ## Testing
   ## 
   
   assert_that(noNA(df$ofi))
-  ofi.test <- c(1, 0)
-  assert_that(are_equal(ofi.test, unique(df$ofi)))
-
+  ofi.test <- c(0, 1)
+  assert_that(setequal(ofi.test, unique(df$ofi)))
+  
+  ##
+  ## Apply scores
+  ## 
+  
+  df$rts <- apply(df, 1, make_rts) ## make_rts.R
+  df$triss <- apply(df, 1, make_triss) ## make_triss.R
+  df$normit <- apply(df, 1, make_normit) ## make_normit.R
+  df$ps <- apply(df, 1, make_ps) ## make_ps.R
+  message("Scores created.")
+  
   out <- list(df = df, exclusion = exclusion, na.data = na.data)
   message("The dataset has been prepared.")
   return(out)

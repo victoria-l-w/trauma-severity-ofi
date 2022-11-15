@@ -15,12 +15,12 @@ make_rts <- function (input.data) {
     RRmin  = c(0, 1, 6, 30, 10),
     RRmax = c(0, 5, 9, 10000, 29)
   )
-
+  
   ## Cast variables to numeric to ensure they can be used for calculations
   gcs <- as.numeric(input.data["gcs"])
   rr <- as.numeric(input.data["ed.rr"])
   sbp <- as.numeric(input.data["ed.sbp"])
-
+  
   ## Select the appropriate score value for each parameter
   r.gcs <-  lookup.rts$score.value[gcs >= lookup.rts$GCSmin & gcs <= lookup.rts$GCSmax]
   r.sbp <-  lookup.rts$score.value[sbp >= lookup.rts$SBPmin & sbp <= lookup.rts$SBPmax]

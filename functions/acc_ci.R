@@ -14,7 +14,7 @@ acc_ci <- function(df, boot.no) {
   results <- boot(data = df, statistic = acc_ci_bs, R = boot.no)
   ci <- boot.ci(boot.out = results, conf = 0.95, type=c("norm"))
   
-  out <- round(c(ci[['normal']][2], ci[['normal']][3]), digits = 2)
-
+  out <- signif(c(ci[['normal']][2], ci[['normal']][3]), digits = 2)
+  
   return(out)
 }
