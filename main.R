@@ -19,9 +19,9 @@ library(gtsummary)
 library(boot)
 library(rlist)
 library(ggplot2)
-## library(kableExtra)
-## library(DiagrammeRsvg)
-## library(rsvg)
+library(kableExtra)
+library(DiagrammeRsvg)
+library(rsvg)
 library(mvbutils)
 
 ## TODO
@@ -39,19 +39,13 @@ noacsr::source_all_functions()
 
 set.seed(1112)
 
-datasets <- import_data(test = TRUE)
-
-datasets[['swetrau']] <- datasets$swetrau_scrambled
-datasets[['fmp']] <- datasets$fmp_scrambled
-datasets[['atgarder']] <- datasets$atgarder_scrambled
-datasets[['problem']] <- datasets$problem_scrambled
-datasets[['kvalgranskning2014.2017']] <- datasets$kvalgranskning2014.2017_scrambled
+datasets <- import_data()
 
 extract.named(prep_data(datasets)) ## creates the prepared dataset, inclusion counts, and missing parameters
 
 table.one <- table_one(df) ## table_one.R
 dd <- descriptive_data(df) ## descriptive_data.R
-extract.named(results(df, bootstrap = TRUE, boot.no = 25)) ## results.R
+extract.named(results(df, bootstrap = TRUE, boot.no = 1000)) ## results.R
 
 ## done
 end.time <- Sys.time()
