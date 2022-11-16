@@ -1,13 +1,12 @@
 ## Makes a flowchart on how patients are selected for M&M
 
 ofi_diagram <- function() {
+  diagram <- DiagrammeR::grViz("digraph flowchart {
   
-  ofi_diagram <- DiagrammeR::grViz("digraph flowchart {
-  
-    label='Fig. x. OFI decision-making workflow';
+    label='Fig. 1. OFI decision-making workflow';
     labelloc=bottom;
     labeljust=left;
-    labelfontsize=16;
+    labelfontsize=18;
 
     # node definitions with substituted label text
     node [shape = rectangle, width = 8, fontsize = 16] 
@@ -33,12 +32,11 @@ ofi_diagram <- function() {
     [6]: 'Opportunities for improvement found'
     [7]: 'No opportunities for improvement found'
   ") 
-
-  ## %>% DiagrammeRsvg::export_svg() %>% charToRaw() %>% rsvg::rsvg_pdf("swetrau_flowchart.pdf")
-  ## Cannot to install DiagrammeRsvg b/c can't install v8 b/c "fatal error: v8.h: no such file or directory"
-  return(ofi_diagram)
-
-}
   
+  return(diagram)
+}
 
+save_ofi_png <- function(diagram) {
+  diagram %>% export_svg() %>% charToRaw() %>% rsvg::rsvg_png("images/ofi.png")
+}
 
