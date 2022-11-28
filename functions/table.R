@@ -1,4 +1,4 @@
-table <- function(data, type = "") {
+table <- function(data, type = "", t = t, n = n, p = p) {
   
   if(type == "incomplete") {
     
@@ -55,4 +55,67 @@ table <- function(data, type = "") {
     return(out)  
   }
   
+  if(type == "main") {
+    
+    test <- function(x) {
+      c(paste0(x[['or']], " (", x[['or.ci.lo']], " - ", x[['or.ci.hi']], ") [", x[['or.p']], "]"),
+        paste0(x[['auc']], " (", x[['auc.ci.lo']], " - ", x[['auc.ci.hi']], ")"),
+        paste0(x[['ici']], " (", x[['ici.ci']][1], " - ", x[['ici.ci']][2], ")"),
+        paste0(x[['acc.max']], " (", x[['acc.ci']][1], " - ", x[['acc.ci']][2], ")")
+      )
+    }
+    
+    stats <- c(paste0('OR (95% CI) <br>[p-value]'), "AUC (95% CI)", "ICI (95% CI)", "Accuracy (95% CI)")
+    triss <- test(t)
+    normit <- test(n)
+    ps <- test(p)
+
+    
+    tib <- tibble(" " = stats, "TRISS" = triss, "NORMIT" = normit, "PS" = ps)
+
+    out <- tib %>% gt() %>%
+      tab_options(data_row.padding = px(4)) %>% 
+      fmt_markdown(columns = everything())
+      #tab_style(
+      #  style = cell_text(align = "left", indent = px(10)),
+      #  locations = cells_body(columns = statistic, rows = statistic == "CI")
+      #) %>%
+      #tab_style(
+      #  style = cell_text(align = "left", indent = px(10)),
+      #  locations = cells_body(columns = statistic, rows = statistic == "p-value")
+      #) %>%
+      #tab_style(
+      #  style = cell_borders(
+      #    sides = c("bottom"),
+      #    color = NULL,
+      #  ),
+      #  locations = cells_body(
+      #    columns = everything(),
+      #    rows = c(1, 2, 4, 6, 8)
+      #  )
+      #) %>%
+      #cols_width(
+      #  statistic ~ px(100),
+      #  everything() ~ px(100),
+      #) %>%
+      #cols_label(
+      #  statistic = "",
+      #) %>%
+      #cols_align(
+      #  align = c("left"),
+      #  columns = everything()
+      #)
+    
+    return(out)
+    
+  }
+  
 }
+
+
+## pred.data <- data.frame(score = seq(min(df$score), max(df$score), len=500))
+## pred.data$ofi <- predict(model, pred.data, type = "response")
+## jpeg(file="images/logreg.jpeg")
+## plot(ofi ~ score, df)
+## lines(ofi ~ score, pred.data, lwd=2, col="green")
+## dev.off()

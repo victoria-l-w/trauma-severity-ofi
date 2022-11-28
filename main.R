@@ -25,15 +25,12 @@ library(rsvg)
 library(mvbutils)
 
 ## TODO
-## something else for boot.ci so I can run multiple stats in one bootstrap?
-## ci.boot level 0.90 or 0.95
-## ask if ok normit 2
 ## how to present delta statistics?
 ## delta OR? 
 ## p-values???
-## fix rounding of OR p value?
-## why is max accuracy the exact same for all 3?
+## fix Accuracy issues 
 ## find sources about ps12
+## perf@y.values[[1]][max(which(perf@x.values[[1]] >= 0.5))]
 
 noacsr::source_all_functions()
 
@@ -45,7 +42,7 @@ extract.named(prep_data(datasets)) ## creates the prepared dataset, inclusion co
 
 table.one <- table_one(df) ## table_one.R
 dd <- descriptive_data(df) ## descriptive_data.R
-extract.named(results(df, bootstrap = TRUE, boot.no = 1000)) ## results.R
+extract.named(results(df, bootstrap = TRUE, boot.no = 10)) ## results.R
 
 ## done
 end.time <- Sys.time()
