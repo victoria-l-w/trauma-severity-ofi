@@ -2,10 +2,10 @@ ici_delta_bs <- function(df, index) {
   
   sample <- df[index,]
   
-  ici1 <- suppressMessages(ici1(sample$score, sample$ofi))
+  ici1 <- suppressMessages(ici(sample$score1, sample$ofi))
   ici1 <- as.numeric(ici1)
   
-  ici2 <- suppressMessages(ici2(sample$score, sample$ofi))
+  ici2 <- suppressMessages(ici(sample$score2, sample$ofi))
   ici2 <- as.numeric(ici2)
   
   delta <- ici1 - ici2

@@ -10,7 +10,7 @@ output:
   word_document: default
 bibliography: bibliography.bib
 csl: vancouver.csl
-fontsize: 11pt
+fontsize: 11pts
 linestretch: 1
 always_allow_html: yes
 editor_options: 
@@ -21,9 +21,12 @@ editor_options:
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
 
-```{r main, echo=FALSE, message = FALSE}
+```{r main}
   source("main.R") 
 ```
+
+
+
 
 Abstract
 ========
@@ -115,7 +118,7 @@ The trauma registry includes all patients for whom the trauma team was activated
 The trauma care quality database contains patients from the trauma registry that were selected for M&M review. At Karolinska University Hospital, all fatalities are automatically selected for M&M review. In addition to this, the electronic medical records of all trauma patients are screened by research nursing staff to identify cases that potentially received sub-optimal care. These nurses also use audit filters that automatically highlight cases with abnormal parameters. Cases that two research nurses have evaluated and found to have potential for sub-optimal care are also selected for M&M review. Figure 1 gives an overview of the workflow that leads to determination of OFI. 
 
 ```{r, echo=FALSE, out.width = "400px"}
-## knitr::include_graphics("images/ofi.png") ## ofi_diagram.R; save_png(ofi_diagram(), "ofi") to update
+knitr::include_graphics("images/ofi.png") ## ofi_diagram.R; save_png(ofi_diagram(), "ofi") to update
 ```
 
 ### Study-specific eligibility criteria
@@ -151,7 +154,7 @@ The algorithm for PS includes the patient's age, gender, GCS and ISS.
 Quantitative variables
 ----------------------
 
-RTS, NORMIT and PS12 were computed according to the original published algorithms [@rtsalgorithm; @normit; @psalgorithm]. TRISS was calculated using the revised 2009 coefficients [@triss2010].
+RTS and PS12 were computed according to the original published algorithms [@rtsalgorithm; @psalgorithm]. NORMIT was calculated with the revised 2018 algorithm [@skagaValidatingPerformanceTRISS2018]. TRISS was calculated using the revised 2009 coefficients [@triss2010].
 
 For all parameters other than GCS, the values used to compute scores were solely taken from arrival at hospital. For GCS, values were used based on arrival at hospital except in cases where the patient was intubated pre-hospitally. PS and NORMIT have methods of handling this scenario, as described above. TRISS does not have a published method to handle patients intubated pre-hospitally. In order to avoid excluding patients who were intubated pre-hospitally, the GCS parameter for TRISS was handled in the same manner as NORMIT, i.e. the pre-hospital GCS value was used.
 
@@ -182,7 +185,7 @@ Participants
 A total of `r exclusion[1,2]` patients were recorded in the trauma registry during the study period. Of these, `r exclusion[2,2]` were reviewed at an M&M conference and therefore became eligible for study inclusion. `r exclusion[7,3]` patients were excluded, due to either being of paediatric age (`r exclusion[3,3]`), being dead on arrival at hospital (`r exclusion[4,3]`), or due to incomplete data (`r exclusion[5,3]`). Figure 2 shows the inclusion process for eligible participants. 
 
 ```{r, echo=FALSE, out.width = "400px"}
-## knitr::include_graphics("images/exclusion.png") ## exclusion_flowchart.R; save_png(exclusion_flowchart(exclusion), "exclusion") to update
+knitr::include_graphics("images/exclusion.png") ## exclusion_flowchart.R; save_png(exclusion_flowchart(exclusion), "exclusion") to update
 ```
 
 Detailed totals of missing data for each required parameter in cases that were excluded for incomplete data are given in table 1. Some patients had missing data in several parameters and therefore the total number of missing parameters is greater than the total number of patients excluded due to incomplete data.
@@ -195,7 +198,7 @@ Descriptive data
 ----------------
 A total of `r exclusion[6,2]` participants were identified as eligible for inclusion. Their demographical and clinical characteristics are described in table 2. 
 
-The median age was `r dd['age']` (IQR: `r dd['age.lo']`-`r dd['age.hi']`). `r dd['male']`% of participants were male. `r dd['blunt']`% of cases were due to blunt force trauma. Of cases where 30-day survival was available, there was a `r dd['mort']`% 30-day mortality rate (`r dd['survival.na']` cases with missing survival data). Of cases where registered data on the highest level of care was available, `r dd['icu']`% had the ICU as their highest level of care (`r dd['care.na']` cases with missing care level data). The median ISS score was `r dd['iss']` (IQR: `r dd['iss.lo']`-`r dd['iss.hi']`).
+The median age was `r dd['age']` (IQR: `r dd['age.lo']`-`r dd['age.hi']`). `r dd['male']`% of participants were male. `r dd['blunt']`% of cases were due to blunt force trauma. The median ISS score was `r dd['iss']` (IQR: `r dd['iss.lo']`-`r dd['iss.hi']`). Of cases where 30-day survival was available, there was a `r dd['mort']`% 30-day mortality rate (`r dd['survival.na']` cases with missing survival data). `r dd['icu']`% of participants received intensive care as their highest level of care. 
 
 At least one OFI was found in `r dd['ofi.true']` of cases (`r dd['ofi.pc']`%). In cases where death occurred within 30 days, at least one OFI was found in `r dd['ofi.mort']`% of cases. The median scores for TRISS, NORMIT, and PS were `r dd['t.med']` (IQR: `r dd['t.lo']`-`r dd['t.lo']`), `r dd['n.med']` (IQR: `r dd['n.lo']`-`r dd['n.hi']`), and `r dd['p.med']` (IQR: `r dd['p.lo']`-`r dd['p.hi']`) respectively. 
 
@@ -204,52 +207,32 @@ At least one OFI was found in `r dd['ofi.true']` of cases (`r dd['ofi.pc']`%). I
   table.one ## will be improved later
 ```
 
+
 Main results
 ------------
 
-### TRISS
-
-The odds ratio for TRISS was `r t[['or']]` (95% CI: `r t[['or.ci.lo']]`-`r t[['or.ci.hi']]`, p-value: `r t[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r t[['auc']]` (95% CI: `r t[['auc.ci.lo']]`-`r t[['auc.ci.hi']]`). The integrated calibration index for TRISS was `r t[['ici']]` (95% CI: `r t[['ici.ci']][1]`-`r t[['ici.ci']][2]`. The accuracy curve is shown in Figure 4. The best accuracy was `r t[['acc.max']]` (95% CI: `r t[['acc.ci']][1]`-`r t[['acc.ci']][2]`) and was found at the cutoff `r t[['acc.co']]`. 
+The fitted curves for the logistic regression models of each score are shown in figure x. The odds ratios for TRISS, NORMIT and PS were `r t[['or']]` (95% CI: `r t[['or.ci.lo']]`-`r t[['or.ci.hi']]`, *p*: `r t[['or.p']]`), `r n[['or']]` (95% CI: `r n[['or.ci.lo']]`-`r n[['or.ci.hi']]`, *p*: `r n[['or.p']]`), and `r p[['or']]` (95% CI: `r p[['or.ci.lo']]`-`r p[['or.ci.hi']]`, *p*: `r p[['or.p']]`) respectively. 
 
 ```{r}
-## plot(t[['roc']], main="Fig 3. TRISS Receiver Operating Characteristic Curve.", colorize = TRUE)
+knitr::include_graphics("images/glm.png") ## update: glm_x3(df)
 ```
+
+The receiver operating curves for all scores are plotted in figure x. The areas under the curve for TRISS, NORMIT and PS were `r t[['auc']]` (95% CI: `r t[['auc.ci.lo']]`-`r t[['auc.ci.hi']]`), `r n[['auc']]` (95% CI: `r n[['auc.ci.lo']]`-`r n[['auc.ci.hi']]`), and `r p[['auc']]` (95% CI: `r p[['auc.ci.lo']]`-`r p[['auc.ci.hi']]`) respectively.
 
 ```{r}
-## plot(t[['acc']], main="Fig 4. TRISS Accuracy Curve.")
+knitr::include_graphics("images/roc.png") ## update: roc_x3(t, n, p)
 ```
 
-### NORMIT 
-The odds ratio for NORMIT was `r n[['or']]` (95% CI: `r n[['or.ci.lo']]`-`r n[['or.ci.hi']]`, p-value: `r n[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r n[['auc']]` (95% CI: `r n[['auc.ci.lo']]`-`r n[['auc.ci.hi']]`). The integrated calibration index for NORMIT was `r n[['ici']]` (95% CI: `r n[['ici.ci']][1]`-`r n[['ici.ci']][2]`. The accuracy curve is shown in Figure 4. The best accuracy was `r n[['acc.max']]` (95% CI: `r n[['acc.ci']][1]`-`r n[['acc.ci']][2]`) and was found at the cutoff `r n[['acc.co']]`. 
-
-```{r, echo = FALSE}
-## plot(n[['roc']], main="Fig 5. NORMIT Receiver Operating Characteristic Curve.", colorize = TRUE)
-```
-
-```{r, echo = FALSE}
-## plot(n[['acc']], main="Fig 6. NORMIT Accuracy Curve.")
-```
-
-### PS
-The odds ratio for PS was `r p[['or']]` (95% CI: `r p[['or.ci.lo']]`-`r p[['or.ci.hi']]`, p-value: `r p[['or.p']]`). The ROC is plotted in Figure 3. The AUC for the ROC was `r p[['auc']]` (95% CI: `r p[['auc.ci.lo']]`-`r p[['auc.ci.hi']]`). The integrated calibration index for PS was `r p[['ici']]` (95% CI: `r p[['ici.ci']][1]`-`r p[['ici.ci']][2]`. The accuracy curve is shown in Figure 4. The best accuracy was `r p[['acc.max']]` (95% CI: `r p[['acc.ci']][1]`-`r p[['acc.ci']][2]`) and was found at the cutoff `r p[['acc.co']]`.  
+The integrated calibration index for TRISS, NORMIT and PS was `r t[['ici']]` (95% CI: `r t[['ici.ci']][1]`-`r t[['ici.ci']][2]`, `r n[['ici']]` (95% CI: `r n[['ici.ci']][1]`-`r n[['ici.ci']][2]` and `r p[['ici']]` (95% CI: `r p[['ici.ci']][1]`-`r p[['ici.ci']][2]` respectively. The accuracy at all cutoffs is plotted for all scores in figure x. The accuracy at a cutoff of 0.5 for TRISS, NORMIT and PS was `r t[['acc']]` (95% CI: `r t[['acc.ci']][1]`-`r t[['acc.ci']][2]`), `r n[['acc']]` (95% CI: `r n[['acc.ci']][1]`-`r n[['acc.ci']][2]`) and `r p[['acc']]` (95% CI: `r p[['acc.ci']][1]`-`r p[['acc.ci']][2]`) respectively. 
 
 ```{r}
-## plot(p[['roc']], main="Fig 6. PS Receiver Operating Characteristic Curve.", colorize = TRUE)
+knitr::include_graphics("images/acc.png") ## update: acc_x3(t, n, p)
 ```
 
-```{r}
-## plot(p[['acc']], main="Fig 7. PS Accuracy Curve.")
-```
-
-### Comparison of scores
-
-Table 3 shows a comparison of ?? for the three models analysed.
-
+The differences between the scores for each result are shown in table x. 
 
 ```{r}
-  ### table(results, type = "or.plot")
-  ### table(d, type = "deltas")
- ## as_latex(table(d, type = "deltas"))
+ as_latex(table(d, type = "deltas"))
 ```
 
 

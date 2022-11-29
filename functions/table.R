@@ -5,28 +5,9 @@ table <- function(data, type = "", t = t, n = n, p = p) {
     names <- c("GCS", "ASA", "RR", "Systolic BP", "Dominant Injury Type", "Age", "ISS", "NISS", "Gender")
     tib <- tibble("Parameter" = names, "Total no. cases missing parameter" = data)
     out <- tib %>% gt() %>% tab_header(
-      title = "Table 1. Parameters that were missing in cases excluded for incomplete data"
+      title = "Table 1: Parameters that were missing in cases excluded for incomplete data"
     )
     
-    return(out)
-  }
-  
-  if(type == "or.plot") {
-    nrs <- data.frame(
-      score = c("TRISS, NORMIT, PS"),
-      or = c(data[['t']][['or']], data[['n']][['or']], data[['p']][['or']]),
-      lower = c(data[['t']][['or.ci.lo']], data[['n']][['or.ci.lo']], data[['p']][['or.ci.lo']]),
-      upper = c(data[['t']][['or.ci.hi']], data[['n']][['or.ci.hi']], data[['p']][['or.ci.hi']])
-    )
-    
-    out <- ggplot(nrs, aes(x = factor(score), y = or)) + 
-      geom_point(position=position_dodge(.9)) + 
-      geom_errorbar(aes(ymin = lower, ymax = upper), position=position_dodge(.9), width = .25) + 
-      labs(
-        title = "Figure 8. Comparison of Odds Ratios.",
-        y = "Odds Ratio",
-        x = "Model"
-      )
     return(out)
   }
   
@@ -48,7 +29,7 @@ table <- function(data, type = "", t = t, n = n, p = p) {
       paste0(data[['acc']][['np']]," (", data[['acc']][['np']][[1]], "-", data[['acc']][['np']][[1]], ")")
     )
     
-    tib <- tibble("Scores compared" = comparisons, "AUC difference (95% CI)" = auc, "ICI difference (95% CI)" = ici, "Accuracy difference (95% CI)" = acc)
+    tib <- tibble(" " = comparisons, "AUC difference (95% CI)" = auc, "ICI difference (95% CI)" = ici, "Accuracy difference (95% CI)" = acc)
     out <- tib %>% gt() %>% tab_header(
       title = "Table x. Comparison of model results"
     )
@@ -61,7 +42,7 @@ table <- function(data, type = "", t = t, n = n, p = p) {
       c(paste0(x[['or']], " (", x[['or.ci.lo']], " - ", x[['or.ci.hi']], ") [", x[['or.p']], "]"),
         paste0(x[['auc']], " (", x[['auc.ci.lo']], " - ", x[['auc.ci.hi']], ")"),
         paste0(x[['ici']], " (", x[['ici.ci']][1], " - ", x[['ici.ci']][2], ")"),
-        paste0(x[['acc.max']], " (", x[['acc.ci']][1], " - ", x[['acc.ci']][2], ")")
+        paste0(x[['acc']], " (", x[['acc.ci']][1], " - ", x[['acc.ci']][2], ")")
       )
     }
     
@@ -75,36 +56,10 @@ table <- function(data, type = "", t = t, n = n, p = p) {
 
     out <- tib %>% gt() %>%
       tab_options(data_row.padding = px(4)) %>% 
-      fmt_markdown(columns = everything())
-      #tab_style(
-      #  style = cell_text(align = "left", indent = px(10)),
-      #  locations = cells_body(columns = statistic, rows = statistic == "CI")
-      #) %>%
-      #tab_style(
-      #  style = cell_text(align = "left", indent = px(10)),
-      #  locations = cells_body(columns = statistic, rows = statistic == "p-value")
-      #) %>%
-      #tab_style(
-      #  style = cell_borders(
-      #    sides = c("bottom"),
-      #    color = NULL,
-      #  ),
-      #  locations = cells_body(
-      #    columns = everything(),
-      #    rows = c(1, 2, 4, 6, 8)
-      #  )
-      #) %>%
-      #cols_width(
-      #  statistic ~ px(100),
-      #  everything() ~ px(100),
-      #) %>%
-      #cols_label(
-      #  statistic = "",
-      #) %>%
-      #cols_align(
-      #  align = c("left"),
-      #  columns = everything()
-      #)
+      fmt_markdown(columns = everything()) %>%
+      tab_header(
+        title = "Table 3: Summary of results"
+      )
     
     return(out)
     
