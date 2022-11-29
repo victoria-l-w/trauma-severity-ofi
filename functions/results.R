@@ -40,9 +40,9 @@ results <-function(df, bootstrap = FALSE, boot.no = boot.no) {
     message("AUC deltas + CIs done")
     d.auc <- list(tn = auc.tn, tp = auc.tp, np = auc.np)
     
-    acc.tn <- signif(t[['acc.max']] - n[['acc.max']], 2)
-    acc.tp <- signif(t[['acc.max']] - p[['acc.max']], 2)
-    acc.np <- signif(n[['acc.max']] - p[['acc.max']], 2)
+    acc.tn <- signif(t[['acc']] - n[['acc']], 2)
+    acc.tp <- signif(t[['acc']] - p[['acc']], 2)
+    acc.np <- signif(n[['acc']] - p[['acc']], 2)
     message("Accuracy deltas done")
     
     ## acc_delta_ci.R
