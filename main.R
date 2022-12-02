@@ -23,7 +23,7 @@ library(kableExtra)
 library(DiagrammeRsvg)
 library(rsvg)
 library(mvbutils)
-library("gridExtra")
+library(gridExtra)
 library(ggpubr)
 
 noacsr::source_all_functions()
@@ -37,6 +37,13 @@ extract.named(prep_data(datasets)) ## creates the prepared dataset, inclusion co
 table.one <- table_one(df) ## table_one.R
 dd <- descriptive_data(df) ## descriptive_data.R
 extract.named(results(df, bootstrap = TRUE, boot.no = 10)) ## results.R
+
+## make figures
+##roc_x3(t, n, p)
+##acc_x3(t, n, p)
+##glm_x3(df)
+##save_png(exclusion_flowchart(exclusion), "exclusion")
+##save_png(ofi_diagram(), "ofi")
 
 ## done
 end.time <- Sys.time()

@@ -31,7 +31,7 @@ glm_x3 <- function(df) {
 }
 
 plot_roc <- function(x, type) {
-  plot <- ggroc(x[['roc']], colour = "#5FD4AB") + ggtitle(paste0(type, " (AUC = ", t[['auc']], ")")) + theme(plot.title = element_text(size=12))
+  plot <- ggroc(x[['roc']], colour = "#5FD4AB") + ggtitle(paste0(type, " (AUC = ", x[['auc']], ")")) + theme(plot.title = element_text(size=12))
   return(plot)
 }
 

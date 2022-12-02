@@ -200,7 +200,7 @@ A total of `r exclusion[6,2]` participants were identified as eligible for inclu
 
 The median age was `r dd['age']` (IQR: `r dd['age.lo']`-`r dd['age.hi']`). `r dd['male']`% of participants were male. `r dd['blunt']`% of cases were due to blunt force trauma. The median ISS score was `r dd['iss']` (IQR: `r dd['iss.lo']`-`r dd['iss.hi']`). Of cases where 30-day survival was available, there was a `r dd['mort']`% 30-day mortality rate (`r dd['survival.na']` cases with missing survival data). `r dd['icu']`% of participants received intensive care as their highest level of care. 
 
-At least one OFI was found in `r dd['ofi.true']` of cases (`r dd['ofi.pc']`%). In cases where death occurred within 30 days, at least one OFI was found in `r dd['ofi.mort']`% of cases. The median scores for TRISS, NORMIT, and PS were `r dd['t.med']` (IQR: `r dd['t.lo']`-`r dd['t.lo']`), `r dd['n.med']` (IQR: `r dd['n.lo']`-`r dd['n.hi']`), and `r dd['p.med']` (IQR: `r dd['p.lo']`-`r dd['p.hi']`) respectively. 
+At least one OFI was found in `r dd['ofi.true']` of cases (`r dd['ofi.pc']`%). In cases where death occurred within 30 days, at least one OFI was found in `r dd['ofi.mort']`% of cases. The median scores for TRISS, NORMIT, and PS were `r dd['t.med']` (IQR: `r dd['t.lo']`-`r dd['t.hi']`), `r dd['n.med']` (IQR: `r dd['n.lo']`-`r dd['n.hi']`), and `r dd['p.med']` (IQR: `r dd['p.lo']`-`r dd['p.hi']`) respectively. 
 
   
 ```{r} 
@@ -243,38 +243,87 @@ Key results
 -----------
 <!-- Summarise key results with reference to study objectives --> 
 
-This aim of this study was to evaluate whether several commonly used trauma severity models (TRISS, NORMIT, and PS) are associated with, and to what extent they can predict, OFI. These three models did not differ significantly in their results. The main findings indicate that increased probability of survival was associated with lower odds for OFI. <!-- OR --> All three models showed poor diagnostic ability in discriminating between OFI and no OFI (AUCs ranged from `r p[['auc']]` to `r t[['auc']]`. <!-- AUC -->
+This aim of this study was to evaluate whether several commonly used trauma severity models (TRISS, NORMIT, and PS) are associated with, and to what extent they can predict, OFI. These three models did not differ significantly in their results. The main findings indicate that increased probability of survival was associated with lower odds for OFI, with odds ratios ranging from `r t['or']` to `r n['or']`. The AUC values were almost identical for all three models (range: `r p[['auc']]`-`r t[['auc']]`), indicating poor diagnostic ability in discriminating between OFI and no OFI. The integrated calibration index ranged from `r n[['ici']]` to `r p[['ici']]`. Accuracy at a cutoff of 0.5 was low across the board (range: `r p[['acc']]`-`r n[['acc']]`).
+
+<!-- 
+NOTES:
+- Maybe repeat why it's useful to do this, like the bigger picture (improve case selection etc)
+- Similar results for all three models could be because:
+-- They all predict the same thing (Ps) and therefore they SHOULD give similar results
+-- They all have quite a few parameters in common
+-- (Less likely) OFI is so uncommon that it's unlikely any model would show a difference
+- Say that it probably wouldn't be useful to investigate more models + motivate
+- My results agree w/ previous studies on preventable deaths
+- Trauma models useful on populations but not individuals
+- OR - can it be that low severity cases (high Ps) are more likely to be ignored/non-selected and therefore skew results? -> Which would affect the association
+- Makes sense that models designed to predict death can't predict OFI - not what they are made for
+- If a hospital has a high case volume -> more practice -> less ofi -> harder to find predictors of ofi mb??
+- Health equity:
+-- "Deaths in elderly less likely to be found preventable" 
+-- Which is reasonable but maybe not 100% due to scientificness - element of bias?
+- My population is representative
+-- Normal to be majority men 
+
+  
+--> 
 
 Strengths and limitations
 -----------
-<!-- 
-Discuss limitations of the study, taking into account sources of
-potential bias or imprecision.  Discuss both direction and magnitude
-of any potential bias -->
 
+One of the strengths of this study is the duration of enrolment and Karolinska University Hospital's catchment population of 3 million, which allowed for a large study population. The outcome data is strengthened by Karolinska University Hospital's extensive quality review process involving personnel from all concerned specialities and professions. All patients that met inclusion criteria were included in the study. 
 
-One of the strengths of this study is the duration of enrollment which made it possible to have a large study population. Karolinska University Hospital is the primary trauma centre for a catchment population of 3 million, which means that this hospital-based study was in effect a population-based study, which reduces the risk of selection bias. All patients that met inclusion criteria were included in the study. The code for data analysis was written by a single student researcher whilst blinded to the real-world data to minimise the risk of researcher bias.
-
-<!-- something about how staff at confs may have differed over the years -->
+There were several limitations to this study. One of them is that selection of cases for review at conferences was in large part based upon the use of audit filters. There is as yet no widespread consensus on which audit filters are the most effective at identifying cases and this is an ongoing topic of research. The choice of audit filters used affects case selection and in turn introduces an element of selection bias into this study. It is possible, and perhaps even likely, that some cases with opportunities for improvement were never selected for case review and therefore weren't available for inclusion in this study. Another limitation is that, due to the long duration of enrolment in this study, the composition of the staff present at conferences will have differed over time. Determining whether OFI exists or not is an essentially subjective evaluation and the conclusions reached by any given conference may vary depending on which individuals are present. It is also possible that standards and expectations of care have changed over time as knowledge and technology improves, which would also in turn affect assignment of OFI. 
 
 
 
+<!-- In this study the presence of OFI was a relatively uncommon outcome (`r dd['ofi.pc']`% of cases). 
+dont remember why i wrote this -->
+
+Interpretations
+-----------
+The results of this study agree with previous studies assessing the predictive power of trauma severity models with regards to preventable deaths <!-- cite here -->. Although this study was not specifically about preventable deaths, the factor that determines whether a death was preventable is whether an improvement in care could have prevented the death, i.e. whether there was a significant opportunity for improvement, which makes the previous studies on preventable deaths broadly relevant to this study. Ghorbani et al found that ____. Brohi 2016 found that ____. Our results also show that none of the three models investigated (TRISS, NORMIT and PS) were able to reliably predict OFI. The difference between our study and prior studies is that we looked at the trauma population across the board and not only deaths.
+
+Our results do show an association between lower probability of survival and higher odds for assignment of OFI. Severe trauma is much more complex and time-dependent than mild trauma. Complexity and time pressure are two factors that increase the risk of management errors, so the association found is unsurprising. However, this result should be evaluated in the context of potential selection bias, as described above. Cases with low trauma severity are less likely to trigger audit filters and are in turn less likely to be reviewed at M&M conferences, which will lead to severe trauma being over-represented in OFI assignment. 
 
 
-<!-- 
+<!-- why important -->  
+<!-- similar -->
+
+
+Clinical applications 
+-----------
+
+
+### Generalisability 
+This study is based on a patient population at a level 1 trauma centre in Stockholm, Sweden and the results are likely applicable for other level 1 trauma centres in the Nordic countries, as these countries share similarities in patient demographics, comorbidities, and injury types. As mentioned previously, the Norwegian model NORMIT was found to be superior to the American model TRISS at predicting mortality at this hospital <!-- ghorbani -->. This study has less external validity with regards to international populations that differ significantly from the one in this study, for example populations with a higher proportion of penetrating trauma. 
+
+### Health equity
+
+
+## Future research
+
+Future studies should seek to evaluate the predictive power of other audit filters that are currently used for case selection. 
+
+
+
+
 Interpretation
 --------------
 
+<!--
 Give a cautious overall interpretation of results considering
 objectives, limitations, multiplicity of analyses, results from
 similar studies, and other relevant evidence
 
+- makes sense that models that predict death cant predict ofi very well
+- more severe trauma is associated w higher ofi but the scores cant predict ofi 
+- -> that 
+--> 
 Generalisability
 ----------------
 
-Discuss the generalisability (external validity) of the study results
-
--->
+<!-- Relevant for KUH and other major scandinavian level 1 trauma centers, potentially 
+relevant for other hosps w similar pt populations + injury panorama--> 
 
 Conclusion
 ==========
