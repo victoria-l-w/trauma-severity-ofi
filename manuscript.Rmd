@@ -301,9 +301,9 @@ Another aspect of health equity is patient age. We know that peer review panels 
 
 ## Future research
 
-Future studies should seek to evaluate the predictive power of other audit filters that are currently used for case selection. 
+Future studies should seek to evaluate the predictive power of other audit filters that are currently used for case selection. As mentioned previously, trauma centres today use a large variety of audit filters and many of these have not yet been supported by research. Future studies could use logistic regression to identify factors associated with OFI, and investigate if any of these factors have predictive power. The ultimate goal of such a study study, as with this study, would be to improve case selection for review in conferences. As these conferences are the gold standard of trauma improvement programmes, improved case selection has the potential to directly improve trauma care, in addition to reducing the resource burden of identifying cases and holding said conferences.
 
-
+In addition, future studies should aim to confirm the findings of this study within a different population. The population in this study is a typically Scandinavian one, with a low incidence of penetrating trauma. As mentioned previously, the external validity of trauma severity models is in some degree dependent on the similarity of the populations they were developed from. Ideally a new study would investigate the predictive power of the models used in this study, in a country with a higher incidence of penetrating trauma and potentially other different population characteristics, in order to confirm the results found in this study. Such a study could use a study design similar to this one, i.e. use logistic regression and measures of discrimination and calibration. 
 
 
 Interpretation
