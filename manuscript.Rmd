@@ -3,11 +3,11 @@ title: 'Association between trauma severity models and opportunities for improve
   A retrospective cohort study'
 author: "Victoria Witthoff"
 output:
-  pdf_document: default
+  word_document: default
   html_document:
     df_print: paged
     number_sections: true
-  word_document: default
+  pdf_document: default
 bibliography: bibliography.bib
 csl: vancouver.csl
 fontsize: 11pts
@@ -243,29 +243,7 @@ Key results
 -----------
 <!-- Summarise key results with reference to study objectives --> 
 
-This aim of this study was to evaluate whether several commonly used trauma severity models (TRISS, NORMIT, and PS) are associated with, and to what extent they can predict, OFI. These three models did not differ significantly in their results. The main findings indicate that increased probability of survival was associated with lower odds for OFI, with odds ratios ranging from `r t['or']` to `r n['or']`. The AUC values were almost identical for all three models (range: `r p[['auc']]`-`r t[['auc']]`), indicating poor diagnostic ability in discriminating between OFI and no OFI. The integrated calibration index ranged from `r n[['ici']]` to `r p[['ici']]`. Accuracy at a cutoff of 0.5 was low across the board (range: `r p[['acc']]`-`r n[['acc']]`).
-
-<!-- 
-NOTES:
-- Maybe repeat why it's useful to do this, like the bigger picture (improve case selection etc)
-- Similar results for all three models could be because:
--- They all predict the same thing (Ps) and therefore they SHOULD give similar results
--- They all have quite a few parameters in common
--- (Less likely) OFI is so uncommon that it's unlikely any model would show a difference
-- Say that it probably wouldn't be useful to investigate more models + motivate
-- My results agree w/ previous studies on preventable deaths
-- Trauma models useful on populations but not individuals
-- OR - can it be that low severity cases (high Ps) are more likely to be ignored/non-selected and therefore skew results? -> Which would affect the association
-- Makes sense that models designed to predict death can't predict OFI - not what they are made for
-- If a hospital has a high case volume -> more practice -> less ofi -> harder to find predictors of ofi mb??
-- Health equity:
--- "Deaths in elderly less likely to be found preventable" 
--- Which is reasonable but maybe not 100% due to scientificness - element of bias?
-- My population is representative
--- Normal to be majority men 
-
-  
---> 
+This aim of this study was to evaluate whether several commonly used trauma severity models (TRISS, NORMIT, and PS) are associated with, and to what extent they can predict, OFI, with the goal of improving case selection for multidisciplinary morbidity and mortality conferences. The three models investigated did not differ significantly in their results. The main findings indicate that increased probability of survival was associated with lower odds for OFI, with odds ratios ranging from `r t['or']` to `r n['or']`. The AUC values were almost identical for all three models (range: `r p[['auc']]`-`r t[['auc']]`), indicating poor diagnostic ability in discriminating between OFI and no OFI. Calibration was also low for all models (ICI range: `r n[['ici']]` - `r p[['ici']]`). Accuracy at a cutoff of 0.5 was low across the board (range: `r p[['acc']]`-`r n[['acc']]`).
 
 Strengths and limitations
 -----------
@@ -274,30 +252,30 @@ One of the strengths of this study is the duration of enrolment and Karolinska U
 
 There were several limitations to this study. One of them is that selection of cases for review at conferences was in large part based upon the use of audit filters. There is as yet no widespread consensus on which audit filters are the most effective at identifying cases and this is an ongoing topic of research. The choice of audit filters used affects case selection and in turn introduces an element of selection bias into this study. It is possible, and perhaps even likely, that some cases with opportunities for improvement were never selected for case review and therefore weren't available for inclusion in this study. Another limitation is that, due to the long duration of enrolment in this study, the composition of the staff present at conferences will have differed over time. Determining whether OFI exists or not is an essentially subjective evaluation and the conclusions reached by any given conference may vary depending on which individuals are present. It is also possible that standards and expectations of care have changed over time as knowledge and technology improves, which would also in turn affect assignment of OFI. 
 
-
-
-<!-- In this study the presence of OFI was a relatively uncommon outcome (`r dd['ofi.pc']`% of cases). 
-dont remember why i wrote this -->
-
-Interpretations
+Interpretation
 -----------
-The results of this study agree with previous studies assessing the predictive power of trauma severity models with regards to preventable deaths <!-- cite here -->. Although this study was not specifically about preventable deaths, the factor that determines whether a death was preventable is whether an improvement in care could have prevented the death, i.e. whether there was a significant opportunity for improvement, which makes the previous studies on preventable deaths broadly relevant to this study. Ghorbani et al found that ____. Brohi 2016 found that ____. Our results also show that none of the three models investigated (TRISS, NORMIT and PS) were able to reliably predict OFI. The difference between our study and prior studies is that we looked at the trauma population across the board and not only deaths.
 
-Our results do show an association between lower probability of survival and higher odds for assignment of OFI. Severe trauma is much more complex and time-dependent than mild trauma. Complexity and time pressure are two factors that increase the risk of management errors, so the association found is unsurprising. However, this result should be evaluated in the context of potential selection bias, as described above. Cases with low trauma severity are less likely to trigger audit filters and are in turn less likely to be reviewed at M&M conferences, which will lead to severe trauma being over-represented in OFI assignment. 
+Our results show an association between lower probability of survival and higher odds for assignment of OFI. This result should be evaluated in the context of potential selection bias, as described above. Cases with low trauma severity are less likely to trigger audit filters and are in turn less likely to be reviewed at M&M conferences, which will lead to severe trauma being over-represented in OFI assignment. However, it is unlikely that this selection bias is the main cause of the association found. Severe trauma is much more complex and time-dependent than mild trauma. Complexity and time pressure are two factors that increase the risk of management errors, and management errors have been found to be the main cause of preventable deaths [@prevdeathsghorbani; @prevdeathsmontmany; @prevdeathsteixeira]. In this context, the association between trauma severity and OFI has an obvious causality and our findings on this association are unsurprising. 
 
+Despite this association, none of the trauma severity models we investigated are able to reliably predict OFI. The area under the curve of the receiver operating curves - a value that describes the ability of a model to discriminate between two outcomes - was around 0.65 for all three scores, which indicates that these models were not able to reliably predict OFI. We also showed that the models were poorly calibrated as to the outcomes. Intuitively, this makes sense, as these models are designed to predict death and not errors in care. These models do not take into account factors that might lead to suboptimal care - they are based on physiological and anatomical parameters that quantify the severity of an injury. Even though a higher trauma severity is associated with greater odds for OFI, these models cannot discriminate between a high trauma severity with OFI and one that has no OFI. 
 
-<!-- why important -->  
-<!-- similar -->
+We showed that all three models have a low accuracy at a 0.5 cutoff. One reason for the low accuracy is the low incidence of OFI, which means that maximal accuracy is found when assigning "no OFI" to all cases, although this would obviously lead to false negatives. Either way, whether you use maximum accuracy or accuracy at a 0.5 cutoff as a metric, none of these models have significant accuracy. In real-world terms, there is no decision-making cutoff for predicted survival that would lead to an improvement in case selection - these approaches would lead to either a high number of false positives or false negatives.     
+
+These three models had essentially the same results, which is an expected outcome considering that they are all tools for estimating the same thing - the probability of survival. In addition, the models have a great degree of overlap in the parameters they incorporate, including GCS and age. The models we analysed are commonly-used and are sourced from three different geographical populations. The fact that they all had similar performance is a sign that investigation of other models is unlikely to lead to different results.
+
+The results of this study agree with previous studies assessing the predictive power of trauma severity models with regards to preventable deaths. Although this study was not specifically about preventable deaths, the factor that determines whether a death was preventable is whether an improvement in care could have prevented the death, i.e. whether there was a significant opportunity for improvement, which makes the previous studies on preventable deaths broadly relevant to this study. Ghorbani et al found that both TRISS and NORMIT had poor performance in predicting preventable deaths [@prevdeathsghorbani]. Heim et al found that PS and TRISS miss a significant proportion of preventable deaths [@brohi16]. Our results also show that none of the three models investigated (TRISS, NORMIT and PS) were able to reliably predict OFI. The difference between our study and prior studies is that we looked at the trauma population across the board and not only deaths.
+
+Even though our results were expected, it was still important to investigate this question scientifically, because trauma severity models are in use today as audit filters at many institutions. Our findings show that the use of trauma severity models as audit filters is unlikely to lead to improvements in case selection, and in fact could be harmful. Audit filters that don't improve case selection will either lead to cases being over-selected, causing resource wastage, or to cases being under-selected, leading to OFI being missed. Trauma severity models are useful when used on the population level, to allow institutions to compare themselves and to provide a framework for discussing trauma severity. They are much less useful when applied to individuals, and were not intended for that use. 
 
 ## Generalisability 
-This study is based on a patient population at a level 1 trauma centre in Stockholm, Sweden and the results are likely applicable for other level 1 trauma centres in the Nordic countries, as these countries share similarities in patient demographics, comorbidities, and injury types. As mentioned previously, the Norwegian model NORMIT was found to be superior to the American model TRISS at predicting mortality at this hospital <!-- ghorbani -->. This study has less external validity with regards to international populations that differ significantly from the one in this study, for example populations with a higher proportion of penetrating trauma. 
+This study is based on a patient population at a level 1 trauma centre in Stockholm, Sweden and the results are likely applicable for other level 1 trauma centres in the Nordic countries, as these countries share similarities in patient demographics, comorbidities, and injury types. This study is less generalisable for smaller trauma centres as those centres tend to manage less severe trauma and will have a different patient population. This study also has less external validity with regards to international populations that differ significantly from the one in this study, for example populations with a higher proportion of penetrating trauma. 
 
 ### Health equity
-The demographical characteristics of the participants in this study reflect the well-known demographics of trauma patients worlwide. `r dd['male']`% of participants were male and the median age was `r dd['age']`, which matches with statistics both in Sweden and globally <!-- find a cite even tho i know this is true -->.  The predominance of male patients invites one to question if female patients are less likely to receive quality care. In healthcare as in all areas, repetition leads to mastery of a skill, so an onlooker might be tempted to assume that the high volume of male patients in trauma will lead healthcare providers to superiority iin treating males, whilst treatment of female patients will be neglected. This demographical difference has precipitated research that seeks to investigate whether this presumption holds true, and several large multi-centre studies have been published that evaluated whether there is a correlation between sex and outcomes. None of these studies found a correlation beween sex and increased mortality or morbidity <!-- maybe write: or other serious outcomes --> <!-- also add cites -->, and in fact one study in the Netherlands found that female sex was correlated with decreased mortality <!-- cite -->. 
+The demographical characteristics of the participants in this study reflect the well-known demographics of trauma patients worlwide. `r dd['male']`% of participants were male and the median age was `r dd['age']`, which matches with statistics both in Sweden and globally [@globalburden]. The predominance of male patients invites one to question if female patients are less likely to receive quality care. In healthcare as in all areas, repetition leads to mastery of a skill, so an onlooker might be tempted to assume that the high volume of male patients in trauma will lead healthcare providers to superiority iin treating males, whilst treatment of female patients will be neglected. This demographical difference has precipitated research that seeks to investigate whether this presumption holds true, and several large multi-centre studies have been published that evaluated whether there is a correlation between sex and outcomes. None of these studies found a correlation beween sex and increased mortality or other serious outcomes [@croce2002; @magnotti2008; @pepe2019; @trentzsch2004], and in fact one study in the Netherlands found that female sex was correlated with decreased mortality [@pape2019]. 
 
-This study has not stratified for sex in the statistical analyses, and therefore cannot comment on any relation between sex and OFI at this centre. One of the trauma severity models we investigated, PS, does include patient sex as a coefficient in predicting mortality, but we did not examine whether patient sex affects the ability of PS to predict OFI. However, there is another currently ongoing project at this hospital that compares OFI between the male and female sex cohorts. The uneven distribution of sex in this study is not a limitation of this study in terms of external validation and generalisability since our demographics match the distribution in the Swedish trauma population. <!-- probably rephrase since htis is p similar to what elias said --> 
+This study has not compared differences between the sexes, and therefore cannot comment on any relation between sex and OFI at this centre. One of the trauma severity models we investigated, PS, does include patient sex as a coefficient in predicting mortality, but we did not examine whether patient sex affects the ability of PS to predict OFI. However, there is another currently ongoing project at this hospital that compares OFI between the male and female sex cohorts. The uneven distribution of sex in this study does not make for a limitation of this study in terms of generalisability since our demographics match the distribution of sex in trauma cases both globally and in the Swedish trauma population. 
 
-Another aspect of health equity is patient age. We know that peer review panels are more likely to classify trauma deaths as non-preventable in the geriatric population <!-- Radke 2019, Radke didnt cite his source tho -->. This is unlikely to be purely due to discrimination, since several factors make the elderly less likely to survive severe trauma, including a higher prevalence of comorbidities and in general lower margins for tolerating extreme physiological stress <!-- maybe some cites about response to injury in elderly -->. In fact, all three trauma severity models investigated in this study include coefficients for age, since age is a well-known predictor of mortality. Nevertheless, there is a possibility that healthcare providers are less likely to look for errors in older patients due to a predisposition to finding older patients less likely to be savable. The question of whether age is correlated with OFI was outside the scope of this study, but as with sex, is being investigated in other currently ongoing projects at this institution. The geriatric population differs from the average adult in terms of injury types, injury response, and management. This, in combination with worse trauma outcomes in the geriatric population, should prompt focus on this cohort in future research since this group has perhaps the most to gain from improvements in trauma care, especially improvements that recognise the unique challenges in this population and aim to specifically tailor their care to those challenges. 
+Another aspect of health equity is patient age. We know that peer review panels are more likely to classify trauma deaths as non-preventable in the geriatric population [@radke2019]. This is unlikely to be purely due to discrimination, since several factors make the elderly less likely to survive severe trauma, including a higher prevalence of comorbidities and in general lower margins for tolerating extreme physiological stress [@bardes2019]. In fact, all three trauma severity models investigated in this study include coefficients for age, since age is a well-known predictor of mortality. Nevertheless, there is a possibility that healthcare providers are less likely to look for errors in older patients due to a predisposition to finding older patients less likely to be savable. The question of whether age is correlated with OFI was outside the scope of this study, but as with sex, is being investigated in other currently ongoing projects at this institution. The geriatric population differs from the average adult in terms of injury types, injury response, and management. This, in combination with worse trauma outcomes in the geriatric population, should prompt focus on this cohort in future research since this group has perhaps the most to gain from improvements in trauma care, especially improvements that recognise the unique challenges in this population and aim to specifically tailor their care to those challenges. 
 
 ## Future research
 
@@ -305,42 +283,10 @@ Future studies should seek to evaluate the predictive power of other audit filte
 
 In addition, future studies should aim to confirm the findings of this study within a different population. The population in this study is a typically Scandinavian one, with a low incidence of penetrating trauma. As mentioned previously, the external validity of trauma severity models is in some degree dependent on the similarity of the populations they were developed from. Ideally a new study would investigate the predictive power of the models used in this study, in a country with a higher incidence of penetrating trauma and potentially other different population characteristics, in order to confirm the results found in this study. Such a study could use a study design similar to this one, i.e. use logistic regression and measures of discrimination and calibration. 
 
-
-Interpretation
---------------
-
-<!--
-Give a cautious overall interpretation of results considering
-objectives, limitations, multiplicity of analyses, results from
-similar studies, and other relevant evidence
-
-- makes sense that models that predict death cant predict ofi very well
-- more severe trauma is associated w higher ofi but the scores cant predict ofi 
-- -> that 
---> 
-Generalisability
-----------------
-
-<!-- Relevant for KUH and other major scandinavian level 1 trauma centers, potentially 
-relevant for other hosps w similar pt populations + injury panorama--> 
-
 Conclusion
 ==========
 
-<!-- Give a short conclusion, corresponding to the aim -->
-
-Contributions
-==========
-The code for statistical analysis and the writing of this paper has been carried out by myself, although of course with advice from my supervisors. 
-<!-- 
-I know it maybe seems weird to have this section, but the instructions specifically say: 
-Här anger du vilka delar och aspekter av arbetet som du personligen har utfört, och vilka som
-har gjorts av andra, t ex mer avancerad statistik, kemiska specialanalyser. Om du har
-samarbetat med en kurskamrat inom ett större projekt behöver du tydligt ange vilka delar man
-genomfört/skrivit tillsammans och vilka delar har utförts individuellt. Ange också namn på
-personen/ -er på din kurs du samarbetat med. Har du gjort det mesta själv anger du det.
-
-The last sentence makes it seem like I have to include this -->
+This aim of this study was to evaluate whether several commonly used trauma severity models (TRISS, NORMIT, and PS) are associated with, and to what extent they can predict, opportunities for improvement, with the goal of improving case selection for multidisciplinary morbidity and mortality conferences. We showed that, while low probability of survival is associated with increased odds of OFI, none of the models were able to reliably predict OFI. The use of these models as audit filters in case selection for M&M conferences is not supported by our results and may lead to over-selection. 
 
 
 References
