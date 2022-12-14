@@ -2,21 +2,15 @@ acc_delta_bs <- function(df, index) {
   
   sample <- df[index,]
   
-  model <- glm(ofi ~ score1, family = "binomial", data = sample)
-  pred.model <- predict(model, type="response")
-  pred <- prediction(pred.model, sample$ofi)
-  acc.1 <- performance(pred, measure = "acc")
-  acc.max.1 <- max(acc.1@y.values[[1]])
-  acc.max.1 <- as.numeric(acc.max.1)
+  pred1 <- prediction(sample$score1, sample$ofi)
+  acc.class1 <- performance(pred1, measure = "acc")
+  acc1 <- acc.class1@y.values[[1]][max(which(acc.class1@x.values[[1]] >= 0.5))]
   
-  model <- glm(ofi ~ score2, family = "binomial", data = sample)
-  pred.model <- predict(model, type="response")
-  pred <- prediction(pred.model, sample$ofi)
-  acc.2 <- performance(pred, measure = "acc")
-  acc.max.2 <- max(acc.2@y.values[[1]])
-  acc.max.2 <- as.numeric(acc.max.2)
+  pred2 <- prediction(sample$score2, sample$ofi)
+  acc.class2 <- performance(pred2, measure = "acc")
+  acc2 <- acc.class2@y.values[[1]][max(which(acc.class2@x.values[[1]] >= 0.5))]
   
-  delta <- as.numeric(acc.max.1 - acc.max.2)
+  delta <- as.numeric(acc1 - acc2)
   
   return(delta)
 }

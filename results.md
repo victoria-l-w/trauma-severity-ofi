@@ -18,8 +18,8 @@ scores
   - CI lower bound: `x[['ici.ci']][1]`
   - CI upper bound: `x[['ici.ci']][2]`  
 - **accuracy**
-  - plottable: `x[['acc']]`
-  - max accuracy: `x[['acc.max']]`
+  - plottable: `x[['acc.plot']]`
+  - max accuracy: `x[['acc']]`
   - cutoff: `x[['acc.co']]`
   - CI lower bound: `x[['acc.ci']][1]`
   - CI upper bound: `x[['acc.ci']][2]`  

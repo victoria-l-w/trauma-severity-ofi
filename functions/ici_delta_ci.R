@@ -2,17 +2,13 @@ ici_delta_bs <- function(df, index) {
   
   sample <- df[index,]
   
-  model <- glm(ofi ~ score1, family = "binomial", data = sample)
-  pred.model <- predict(model, type="response")
-  ici.1 <- suppressMessages(ici(pred.model, sample$ofi))
-  ici.1 <- as.numeric(ici.1)
+  ici1 <- suppressMessages(ici(sample$score1, sample$ofi))
+  ici1 <- as.numeric(ici1)
   
-  model <- glm(ofi ~ score2, family = "binomial", data = sample)
-  pred.model <- predict(model, type="response")
-  ici.2 <- suppressMessages(ici(pred.model, sample$ofi))
-  ici.2 <- as.numeric(ici.2)
+  ici2 <- suppressMessages(ici(sample$score2, sample$ofi))
+  ici2 <- as.numeric(ici2)
   
-  delta <- ici.1 - ici.2
+  delta <- ici1 - ici2
   
   return(delta)
 }

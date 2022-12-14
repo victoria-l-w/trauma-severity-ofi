@@ -1,13 +1,11 @@
 acc_ci_bs <- function(df, index) {
   
   sample <- df[index,]
-  model <- glm(ofi ~ score, family = "binomial", data = sample)
-  pred.model <- predict(model, type="response")
-  pred <- prediction(pred.model, sample$ofi)
-  acc <- performance(pred, measure = "acc")
-  acc.max <- max(acc@y.values[[1]])
+  pred <- prediction(sample$score, sample$ofi)
+  acc.class <- performance(pred, measure = "acc")
+  acc <- acc.class@y.values[[1]][max(which(acc.class@x.values[[1]] >= 0.5))]
   
-  return(acc.max)
+  return(acc)
 }
 
 acc_ci <- function(df, boot.no) {

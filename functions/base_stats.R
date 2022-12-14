@@ -20,16 +20,17 @@ base_stats <-function(df) {
   auc.ci.hi <- auc.ci[3]
   
   ## Console output: >With at least 1000 observations, using mgcv::gam instead of loess to calculate ICI.
-  ici <- suppressMessages(ici(pred.model, df$ofi))
-  ici <- ici
-  
+  ici <- suppressMessages(ici(df$score, df$ofi))
+
   ## accuracy max + cutoff
-  acc <- performance(pred, measure = "acc") ## plottable
-  ind <- which.max(slot(acc, "y.values")[[1]]) ## find the index of the highest accuracy
-  acc.max <- slot(acc, "y.values")[[1]][ind] ## stores the highest accuracy
-  acc.max <- acc.max[[1]]
-  acc.co <- slot(acc, "x.values")[[1]][ind] ## stores the cutoff at the highest accuracy
-  acc.co <- acc.co[[1]]
+  acc.pred <- prediction(df$score, df$ofi)
+  acc.plot <- performance(acc.pred, measure = "acc") ## plottable
+  acc <- acc.plot@y.values[[1]][max(which(acc.plot@x.values[[1]] >= 0.5))]
+  ## ind <- which.max(slot(acc, "y.values")[[1]]) ## find the index of the highest accuracy
+  ##acc.max <- slot(acc, "y.values")[[1]][ind] ## stores the highest accuracy
+  ## acc.max <- acc.max[[1]]
+  ## acc.co <- slot(acc, "x.values")[[1]][ind] ## stores the cutoff at the highest accuracy
+  ## acc.co <- acc.co[[1]]
   
   numerics <- c(
     auc = auc, 
@@ -39,8 +40,8 @@ base_stats <-function(df) {
     or = or, 
     or.ci.lo = or.ci.lo,
     or.ci.hi = or.ci.hi,
-    acc.max = acc.max,
-    acc.co = acc.co
+    acc = acc
+    ## acc.co = acc.co
   )
   
   numerics <- lapply(numerics, as.numeric)
@@ -49,7 +50,7 @@ base_stats <-function(df) {
   out <- list(
     model = model, 
     roc = roc, 
-    acc = acc,
+    acc.plot = acc.plot,
     or.p = or.p
   )
   

@@ -2,9 +2,7 @@ ici_bs <- function(df, index) {
   
   sample <- df[index,]
   
-  model <- glm(ofi ~ score, family = "binomial", data = sample)
-  pred.model <- predict(model, type="response")
-  ici <- suppressMessages(ici(pred.model, sample$ofi))
+  ici <- suppressMessages(ici(sample$score, sample$ofi))
   ici <- as.numeric(ici)
   
   return(ici)

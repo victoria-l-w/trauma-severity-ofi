@@ -19,39 +19,31 @@ library(gtsummary)
 library(boot)
 library(rlist)
 library(ggplot2)
-## library(kableExtra)
-## library(DiagrammeRsvg)
-## library(rsvg)
+library(kableExtra)
+library(DiagrammeRsvg)
+library(rsvg)
 library(mvbutils)
-
-## TODO
-## something else for boot.ci so I can run multiple stats in one bootstrap?
-## ci.boot level 0.90 or 0.95
-## ask if ok normit 2
-## how to present delta statistics?
-## delta OR? 
-## p-values???
-## fix rounding of OR p value?
-## why is max accuracy the exact same for all 3?
-## find sources about ps12
+library(gridExtra)
+library(ggpubr)
 
 noacsr::source_all_functions()
 
 set.seed(1112)
 
-datasets <- import_data(test = TRUE)
-
-datasets[['swetrau']] <- datasets$swetrau_scrambled
-datasets[['fmp']] <- datasets$fmp_scrambled
-datasets[['atgarder']] <- datasets$atgarder_scrambled
-datasets[['problem']] <- datasets$problem_scrambled
-datasets[['kvalgranskning2014.2017']] <- datasets$kvalgranskning2014.2017_scrambled
+datasets <- import_data()
 
 extract.named(prep_data(datasets)) ## creates the prepared dataset, inclusion counts, and missing parameters
 
 table.one <- table_one(df) ## table_one.R
 dd <- descriptive_data(df) ## descriptive_data.R
-extract.named(results(df, bootstrap = TRUE, boot.no = 25)) ## results.R
+extract.named(results(df, bootstrap = TRUE, boot.no = 10)) ## results.R
+
+## make figures
+##roc_x3(t, n, p)
+##acc_x3(t, n, p)
+##glm_x3(df)
+##save_png(exclusion_flowchart(exclusion), "exclusion")
+##save_png(ofi_diagram(), "ofi")
 
 ## done
 end.time <- Sys.time()
