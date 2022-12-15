@@ -1,4 +1,7 @@
 ---
+## To use of cross-references and avoid having to manually number figures and tables 
+## you need to switch to the output format bookdown::pdf_document2 and 
+## bookdown::word_document2, see https://bookdown.org/yihui/rmarkdown-cookbook/cross-ref.html
 title: 'Association between trauma severity models and opportunities for improvement:
   A retrospective cohort study'
 author: "Victoria Witthoff"
@@ -52,15 +55,17 @@ Abbreviations
 
 Introduction
 ============
+<!-- I think that it often makes sense to keep paragraphs short and focus on one key message per paragraph. In this first paragraph you present multiple important points, the burden of fatal trauma, the burden of non-fatal trauma, and the importance of improving trauma care. Each of these messages can have their own, shorter paragraphs, which in my opinion makes any text easier to digest.-->
 Trauma, defined as the clinical entity composed of physical injury and the body's associated response [@Gerdin2015], is one of the leading causes of death worldwide and accounts for approximately 9% of global deaths annually [@globalburden]. The global health burden of trauma has led to it being described as a worldwide pandemic. One of the characteristics of this particular pandemic is its demographic spread; trauma is a leading cause of death for people aged 10-49 years [@globalburden] and 90% of trauma-related deaths occur in low- to middle-income countries [@whoepi]. Non-fatal outcomes also comprise a significant portion of the global health burden of disability [@globalburden], which can drastically reduce quality of life and health status in survivors of severe trauma [@globalburden; @longtermtrauma]. The quality of trauma care is therefore a globally relevant issue with significance for a great number of people. Improvements in trauma outcomes benefit both the individual and also society at large by reducing the societal and healthcare costs of disability. The significance of the consequences and burden of trauma has been recognised by the UN, who in their Sustainable Development Goals included the aim of reducing the number of global deaths and injuries from road traffic accidents by half by 2020 [@sdg]. The importance of improving trauma care named as one of the strategies in achieving this goal. The goal was not met by 2020 [@sdg20], which is another signal that there is significant progress to be made in trauma care. 
 
-Efforts to advance the state of trauma care have been ongoing for many years. Today many trauma centres have implemented quality improvement (QI) programs, and it has been shown in the US that these programs improve outcomes [@ustqi]. QI programs use many tools, including statistical analysis and audit filters [@hakkenbrakprevdeath], but the gold standard of trauma QI is the multidisciplinary morbidity and mortality (M&M) conference. These conferences review selected patient cases and establish whether there was opportunity for improvement (OFI) in each case. One method of improving the quality of M&M conferences is by improving case selection. This is usually achieved by using audit filters that automatically flag cases for review. One approach is the use of trauma severity models as audit filters. Trauma severity models are algorithms that evaluate trauma severity in quantitative terms. The effectiveness of these models in case selection is understudied and their potential as audit filters is the focus of this paper. 
+<!-- See my comment above. You introduce several important concepts here, and one that is key to your paper, the use of trauma severity models for case selection. By introducing it late in the paragraph, you effectively hide it, and its importance is kind of lost on the reader. I suggest that you split this paragraph in two, and devote the second one to the use of trauma severity models-->
+Efforts to advance the state of trauma care have been ongoing for many years. Today many trauma centres have implemented quality improvement (QI) programs, and it has been shown in the US that these programs improve outcomes [@ustqi]. QI programs use many tools, including statistical analysis and audit filters [@hakkenbrakprevdeath], but the gold standard of trauma QI is the multidisciplinary morbidity and mortality (M&M) conference. These conferences review selected patient cases and establish whether there was opportunity for improvement (OFI) in each case. One method of improving the quality of M&M conferences is by improving case selection. This is usually achieved by using audit filters that automatically flag cases for review. One approach is the use of trauma severity models as audit filters. Trauma severity models are algorithms that evaluate trauma severity in quantitative terms. The effectiveness of these models in case selection is understudied and their potential as audit filters is the focus of this paper. <!-- This last sentence is perhaps the most important sentence in the introduction, but that is not very clear from how it is presented. See if you can highlight it more, perhaps by having it as the first sentence in a separate paragraph.-->
 
 ## Morbidity and mortality conferences
 
-The significance of M&M conferences in trauma QI is a consequence of the unique challenges inherent to trauma care. Management of severe trauma is highly time-sensitive and is also dependent on the actions of a chain of healthcare providers spanning multiple professions and disciplines. Outcomes in severe trauma are dependent on the quality of care received [@ustqi] and errors in management are a common cause of preventable deaths [@prevdeathsghorbani; @prevdeathsmontmany; @prevdeathsteixeira]. Since mistakes by any one provider can lead to severe outcomes, attempts to improve trauma outcomes must seek to improve all aspects of the entire chain of care. This can only be achieved through peer review and consequently, M&M conferences are the cornerstone of trauma QI programs. 
+The significance of M&M conferences in trauma QI is a consequence of the unique challenges inherent to trauma care. Management of severe trauma is highly time-sensitive and is also dependent on the actions of a chain of healthcare providers spanning multiple professions and disciplines. Outcomes in severe trauma are dependent on the quality of care received [@ustqi]<!-- It's uncommon to introduce a citation in the middle of a sentence. See if you can rephrase the sentence to allow it to be placed last, or divide the sentence somehow, perhaps with a ",", and place the citation just before that.-->  and errors in management are a common cause of preventable deaths [@prevdeathsghorbani; @prevdeathsmontmany; @prevdeathsteixeira]. Since mistakes by any one provider can lead to severe outcomes, attempts to improve trauma outcomes must seek to improve all aspects of the entire chain of care. This can only be achieved through peer review and consequently, M&M conferences are the cornerstone of trauma QI programs. 
 
-As mentioned, M&M conferences review a selection of patient cases, attempt to establish whether there were opportunities for improvement (OFI) in each specific case, and, where necessary, implement corrective actions. The occurrence of OFI function in this manner as a proxy for incidence of suboptimal care. Regular conferences allow QI programs to identify patterns of errors and provide a basis for systemic quality improvement. To maximise effectiveness, conferences should be attended by all involved specialities and have a structured format. The WHO guidelines for trauma QI programs give specific recommendations as to the structure and format of M&M conferences [@whoguidelines]. Despite theserecommendations, there is a still a great degree of variation amongst clinics in how M&M conferences are carried out, with a significant number of clinics still using an informal and unstructured format [@tqipanglo]. The World Health Organisation (WHO) themselves note in their guidelines that M&M conferences are not used to their fullest potential globally [@whoguidelines]. 
+As mentioned, M&M conferences review a selection of patient cases, attempt to establish whether there were opportunities for improvement (OFI) in each specific case, and, where necessary, implement corrective actions<!-- It's okay to be more direct: "The purpose of M&M conferences is to review selected patient cases, establish if there were opportunities for improvement, and implement corrective actions"-->"" . The occurrence of OFI function in this manner as a proxy for incidence of suboptimal care. Regular conferences allow QI programs to identify patterns of errors and provide a basis for systemic quality improvement. To maximise effectiveness, conferences should be attended by all involved specialities and have a structured format. The WHO guidelines for trauma QI programs give specific recommendations as to the structure and format of M&M conferences [@whoguidelines]. Despite these recommendations, there is a still a great degree of variation amongst clinics in how M&M conferences are carried out, with a significant number of clinics still using an informal and unstructured format [@tqipanglo]. The World Health Organisation (WHO) themselves note in their guidelines that M&M conferences are not used to their fullest potential globally [@whoguidelines]. 
 
 The value of M&M conferences in long-term quality improvement is largely dependent on selection of appropriate cases for review. For example, imagine a conference where every case reviewed was found to have no OFI. The value of that conference would effectively be zero, as it would fail to discover any flaws in trauma care. In an ideal world, only cases that were actually mismanaged would be selected for review; this is, of course, an impossible ideal as it cannot be known whether a case was mismanaged prior to it being reviewed. This reliance on case selection is a weakness of M&M review and has led to considerable efforts to develop strategies to standardise case selection [@tqipanglo]. The WHO recommends that all "deaths, complications, adverse events and errors" should be reviewed [@whoguidelines]. Some clinics have made further advances in standardising case election; most commonly by using quality indicators, or audit filters, to automatically flag cases for inclusion in M&M conferences [@tqipanglo; @developqi]. Examples of audit filters include time to first medical contact, adverse event rate, and, in some clinics, trauma severity models [@developqi; @whoguidelines]. 
 
@@ -90,7 +95,6 @@ The use of trauma severity models as audit filters is not limited to solely mort
 
 There is value in determining the effectiveness of trauma severity models in predicting OFI. If they can reliably predict OFI, their use as audit filters would be supported as they would improve case selection for M&M conferences. More accurate case selection will lead to M&M conferences becoming more effective at discovering flaws in care. There is also a secondary benefit in that effective audit filters allow case selection to become more automated, which reduces the large resource burden of identifying cases for review. Conversely, if trauma severity models cannot reliably predict OFI, we would know that their use as audit filters is harmful to the M&M process. Audit filters that are poor predictors can be harmful in two ways. On the one hand, they can over-predict OFI, causing more cases to be reviewed unnecessarily. This reduces the effectiveness of M&M conferences. On the other hand, they can miss cases with OFI, leading to flaws being undetected by M&M conferences. Given that some hospitals already use trauma severity models as audit filters, it is prudent to ascertain whether this is a helpful or harmful feature in the trauma QI process. 
 
-
 ## Aim
 The aim of this study is to evaluate how the trauma severity models TRISS, NORMIT and PS are associated with and to what extent they can predict opportunities for improvement.
 
@@ -109,6 +113,7 @@ Setting
 periods of recruitment, exposure, follow-up, and data collection -->
 
 Karolinska University Hospital is located in Solna, Sweden. The trauma centre at Karolinska University Hospital is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@nksstats] and it is the primary trauma centre for the region of Stockholm. Karolinska University Hospital also has agreements with several other regions to provide trauma care for patients with severe trauma and the trauma centre has thereby a catchment population of almost 3 million residents [@nksstats]. 
+
 The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and thereby follows SweTrau guidelines. All trauma patients meeting the SweTrau inclusion criteria are registered in the trauma registry by research nurses at the trauma centre. Data is collected from the patient's electronic medical records. The trauma registry contains data on patients from 2013 to 2021. <!-- Based on the dates I see in the Swetrau dataset --> 
 <!--JA: Det har samlats ännu äldre data i olika former. Skulle bara skippa årtalen kring traumaregistret. KS har kört någon form av MoM sedan 2012. Se: https://pubmed-ncbi-nlm-nih-gov.sll.idm.oclc.org/24625137/ -->
 
@@ -134,6 +139,7 @@ The trauma care quality database contains patients from the trauma registry that
 ```{r, echo=FALSE, out.width = "400px"}
 knitr::include_graphics("images/ofi.png") ## ofi_diagram.R; save_png(ofi_diagram(), "ofi") to update
 ```
+<!-- In the figure it looks like all cases are reviewed by a second nurse, which is not true. Most cases are not reviewed by a second nurse, because either none of the audit filters are positive or the first nurse decides that there were no issues. So I would add an arrow to the right of the box "Audit filters and primary review..." stating that some cases are excluded at this stage. Then I would add a second arrow to the right of "Secondary review..." stating that additional cases are excluded at this step, if no issues are found. So it's only a small subset of all cases that are reviewed at a M&M conference-->
 
 ### Study-specific eligibility criteria
 Patients <15 years of age were excluded as paediatric trauma is a separate clinical entity and is not part of the same review process. Patients that were dead on arrival were also excluded. This is a complete case study and all patients with missing data were excluded. 
@@ -163,7 +169,7 @@ The RTS was computed using GCS, systolic blood pressure, and respiratory rate. F
 
 #### PS
 
-The algorithm for PS includes the patient's age, gender, GCS and ISS. 
+The algorithm for PS includes the patient's age, gender, GCS and ISS. <!-- This is the older PS, right? for the paper I would mention that you used that version because the data necessary for the new version is not included in the registry -->
 
 Quantitative variables
 ----------------------
@@ -175,12 +181,12 @@ For all parameters other than GCS, the values used to compute scores were solely
 Bias 
 ----
 
-The code for data analysis was written using simulated data to reduce the risk of research bias. Real-world data was only used once the data analysis model was completed and found to work correctly on simulated data. 
+The code for data analysis was written using simulated data to reduce the risk of researcher bias. Real-world data was only used once the data analysis model was completed and found to work correctly on simulated data. 
 
 Statistical methods
 -------------------
 
-R, a programming language for statistical computing, was used for data collection and analysis. Logistic regression was used to estimate association between the estimates of the trauma severity models and OFI and the effect size was given as the OR. The CI for the OR was computed using the Wald estimator. Receiver operator characteristic (ROC) curves were used to assess diagnostic performance. The area under the curve (AUC) was calculated to compare the models with one another. The Integrated Calibration Index (ICI) was used to measure calibration. Accuracy was plotted and is reported as the highest value for accuracy in the plot together with the associated cutoff. Results werepresented with a confidence interval of 95%. A p-value of <0.05 was considered significant. 
+R, a programming language for statistical computing, was used for data collection and analysis<!-- Add citation-->. Logistic regression was used to estimate association between the estimates of the trauma severity models and OFI and the effect size was given as the OR. The CI for the OR was computed using the Wald estimator. Receiver operator characteristic (ROC) curves were used to assess diagnostic performance. The area under the curve (AUC) was calculated to compare the models with one another. The Integrated Calibration Index (ICI) was used to measure calibration. Accuracy was plotted and is reported as the highest value for accuracy in the plot together with the associated cutoff. Results are presented with a confidence interval of 95%. A p-value of <0.05 was considered significant. 
 
 Ethical considerations
 ==========
@@ -200,7 +206,7 @@ Results
 
 Participants
 ------------
-A total of `r exclusion[1,2]` patients were recorded in the trauma registry during the study period. Of these, `r exclusion[2,2]` were reviewed at an M&M conference and therefore became eligible for study inclusion. `r exclusion[7,3]` patients were excluded, due to either being of paediatric age (`r exclusion[3,3]`), being dead on arrival at hospital (`r exclusion[4,3]`), or due to incomplete data (`r exclusion[5,3]`). Figure 2 shows the inclusion process for eligible participants. 
+A total of `r exclusion[1,2]` patients were recorded in the trauma registry during the study period. Of these, `r exclusion[2,2]` were reviewed at an M&M conference<!-- Not really. Only a small subset of cases were reviewed at a conference, but all were part of the review process--> and therefore became eligible for study inclusion. `r exclusion[7,3]` patients were excluded, due to either being of paediatric age (`r exclusion[3,3]`), being dead on arrival at hospital (`r exclusion[4,3]`), or due to incomplete data (`r exclusion[5,3]`). Figure 2 shows the inclusion process for eligible participants. 
 
 ```{r, echo=FALSE, out.width = "400px"}
 knitr::include_graphics("images/exclusion.png") ## exclusion_flowchart.R; save_png(exclusion_flowchart(exclusion), "exclusion") to update
@@ -211,6 +217,13 @@ Detailed totals of missing data for each required parameter in cases that were e
 ```{r}
  as_latex(table(na.data, type = "incomplete"))
 ```
+
+<!-- See my comment in your table.R, but the above could be: -->
+```{r incomplete-table, echo=FALSE}
+knitr::kable(table(na.data, type = "incomplete"), caption = "Parameters that were missing in cases excluded for incomplete data")
+```
+
+<!-- And you can then reference this table from anywhere in the text with \@ref(tab:incomplete-table), which would take care of the numbering for you. -->
 
 Descriptive data
 ----------------
@@ -229,16 +242,19 @@ At least one OFI was found in `r dd['ofi.true']` of cases (`r dd['ofi.pc']`%). I
 Main results
 ------------
 <!--Figure X??? -->
+<!-- You can also cross reference figures like this: \@ref(fig:fitted-glm) -->
 The fitted curves for the logistic regression models of each score are shown in figure x. The odds ratios for TRISS, NORMIT and PS were `r t[['or']]` (95% CI: `r t[['or.ci.lo']]`-`r t[['or.ci.hi']]`, *p*: `r t[['or.p']]`), `r n[['or']]` (95% CI: `r n[['or.ci.lo']]`-`r n[['or.ci.hi']]`, *p*: `r n[['or.p']]`), and `r p[['or']]` (95% CI: `r p[['or.ci.lo']]`-`r p[['or.ci.hi']]`, *p*: `r p[['or.p']]`) respectively. 
 
-```{r}
+```{r fitted-glm, fig.cap = "Fitted curves for the logistic regression models of each score"}
 knitr::include_graphics("images/glm.png") ## update: glm_x3(df)
+## Make sure you label the axes
 ```
 <!--Figure X??? -->
 The receiver operating curves for all scores are plotted in figure x. The areas under the curve for TRISS, NORMIT and PS were `r t[['auc']]` (95% CI: `r t[['auc.ci.lo']]`-`r t[['auc.ci.hi']]`), `r n[['auc']]` (95% CI: `r n[['auc.ci.lo']]`-`r n[['auc.ci.hi']]`), and `r p[['auc']]` (95% CI: `r p[['auc.ci.lo']]`-`r p[['auc.ci.hi']]`) respectively.
 
 ```{r}
 knitr::include_graphics("images/roc.png") ## update: roc_x3(t, n, p)
+## Write Sensitivity and Specificity, with capital S
 ```
 <!--Figure X??? -->
 The integrated calibration index for TRISS, NORMIT and PS was `r t[['ici']]` (95% CI: `r t[['ici.ci']][1]`-`r t[['ici.ci']][2]`, `r n[['ici']]` (95% CI: `r n[['ici.ci']][1]`-`r n[['ici.ci']][2]` and `r p[['ici']]` (95% CI: `r p[['ici.ci']][1]`-`r p[['ici.ci']][2]` respectively. The accuracy at all cutoffs is plotted for all scores in figure x. The accuracy at a cutoff of 0.5 for TRISS, NORMIT and PS was `r t[['acc']]` (95% CI: `r t[['acc.ci']][1]`-`r t[['acc.ci']][2]`), `r n[['acc']]` (95% CI: `r n[['acc.ci']][1]`-`r n[['acc.ci']][2]`) and `r p[['acc']]` (95% CI: `r p[['acc.ci']][1]`-`r p[['acc.ci']][2]`) respectively. 
@@ -247,7 +263,7 @@ The integrated calibration index for TRISS, NORMIT and PS was `r t[['ici']]` (95
 knitr::include_graphics("images/acc.png") ## update: acc_x3(t, n, p)
 ```
 <!--Table X? -->
-The differences between the scores for each result are shown in table x. 
+The differences between the scores for each result are shown in table x. <!-- Elaborate on what differences are shown in the table. You are actually showing the differences in performance measures, right? So here you can also say something about what models performed best in terms of what measure-->
 
 ```{r}
  as_latex(table(d, type = "deltas"))
@@ -283,12 +299,13 @@ These three models had essentially the same results, which is an expected outcom
 
 The results of this study agree with previous studies assessing the predictive power of trauma severity models with regards to preventable deaths. Although this study was not specifically about preventable deaths, the factor that determines whether a death was preventable is whether an improvement in care could have prevented the death, i.e. whether there was a significant opportunity for improvement, which makes the previous studies on preventable deaths broadly relevant to this study. Ghorbani et al found that both TRISS and NORMIT had poor performance in predicting preventable deaths [@prevdeathsghorbani]. Heim et al found that PS and TRISS miss a significant proportion of preventable deaths [@brohi16]. Our results also show that none of the three models investigated (TRISS, NORMIT and PS) were able to reliably predict OFI. The difference between our study and prior studies is that we looked at the trauma population across the board and not only deaths.
 
-Even though our results were expected, it was still important to investigate this question scientifically, because trauma severity models are in use today as audit filters at many institutions. Our findings show that the use of trauma severity models as audit filters is unlikely to lead to improvements in case selection, and in fact could be harmful. Audit filters that don't improve case selection will either lead to cases being over-selected, causing resource wastage, or to cases being under-selected, leading to OFI being missed. Trauma severity models are useful when used on the population level, to allow institutions to compare themselves and to provide a framework for discussing trauma severity. They are much less useful when applied to individuals, and were not intended for that use. 
+Even though our results were expected, it was still important to investigate this question scientifically, because trauma severity models are in use today as audit filters at many institutions. Our findings show that the use of trauma severity models as audit filters is unlikely to lead to improvements in case selection, and in fact could be harmful. Audit filters that don't<!-- Avoid contractions--> improve case selection will either lead to cases being over-selected, causing resource wastage, or to cases being under-selected, leading to OFI being missed. Trauma severity models are useful when used on the population level, to allow institutions to compare themselves and to provide a framework for discussing trauma severity. They are much less useful when applied to individuals, and were not intended for that use. 
 
 ## Generalisability 
 This study is based on a patient population at a level 1 trauma centre in Stockholm, Sweden and the results are likely applicable for other level 1 trauma centres in the Nordic countries, as these countries share similarities in patient demographics, comorbidities, and injury types. This study is less generalisable for smaller trauma centres as those centres tend to manage less severe trauma and will have a different patient population. This study also has less external validity with regards to international populations that differ significantly from the one in this study, for example populations with a higher proportion of penetrating trauma. 
 
 ### Health equity
+<!-- Is this section requested by KI?-->
 The demographical characteristics of the participants in this study reflect the well-known demographics of trauma patients worlwide. `r dd['male']`% of participants were male and the median age was `r dd['age']`, which matches with statistics both in Sweden and globally [@globalburden]. The predominance of male patients invites one to question if female patients are less likely to receive quality care. In healthcare as in all areas, repetition leads to mastery of a skill, so an onlooker might be tempted to assume that the high volume of male patients in trauma will lead healthcare providers to superiority iin treating males, whilst treatment of female patients will be neglected. This demographical difference has precipitated research that seeks to investigate whether this presumption holds true, and several large multi-centre studies have been published that evaluated whether there is a correlation between sex and outcomes. None of these studies found a correlation beween sex and increased mortality or other serious outcomes [@croce2002; @magnotti2008; @pepe2019; @trentzsch2004], and in fact one study in the Netherlands found that female sex was correlated with decreased mortality [@pape2019]. 
 
 This study has not compared differences between the sexes, and therefore cannot comment on any relation between sex and OFI at this centre. One of the trauma severity models we investigated, PS, does include patient sex as a coefficient in predicting mortality, but we did not examine whether patient sex affects the ability of PS to predict OFI. However, there is another currently ongoing project at this hospital that compares OFI between the male and female sex cohorts. The uneven distribution of sex in this study does not make for a limitation of this study in terms of generalisability since our demographics match the distribution of sex in trauma cases both globally and in the Swedish trauma population. 
@@ -304,7 +321,7 @@ In addition, future studies should aim to confirm the findings of this study wit
 Conclusion
 ==========
 
-This aim of this study was to evaluate whether several commonly used trauma severity models (TRISS, NORMIT, and PS) are associated with, and to what extent they can predict, opportunities for improvement, with the goal of improving case selection for multidisciplinary morbidity and mortality conferences. We showed that, while low probability of survival is associated with increased odds of OFI, none of the models were able to reliably predict OFI. The use of these models as audit filters in case selection for M&M conferences is not supported by our results and may lead to over-selection. 
+This aim of this study was to evaluate whether several commonly used trauma severity models (TRISS, NORMIT, and PS) are associated with, and to what extent they can predict, opportunities for improvement, with the goal of improving case selection for multidisciplinary morbidity and mortality conferences<!-- No need to state your aim again here in the conclusion, unless it's specifically asked for by KI.-->. We showed that, while low probability of survival is associated with increased odds of OFI, none of the models were able to reliably predict OFI. The use of these models as audit filters in case selection for M&M conferences is not supported by our results and may lead to over-selection. 
 
 
 References
