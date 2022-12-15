@@ -80,6 +80,7 @@ The most commonly used model worldwide is The Trauma and Injury Severity Score (
 
 In 2014 researchers in Norway released a new model, the Norwegian Survival Prediction Model in Trauma (NORMIT), that attempts to address the weaknesses of TRISS and simultaneously provide a model based on Norwegian patient populations [@normit]. NORMIT is based on the patient's age, New Injury Severity Score (NISS), comorbidities prior to traumatic injury based on the ASA physical status classification system (ASA-PS), and their RTS. NISS differs from ISS in that NISS allows for scoring of multiple injuries within the same anatomical region. Validation of NISS has shown that NISS is better at predicting mortality in trauma patients compared to ISS, especially in patients with multiple severe injuries within one anatomical region [@nissbetter]. NORMIT also provides a method to incorporate the GCS for intubated patients when calculating RTS. For patients who arrive at hospital and under general anaesthesia, the RTS is calculated based on the prehospital value prior to intubation [@normit]. NORMIT was updated in 2018 [@skagaValidatingPerformanceTRISS2018] and a validation study found that the updated NORMIT reliably predicted survival at a Swedish trauma centre but both the old and new versions of NORMIT performed worse when used at the national level [@validationnormit]. 
 
+<!-- how do they compare -->
 
 ## Knowledge gap
 
@@ -99,18 +100,22 @@ Methods
 Study design
 ------------
 
-This is a single-centre retrospective cohort study, using data from two registries at Karolinska University Hospital: the trauma registry and the trauma care quality database. The trauma care quality database is a subset of the trauma registry and contains data on trauma patients who were selected for M&M reviews. These two databases were linked and then analysed to estimate the association between the common trauma severity models TRISS, NORMIT and PS and OFI using logistic regression. The predictive performance of these models was evaluated using measures of discrimination and calibration. 
+This is a single-centre retrospective cohort study, using data from two registries at Karolinska University Hospital: the trauma registry and the trauma care quality database. The trauma care quality database is a subset of the trauma registry and contains data on trauma patients who were selected for M&M reviews. These two databases were linked and then analysed to estimate the association between the common trauma severity models TRISS and NORMIT and OFI using logistic regression. The predictive performance of these models was evaluated using measures of discrimination and calibration. 
 
 Setting
 -------
 
-Karolinska University Hospital is located in Solna, Sweden. The trauma centre at Karolinska University Hospital is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@nksstats] and it is the primary trauma centre for the region of Stockholm. Karolinska University Hospital also has agreements with several other regions to provide trauma care for patients with severe trauma and the trauma centre has thereby a catchment population of almost 3 million residents [@nksstats]. 
+<!-- Describe the setting, locations, and relevant dates, including
+periods of recruitment, exposure, follow-up, and data collection -->
 
-The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and follows SweTrau guidelines. All trauma patients meeting the SweTrau inclusion criteria are registered in the trauma registry by research nurses at the trauma centre. Data is collected from the patient's electronic medical records. The trauma registry contains data on patients from 2013 to 2021. <!-- Based on the dates I see in the Swetrau dataset --> 
+Karolinska University Hospital is located in Solna, Sweden. The trauma centre at Karolinska University Hospital is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@nksstats] and it is the primary trauma centre for the region of Stockholm. Karolinska University Hospital also has agreements with several other regions to provide trauma care for patients with severe trauma and the trauma centre has thereby a catchment population of almost 3 million residents [@nksstats]. 
+The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and thereby follows SweTrau guidelines. All trauma patients meeting the SweTrau inclusion criteria are registered in the trauma registry by research nurses at the trauma centre. Data is collected from the patient's electronic medical records. The trauma registry contains data on patients from 2013 to 2021. <!-- Based on the dates I see in the Swetrau dataset --> 
+<!--JA: Det har samlats ännu äldre data i olika former. Skulle bara skippa årtalen kring traumaregistret. KS har kört någon form av MoM sedan 2012. Se: https://pubmed-ncbi-nlm-nih-gov.sll.idm.oclc.org/24625137/ -->
 
 SweTrau follows the Utstein Trauma Template for reporting of data following major trauma. The registered data includes prehospital vital signs and management, vital signs and management on arrival at hospital, information about the type of injury, and the primary method of treatment. Follow-up variables include, but are not limited to, survival at 30 days, days in ventilator, Glasgow Outcome Scale score at discharge, highest level of care, and transfers to other units.
 
-The trauma care quality database is an internal hospital registry and registers the outcome of M&M conferences. M&M conferences are held at Karolinska University Hospital ten times per year and are attended by all involved specialties and professions. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. The database contains data on patients from 2014 to 2021. <!-- Double check these dates -->
+The trauma care quality database is an internal hospital registry and registers the outcome of M&M conferences. M&M conferences are held at Karolinska University Hospital ten times per year and are attended by all involved specialties and professions. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. The database contains data on patients from 2014 to 2021. <!-- Double check these dates.
+JA: Se ovan, registrerat från 2012 kring dödsdall men tror morbiditet började 2014. Oavsett så är VÅR data från 2014-2021 -->
 
 Participants
 ------------
@@ -128,7 +133,6 @@ The trauma care quality database contains patients from the trauma registry that
 
 ```{r, echo=FALSE, out.width = "400px"}
 knitr::include_graphics("images/ofi.png") ## ofi_diagram.R; save_png(ofi_diagram(), "ofi") to update
-## titles for plots will be added in word
 ```
 
 ### Study-specific eligibility criteria
@@ -176,12 +180,16 @@ The code for data analysis was written using simulated data to reduce the risk o
 Statistical methods
 -------------------
 
-R, a programming language for statistical computing, was used for data collection and analysis. Logistic regression was used to estimate association between the estimates of the trauma severity models and OFI and the effect size was given as the OR. The CI for the OR was computed using the Wald estimator. Receiver operator characteristic (ROC) curves were used to assess diagnostic performance. The area under the curve (AUC) was calculated to compare the models with one another. The Integrated Calibration Index (ICI) was used to measure calibration. Accuracy was plotted and is reported as the accuracy at a 0.5 cutoff. Confidence intervals were calculated with bootstrapping. Results were presented with a confidence interval of 95%. A p-value of <0.05 was considered significant. 
+R, a programming language for statistical computing, was used for data collection and analysis. Logistic regression was used to estimate association between the estimates of the trauma severity models and OFI and the effect size was given as the OR. The CI for the OR was computed using the Wald estimator. Receiver operator characteristic (ROC) curves were used to assess diagnostic performance. The area under the curve (AUC) was calculated to compare the models with one another. The Integrated Calibration Index (ICI) was used to measure calibration. Accuracy was plotted and is reported as the highest value for accuracy in the plot together with the associated cutoff. Results werepresented with a confidence interval of 95%. A p-value of <0.05 was considered significant. 
 
 Ethical considerations
 ==========
 
 All patient information used in this study is pseudononymised and stored in a secure database. Patient medical records will not be accessed. Patients were not asked to give consent for inclusion in the Karolinska University Hospital trauma registry. The ability and ethical approval to collect patient data for this registry without pre-emptively asking for patient consent is well-established, as collecting this data is deemed to be in the public interest according to article 6.1 e of GDPR regulations. Collecting data is in the public interest due to the fact that this patient register is used to improve management of trauma, which is a leading cause of death. Patients have the right to be removed from the register on request. They also have the right to a copy of data that is stored about them on request. <!-- https://meetings.lg.se/pdfFile/pdfFile.aspx?objectID=%2F7Iqgtt89nW2zhRjMSNZ%2Fw%3D%3D --> 
+
+<!--JA: Jag tror du även kan använda denna länk om du inte vill ladda ner fil:
+https://rcsyd.se/swetrau/wp-content/uploads/sites/10/2019/09/Patientinformation-SweTrau.pdf
+-->
 
 This project is a retrospective cohort study and the project has thereby had no effect on patient treatment. There is no risk that patients are harmed by inclusion in the study. This study has the potential to improve patient care by analysing a potential factor that could predict suboptimal trauma care. It is true that the patient population for this study includes vulnerable populations, such as the deceased and the severely injured, but this is justified by the fact that this population stands to gain the most from improved trauma care.
 
@@ -214,31 +222,31 @@ At least one OFI was found in `r dd['ofi.true']` of cases (`r dd['ofi.pc']`%). I
 
   
 ```{r} 
-  table.one
+  table.one ## will be improved later
 ```
 
 
 Main results
 ------------
-
-The fitted curves for the logistic regression models of each score are shown in figure 3. The odds ratios for TRISS, NORMIT and PS were `r t[['or']]` (95% CI: `r t[['or.ci.lo']]`-`r t[['or.ci.hi']]`, *p*: `r t[['or.p']]`), `r n[['or']]` (95% CI: `r n[['or.ci.lo']]`-`r n[['or.ci.hi']]`, *p*: `r n[['or.p']]`), and `r p[['or']]` (95% CI: `r p[['or.ci.lo']]`-`r p[['or.ci.hi']]`, *p*: `r p[['or.p']]`) respectively. 
+<!--Figure X??? -->
+The fitted curves for the logistic regression models of each score are shown in figure x. The odds ratios for TRISS, NORMIT and PS were `r t[['or']]` (95% CI: `r t[['or.ci.lo']]`-`r t[['or.ci.hi']]`, *p*: `r t[['or.p']]`), `r n[['or']]` (95% CI: `r n[['or.ci.lo']]`-`r n[['or.ci.hi']]`, *p*: `r n[['or.p']]`), and `r p[['or']]` (95% CI: `r p[['or.ci.lo']]`-`r p[['or.ci.hi']]`, *p*: `r p[['or.p']]`) respectively. 
 
 ```{r}
 knitr::include_graphics("images/glm.png") ## update: glm_x3(df)
 ```
-
-The receiver operating curves for all scores are plotted in 4. The areas under the curve for TRISS, NORMIT and PS were `r t[['auc']]` (95% CI: `r t[['auc.ci.lo']]`-`r t[['auc.ci.hi']]`), `r n[['auc']]` (95% CI: `r n[['auc.ci.lo']]`-`r n[['auc.ci.hi']]`), and `r p[['auc']]` (95% CI: `r p[['auc.ci.lo']]`-`r p[['auc.ci.hi']]`) respectively.
+<!--Figure X??? -->
+The receiver operating curves for all scores are plotted in figure x. The areas under the curve for TRISS, NORMIT and PS were `r t[['auc']]` (95% CI: `r t[['auc.ci.lo']]`-`r t[['auc.ci.hi']]`), `r n[['auc']]` (95% CI: `r n[['auc.ci.lo']]`-`r n[['auc.ci.hi']]`), and `r p[['auc']]` (95% CI: `r p[['auc.ci.lo']]`-`r p[['auc.ci.hi']]`) respectively.
 
 ```{r}
 knitr::include_graphics("images/roc.png") ## update: roc_x3(t, n, p)
 ```
-
-The integrated calibration index for TRISS, NORMIT and PS was `r t[['ici']]` (95% CI: `r t[['ici.ci']][1]`-`r t[['ici.ci']][2]`, `r n[['ici']]` (95% CI: `r n[['ici.ci']][1]`-`r n[['ici.ci']][2]` and `r p[['ici']]` (95% CI: `r p[['ici.ci']][1]`-`r p[['ici.ci']][2]` respectively. The accuracy at all cutoffs is plotted for all models in  5. The accuracy at a cutoff of 0.5 for TRISS, NORMIT and PS was `r t[['acc']]` (95% CI: `r t[['acc.ci']][1]`-`r t[['acc.ci']][2]`), `r n[['acc']]` (95% CI: `r n[['acc.ci']][1]`-`r n[['acc.ci']][2]`) and `r p[['acc']]` (95% CI: `r p[['acc.ci']][1]`-`r p[['acc.ci']][2]`) respectively. 
+<!--Figure X??? -->
+The integrated calibration index for TRISS, NORMIT and PS was `r t[['ici']]` (95% CI: `r t[['ici.ci']][1]`-`r t[['ici.ci']][2]`, `r n[['ici']]` (95% CI: `r n[['ici.ci']][1]`-`r n[['ici.ci']][2]` and `r p[['ici']]` (95% CI: `r p[['ici.ci']][1]`-`r p[['ici.ci']][2]` respectively. The accuracy at all cutoffs is plotted for all scores in figure x. The accuracy at a cutoff of 0.5 for TRISS, NORMIT and PS was `r t[['acc']]` (95% CI: `r t[['acc.ci']][1]`-`r t[['acc.ci']][2]`), `r n[['acc']]` (95% CI: `r n[['acc.ci']][1]`-`r n[['acc.ci']][2]`) and `r p[['acc']]` (95% CI: `r p[['acc.ci']][1]`-`r p[['acc.ci']][2]`) respectively. 
 
 ```{r}
 knitr::include_graphics("images/acc.png") ## update: acc_x3(t, n, p)
 ```
-
+<!--Table X? -->
 The differences between the scores for each result are shown in table x. 
 
 ```{r}
@@ -260,7 +268,7 @@ Strengths and limitations
 
 One of the strengths of this study is the duration of enrolment and Karolinska University Hospital's catchment population of 3 million, which allowed for a large study population. The outcome data is strengthened by Karolinska University Hospital's extensive quality review process involving personnel from all concerned specialities and professions. All patients that met inclusion criteria were included in the study. Data collection, patient inclusion and data analysis was prepared on scrambled data by a single student research before being given access to the real data, in order to minimise researcher bias.
 
-There were several limitations to this study. One of them is that selection of cases for review at conferences was in large part based upon the use of audit filters. There is as yet no widespread consensus on which audit filters are the most effective at identifying cases and this is an ongoing topic of research. The choice of audit filters used affects case selection and in turn introduces an element of selection bias into this study. It is possible, and perhaps even likely, that some cases with opportunities for improvement were never selected for case review and therefore weren't available for inclusion in this study. Another limitation is that, due to the long duration of enrolment in this study, the composition of the staff present at conferences will have differed over time. Determining whether OFI exists or not is an essentially subjective evaluation and the conclusions reached by any given conference may vary depending on which individuals are present. It is also possible that standards and expectations of care have changed over time as knowledge and technology improves, which would also in turn affect assignment of OFI. 
+There were several limitations to this study. One of them is that selection of cases for review at conferences was in large part based upon the use of audit filters. There is as yet no widespread consensus on which audit filters are the most effective at identifying cases and this is an ongoing topic of research. The choice of audit filters used affects case selection and in turn introduces an element of selection bias into this study. It is possible, and perhaps even likely, that some cases with opportunities for improvement were never selected for case review and therefore weren't available for inclusion in this study. Another limitation is that, due to the long duration of enrolment in this study, the composition of the staff present at conferences will have differed over time. Determining whether OFI exists or not is an essentially subjective evaluation and the conclusions reached by any given conference may vary depending on which individuals are present. It is also possible that standards and expectations of care have changed over time as knowledge and technology improves, which would also in turn affect assignment of OFI. <!--JA: I takt med att man åtgärdar systematiskta fel så upkommer na -->
 
 Interpretation
 -----------
@@ -273,15 +281,15 @@ We showed that all three models have a low accuracy at a 0.5 cutoff. One reason 
 
 These three models had essentially the same results, which is an expected outcome considering that they are all tools for estimating the same thing - the probability of survival. In addition, the models have a great degree of overlap in the parameters they incorporate, including GCS and age. The models we analysed are commonly-used and are sourced from three different geographical populations. The fact that they all had similar performance is a sign that investigation of other models is unlikely to lead to different results.
 
-The results of this study agree with previous studies assessing the predictive power of trauma severity models with regards to preventable deaths. Although this study was not specifically about preventable deaths, the factor that determines whether a death was preventable is whether an improvement in care could have prevented the death, i.e. whether there was a significant opportunity for improvement, which makes the previous studies on preventable deaths broadly relevant to this study. Ghorbani et al found that both TRISS and NORMIT had poor performance in predicting preventable deaths [@prevdeathsghorbani]. Heim et al found that PS and TRISS miss a significant proportion of preventable deaths [@brohi16]. Our results also show that none of the three models investigated (TRISS, NORMIT and PS) were able to reliably predict OFI across the board and not only in mortalities. The difference between our study and prior studies is that we looked at the trauma population across the board and not only deaths.
+The results of this study agree with previous studies assessing the predictive power of trauma severity models with regards to preventable deaths. Although this study was not specifically about preventable deaths, the factor that determines whether a death was preventable is whether an improvement in care could have prevented the death, i.e. whether there was a significant opportunity for improvement, which makes the previous studies on preventable deaths broadly relevant to this study. Ghorbani et al found that both TRISS and NORMIT had poor performance in predicting preventable deaths [@prevdeathsghorbani]. Heim et al found that PS and TRISS miss a significant proportion of preventable deaths [@brohi16]. Our results also show that none of the three models investigated (TRISS, NORMIT and PS) were able to reliably predict OFI. The difference between our study and prior studies is that we looked at the trauma population across the board and not only deaths.
 
-Even though our results were expected, it was still important to investigate this topic scientifically because trauma severity models are in use today as audit filters. Our findings show that the use of trauma severity models as audit filters is unlikely to lead to improvements in case selection, and in fact could be harmful. Audit filters that don't improve case selection will either lead to cases being over-selected, causing resource wastage, or to cases being under-selected, leading to OFI being missed. Trauma severity models are useful when used on the population level, to allow institutions to compare themselves and to provide a framework for discussing trauma severity. They are much less useful when applied to individuals, and were not intended for that use. 
+Even though our results were expected, it was still important to investigate this question scientifically, because trauma severity models are in use today as audit filters at many institutions. Our findings show that the use of trauma severity models as audit filters is unlikely to lead to improvements in case selection, and in fact could be harmful. Audit filters that don't improve case selection will either lead to cases being over-selected, causing resource wastage, or to cases being under-selected, leading to OFI being missed. Trauma severity models are useful when used on the population level, to allow institutions to compare themselves and to provide a framework for discussing trauma severity. They are much less useful when applied to individuals, and were not intended for that use. 
 
 ## Generalisability 
 This study is based on a patient population at a level 1 trauma centre in Stockholm, Sweden and the results are likely applicable for other level 1 trauma centres in the Nordic countries, as these countries share similarities in patient demographics, comorbidities, and injury types. This study is less generalisable for smaller trauma centres as those centres tend to manage less severe trauma and will have a different patient population. This study also has less external validity with regards to international populations that differ significantly from the one in this study, for example populations with a higher proportion of penetrating trauma. 
 
 ### Health equity
-The demographical characteristics of the participants in this study reflect the well-known demographics of trauma patients worlwide. `r dd['male']`% of participants were male and the median age was `r dd['age']`, which matches with statistics both in Sweden and globally [@globalburden]. The predominance of male patients invites one to question if female patients are less likely to receive quality care. In healthcare as in all areas, repetition leads to mastery of a skill, so an onlooker might be tempted to assume that the high volume of male patients in trauma will lead healthcare providers to superiority iin treating males, whilst treatment of female patients will be neglected. This demographical difference has precipitated research that seeks to investigate whether this presumption holds true, and several large multi-centre studies have been published that evaluated whether there is a correlation between sex and outcomes. None of these studies found a correlation beween sex and increased mortality or other serious outcomes [@croce2002; @magnotti2008; @pape2019; @trentzsch2014], and in fact one study in the Netherlands found that female sex was correlated with decreased mortality [@pape2019]. 
+The demographical characteristics of the participants in this study reflect the well-known demographics of trauma patients worlwide. `r dd['male']`% of participants were male and the median age was `r dd['age']`, which matches with statistics both in Sweden and globally [@globalburden]. The predominance of male patients invites one to question if female patients are less likely to receive quality care. In healthcare as in all areas, repetition leads to mastery of a skill, so an onlooker might be tempted to assume that the high volume of male patients in trauma will lead healthcare providers to superiority iin treating males, whilst treatment of female patients will be neglected. This demographical difference has precipitated research that seeks to investigate whether this presumption holds true, and several large multi-centre studies have been published that evaluated whether there is a correlation between sex and outcomes. None of these studies found a correlation beween sex and increased mortality or other serious outcomes [@croce2002; @magnotti2008; @pepe2019; @trentzsch2004], and in fact one study in the Netherlands found that female sex was correlated with decreased mortality [@pape2019]. 
 
 This study has not compared differences between the sexes, and therefore cannot comment on any relation between sex and OFI at this centre. One of the trauma severity models we investigated, PS, does include patient sex as a coefficient in predicting mortality, but we did not examine whether patient sex affects the ability of PS to predict OFI. However, there is another currently ongoing project at this hospital that compares OFI between the male and female sex cohorts. The uneven distribution of sex in this study does not make for a limitation of this study in terms of generalisability since our demographics match the distribution of sex in trauma cases both globally and in the Swedish trauma population. 
 
@@ -301,4 +309,3 @@ This aim of this study was to evaluate whether several commonly used trauma seve
 
 References
 ==========
-
