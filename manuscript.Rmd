@@ -128,6 +128,7 @@ The trauma care quality database contains patients from the trauma registry that
 
 ```{r, echo=FALSE, out.width = "400px"}
 knitr::include_graphics("images/ofi.png") ## ofi_diagram.R; save_png(ofi_diagram(), "ofi") to update
+## titles for plots will be added in word
 ```
 
 ### Study-specific eligibility criteria
@@ -213,7 +214,7 @@ At least one OFI was found in `r dd['ofi.true']` of cases (`r dd['ofi.pc']`%). I
 
   
 ```{r} 
-  table.one ## will be improved later
+  table.one
 ```
 
 
