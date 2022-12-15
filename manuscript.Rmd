@@ -110,10 +110,12 @@ periods of recruitment, exposure, follow-up, and data collection -->
 
 Karolinska University Hospital is located in Solna, Sweden. The trauma centre at Karolinska University Hospital is equivalent to a level 1 trauma centre according to American College of Surgeons standards [@nksstats] and it is the primary trauma centre for the region of Stockholm. Karolinska University Hospital also has agreements with several other regions to provide trauma care for patients with severe trauma and the trauma centre has thereby a catchment population of almost 3 million residents [@nksstats]. 
 The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and thereby follows SweTrau guidelines. All trauma patients meeting the SweTrau inclusion criteria are registered in the trauma registry by research nurses at the trauma centre. Data is collected from the patient's electronic medical records. The trauma registry contains data on patients from 2013 to 2021. <!-- Based on the dates I see in the Swetrau dataset --> 
+<!--JA: Det har samlats ännu äldre data i olika former. Skulle bara skippa årtalen kring traumaregistret. KS har kört någon form av MoM sedan 2012. Se: https://pubmed-ncbi-nlm-nih-gov.sll.idm.oclc.org/24625137/ -->
 
 SweTrau follows the Utstein Trauma Template for reporting of data following major trauma. The registered data includes prehospital vital signs and management, vital signs and management on arrival at hospital, information about the type of injury, and the primary method of treatment. Follow-up variables include, but are not limited to, survival at 30 days, days in ventilator, Glasgow Outcome Scale score at discharge, highest level of care, and transfers to other units.
 
-The trauma care quality database is an internal hospital registry and registers the outcome of M&M conferences. M&M conferences are held at Karolinska University Hospital ten times per year and are attended by all involved specialties and professions. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. The database contains data on patients from 2014 to 2021. <!-- Double check these dates -->
+The trauma care quality database is an internal hospital registry and registers the outcome of M&M conferences. M&M conferences are held at Karolinska University Hospital ten times per year and are attended by all involved specialties and professions. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. The database contains data on patients from 2014 to 2021. <!-- Double check these dates.
+JA: Se ovan, registrerat från 2012 kring dödsdall men tror morbiditet började 2014. Oavsett så är VÅR data från 2014-2021 -->
 
 Participants
 ------------
@@ -185,6 +187,10 @@ Ethical considerations
 
 All patient information used in this study is pseudononymised and stored in a secure database. Patient medical records will not be accessed. Patients were not asked to give consent for inclusion in the Karolinska University Hospital trauma registry. The ability and ethical approval to collect patient data for this registry without pre-emptively asking for patient consent is well-established, as collecting this data is deemed to be in the public interest according to article 6.1 e of GDPR regulations. Collecting data is in the public interest due to the fact that this patient register is used to improve management of trauma, which is a leading cause of death. Patients have the right to be removed from the register on request. They also have the right to a copy of data that is stored about them on request. <!-- https://meetings.lg.se/pdfFile/pdfFile.aspx?objectID=%2F7Iqgtt89nW2zhRjMSNZ%2Fw%3D%3D --> 
 
+<!--JA: Jag tror du även kan använda denna länk om du inte vill ladda ner fil:
+https://rcsyd.se/swetrau/wp-content/uploads/sites/10/2019/09/Patientinformation-SweTrau.pdf
+-->
+
 This project is a retrospective cohort study and the project has thereby had no effect on patient treatment. There is no risk that patients are harmed by inclusion in the study. This study has the potential to improve patient care by analysing a potential factor that could predict suboptimal trauma care. It is true that the patient population for this study includes vulnerable populations, such as the deceased and the severely injured, but this is justified by the fact that this population stands to gain the most from improved trauma care.
 
 **Stockholm Research Ethics Review Board approval number 2021-02541 and 2021-03531.**
@@ -222,25 +228,25 @@ At least one OFI was found in `r dd['ofi.true']` of cases (`r dd['ofi.pc']`%). I
 
 Main results
 ------------
-
+<!--Figure X??? -->
 The fitted curves for the logistic regression models of each score are shown in figure x. The odds ratios for TRISS, NORMIT and PS were `r t[['or']]` (95% CI: `r t[['or.ci.lo']]`-`r t[['or.ci.hi']]`, *p*: `r t[['or.p']]`), `r n[['or']]` (95% CI: `r n[['or.ci.lo']]`-`r n[['or.ci.hi']]`, *p*: `r n[['or.p']]`), and `r p[['or']]` (95% CI: `r p[['or.ci.lo']]`-`r p[['or.ci.hi']]`, *p*: `r p[['or.p']]`) respectively. 
 
 ```{r}
 knitr::include_graphics("images/glm.png") ## update: glm_x3(df)
 ```
-
+<!--Figure X??? -->
 The receiver operating curves for all scores are plotted in figure x. The areas under the curve for TRISS, NORMIT and PS were `r t[['auc']]` (95% CI: `r t[['auc.ci.lo']]`-`r t[['auc.ci.hi']]`), `r n[['auc']]` (95% CI: `r n[['auc.ci.lo']]`-`r n[['auc.ci.hi']]`), and `r p[['auc']]` (95% CI: `r p[['auc.ci.lo']]`-`r p[['auc.ci.hi']]`) respectively.
 
 ```{r}
 knitr::include_graphics("images/roc.png") ## update: roc_x3(t, n, p)
 ```
-
+<!--Figure X??? -->
 The integrated calibration index for TRISS, NORMIT and PS was `r t[['ici']]` (95% CI: `r t[['ici.ci']][1]`-`r t[['ici.ci']][2]`, `r n[['ici']]` (95% CI: `r n[['ici.ci']][1]`-`r n[['ici.ci']][2]` and `r p[['ici']]` (95% CI: `r p[['ici.ci']][1]`-`r p[['ici.ci']][2]` respectively. The accuracy at all cutoffs is plotted for all scores in figure x. The accuracy at a cutoff of 0.5 for TRISS, NORMIT and PS was `r t[['acc']]` (95% CI: `r t[['acc.ci']][1]`-`r t[['acc.ci']][2]`), `r n[['acc']]` (95% CI: `r n[['acc.ci']][1]`-`r n[['acc.ci']][2]`) and `r p[['acc']]` (95% CI: `r p[['acc.ci']][1]`-`r p[['acc.ci']][2]`) respectively. 
 
 ```{r}
 knitr::include_graphics("images/acc.png") ## update: acc_x3(t, n, p)
 ```
-
+<!--Table X? -->
 The differences between the scores for each result are shown in table x. 
 
 ```{r}
@@ -262,7 +268,7 @@ Strengths and limitations
 
 One of the strengths of this study is the duration of enrolment and Karolinska University Hospital's catchment population of 3 million, which allowed for a large study population. The outcome data is strengthened by Karolinska University Hospital's extensive quality review process involving personnel from all concerned specialities and professions. All patients that met inclusion criteria were included in the study. Data collection, patient inclusion and data analysis was prepared on scrambled data by a single student research before being given access to the real data, in order to minimise researcher bias.
 
-There were several limitations to this study. One of them is that selection of cases for review at conferences was in large part based upon the use of audit filters. There is as yet no widespread consensus on which audit filters are the most effective at identifying cases and this is an ongoing topic of research. The choice of audit filters used affects case selection and in turn introduces an element of selection bias into this study. It is possible, and perhaps even likely, that some cases with opportunities for improvement were never selected for case review and therefore weren't available for inclusion in this study. Another limitation is that, due to the long duration of enrolment in this study, the composition of the staff present at conferences will have differed over time. Determining whether OFI exists or not is an essentially subjective evaluation and the conclusions reached by any given conference may vary depending on which individuals are present. It is also possible that standards and expectations of care have changed over time as knowledge and technology improves, which would also in turn affect assignment of OFI. 
+There were several limitations to this study. One of them is that selection of cases for review at conferences was in large part based upon the use of audit filters. There is as yet no widespread consensus on which audit filters are the most effective at identifying cases and this is an ongoing topic of research. The choice of audit filters used affects case selection and in turn introduces an element of selection bias into this study. It is possible, and perhaps even likely, that some cases with opportunities for improvement were never selected for case review and therefore weren't available for inclusion in this study. Another limitation is that, due to the long duration of enrolment in this study, the composition of the staff present at conferences will have differed over time. Determining whether OFI exists or not is an essentially subjective evaluation and the conclusions reached by any given conference may vary depending on which individuals are present. It is also possible that standards and expectations of care have changed over time as knowledge and technology improves, which would also in turn affect assignment of OFI. <!--JA: I takt med att man åtgärdar systematiskta fel så upkommer na -->
 
 Interpretation
 -----------
