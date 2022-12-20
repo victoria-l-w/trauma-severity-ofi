@@ -1,42 +1,54 @@
 ## Makes a flowchart on how patients are selected for M&M
 
 ofi_diagram <- function() {
-  diagram <- DiagrammeR::grViz("digraph flowchart {
-  
-    label='Fig. 1. OFI decision-making workflow';
-    labelloc=bottom;
-    labeljust=left;
-    labelfontsize=18;
 
-    # node definitions with substituted label text
-    node [shape = rectangle, width = 8, fontsize = 16] 
-    tab1 [label = '@@1']
-    tab2 [label = '@@2']
-    tab3 [label = '@@3']
-    tab4 [label = '@@4']
-    tab5 [label = '@@5']
-    tab6 [label = '@@6']
-    tab7 [label = '@@7'] 
+  out <- grViz("digraph flowchart {
+  
+  
+    ## the real nodes
+    node [shape = rectangle, width = 6, fontsize = 18] 
+      1 [label = '@@1']
+      2 [label = '@@2']
+      3 [label = '@@3']
+      4 [label = '@@4']
+      5 [label = '@@5']
+      m1 [label = '@@6']
+      m2 [label = '@@7']
+      s1 [label = '@@8']
+      s2 [label = '@@9']
+
     
-    # edge definitions with the node IDs
-    tab1 -> tab2 -> tab3 -> tab4 -> tab5;
-    tab5 -> tab6;
-    tab5 -> tab7;
+    ## the fake nodes to create arrows halfway
+    node [shape=none, width=0, height=0, label='']
+    p1 -> 4; p2 -> 5;
+      {rank=same; 3 -> s1}
+      {rank=same; 4 -> s2}
+
+    edge [dir=none]
+    1 -> 2; 2 -> 3; 3 -> p1; 4 -> p2; 5 -> m1; 5 -> m2;
   }
+
+  [1]: 'Trauma team activation'
+  [2]: 'Inclusion in trauma registry according to SweTrau criteria'
+  [3]: 'Audit filters and primary review by experienced nurse'
+  [4]: 'Secondary review by another experienced nurse'
+  [5]: 'Selected for multidisciplinary M&M conference'
+  [6]: 'Opportunity for improvement found'
+  [7]: 'No opportunity for improvement found'
+  [8]: 'Case not selected for M&M review'
+  [9]: 'Case not selected for M&M review'
   
-    [1]: 'Trauma team activation'
-    [2]: 'Inclusion in registry according to SweTrau criteria'
-    [3]: 'Audit filters and primary review by experienced nurseand audit filters'
-    [4]: 'Secondary review by another experienced nurse'
-    [5]: 'Multidisciplinary morbidity and mortality conference'
-    [6]: 'Opportunities for improvement found'
-    [7]: 'No opportunities for improvement found'
-  ") 
-  
-  return(diagram)
+  ")
+  return(out)
 }
 
-save_ofi_png <- function(diagram) {
-  diagram %>% export_svg() %>% charToRaw() %>% rsvg::rsvg_png("images/ofi.png")
+save_ofi_png <- function(out) {
+  out %>% export_svg() %>% charToRaw() %>% rsvg::rsvg_png("images/ofi.png")
 }
+
+
+
+
+
+
 
