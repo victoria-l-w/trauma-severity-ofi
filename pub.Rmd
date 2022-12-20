@@ -58,19 +58,23 @@ objectives, including any prespecified hypotheses. The introduction
 should not be longer than 1-1.5 pages, typically 4-5 paragraphs, each
 6-8 lines long. Support every statement with a citation -->
 
-<!--
-- TRAUMA BAD 
-- QI IMPORTANT
-- CASE SELECTION
-- AUTOMATE
-- PPL LOOK AT PREV DEATH BUT NOT ACROSS THE BOARD 
-- 
--->
+<!-- Check the sources in the heim article bc they seem to have some good stuff i missed -->
+<!-- also add a lot more cites -->
+Management of severe trauma is highly time-sensitive intervention that is dependent on the actions of a chain of healthcare providers spanning multiple professions and disciplines. Outcomes in severe trauma are dependent on the quality of care received [@ustqi], and errors in management are a common cause of preventable deaths [@prevdeathsghorbani; @prevdeathsmontmany; @prevdeathsteixeira]. Since mistakes by any one provider can lead to severe outcomes, attempts to improve trauma outcomes must seek to improve all aspects of the entire chain of care. This can only be achieved through peer review and consequently, morbidity and mortality (M&M) review is the cornerstone of all modern trauma quality improvement (QI) programs. The purpose of M&M review is to evaluate selected patient cases, establish whether there was opportunity for improvement (OFI), and implement corrective actions.
+
+The WHO recommends that all "deaths, complications, adverse events and errors" should be reviewed [@whoguidelines] at M&M conferences. One of the drawbacks of M&M review is the process of identifying which cases should be reviewed. Urban trauma centres experience large caseloads and the time resource burden of reviewing even just fatalities can be considerable. The process of evaluating cases to determine which cases should be reviewed is also a time-consuming process. Due to this, many trauma centres have use audit filters that automatically flag cases for review. The potential benefits of this are twofold: it reduces the resource burden of case selection, and effective audit filters may help to identify the cases most likely to have been mismanaged. 
+
+One proposed audit filter, that is already used in many hospitals, is the use of trauma severity models that estimate the probability of survival. The focus There are many trauma severity models and the choice of model may be dependent on the region, as these algorithms tend to perform best when used in populations similar to the one the model was developed from. TRISS, an American model, is the most commonly used model worldwide [@trissbetter]. The British model PS is commonly used in the UK and Europe [@tarn07]. NORMIT, a Norwegian model, was validated and found to have good performance in a Swedish trauma centre but was less-suited when applied to a national population [@validationnormit].
+
+One use case for severity models as audit filters is choosing to only review fatalities where the estimated probability of survival was high. The assumption in this case is that unexpected deaths are more likely to have OFI, and a fatality where OFI is found is a preventable death. Two studies have examined this assumption by investigating whether trauma severity models can predict preventable deaths. A 2016 study found that neither TRISS nor PS reliably predicted preventable deaths in a major trauma centre in London [@brohi16]. Another study in 2019 found that NORMIT and TRISS performed poorly at predicting preventable and non-preventable deaths at a Scandinavian level-I centre [@prevdeathsghorbani]. 
+
+These studies indicate that trauma severity models are of limited use in improving case selection with regards to fatalities. However, to date there have been no studies that examined whether trauma severity models can predict OFI across the board and not just in fatalities. The aim of this study is to evaluate how the trauma severity models TRISS, NORMIT and PS are associated with, and to what extent they can predict OFI.
+
 
 Methods 
 =======
 
-<!-- please note that when i write done here, it doesn't mean i think it's perfect, it's just for my own tracking purposes -->  
+<!-- please note that when i write done here, it's just for my own tracking purposes to see what parts ive rewritten -->  
 
 Study design
 ------------
