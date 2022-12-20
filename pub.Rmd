@@ -1,0 +1,240 @@
+---
+title: "Manuscript title here"
+output: html_document
+author: "Your name here"
+bibliography: bibliography.bib
+csl: vancouver.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!-- This is an R Markdown document. Markdown is a simple formatting
+syntax for authoring HTML, PDF, and MS Word documents. For more
+details on using R Markdown see http://rmarkdown.rstudio.com -->
+
+<!-- This is a comment and will not be present in the compiled
+document. Try "knitting" this document by clicking the knit button up
+to the left, or by running `rmarkdown::render("manuscript.Rmd")` in
+the console and you should only see headings -->
+
+<!-- Structure and most comments are from the Strengthening the
+reporting of observational studies in epidemiology (STROBE) statement,
+see https://www.strobe-statement.org/. For more explanations see the
+paper Strengthening the Reporting of Observational Studies in
+Epidemiology (STROBE):explanation and elaboration.  -->
+
+<!-- Indicate the study’s design with a commonly used term in the
+title, for example: "Associations between resuscitation interventions
+and opportunities for improvement in adult trauma patients: A cohort
+study" -->
+
+Abstract
+========
+
+<!-- Provide in the abstract an informative and balanced summary of
+what was done and what was found. Not more than 300 words. -->
+
+Background
+----------
+
+Methods
+-------
+
+
+Results
+-------
+
+Conclusion
+----------
+
+Introduction
+============
+
+<!-- Explain the scientific background and rationale for the
+investigation being reported. End by stating the aim or specific
+objectives, including any prespecified hypotheses. The introduction
+should not be longer than 1-1.5 pages, typically 4-5 paragraphs, each
+6-8 lines long. Support every statement with a citation -->
+
+<!--
+- TRAUMA BAD 
+- QI IMPORTANT
+- CASE SELECTION
+- AUTOMATE
+- PPL LOOK AT PREV DEATH BUT NOT ACROSS THE BOARD 
+- 
+-->
+
+Methods 
+=======
+
+<!-- please note that when i write done here, it doesn't mean i think it's perfect, it's just for my own tracking purposes -->  
+
+Study design
+------------
+<!-- Present key elements of study design -->
+This is a single-centre retrospective cohort study that uses data from two registries at Karolinska University Hospital <!-- I would really like to abbreviate this? Ghorbani & Strömmer abbreviated KUH! --> in Stockholm, Sweden: the trauma registry and the trauma care quality database. The trauma care quality database is a subset of the trauma registry and contains data on trauma patients who were selected for M&M reviews. These two databases were linked and then analysed to estimate the association between the common trauma severity models TRISS and NORMIT and OFI using logistic regression. The predictive performance of these models was evaluated using measures of discrimination and calibration. 
+
+<!-- "done" -->
+
+Setting
+-------
+<!-- Describe the setting, locations, and relevant dates, including
+periods of recruitment, exposure, follow-up, and data collection -->
+The trauma centre at Karolinska University Hospital is equivalent to a level 1 trauma centre according to American College of Surgeons standards and has a catchment population of almost 3 million residents [@nksstats] <!-- not really sure if this needs to be referenced? -->. 
+
+The trauma registry at Karolinska University Hospital is part of SweTrau, Sweden's national trauma registry, and uses the Utstein template. All trauma patients meeting the SweTrau inclusion criteria are registered in the trauma registry by research nurses at the trauma centre. Data is collected from the patient's electronic medical records. 
+
+M&M conferences are held at Karolinska University Hospital ten times per year and are attended by all involved specialities and professions. Each case reviewed is registered in the trauma care quality register with data about the outcome of the review. At Karolinska University Hospital, all fatalities are automatically selected for M&M review. In addition to this, the electronic medical records of all trauma patients are screened by research nursing staff to identify cases that potentially received sub-optimal care. These nurses also use audit filters that automatically highlight cases with abnormal parameters. Cases that two research nurses have evaluated and found to have potential for sub-optimal care are also selected for M&M review. Figure 1 gives an overview of the workflow that leads to determination of OFI. 
+
+```{r, echo=FALSE, out.width = "400px"}
+knitr::include_graphics("images/ofi.png") ## ofi_diagram.R; save_png(ofi_diagram(), "ofi") to update
+## i'm going to fix this based on martin's feedback, ignore it for now 
+## or maybe it isn't even useful in the pub version?
+```
+
+<!-- "done" -->
+
+Participants
+------------
+ <!-- Cohort study: Give the eligibility criteria, and the sources and
+methods of selection of participants. Describe methods of
+follow-up. For matched studies, give matching criteria and number of
+exposed and unexposed -->
+
+We retrospectively analysed patient registries that cover a seven year period, from 2014 to 2021. Participants were patients >15 years of age who were alive on arrival at hospital that were both registered in the trauma registry and also had a recorded outcome of an M&M review. We excluded patients where registry data was lacking that was necessary to calculate trauma scores. 
+
+Included in the trauma registry are all patients for whom the trauma team was activated after a potentially traumatic injury, regardless of trauma score, and all patients with a NISS >15 regardless of whether the trauma team was activated. Patients where the only traumatic injury is a chronic subdural haematoma and patients for whom the trauma team was activated without an underlying traumatic injury are excluded. 
+
+<!-- "done" -->
+
+
+Variables
+---------
+
+### Outcome
+The studied outcome is the binary variable "opportunities for improvement" (OFI), as identified by M&M reviewe at Karolinska University Hospital. OFI is registered in the trauma care quality database and is coded as either "Yes - at least one opportunity for improvement identified" or "No - no opportunities for improvement identified". 
+
+### Exposures
+The exposures of interest were the trauma severity models TRISS, NORMIT, and PS. Variables taken from the registry were age, gender, mechanism of injury, Injury Severity Score (ISS), New Injury Severity Score (NISS), Glasgow Coma Scale (GCS), respiratory rate and systolic blood pressure. Conversion and handling of these variables was carried out according to the SweTrau manual. 
+
+The Revised Trauma Score (RTS) was calculated according to the original published algorithm [@rtsalgorithm]. We chose to use the PS12 algorithm instead of the newer PS19 model due to our registry lacking data needed to calculate PS19 [@psalgorithm]. NORMIT was calculated using the revised 2018 coefficients [@skagaValidatingPerformanceTRISS2018]. TRISS was calculated using the revised 2009 coefficients [@triss2010]. In order to avoid excluding patients who were intubated pre-hospitally, the pre-hospital GCS value was used when calculating TRISS for patients who were intubated before arrival at hospital.
+
+<!-- "done" -->
+
+Bias 
+----
+
+The code for data analysis was written by a student researcher using simulated data to reduce the risk of researcher bias. Real-world data was only used once the data analysis model was completed and found to work correctly on simulated data. 
+
+<!-- "done" -->
+
+
+Statistical methods
+-------------------
+
+<!-- 
+(a) Describe all statistical methods, including those used to control
+for confounding
+(b) Describe any methods used to examine subgroups and interactions
+(c) Explain how missing data were addressed 
+(d) 
+Cohort study: If applicable, explain how loss to follow-up was addressed 
+(e) Describe any sensitivity analyses
+-->
+
+The statistical programming language R was used for data collection and analysis [@r]. Logistic regression was used to estimate association between the estimates of the trauma severity models and OFI and the effect size was given as the derived OR. The CI for the OR was computed using the Wald estimator. Receiver operator characteristic (ROC) curves were used to assess diagnostic performance. The area under the curve (AUC) was calculated to compare the models with one another. The Integrated Calibration Index (ICI) was used to measure calibration. Accuracy was plotted and is reported as accuracy at a >=0.5 cutoff <!-- fix the >= later -->. Confidence intervals for the AUC, ICI and accuracy were computed with 1000 stratified bootstrap replicates. Results are presented with a confidence interval of 95%. A p-value of <0.05 was considered significant. 
+
+<!-- "done" -->
+
+
+
+Results
+=======
+
+<!-- 
+Participants
+------------
+(a) Report numbers of individuals at each stage of study—eg numbers
+potentially eligible, examined for eligibility, confirmed eligible,
+included in the study, completing follow-up, and analysed
+(b) Give reasons for non-participation at each stage
+(c) Consider use of a flow diagram
+Descriptive data
+----------------
+(a) Give characteristics of study participants (eg demographic,
+clinical, social) and information on exposures and potential
+confounders
+(b) Indicate number of participants with missing data for each
+variable of interest
+(c) Cohort study — Summarise follow-up time (eg, average and total
+amount)
+Outcome data
+------------
+Cohort study — Report numbers of outcome events or summary measures
+over time
+Case-control study — Report numbers in each exposure category, or
+summary measures of exposure
+Cross-sectional study — Report numbers of outcome events or summary
+measures
+Main results
+------------
+(a) Give unadjusted estimates and, if applicable, confounder-adjusted
+estimates and their precision (eg, 95% confidence interval). Make
+clear which confounders were adjusted for and why they were included
+(b) Report category boundaries when continuous variables were
+categorized
+(c) If relevant, consider translating estimates of relative risk into
+absolute risk for a meaningful time period
+Other analyses 
+--------------
+Report other analyses done—eg analyses of subgroups and interactions,
+and sensitivity analyses 
+-->
+
+You can include code in this document like this:
+
+```{r main, echo=FALSE}
+## source("main.R") ## This "imports" the main script file of your project and run any code in it
+```
+
+You can also embed plots:
+
+```{r plot, echo=FALSE}
+plot(pressure)
+```
+  
+
+Discussion
+==========
+
+<!--
+Key results
+-----------
+Summarise key results with reference to study objectives
+Limitations
+-----------
+Discuss limitations of the study, taking into account sources of
+potential bias or imprecision.  Discuss both direction and magnitude
+of any potential bias
+Interpretation
+--------------
+Give a cautious overall interpretation of results considering
+objectives, limitations, multiplicity of analyses, results from
+similar studies, and other relevant evidence
+Generalisability
+----------------
+Discuss the generalisability (external validity) of the study results
+-->
+
+Conclusion
+==========
+
+<!-- Give a short conclusion, corresponding to the aim -->
+
+References
+==========
+
+<!-- Do not edit by hand, references will be inserted and formatted automatically once you knit this document -->
