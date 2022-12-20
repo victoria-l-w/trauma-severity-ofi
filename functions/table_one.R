@@ -64,7 +64,7 @@ table_one <- function(cd) {
                 data = df[,vars2], 
                 overall = "Total", 
                 render.categorical = "FREQ (PCTnoNA%)", 
-                caption = "Table 2. Characteristics of participants."
+                caption = "Characteristics of participants."
   )
   return(out)
 }

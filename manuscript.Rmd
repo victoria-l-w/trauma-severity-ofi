@@ -4,9 +4,9 @@ title: 'Association between trauma severity models and opportunities for improve
   A retrospective cohort study'
 author: "Victoria Witthoff"
 output:
-  bookdown::pdf_document2: default
-  bookdown::html_document2: default
   bookdown::word_document2: default
+  bookdown::html_document2: default
+  bookdown::pdf_document2: default
 bibliography: bibliography.bib
 csl: vancouver.csl
 fontsize: 11pts
@@ -196,17 +196,11 @@ Results
 
 Participants
 ------------
-A total of `r exclusion[1,2]` patients were recorded in the trauma registry during the study period. Of these, `r exclusion[2,2]` were reviewed and therefore became eligible for study inclusion. `r exclusion[7,3]` patients were excluded, due to either being of paediatric age (`r exclusion[3,3]`), being dead on arrival at hospital (`r exclusion[4,3]`), or due to incomplete data (`r exclusion[5,3]`). Figure \@ref(fig:exclusion) shows the inclusion process for eligible participants. 
+A total of `r exclusion[1,2]` patients were recorded in the trauma registry during the study period. Of these, `r exclusion[2,2]` were reviewed and therefore became eligible for study inclusion. `r exclusion[7,3]` patients were excluded, due to either being of paediatric age (`r exclusion[3,3]`), being dead on arrival at hospital (`r exclusion[4,3]`), or due to incomplete data (`r exclusion[5,3]`). Figure \@ref(fig:exclusion) shows the inclusion process for eligible participants. Some patients had missing data in several parameters and therefore the total number of missing parameters is greater than the total number of patients excluded due to incomplete data.
 
 ```{r exclusion, fig.cap = "Flow diagram for application of exclusion criteria", fig.align = "center", echo=FALSE, out.width = "600px"}
 knitr::include_graphics("images/exclusion.png") 
-## exclusion_flowchart.R; save_png(exclusion_flowchart(exclusion), "exclusion") to update
-```
-
-Detailed totals of missing data for each required parameter in cases that were excluded for incomplete data are given in table \@ref(tab:incomplete-table). Some patients had missing data in several parameters and therefore the total number of missing parameters is greater than the total number of patients excluded due to incomplete data.
-
-```{r incomplete-table, echo=FALSE, fig.align = "center"}
-knitr::kable(table(na.data, type = "incomplete"), caption = "Parameters that were missing in cases excluded for incomplete data") %>% kable_styling(position = "center", full_width = FALSE)
+## exclusion_flowchart.R; save_png(exclusion_flowchart(exclusion, na.data), "exclusion") to update
 ```
 
 Descriptive data
@@ -217,12 +211,10 @@ The median age was `r dd['age']` (IQR: `r dd['age.lo']`-`r dd['age.hi']`). `r dd
 
 At least one OFI was found in `r dd['ofi.true']` of cases (`r dd['ofi.pc']`%). In cases where death occurred within 30 days, at least one OFI was found in `r dd['ofi.mort']`% of cases. The median scores for TRISS, NORMIT, and PS were `r dd['t.med']` (IQR: `r dd['t.lo']`-`r dd['t.hi']`), `r dd['n.med']` (IQR: `r dd['n.lo']`-`r dd['n.hi']`), and `r dd['p.med']` (IQR: `r dd['p.lo']`-`r dd['p.hi']`) respectively. 
 
-  
-```{r table-one} 
-  table.one
-## this thing breaks the table counting but ill just fix it manually in word
+```{r table-one, centering = TRUE}
+t1kable(table.one)
+##knitr::kable(t1kable(table.one), caption = "Comparison of model results") %>% ##kable_styling(position = "center", full_width = FALSE)
 ```
-
 
 Main results
 ------------
@@ -256,8 +248,6 @@ Discussion
  
 Key results
 -----------
-<!-- Summarise key results with reference to study objectives --> 
-
 This aim of this study was to evaluate whether several commonly used trauma severity models (TRISS, NORMIT, and PS) are associated with, and to what extent they can predict, OFI, with the goal of improving case selection for multidisciplinary morbidity and mortality conferences. The three models investigated did not differ significantly in their results. The main findings indicate that increased probability of survival was associated with lower odds for OFI, with odds ratios ranging from `r t['or']` to `r n['or']`. The AUC values were almost identical for all three models (range: `r p[['auc']]`-`r t[['auc']]`), indicating poor diagnostic ability in discriminating between OFI and no OFI. Calibration was also low for all models (ICI range: `r n[['ici']]` - `r p[['ici']]`). Accuracy at a cutoff of 0.5 was low across the board (range: `r p[['acc']]`-`r n[['acc']]`).
 
 Strengths and limitations
@@ -265,7 +255,7 @@ Strengths and limitations
 
 One of the strengths of this study is the duration of enrolment and Karolinska University Hospital's catchment population of 3 million, which allowed for a large study population. The outcome data is strengthened by Karolinska University Hospital's extensive quality review process involving personnel from all concerned specialities and professions. All patients that met inclusion criteria were included in the study. Data collection, patient inclusion and data analysis was prepared on scrambled data by a single student research before being given access to the real data, in order to minimise researcher bias.
 
-There were several limitations to this study. One of them is that selection of cases for review at conferences was in large part based upon the use of audit filters. There is as yet no widespread consensus on which audit filters are the most effective at identifying cases and this is an ongoing topic of research. The choice of audit filters used affects case selection and in turn introduces an element of selection bias into this study. It is possible, and perhaps even likely, that some cases with opportunities for improvement were never selected for case review and therefore weren't available for inclusion in this study. Another limitation is that, due to the long duration of enrolment in this study, the composition of the staff present at conferences will have differed over time. Determining whether OFI exists or not is an essentially subjective evaluation and the conclusions reached by any given conference may vary depending on which individuals are present. It is also possible that standards and expectations of care have changed over time as knowledge and technology improves, which would also in turn affect assignment of OFI. <!--JA: I takt med att man åtgärdar systematiskta fel så upkommer na -->
+There were several limitations to this study. One of them is that selection of cases for review at conferences was in large part based upon the use of audit filters. There is as yet no widespread consensus on which audit filters are the most effective at identifying cases and this is an ongoing topic of research. The choice of audit filters used affects case selection and in turn introduces an element of selection bias into this study. It is possible, and perhaps even likely, that some cases with opportunities for improvement were never selected for case review and therefore weren't available for inclusion in this study. Another limitation is that, due to the long duration of enrolment in this study, the composition of the staff present at conferences will have differed over time. Determining whether OFI exists or not is an essentially subjective evaluation and the conclusions reached by any given conference may vary depending on which individuals are present. It is also possible that standards and expectations of care have changed over time as knowledge and technology improves, which would also in turn affect assignment of OFI. 
 
 Interpretation
 -----------
@@ -286,7 +276,6 @@ Even though our results were expected, it was still important to investigate thi
 This study is based on a patient population at a level 1 trauma centre in Stockholm, Sweden and the results are likely applicable for other level 1 trauma centres in the Nordic countries, as these countries share similarities in patient demographics, comorbidities, and injury types. This study is less generalisable for smaller trauma centres as those centres tend to manage less severe trauma and will have a different patient population. This study also has less external validity with regards to international populations that differ significantly from the one in this study, for example populations with a higher proportion of penetrating trauma. 
 
 ### Health equity
-<!-- Is this section requested by KI?-->
 The demographical characteristics of the participants in this study reflect the well-known demographics of trauma patients worlwide. `r dd['male']`% of participants were male and the median age was `r dd['age']`, which matches with statistics both in Sweden and globally [@globalburden]. The predominance of male patients invites one to question if female patients are less likely to receive quality care. In healthcare as in all areas, repetition leads to mastery of a skill, so an onlooker might be tempted to assume that the high volume of male patients in trauma will lead healthcare providers to superiority iin treating males, whilst treatment of female patients will be neglected. This demographical difference has precipitated research that seeks to investigate whether this presumption holds true, and several large multi-centre studies have been published that evaluated whether there is a correlation between sex and outcomes. None of these studies found a correlation beween sex and increased mortality or other serious outcomes [@croce2002; @magnotti2008; @pape2019; @trentzsch2014], and in fact one study in the Netherlands found that female sex was correlated with decreased mortality [@pape2019]. 
 
 This study has not compared differences between the sexes, and therefore cannot comment on any relation between sex and OFI at this centre. One of the trauma severity models we investigated, PS, does include patient sex as a coefficient in predicting mortality, but we did not examine whether patient sex affects the ability of PS to predict OFI. However, there is another currently ongoing project at this hospital that compares OFI between the male and female sex cohorts. The uneven distribution of sex in this study does not make for a limitation of this study in terms of generalisability since our demographics match the distribution of sex in trauma cases both globally and in the Swedish trauma population. 

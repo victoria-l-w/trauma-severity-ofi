@@ -1,12 +1,20 @@
+
 ---
-title: "Association between trauma severity models and opportunities for improvement:
-  A retrospective cohort study"
-output: html_document
+title: 'Association between trauma severity models and opportunities for improvement:
+  A retrospective cohort study'
 author: "Victoria Witthoff"
+output:
+  bookdown::pdf_document2: default
+  bookdown::html_document2: default
+  bookdown::word_document2: default
 bibliography: bibliography.bib
 csl: vancouver.csl
+fontsize: 11pts
+linestretch: 1
+always_allow_html: yes
+editor_options: 
+   chunk_output_type: inline
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
@@ -15,6 +23,8 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```{r main}
   ## source("main.R") 
 ```
+<!-- rmarkdown::render("manuscript.Rmd", html_document2(global_numbering = TRUE)) -->
+
 
 Abstract
 ========
@@ -184,17 +194,7 @@ Report other analyses done—eg analyses of subgroups and interactions,
 and sensitivity analyses 
 -->
 
-You can include code in this document like this:
 
-```{r main, echo=FALSE}
-## source("main.R") ## This "imports" the main script file of your project and run any code in it
-```
-
-You can also embed plots:
-
-```{r plot, echo=FALSE}
-plot(pressure)
-```
   
 
 Discussion
