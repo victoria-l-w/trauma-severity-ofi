@@ -1,5 +1,13 @@
 table <- function(data, type = "", t = t, n = n, p = p) {
-  
+## This is nice. I would suggest removing gt and just return the
+## tibble. Then call knitr::kable in your manuscript.Rmd and provide
+## a caption argument:
+## ```{r incomplete-table, echo=FALSE}
+## knitr::kable(table(na.data, type = "incomplete"), caption = "Parameters that were missing in cases excluded for incomplete data")
+## ```
+## You can then cross-reference your tables in the text and do not
+## have to give them specific numbers here using for example
+## "See Table \@ref(tab:incomplete-table)."
   if(type == "incomplete") {
     
     names <- c("GCS", "ASA", "RR", "Systolic BP", "Dominant Injury Type", "Age", "ISS", "NISS", "Gender")
