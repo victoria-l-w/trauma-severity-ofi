@@ -1,34 +1,20 @@
 ---
-title: "Manuscript title here"
+title: "Association between trauma severity models and opportunities for improvement:
+  A retrospective cohort study"
 output: html_document
-author: "Your name here"
+author: "Victoria Witthoff"
 bibliography: bibliography.bib
 csl: vancouver.csl
 ---
 
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
 
-<!-- This is an R Markdown document. Markdown is a simple formatting
-syntax for authoring HTML, PDF, and MS Word documents. For more
-details on using R Markdown see http://rmarkdown.rstudio.com -->
-
-<!-- This is a comment and will not be present in the compiled
-document. Try "knitting" this document by clicking the knit button up
-to the left, or by running `rmarkdown::render("manuscript.Rmd")` in
-the console and you should only see headings -->
-
-<!-- Structure and most comments are from the Strengthening the
-reporting of observational studies in epidemiology (STROBE) statement,
-see https://www.strobe-statement.org/. For more explanations see the
-paper Strengthening the Reporting of Observational Studies in
-Epidemiology (STROBE):explanation and elaboration.  -->
-
-<!-- Indicate the study’s design with a commonly used term in the
-title, for example: "Associations between resuscitation interventions
-and opportunities for improvement in adult trauma patients: A cohort
-study" -->
+```{r main}
+  ## source("main.R") 
+```
 
 Abstract
 ========

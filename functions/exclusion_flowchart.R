@@ -4,7 +4,6 @@ exclusion_flowchart <- function(exclusion) {
   
   out <- grViz("digraph flowchart {
   
-    label='Fig. 2. Flow diagram for application of exclusion criteria';
     labelloc=bottom;
     labeljust=left;
     labelfontsize=16;

@@ -25,6 +25,7 @@ library(rsvg)
 library(mvbutils)
 library(gridExtra)
 library(ggpubr)
+library(bookdown)
 
 noacsr::source_all_functions()
 

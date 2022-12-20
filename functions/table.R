@@ -1,20 +1,10 @@
 table <- function(data, type = "", t = t, n = n, p = p) {
-## This is nice. I would suggest removing gt and just return the
-## tibble. Then call knitr::kable in your manuscript.Rmd and provide
-## a caption argument:
-## ```{r incomplete-table, echo=FALSE}
-## knitr::kable(table(na.data, type = "incomplete"), caption = "Parameters that were missing in cases excluded for incomplete data")
-## ```
-## You can then cross-reference your tables in the text and do not
-## have to give them specific numbers here using for example
-## "See Table \@ref(tab:incomplete-table)."
+
   if(type == "incomplete") {
     
     names <- c("GCS", "ASA", "RR", "Systolic BP", "Dominant Injury Type", "Age", "ISS", "NISS", "Gender")
-    tib <- tibble("Parameter" = names, "Total no. cases missing parameter" = data)
-    out <- tib %>% gt() %>% tab_header(
-      title = "Table 1: Parameters that were missing in cases excluded for incomplete data"
-    )
+    out <- tibble("Parameter" = names, "Total no. cases missing parameter" = data)
+    
     
     return(out)
   }
@@ -37,10 +27,8 @@ table <- function(data, type = "", t = t, n = n, p = p) {
       paste0(data[['acc']][['np']]," (", data[['acc']][['np']][[1]], "-", data[['acc']][['np']][[1]], ")")
     )
     
-    tib <- tibble(" " = comparisons, "AUC difference (95% CI)" = auc, "ICI difference (95% CI)" = ici, "Accuracy difference (95% CI)" = acc)
-    out <- tib %>% gt() %>% tab_header(
-      title = "Table x. Comparison of model results"
-    )
+    out <- tibble(" " = comparisons, "AUC difference (95% CI)" = auc, "ICI difference (95% CI)" = ici, "Accuracy difference (95% CI)" = acc)
+    
     return(out)  
   }
   

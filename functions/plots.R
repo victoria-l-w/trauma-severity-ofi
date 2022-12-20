@@ -13,7 +13,7 @@ plot_glm <- function(df, type) {
     geom_hline(data = data.frame(c(0.25, 0.50, 0.75)),
                aes(yintercept = c(0.25, 0.50, 0.75)),
                colour = "darkgrey", linetype = "dashed") +
-    labs(x = paste0(type), y = "OFI")
+    labs(x = paste0(type, " probability of survival"), y = "Probability of OFI")
   return(plot)
 }
 
@@ -26,12 +26,11 @@ glm_x3 <- function(df) {
   n <- plot_glm(df.n, "NORMIT")
   p <- plot_glm(df.p, "PS")
   x3 <- grid.arrange(t, n, p, ncol = 3)
-  x3 <- annotate_figure(x3, top = text_grob("Figure x: Probability of OFI vs probability of survival", size = 12))
   ggsave(x3, filename = "images/glm.png",height = 667, width = 2001, units = "px")
 }
 
 plot_roc <- function(x, type) {
-  plot <- ggroc(x[['roc']], colour = "#5FD4AB") + ggtitle(paste0(type, " (AUC = ", x[['auc']], ")")) + theme(plot.title = element_text(size=12))
+  plot <- ggroc(x[['roc']], colour = "#5FD4AB") + ggtitle(paste0(type, " (AUC = ", x[['auc']], ")")) + theme(plot.title = element_text(size=12)) + labs(x = "Specificity", y = "Sensitivity")
   return(plot)
 }
 
@@ -40,7 +39,6 @@ roc_x3 <- function(t, n, p) {
   n.plot <- plot_roc(n, type = "NORMIT")
   p.plot <- plot_roc(p, type = "PS")
   x3 <- grid.arrange(t.plot, n.plot, p.plot, ncol = 3)
-  x3 <- annotate_figure(x3, top = text_grob("Figure x: Receiver Operating Curves", size = 12))
   ggsave(x3, filename = "images/roc.png",height = 667, width = 2001, units = "px")
 }
 
@@ -64,7 +62,6 @@ acc_x3 <- function(t, n, p){
   n.plot <- plot_acc(n, "NORMIT")
   p.plot <- plot_acc(p, "PS")
   x3 <- grid.arrange(t.plot, n.plot, p.plot, ncol = 3)
-  x3 <- annotate_figure(x3, top = text_grob("Figure x: Accuracy at all cutoffs", size = 12))
   ggsave(x3, filename = "images/acc.png",height = 667, width = 2001, units = "px")
   
 }
@@ -86,7 +83,7 @@ plots <- function(type = "", data) {
       geom_point(position=position_dodge(.9)) + 
       geom_errorbar(aes(ymin = lower, ymax = upper), position=position_dodge(.9), width = .25) + 
       labs(
-        title = "Figure 8. Comparison of Odds Ratios.",
+        ## title = "Figure 8. Comparison of Odds Ratios.",
         y = "Odds Ratio",
         x = "Model"
       )
