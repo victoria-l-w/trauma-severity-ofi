@@ -4,8 +4,8 @@ title: 'Association between trauma severity models and opportunities for improve
   A retrospective cohort study'
 author: "Victoria Witthoff"
 output:
-  bookdown::word_document2: default
   bookdown::html_document2: default
+  bookdown::word_document2: default
   bookdown::pdf_document2: default
 bibliography: bibliography.bib
 csl: vancouver.csl

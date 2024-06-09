@@ -27,6 +27,8 @@ library(gridExtra)
 library(ggpubr)
 library(bookdown)
 library(kableExtra)
+library(pandoc)
+library(flextable)
 
 noacsr::source_all_functions()
 
@@ -38,7 +40,7 @@ extract.named(prep_data(datasets)) ## creates the prepared dataset, inclusion co
 
 table.one <- table_one(df) ## table_one.R
 dd <- descriptive_data(df) ## descriptive_data.R
-extract.named(results(df, bootstrap = TRUE, boot.no = 10)) ## results.R
+extract.named(results(df, bootstrap = TRUE, boot.no = 1000)) ## results.R
 
 ## make figures
 ##roc_x3(t, n, p)

@@ -13,7 +13,8 @@ plot_glm <- function(df, type) {
     geom_hline(data = data.frame(c(0.25, 0.50, 0.75)),
                aes(yintercept = c(0.25, 0.50, 0.75)),
                colour = "darkgrey", linetype = "dashed") +
-    labs(x = paste0(type, " probability of survival"), y = "Probability of OFI")
+    labs(x = paste0(type, " probability of survival"), y = "Probability of OFI") +
+    theme(axis.title.x = element_text(size = 8))  
   return(plot)
 }
 
